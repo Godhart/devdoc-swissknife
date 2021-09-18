@@ -1,7 +1,7 @@
 version: "3"
 services:
   rstudio:
-    image: rocker/verse:3.5.1
+    image: rocker_curl
     depends_on:
       - kroki
     volumes:
