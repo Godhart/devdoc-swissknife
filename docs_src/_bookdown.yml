@@ -1,0 +1,11 @@
+book_filename: Document Title
+repo: https://github.com/<author>/<repo>
+output_dir: _book
+clean: [packages.bib]
+# language:
+#   label:
+#     fig: "Рисунок "
+#     tab: "Таблица "
+#   ui:
+#     chapter_name: "Глава "
+delete_merged_file: true
