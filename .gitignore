@@ -10,6 +10,7 @@
 # Temporary files
 docs_out/**/*
 docs_src/_book/**/*
+docs_src/generated/**/*
 
 # Keep files for empty dirs
 !.keep
