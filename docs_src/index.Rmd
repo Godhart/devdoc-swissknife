@@ -30,3 +30,14 @@ cover-image: images/cover.png
 # Preface {-}
 
 Template for RMarkdown + Kroki!
+
+# Simple Example #1
+
+```{bash include=FALSE, eval=knitr::is_latex_output()}
+curl http://kroki:8000/graphviz/png/eNpLyUwvSizIUHBXqPZIzcnJ17ULzy_KSanlAgB1EAjQ --stderr /dev/null > generated/img.png
+```
+`r if (knitr::is_latex_output()) '![](generated/img.png)'`
+
+```{bash echo=FALSE, results='asis', eval=knitr::is_html_output()}
+curl http://kroki:8000/graphviz/svg/eNpLyUwvSizIUHBXqPZIzcnJ17ULzy_KSanlAgB1EAjQ --stderr /dev/null
+```
