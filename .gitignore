@@ -1,0 +1,14 @@
+# Hidden files should be included explicitly
+.*
+
+!.gitignore
+!.editorconfig
+!.gitattributes
+
+# Sensitive data
+
+# Temporary files
+docs_out/**/*
+
+# Keep files for empty dirs
+!.keep
