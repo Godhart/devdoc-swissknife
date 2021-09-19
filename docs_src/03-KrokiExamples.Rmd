@@ -148,12 +148,12 @@ Rel(ma, accounts, \"Uses\", \"JSON/HTTPS\")
 
 \newpage
 
-## Block diagram
+## Block Diagram
 
 Engine: `blockdiag`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("blockdiag", "Example - Block diagram",
+  to_diagram("blockdiag", "Example - Block Diagram",
 "
 blockdiag {
 blockdiag -> generates -> \"block-diagrams\";
@@ -277,14 +277,14 @@ Engine: `bytefield`
 
 \newpage
 
-## Packet diagram
+## Packet Diagram
 
 Engine: `packetdiag`
 
 > *NOTE: inserted as SVG image so text on image is not searchable. Can't insert inline due to large horizontal size*
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("packetdiag", "Example - Packet diagram", inline=FALSE,
+  to_diagram("packetdiag", "Example - Packet Diagram", inline=FALSE,
 data="
 packetdiag {
   colwidth = 32;
@@ -319,7 +319,7 @@ packetdiag {
 Engine: `mermaid`
 
 ```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
-  to_diagram("mermaid", "Example - Sequence diagram - Mermaid",
+  to_diagram("mermaid", "Example - Sequence Diagram - Mermaid",
 "sequenceDiagram
     participant Alice
     participant Bob
@@ -340,7 +340,7 @@ Engine: `mermaid`
 Engine: `plantuml` (syntax very similar to mermaid)
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("plantuml", "Example - Sequence diagram - PlantUML",
+  to_diagram("plantuml", "Example - Sequence Diagram - PlantUML",
 "
 @startuml
 Alice -> Bob: Authentication Request
@@ -372,12 +372,12 @@ end
 
 \newpage
 
-## Sequence diagram #3 (SeqDiag)
+## Sequence Diagram #3 (SeqDiag)
 
 Engine: `seqdiag`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("seqdiag", "Example - Sequence diagram - SeqDiag",
+  to_diagram("seqdiag", "Example - Sequence Diagram - SeqDiag",
 "
 seqdiag {
   browser  -> webserver [label = \"GET /index.html\"];
@@ -465,12 +465,12 @@ box same width previous.e.x - C2.w.x \
 
 \newpage
 
-## Use case diagram
+## Use Case Diagram
 
 Engine: `plantuml`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("plantuml", "Example Block diagram",
+  to_diagram("plantuml", "Example Block Diagram",
 "
 @startuml
 left to right direction
