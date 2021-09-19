@@ -1,5 +1,4 @@
-to_diagram <- function(dia, name, data = "", src = "") {
-  inline <- TRUE  # TODO: set via parameter
+to_diagram <- function(dia, name, data = "", src = "", inline = TRUE) {
   if (knitr::is_latex_output()) {
     # PNG for PDF, SVG for HTML
     ext <- "png"
