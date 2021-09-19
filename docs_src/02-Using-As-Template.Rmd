@@ -29,7 +29,7 @@ Check the RMarkdown and Kroki! docs for understanding things, rely on shown exam
 #. Most probably you would like to use your own Latex book class, so add `<your_latex_book_class>.cls` file
  into `docs_src` and specify it in `index.Rmd` file (replace `documentclass: book` field).
 
-> NOTE: in many case of errors doc's sources folder is poluted with temporary files,
-> named as specified in `_bookdown.yml` (field `book_filename`) \
+> NOTE: in many cases of errors doc's sources folder is polluted with temporary files,
+> named as specified in `_bookdown.yml` (field `book_filename`).\
 > I can't fix this yet so avoid committing them.\
-> After fixing error and making doc again those files would gone.
+> After fixing the errors and making doc again those files would go away.\
