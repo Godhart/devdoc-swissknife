@@ -1,4 +1,5 @@
 all:
+	rm -f \"`cat _bookdown.yml | grep -Po 'book_filename: "\K[^"#]*' | xargs`.Rmd\"
 	rm -rf generated &&\
 	mkdir generated &&\
 	rm -rf _book &&\
