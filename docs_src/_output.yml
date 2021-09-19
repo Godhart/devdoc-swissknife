@@ -5,7 +5,7 @@ bookdown::gitbook:
     toc:
       collapse: none
       before: |
-        <li><a href="./">Document Title</a></li>
+        <li><a href="./index.html">Document Title</a></li>
     download: [pdf]
     edit: https://github.com/<author>/<repo>/edit/master/%s
     sharing:

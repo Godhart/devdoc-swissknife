@@ -1,4 +1,4 @@
-book_filename: Document Title
+book_filename: "Document_Title"  # NOTE: ALWAYS put name within double quotes as it's vital for Makefile
 repo: https://github.com/<author>/<repo>
 output_dir: _book
 clean: [packages.bib]
