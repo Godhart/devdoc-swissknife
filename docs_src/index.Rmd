@@ -35,22 +35,31 @@ source("_fun.R", local = knitr::knit_global())
 
 This is a demo project for development documentation generation with RMarkdown and Kroki!
 
-This aproach allows you to create reproducable docs as PDF, gitbook and some other HTML formats including graphic
+This approach allows you to create reproducible docs as PDF, gitbook, and some other HTML formats including graphic
 diagrams, totally described in markdown-based files (Pandoc flavor) with extra R chunks.
+
+This way it's easy to version and merge graphic diagrams, get differences between versions, leave comments, review, etc.
+
+Also most often it's faster to create and **edit** diagrams as text, do things like theming and refactoring themes.
+Since the diagram's text description is more a model than just graphics, you don't have to track existing objects relations
+when just placement is changed or objects added (until you rename objects) which makes your workflow less error-prone.
+
+RMarkdown itself is a powerful and customizable tool, so you can fit docs to your needs. It would take efforts on start,
+to make things neat but it would repay you in the end.
+
+> To produce awesome PDFs you'll have to provide awsome Latex book class, since I don't have one and using Latex default
+> for this project and current PDF version looks kinda ugly to me.
 
 This project uses docker and docker-compose to build docs so it's ready to be integrated into your CI/CD flow.
 
-There is few demonstrations in the project for general development usecases (which probably cover 95% of yor daily needs).
-For more complicated usecases - checkout docs on links below.
+There are few demonstrations in the project for general development use-cases (which probably cover 95% of your daily needs).
+For more complicated use-cases - checkout docs on links below.
 
-Project structure, docs generation and some files are based on [Rmarkdowmn book](https://github.com/rstudio/rmarkdown-book)
+Project structure, docs generation and some files are based on [Rmarkdown book](https://github.com/rstudio/rmarkdown-book)
 
 Diagrams code for most examples is borrowed straight from [Kroki!](https://kroki.io/examples.html)
 
 This project is also can be used as template for your own documentation, see [this section](#as_template)
-
-> To produce awsome PDFs you'll have to provide awsome Latex book class, since I don't have one and using Latex default
-> for this project and current PDF version looks kinda ugly to me.
 
 \
 \
