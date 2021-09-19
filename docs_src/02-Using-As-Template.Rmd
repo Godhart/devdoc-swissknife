@@ -8,7 +8,9 @@ To use this project as start point for your own documentation do following:
 [https://github.com/Godhart/devdoc-swissknife](https://github.com/Godhart/devdoc-swissknife)\
 All the sources for docs are contained in `docs_src` folder.
 
-#. Remove files named like `<number>-<words>.Rmd`, but **keep** `index.Rmd`.
+#. Remove existing files named like `<number>-<words>.Rmd` from `docs_src` folder, but **keep** `index.Rmd`.
+
+#. Empty `docs_src/diagrams` folder.
 
 #. Replace following keywords
 `<Author Name>`, `<author>`, `<repo>`, `<Document Title>`, `Document_Title`, `<Document Description>`
