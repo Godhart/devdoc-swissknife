@@ -27,17 +27,42 @@ github-repo: <author>/<repo>
 cover-image: images/cover.png
 ---
 
+```{r, include=FALSE}
+source("_fun.R", local = knitr::knit_global())
+```
+
 # Preface {-}
 
-Template for RMarkdown + Kroki!
+This is a demo project for development documentation generation with RMarkdown and Kroki!
 
-# Simple Example #1
+This aproach allows you to create reproducable docs as PDF, gitbook and some other HTML formats including graphic
+diagrams, totally described in markdown-based files (Pandoc flavor) with extra R chunks.
 
-```{bash include=FALSE, eval=knitr::is_latex_output()}
-curl http://kroki:8000/graphviz/png/eNpLyUwvSizIUHBXqPZIzcnJ17ULzy_KSanlAgB1EAjQ --stderr /dev/null > generated/img.png
-```
-`r if (knitr::is_latex_output()) '![](generated/img.png)'`
+This project uses docker and docker-compose to build docs so it's ready to be integrated into your CI/CD flow.
 
-```{bash echo=FALSE, results='asis', eval=knitr::is_html_output()}
-curl http://kroki:8000/graphviz/svg/eNpLyUwvSizIUHBXqPZIzcnJ17ULzy_KSanlAgB1EAjQ --stderr /dev/null
-```
+There is few demonstrations in the project for general development usecases (which probably cover 95% of yor daily needs).
+For more complicated usecases - checkout docs on links below.
+
+Project structure, docs generation and some files are based on [Rmarkdowmn book](https://github.com/rstudio/rmarkdown-book)
+
+Diagrams code for most examples is borrowed straight from [Kroki!](https://kroki.io/examples.html)
+
+This project is also can be used as template for your own documentation, see [this section](#as_template)
+
+> To produce awsome PDFs you'll have to provide awsome Latex book class, since I don't have one and using Latex default
+> for this project and current PDF version looks kinda ugly to me.
+
+\
+\
+
+**Following links would be helpful to you:**
+
+https://kroki.io/examples.html
+
+https://bookdown.org/yihui/rmarkdown/
+
+https://bookdown.org/yihui/rmarkdown-cookbook/
+
+https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf
+
+https://rmarkdown.rstudio.com/docs/reference/index.html

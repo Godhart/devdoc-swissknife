@@ -1,0 +1,53 @@
+# Simple diagrams examples
+
+Since this project is focused on embedding diagrams into Rmarkdown
+let's start with few examples just to illustrate principle.
+
+## Example with inline diagram description
+
+This example shows how to embed diagrams, describing them right in Rmd file
+
+This code:
+
+````R
+`r ''````{r echo=FALSE, results='asis'}
+  to_diagram("graphviz", "Hello World",
+  "digraph G {Hello->World}"
+  )
+```
+````
+
+would produce following diagram:
+
+```{r echo=FALSE, results='asis'}
+  to_diagram("graphviz", "Hello World",
+  "digraph G {Hello->World}"
+  )
+```
+
+\newpage
+
+## Example with diagram data from file
+
+This example shows how to embed diagrams with data from outer files
+
+This code:
+
+`````R
+`r ''````{r echo=FALSE, results='asis'}
+  to_diagram("erd", "Entity Relation", src="diagrams/project.erd")
+```
+`````
+
+would produce following diagram:
+
+``` {r echo=FALSE, results='asis'}
+  to_diagram("erd", "Entity Relation", src="diagrams/project.erd")
+```
+
+---
+
+File **diagrams/project.erd** content:
+```{r echo=FALSE, comment=''}
+cat(readLines('diagrams/project.erd'), sep = '\n')
+```

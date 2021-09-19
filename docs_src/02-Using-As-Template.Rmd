@@ -1,0 +1,35 @@
+# Using as template and making own docs {#as_template}
+
+To use this project as start point for your own documentation do following:
+
+> You'll need to have `docker` and `docker-compose` installed
+
+#. Import master branch of this repo:
+[https://github.com/Godhart/devdoc-swissknife](https://github.com/Godhart/devdoc-swissknife)\
+All the sources for docs are contained in `docs_src` folder.
+
+#. Remove files named like `<number>-<words>.Rmd`, but **keep** `index.Rmd`.
+
+#. Replace following keywords
+`<Author Name>`, `<author>`, `<repo>`, `<Document Title>`, `Document_Title`, `<Document Description>`
+within files in `docs_src` with actual values.
+
+#. Make docker image `rocker_curl`.
+Simply run `make_docker.sh` from `docker` dir.
+
+#. Try to make docs with `make_docs.sh`.
+Output docs should apear in `docs_out` folder.\
+*Take a NOTE: this folder is ignored by git.*
+
+#. Update `index.Rmd` to your needs (contains *Preface* section).
+
+#. Add your own docs into `docs_src` dir, naming files like `<number>-<words>.Rmd`.\
+Check the RMarkdown and Kroki! docs for understanding things, rely on shown examples.
+
+#. Most probably you would like to use your own Latex book class, so add `<your_latex_book_class>.cls` file
+ into `docs_src` and specify it in `index.Rmd` file (replace `documentclass: book` field).
+
+> NOTE: in many case of errors doc's sources folder is poluted with temporary files,
+> named as specified in `_bookdown.yml` (field `book_filename`) \
+> I can't fix this yet so avoid committing them.\
+> After fixing error and making doc again those files would gone.
