@@ -7,6 +7,8 @@ services:
     volumes:
       - ./docs_src:/docs/src
       - ./docs_out:/docs/out
+    # stdin_open: true # docker run -i
+    # tty: true        # docker run -t
   kroki:
     image: yuzutech/kroki
     depends_on:

@@ -5,3 +5,6 @@ docker-compose run \
     --entrypoint "" \
     rstudio \
     make
+    # make
+    # bash
+    # ping kroki
