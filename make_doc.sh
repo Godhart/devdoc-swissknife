@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 docker-compose run \
     -u rstudio \
     -w /docs/src \
