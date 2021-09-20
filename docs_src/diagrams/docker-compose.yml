@@ -1,0 +1,32 @@
+version: "3"
+services:
+  dkroki:
+    image: yuzutech/kroki
+    depends_on:
+      - dblockdiag
+      - dmermaid
+      - dbpmn
+      - dexcalidraw
+    environment:
+      - KROKI_BLOCKDIAG_HOST=dblockdiag
+      - KROKI_MERMAID_HOST=dmermaid
+      - KROKI_BPMN_HOST=dbpmn
+      - KROKI_EXCALIDRAW_HOST=dexcalidraw
+    ports:
+      - "8081:8000"
+  dblockdiag:
+    image: yuzutech/kroki-blockdiag
+    expose:
+      - "8001"
+  dmermaid:
+    image: yuzutech/kroki-mermaid
+    expose:
+      - "8002"
+  dbpmn:
+    image: yuzutech/kroki-bpmn
+    expose:
+      - "8003"
+  dexcalidraw:
+    image: yuzutech/kroki-excalidraw
+    expose:
+      - "8004"
