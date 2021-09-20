@@ -27,7 +27,7 @@ to_diagram <- function(dia, name, data = "", src = "", inline = TRUE) {
         stdout=NULL, stderr=NULL)
     } else {
         system(
-                paste("sed -n '/```/,/```/{/```/b;/```/b;p}' '",src,"'"     # Get content
+                paste("sed -n '/```\\sdiagram-/,/```/{/```\\sdiagram-/b;/```/b;p}' '",src,"'"     # Get content
                 , " | curl http://kroki:8000/"                              # Request to server
                 , "`cat '",src,"' | grep -oP '\\`\\`\\` diagram-\\K.*'`/"   # Get diagram type
                 , ext                                                       # Output data format (svg/png)
@@ -50,7 +50,7 @@ to_diagram <- function(dia, name, data = "", src = "", inline = TRUE) {
     } else {
         cat(
             system(
-                paste("sed -n '/```/,/```/{/```/b;/```/b;p}' '",src,"'"     # Get content
+                paste("sed -n '/```\\sdiagram-/,/```/{/```\\sdiagram-/b;/```/b;p}' '",src,"'"     # Get content
                 , " | curl http://kroki:8000/"                              # Request to server
                 , "`cat '",src,"' | grep -oP '\\`\\`\\` diagram-\\K.*'`/"   # Get diagram type
                 , ext                                                       # Output data format (svg/png)
