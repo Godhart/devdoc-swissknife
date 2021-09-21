@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t rocker_curl .
+docker build -t devdoc-swissknife .

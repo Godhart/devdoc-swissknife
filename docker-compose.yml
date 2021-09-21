@@ -1,7 +1,7 @@
 version: "3"
 services:
   rstudio:
-    image: rocker_curl
+    image: devdoc-swissknife
     depends_on:
       - kroki
     volumes:
