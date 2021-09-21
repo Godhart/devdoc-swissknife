@@ -21,3 +21,6 @@ indent_size = 2
 
 [{*.yml,*.yaml}]
 indent_size = 2
+
+[*.R]
+indent_size = 2
