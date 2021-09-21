@@ -60,7 +60,9 @@ Rel(banking_system, mainframe, \"Uses\")
 
 Engine: `c4plantuml`
 
-> *NOTE: inserted as SVG image so text on image is not searchable. Can't insert inline due to large horizontal size*
+```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
+cat("> *NOTE: inserted as SVG image so text on image is not searchable.\\\nCan't insert inline due to large horizontal size*")
+```
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("from_src", "Example - C4 Container Diagram", inline=FALSE, src="diagrams/Example-C4_Container_Diagram.Rmd")
@@ -136,7 +138,7 @@ blockdiag [color = \"greenyellow\"];
 
 Engine: `wavedrom`
 
-```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
+```{r echo=FALSE, results='asis'}
   to_diagram("wavedrom", "Example - Digital Timing Diagram",
 "
 { signal: [
@@ -156,7 +158,7 @@ Engine: `wavedrom`
 
 Engine: `bytefield`
 
-```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
+```{r echo=FALSE, results='asis'}
   to_diagram("bytefield", "Example - Bytefield",
 "
 (defattrs :bg-green {:fill \"#a0ffa0\"})
@@ -244,7 +246,9 @@ Engine: `bytefield`
 
 Engine: `packetdiag`
 
-> *NOTE: inserted as SVG image so text on image is not searchable. Can't insert inline due to large horizontal size*
+```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
+cat("> *NOTE: inserted as SVG image so text on image is not searchable.\\\nCan't insert inline due to large horizontal size*")
+```
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("packetdiag", "Example - Packet Diagram", inline=FALSE,
@@ -281,7 +285,12 @@ packetdiag {
 
 Engine: `mermaid`
 
-```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
+
+```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
+cat("> *NOTE: mermaid is giving troubles in PDF (looks like transparency issues)*")
+```
+
+```{r echo=FALSE, results='asis'}
   to_diagram("mermaid", "Example - Sequence Diagram - Mermaid",
 "sequenceDiagram
     participant Alice
@@ -359,6 +368,8 @@ seqdiag {
 ## Commit Graph
 
 Engine: `pikchr`
+
+> TODO: not works yet
 
 ```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
   to_diagram("pikchr", "Example - Commit Graph",
@@ -499,7 +510,11 @@ Check PlantUML docs [https://plantuml.com/](https://plantuml.com/) for filling i
 
 Engine: `mermaid`
 
-```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
+```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
+cat("> *NOTE: mermaid is giving troubles in PDF (looks like transparency issues)*")
+```
+
+```{r echo=FALSE, results='asis'}
   to_diagram("mermaid", "Example - Gantt",
 "gantt
     title A Gantt Diagram
