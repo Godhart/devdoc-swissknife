@@ -1,27 +1,20 @@
 # Kroki usage examples
 
-Open to view source code for this examples.
-
 I've ommited some examples from [Kroki!](https://kroki.io/examples.html) and left only those
 that are realy useful in daily life of most developrs (IMHO).
 
-If you need them - it's easy to add them into doc (as all that presented) with following template:
+All diagrams data for examples of this section resides in `docs_src/diagrams` dir of this repo.
+Each diagram is included into doc by adding following code section into document file:
 
 ````R
 `r ''````{r echo=FALSE, results='asis'}
-  to_diagram("<dia_engine>", "<Drawing name>",
-"<dia_data>
-"
-  )
+  to_diagram("from_src", "<Drawing name>", src="diagrams/<src_file_name>")
 ```
 ````
 
-Replace `<dia_engine>` with corresponding diagramm rendering engine and
-`<dia_data>` with diagram's text description.\
-*Take a NOTE: escape **every** double quotes (`"` => `\"`) in `<dia_data>`.*
+> *it's **IMPORTANT** that <Drawing name> is **UNIQUE** for **WHOLE** doc.*
 
-Assign **UNIQUIE** `<Drawing name>`.\
-*Take a NOTE: it's important that it **UNIQUE** for **WHOLE** doc.*
+This usage pattern is described in the following section [TODO](#TODO)
 
 \newpage
 
@@ -30,28 +23,7 @@ Assign **UNIQUIE** `<Drawing name>`.\
 Engine: `c4plantuml`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("c4plantuml", "Example - C4 Context Diagram",
-"
-@startuml
-!include C4_Context.puml
-
-LAYOUT_WITH_LEGEND()
-
-title System Context diagram for Internet Banking System
-
-Person(customer, \"Personal Banking Customer\", \"A customer of the bank, with personal bank accounts.\")
-System(banking_system, \"Internet Banking System\", \"Allows customers to view information about their bank accounts, and make payments.\")
-
-System_Ext(mail_system, \"E-mail system\", \"The internal Microsoft Exchange e-mail system.\")
-System_Ext(mainframe, \"Mainframe Banking System\", \"Stores all of the core banking information about customers, accounts, transactions, etc.\")
-
-Rel(customer, banking_system, \"Uses\")
-Rel_Back(customer, mail_system, \"Sends e-mails to\")
-Rel_Neighbor(banking_system, mail_system, \"Sends e-mails\", \"SMTP\")
-Rel(banking_system, mainframe, \"Uses\")
-@enduml
-"
-  )
+  to_diagram("from_src", "Example - C4 Context Diagram", src="diagrams/examples/c4plantuml-context.Rmd")
 ```
 
 \newpage
@@ -65,7 +37,7 @@ cat("> *NOTE: inserted as SVG image so text on image is not searchable.\\\nCan't
 ```
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - C4 Container Diagram", inline=FALSE, src="diagrams/Example-C4_Container_Diagram.Rmd")
+  to_diagram("from_src", "Example - C4 Container Diagram", inline=FALSE, src="diagrams/examples/c4plantuml-container.Rmd")
 ```
 
 \newpage
@@ -75,40 +47,7 @@ cat("> *NOTE: inserted as SVG image so text on image is not searchable.\\\nCan't
 Engine: `c4plantuml`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("c4plantuml", "Example - Component Diagram",
-"
-@startuml
-!include C4_Component.puml
-
-LAYOUT_WITH_LEGEND()
-
-title Component diagram for Internet Banking System - API Application
-
-Container(spa, \"Single Page Application\", \"javascript and angular\", \"Provides all the internet banking functionality to customers via their web browser.\")
-Container(ma, \"Mobile App\", \"Xamarin\", \"Provides a limited subset ot the internet banking functionality to customers via their mobile mobile device.\")
-ContainerDb(db, \"Database\", \"Relational Database Schema\", \"Stores user registration information, hashed authentication credentials, access logs, etc.\")
-System_Ext(mbs, \"Mainframe Banking System\", \"Stores all of the core banking information about customers, accounts, transactions, etc.\")
-
-Container_Boundary(api, \"API Application\") {
-    Component(sign, \"Sign In Controller\", \"MVC Rest Controlle\", \"Allows users to sign in to the internet banking system\")
-    Component(accounts, \"Accounts Summary Controller\", \"MVC Rest Controlle\", \"Provides customers with a summory of their bank accounts\")
-    Component(security, \"Security Component\", \"Spring Bean\", \"Provides functionality related to singing in, changing passwords, etc.\")
-    Component(mbsfacade, \"Mainframe Banking System Facade\", \"Spring Bean\", \"A facade onto the mainframe banking system.\")
-
-    Rel(sign, security, \"Uses\")
-    Rel(accounts, mbsfacade, \"Uses\")
-    Rel(security, db, \"Read & write to\", \"JDBC\")
-    Rel(mbsfacade, mbs, \"Uses\", \"XML/HTTPS\")
-}
-
-Rel(spa, sign, \"Uses\", \"JSON/HTTPS\")
-Rel(spa, accounts, \"Uses\", \"JSON/HTTPS\")
-
-Rel(ma, sign, \"Uses\", \"JSON/HTTPS\")
-Rel(ma, accounts, \"Uses\", \"JSON/HTTPS\")
-@enduml
-"
-  )
+  to_diagram("from_src", "Example - C4 Component Diagram", src="diagrams/examples/c4plantuml-component.Rmd")
 ```
 
 \newpage
@@ -118,18 +57,7 @@ Rel(ma, accounts, \"Uses\", \"JSON/HTTPS\")
 Engine: `blockdiag`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("blockdiag", "Example - Block Diagram",
-"
-blockdiag {
-blockdiag -> generates -> \"block-diagrams\";
-blockdiag -> is -> \"very easy!\";
-
-blockdiag [color = \"greenyellow\"];
-\"block-diagrams\" [color = \"pink\"];
-\"very easy!\" [color = \"orange\"];
-}
-"
-  )
+  to_diagram("from_src", "Example - Block Diagram", src="diagrams/examples/blockdiag.Rmd")
 ```
 
 \newpage
@@ -139,17 +67,7 @@ blockdiag [color = \"greenyellow\"];
 Engine: `wavedrom`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("wavedrom", "Example - Digital Timing Diagram",
-"
-{ signal: [
-  { name: \"clk\",         wave: \"p.....|...\" },
-  { name: \"Data\",        wave: \"x.345x|=.x\", data: [\"head\", \"body\", \"tail\", \"data\"] },
-  { name: \"Request\",     wave: \"0.1..0|1.0\" },
-  {},
-  { name: \"Acknowledge\", wave: \"1.....|01.\" }
-]}
-"
-  )
+  to_diagram("from_src", "Example - Digital Timing Diagram", src="diagrams/examples/wavedrom.Rmd")
 ```
 
 \newpage
@@ -159,85 +77,7 @@ Engine: `wavedrom`
 Engine: `bytefield`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("bytefield", "Example - Bytefield",
-"
-(defattrs :bg-green {:fill \"#a0ffa0\"})
-(defattrs :bg-yellow {:fill \"#ffffa0\"})
-(defattrs :bg-pink {:fill \"#ffb0a0\"})
-(defattrs :bg-cyan {:fill \"#a0fafa\"})
-(defattrs :bg-purple {:fill \"#e4b5f7\"})
-
-(defn draw-group-label-header
-  \"Creates a small borderless box used to draw the textual label headers
-  used below the byte labels for remotedb message diagrams.
-  Arguments are the number of colums to span and the text of the
-  label.\"
-  [span label]
-  (draw-box (text label [:math {:font-size 12}]) {:span    span
-                                                  :borders #{}
-                                                  :height  14}))
-
-(defn draw-remotedb-header
-  \"Generates the byte and field labels and standard header fields of a
-  request or response message for the remotedb database server with
-  the specified kind and args values.\"
-  [kind args]
-  (draw-column-headers)
-  (draw-group-label-header 5 \"start\")
-  (draw-group-label-header 5 \"TxID\")
-  (draw-group-label-header 3 \"type\")
-  (draw-group-label-header 2 \"args\")
-  (draw-group-label-header 1 \"tags\")
-  (next-row 18)
-
-  (draw-box 0x11 :bg-green)
-  (draw-box 0x872349ae [{:span 4} :bg-green])
-  (draw-box 0x11 :bg-yellow)
-  (draw-box (text \"TxID\" :math) [{:span 4} :bg-yellow])
-  (draw-box 0x10 :bg-pink)
-  (draw-box (hex-text kind 4 :bold) [{:span 2} :bg-pink])
-  (draw-box 0x0f :bg-cyan)
-  (draw-box (hex-text args 2 :bold) :bg-cyan)
-  (draw-box 0x14 :bg-purple)
-
-  (draw-box (text \"0000000c\" :hex [[:plain {:font-weight \"light\" :font-size 16}] \" (12)\"])
-            [{:span 4} :bg-purple])
-  (draw-box (hex-text 6 2 :bold) [:box-first :bg-purple])
-  (doseq [val [6 6 3 6 6 6 6 3]]
-    (draw-box (hex-text val 2 :bold) [:box-related :bg-purple]))
-  (doseq [val [0 0]]
-    (draw-box val [:box-related :bg-purple]))
-  (draw-box 0 [:box-last :bg-purple]))
-
-(draw-remotedb-header 0x4702 9)
-
-(draw-box 0x11)
-(draw-box 0x2104 {:span 4})
-(draw-box 0x11)
-(draw-box 0 {:span 4})
-(draw-box 0x11)
-(draw-box (text \"length\" [:math] [:sub 1]) {:span 4})
-(draw-box 0x14)
-
-(draw-box (text \"length\" [:math] [:sub 1]) {:span 4})
-(draw-gap \"Cue and loop point bytes\")
-
-(draw-box nil :box-below)
-(draw-box 0x11)
-(draw-box 0x36 {:span 4})
-(draw-box 0x11)
-(draw-box (text \"num\" [:math] [:sub \"hot\"]) {:span 4})
-(draw-box 0x11)
-(draw-box (text \"num\" [:math] [:sub \"cue\"]) {:span 4})
-
-(draw-box 0x11)
-(draw-box (text \"length\" [:math] [:sub 2]) {:span 4})
-(draw-box 0x14)
-(draw-box (text \"length\" [:math] [:sub 2]) {:span 4})
-(draw-gap \"Unknown bytes\" {:min-label-columns 6})
-(draw-bottom)
-"
-)
+  to_diagram("from_src", "Example - Bytefield", src="diagrams/examples/bytefield.Rmd")
 ```
 
 \newpage
@@ -251,116 +91,27 @@ cat("> *NOTE: inserted as SVG image so text on image is not searchable.\\\nCan't
 ```
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("packetdiag", "Example - Packet Diagram", inline=FALSE,
-data="
-packetdiag {
-  colwidth = 32;
-  node_height = 72;
-
-  0-15: Source Port;
-  16-31: Destination Port;
-  32-63: Sequence Number;
-  64-95: Acknowledgment Number;
-  96-99: Data Offset;
-  100-105: Reserved;
-  106: URG [rotate = 270];
-  107: ACK [rotate = 270];
-  108: PSH [rotate = 270];
-  109: RST [rotate = 270];
-  110: SYN [rotate = 270];
-  111: FIN [rotate = 270];
-  112-127: Window;
-  128-143: Checksum;
-  144-159: Urgent Pointer;
-  160-191: (Options and Padding);
-  192-223: data [colheight = 3];
-}
-"
-)
+  to_diagram("from_src", "Example - Packet Diagram", inline=FALSE, src="diagrams/examples/packetdiag.Rmd")
 ```
 
 \newpage
 
-## Sequence Diagram #1 (Mermaid)
+## Sequence Diagram #1 (PlantUML)
 
-Engine: `mermaid`
-
-
-```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
-cat("> *NOTE: mermaid is giving troubles in PDF (looks like transparency issues)*")
-```
+Engine: `plantuml`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("mermaid", "Example - Sequence Diagram - Mermaid",
-"sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice->John: Hello John, how are you?
-    loop Healthcheck
-        John->John: Fight against hypochondria
-    end
-    Note right of John: Rational thoughts prevail...
-    John-->Alice: Great!
-    John->Bob: How about you?
-    Bob-->John: Jolly good!
-"
-  )
-```
-
-## Sequence Diagram #2 (PlantUML)
-
-Engine: `plantuml` (syntax very similar to mermaid)
-
-```{r echo=FALSE, results='asis'}
-  to_diagram("plantuml", "Example - Sequence Diagram - PlantUML",
-"
-@startuml
-Alice -> Bob: Authentication Request
-
-alt successful case
-
-    Bob -> Alice: Authentication Accepted
-
-else some kind of failure
-
-    Bob -> Alice: Authentication Failure
-    group My own label
-    Alice -> Log : Log attack start
-        loop 1000 times
-            Alice -> Bob: DNS Attack
-        end
-    Alice -> Log : Log attack end
-    end
-
-else Another type of failure
-
-   Bob -> Alice: Please repeat
-
-end
-@enduml
-"
-  )
+  to_diagram("from_src", "Example - Sequence Diagram - PlantUML", src="diagrams/examples/plantuml-seqdiag.Rmd")
 ```
 
 \newpage
 
-## Sequence Diagram #3 (SeqDiag)
+## Sequence Diagram #2 (SeqDiag)
 
 Engine: `seqdiag`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("seqdiag", "Example - Sequence Diagram - SeqDiag",
-"
-seqdiag {
-  browser  -> webserver [label = \"GET /index.html\"];
-  browser <-- webserver;
-  browser  -> webserver [label = \"POST /blog/comment\"];
-  webserver  -> database [label = \"INSERT comment\"];
-  webserver <-- database;
-  browser <-- webserver;
-}
-"
-  )
+  to_diagram("from_src", "Example - Sequence Diagram - SeqDiag", src="diagrams/examples/seqdiag.Rmd")
 ```
 
 \newpage
@@ -369,72 +120,8 @@ seqdiag {
 
 Engine: `pikchr`
 
-> TODO: not works yet
-
 ```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
-  to_diagram("pikchr", "Example - Commit Graph",
-"scale = 0.8
-fill = white
-linewid *= 0.5
-circle \"C0\" fit
-circlerad = previous.radius
-arrow
-circle \"C1\"
-arrow
-circle \"C2\"
-arrow
-circle \"C4\"
-arrow
-circle \"C6\"
-circle \"C3\" at dist(C2,C4) heading 30 from C2
-arrow
-circle \"C5\"
-arrow from C2 to C3 chop
-C3P: circle \"C3'\" at dist(C4,C6) heading 30 from C6
-arrow right from C3P.e
-C5P: circle \"C5'\"
-arrow from C6 to C3P chop
-
-box height C3.y-C2.y \
-    width (C5P.e.x-C0.w.x)+linewid \
-    with .w at 0.5*linewid west of C0.w \
-    behind C0 \
-    fill 0xc6e2ff thin color gray
-box same width previous.e.x - C2.w.x \
-    with .se at previous.ne \
-    fill 0x9accfc
-\"trunk\" below at 2nd last box.s
-\"feature branch\" above at last box.n
-
-circle \"C0\" at 3.7cm south of C0
-arrow
-circle \"C1\"
-arrow
-circle \"C2\"
-arrow
-circle \"C4\"
-arrow
-circle \"C6\"
-circle \"C3\" at dist(C2,C4) heading 30 from C2
-arrow
-circle \"C5\"
-arrow
-circle \"C7\"
-arrow from C2 to C3 chop
-arrow from C6 to C7 chop
-
-box height C3.y-C2.y \
-    width (C7.e.x-C0.w.x)+1.5*C1.radius \
-    with .w at 0.5*linewid west of C0.w \
-    behind C0 \
-    fill 0xc6e2ff thin color gray
-box same width previous.e.x - C2.w.x \
-    with .se at previous.ne \
-    fill 0x9accfc
-\"trunk\" below at 2nd last box.s
-\"feature branch\" above at last box.n
-"
-  )
+  to_diagram("from_src", "Example - Commit Graph", src="diagrams/examples/pikchr-commit-graph.Rmd")
 ```
 
 \newpage
@@ -444,23 +131,7 @@ box same width previous.e.x - C2.w.x \
 Engine: `plantuml`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("plantuml", "Example Block Diagram",
-"
-@startuml
-left to right direction
-skinparam packageStyle rectangle
-skinparam monochrome true
-actor customer
-actor clerk
-rectangle checkout {
-  customer -- (checkout)
-  (checkout) .> (payment) : include
-  (help) .> (checkout) : extends
-  (checkout) -- clerk
-}
-@enduml
-"
-  )
+  to_diagram("from_src", "Example Block Diagram", src="diagrams/examples/plantuml-usecase.Rmd")
 ```
 
 \newpage
@@ -470,39 +141,18 @@ rectangle checkout {
 Engine: `plantuml`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("plantuml", "Example - Mind Map",
-"
-@startmindmap
-skinparam monochrome true
-+ OS
-++ Ubuntu
-+++ Linux Mint
-+++ Kubuntu
-+++ Lubuntu
-+++ KDE Neon
-++ LMDE
-++ SolydXK
-++ SteamOS
-++ Raspbian
--- Windows 95
--- Windows 98
--- Windows NT
---- Windows 8
---- Windows 10
-@endmindmap
-"
-  )
+  to_diagram("from_src", "Example - Mind Map", src="diagrams/examples/plantuml-mindmap.Rmd")
 ```
 
 \newpage
 
 ## PlantUML (More examples)
 
-PlantUML supports more diagram types like timing diagramm, gantt and many more.
+PlantUML supports more diagram types like timing diagram, gantt and many more.
 
 You can use any of them just like in previous examples.
 
-Check PlantUML docs [https://plantuml.com/](https://plantuml.com/) for filling in diagramm data.
+Check PlantUML docs [https://plantuml.com/](https://plantuml.com/) for filling in diagram data.
 
 \newpage
 
@@ -510,21 +160,8 @@ Check PlantUML docs [https://plantuml.com/](https://plantuml.com/) for filling i
 
 Engine: `mermaid`
 
-```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
-cat("> *NOTE: mermaid is giving troubles in PDF (looks like transparency issues)*")
-```
+> *NOTE: mermaid is giving troubles in PDF (looks like transparency issues)*
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("mermaid", "Example - Gantt",
-"gantt
-    title A Gantt Diagram
-    dateFormat  YYYY-MM-DD
-    section Section
-    A task           :a1, 2014-01-01, 30d
-    Another task     :after a1, 20d
-    section Another
-    Task in sec      :2014-01-12, 12d
-    another task     :24d
-"
-  )
+  to_diagram("from_src", "Example - Gantt", src="diagrams/examples/mermaid-gantt.Rmd")
 ```
