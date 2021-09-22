@@ -16,7 +16,7 @@ All the sources for docs are contained in `docs_src` folder.
 `<Author Name>`, `<author>`, `<repo>`, `<Document Title>`, `Document_Title`, `<Document Description>`
 within files in `docs_src` with actual values.
 
-#. Make docker image `rocker_curl`.
+#. Make docker image `devdoc-swissknife`.
 Simply run `make_docker.sh` from `docker` dir.
 
 #. Try to make docs with `make_docs.sh`.
