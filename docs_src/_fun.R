@@ -1,4 +1,21 @@
-to_diagram <- function(dia, name, data = "", src = "", inline = TRUE, ext = "", krk = "") {
+auto_name <- 0
+
+to_diagram <- function(dia, name = "", data = "", src = "", inline = TRUE, ext = "", krk = "", ref="", width = "", height = "", more_opts="") {
+  R_way <- TRUE
+  if (src != "") {
+    fname <- gsub("/", "-", src, fixed = TRUE)
+    if (name != "") {
+      R_way <- FALSE
+    }
+  } else {
+    if (name == "") {
+      auto_name <- auto_name + 1
+      fname <- paste("_fig_",auto_name,sep="")
+    } else {
+      R_way <- FALSE
+      fname <- name # TODO: substitute prohibited chars like this: `gsub(" ", "-", name, fixed = TRUE)`
+    }
+  }
   if (krk == "") {    # If Kroki! extension is not specified - svg would be used
     krk <- "svg"
     if (ext == "") {  # If output extension is not specified - use defaults
@@ -11,7 +28,6 @@ to_diagram <- function(dia, name, data = "", src = "", inline = TRUE, ext = "", 
   } else {
     ext <- krk  # Otherwise outuput type should be same as for Kroki!
   }
-  fname <- name # TODO: substitute prohibited chars like this: `gsub(" ", "-", name, fixed = TRUE)`
   if (src == "") {
     data_mode  <- "--data-raw"
     data_value <- paste("\'",data,"\'", sep="")
@@ -24,7 +40,7 @@ to_diagram <- function(dia, name, data = "", src = "", inline = TRUE, ext = "", 
   }
   if (knitr::is_latex_output() || !inline) {
     # Render as Picture
-    # TODO: str_interp
+    # TODO: str_glue
     if (!file.exists(paste("'generated/",fname,".",krk,"'", sep=""))) {
       if (dia != "from_src" || src == "") {
         system2("curl", c(
@@ -55,7 +71,22 @@ to_diagram <- function(dia, name, data = "", src = "", inline = TRUE, ext = "", 
             , ignore.stdout=TRUE, ignore.stderr=TRUE
         )
     }
-    cat(paste("![", name, "](./generated/",fname,".",ext,")", sep=""))  # TODO: ref, width, height
+    if (ref!="" || width!="" || height!="" || more_opts!="") {
+      opts <- paste(
+        "{",
+        if (ref=="")       "" else paste("#",ref,sep=""),
+        if (width=="")     "" else paste("width=",width,sep=""),
+        if (height=="")    "" else paste("height=",height,sep=""),
+        more_opts,
+        "}")
+    } else {
+      opts <- ""
+    }
+    if (R_way == FALSE) {
+      cat(paste("![", name, "](generated/",fname,".",ext,")",opts, sep=""))
+    } else {
+      knitr::include_graphics(paste("generated/",fname,".",ext,sep=""))
+    }
   } else {
     # Render Inline SVG for HTML
     if (dia != "from_src" || src == "") {
@@ -67,6 +98,13 @@ to_diagram <- function(dia, name, data = "", src = "", inline = TRUE, ext = "", 
         stdout=TRUE, stderr=NULL), sep="")
     } else {
         cat(
+            # sub("(<svg\\s[^>]*)(>)", "\\1 width=\"100%\" prserveAspectRatio=\"none\"\\2",
+            # sub("(<svg\\s[^>]*)(>)", "\\1 fill=\"none\" style=\"background:#FFFFFF;\" \\2",
+            sub("(<svg\\s[^>]*)(>)", "\\1 width=\"100%\" prserveAspectRatio=\"none\" style=\"background:#FFFFFF;\" \\2",
+            sub("(<svg\\s[^>]*?)\\bstyle=\"[^\"]*\"([^>]*?>)", "\\1\\2",
+            sub("(<svg\\s[^>]*?)\\bprserveAspectRatio=\"[^\"]*\"([^>]*?>)", "\\1\\2",
+            sub("(<svg\\s[^>]*?)\\bheight=\"[^\"]*\"([^>]*?>)", "\\1\\2",
+            sub("(<svg\\s[^>]*?)\\bwidth=\"[^\"]*\"([^>]*?>)", "\\1\\2",
             system(
                 paste("sed -n '/```\\sdiagram-/,/```/{/```\\sdiagram-/b;/```/b;p}' '",src,"'"     # Get content
                 , " | curl http://kroki:8000/"                              # Request to server
@@ -75,10 +113,20 @@ to_diagram <- function(dia, name, data = "", src = "", inline = TRUE, ext = "", 
                 , " --data-binary @-"                                       # Send piped data in POST request
                 , sep="")
                 ,intern=TRUE, ignore.stderr=TRUE
-            ),
+            )
+            ))))),
             sep=""
         )
     }
-    cat(paste("![", name, "](./images/hidden_pixel.png)", sep=""))  # TODO: ref, width, height
+    if (ref!="" || more_opts!="") {
+      opts <- paste(
+        "{",
+        if (ref=="")       "" else paste("#",ref,sep=""),
+        more_opts,
+        "}")
+    } else {
+      opts <- ""
+    }
+    cat(paste("![", name, "](./images/hidden_pixel.png)", sep=""))
   }
 }
