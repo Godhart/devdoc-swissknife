@@ -33,6 +33,8 @@ source("../_fun.R", local = knitr::knit_global())
 
 # Preface {-}
 
+> NOTE: Russian translation is under construction
+
 This is a demo project for development documentation generation with R Markdown and Kroki
 
 This approach allows you to create reproducible documentation in form of PDF, presentations, gitbook
