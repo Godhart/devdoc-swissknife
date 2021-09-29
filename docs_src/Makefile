@@ -1,11 +1,16 @@
-# NOTE: it's ugly :( but works. Just don't look at this now
+# NOTE: it's could be ugly but does the job
+
 all: doc-template devdoc-swissknife-lobby devdoc-swissknife-en devdoc-swissknife-ru
 
-.PHONY: devdoc-swissknife-lobby
-devdoc-swissknife-lobby:
-	cd devdoc-swissknife-lobby &&\
-	bash ../render_doc.sh devdoc-swissknife-lobby &&\
-	cd ..
+####################################################
+# Template for including new doc into Makefile
+# Replace 'doc-<subject>' with location of your docs
+####
+# .PHONY: doc-<subject>
+# devdoc-swissknife-ru:
+# 	cd doc-<subject> &&\
+# 	bash ../render_doc.sh doc-<subject> &&\
+# 	cd ..
 
 .PHONY: devdoc-swissknife-en
 devdoc-swissknife-en:
