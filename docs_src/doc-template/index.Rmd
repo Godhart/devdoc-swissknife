@@ -1,0 +1,34 @@
+---
+title: "<Document Title>"
+author: "<Author Name>"
+date: "`r Sys.Date()`"
+documentclass: book
+classoption:
+ - a4paper
+ - 12pt
+ - oneside
+ - openany
+#  - final
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+graphics: yes
+lot: no
+lof: no
+fontsize: 12pt
+mainfont: DejaVu Serif
+monofont: DejaVu Sans Mono
+monofontoptions: "Scale=0.8"
+site: bookdown::bookdown_site
+description: "<Document Description>"
+url: 'https\://<author>.github.io/<repo>/'
+github-repo: <author>/<repo>
+cover-image: ../images/cover.png
+---
+
+```{r, include=FALSE}
+source("../_fun.R", local = knitr::knit_global())
+```
+
+# Preface {-}
