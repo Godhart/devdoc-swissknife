@@ -15,5 +15,5 @@ docs_src/**/generated/**/*
 # Keep files for empty dirs
 !.keep
 
-# Pytyon
+# Python
 venv
