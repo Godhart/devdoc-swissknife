@@ -72,7 +72,7 @@ to_diagram <- function(
   # File name for downloaded daigaram
   if (src != "") {
     # If source file is specified then it's path would be used for downloaded file name
-    fname <- gsub("/", "-", src, fixed = TRUE)
+    fname <-  gsub("[./]", "-", gsub("[.]+/", "", src, perl = TRUE))
   } else {
     # If diagram is generated from string
     if (name == "") {
