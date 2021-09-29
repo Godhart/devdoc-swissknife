@@ -1,5 +1,5 @@
 bookdown::gitbook:
-  css: css/style.css
+  css: ../css/style.css
   split_by: section+number
   config:
     toc:
@@ -13,11 +13,11 @@ bookdown::gitbook:
       facebook: no
 bookdown::pdf_book:
   includes:
-    # in_header: latex/preamble.tex
-    # in_header: latex/layout_preamble.tex
-    # before_body: latex/before_body.tex
-    # before_body: latex/layout.tex
-    # after_body: latex/after_body.tex
+    # in_header: ../latex/preamble.tex
+    # in_header: ../latex/layout_preamble.tex
+    # before_body: ../latex/before_body.tex
+    # before_body: ../latex/layout.tex
+    # after_body: ../latex/after_body.tex
   keep_tex: yes
   latex_engine: xelatex
   citation_package: natbib

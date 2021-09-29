@@ -195,7 +195,7 @@ to_diagram <- function(
       # Insert SVG data
       cat("\n\n")
       cat(system2("python3", c(
-        "_resizeSvg.py",
+        "../_resizeSvg.py",
         paste("'generated/",fname,".",format,"'", sep=""), # Input file
         "-",                                          # Output to stdout
         paste('"',width,'"', sep=""),                 # Required width

@@ -11,7 +11,7 @@ Each diagram is included into doc by adding following code section into document
 
 ````R
 `r ''````{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "<Drawing name>", src="diagrams/<src_file_path_within_diagrams_dir>")
+  to_diagram("from_src", "<Drawing name>", src="../diagrams/<src_file_path_within_diagrams_dir>")
 ```
 ````
 
@@ -24,7 +24,7 @@ This usage pattern is described in the following section [TODO](#TODO)
 Engine: `c4plantuml`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - C4 Context Diagram", src="diagrams/examples/c4plantuml-context.Rmd",
+  to_diagram("from_src", "Example - C4 Context Diagram", src="../diagrams/examples/c4plantuml-context.Rmd",
              dformat=if(knitr::is_html_output()) "" else "png", # Text is not scaled as intended when converted to PDF so use PNG
              height=if(knitr::is_html_output()) "" else "15cm") # To fit example into single PDF page - limit height
 ```
@@ -40,7 +40,7 @@ cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
 Engine: `c4plantuml`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - C4 Container Diagram", src="diagrams/examples/c4plantuml-container.Rmd", width="100%",
+  to_diagram("from_src", "Example - C4 Container Diagram", src="../diagrams/examples/c4plantuml-container.Rmd", width="100%",
              dformat=if(knitr::is_html_output()) "" else "png") # Text is not scaled as intended when converted to PDF so use PNG
 ```
 
@@ -55,7 +55,7 @@ cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
 Engine: `c4plantuml`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - C4 Component Diagram", src="diagrams/examples/c4plantuml-component.Rmd",
+  to_diagram("from_src", "Example - C4 Component Diagram", src="../diagrams/examples/c4plantuml-component.Rmd",
              dformat=if(knitr::is_html_output()) "" else "png", # Text is not scaled as intended when converted to PDF so use PNG
              height=if(knitr::is_html_output()) "" else "15cm") # To fit example into single PDF page - limit height
 ```
@@ -71,7 +71,7 @@ cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
 Engine: `blockdiag`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Block Diagram", src="diagrams/examples/blockdiag.Rmd")
+  to_diagram("from_src", "Example - Block Diagram", src="../diagrams/examples/blockdiag.Rmd")
 ```
 
 \newpage
@@ -81,7 +81,7 @@ Engine: `blockdiag`
 Engine: `wavedrom`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Digital Timing Diagram", src="diagrams/examples/wavedrom.Rmd")
+  to_diagram("from_src", "Example - Digital Timing Diagram", src="../diagrams/examples/wavedrom.Rmd")
 ```
 
 \newpage
@@ -91,7 +91,7 @@ Engine: `wavedrom`
 Engine: `bytefield`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Bytefield", src="diagrams/examples/bytefield.Rmd")
+  to_diagram("from_src", "Example - Bytefield", src="../diagrams/examples/bytefield.Rmd")
 ```
 
 \newpage
@@ -101,7 +101,7 @@ Engine: `bytefield`
 Engine: `packetdiag`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Packet Diagram", rawsvg=FALSE, src="diagrams/examples/packetdiag.Rmd", width="100%")
+  to_diagram("from_src", "Example - Packet Diagram", rawsvg=FALSE, src="../diagrams/examples/packetdiag.Rmd", width="100%")
 ```
 
 \newpage
@@ -111,7 +111,7 @@ Engine: `packetdiag`
 Engine: `plantuml`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Sequence Diagram - PlantUML", src="diagrams/examples/plantuml-seqdiag.Rmd")
+  to_diagram("from_src", "Example - Sequence Diagram - PlantUML", src="../diagrams/examples/plantuml-seqdiag.Rmd")
 ```
 
 \newpage
@@ -121,7 +121,7 @@ Engine: `plantuml`
 Engine: `seqdiag`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Sequence Diagram - SeqDiag", src="diagrams/examples/seqdiag.Rmd")
+  to_diagram("from_src", "Example - Sequence Diagram - SeqDiag", src="../diagrams/examples/seqdiag.Rmd")
 ```
 
 \newpage
@@ -133,7 +133,7 @@ Engine: `pikchr`
 > *NOTE: pikchr is giving troubles in PDF/PNG (produced SVG output is only web-browser friendly)*
 
 ```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
-  to_diagram("from_src", "Example - Commit Graph", src="diagrams/examples/pikchr-commit-graph.Rmd")
+  to_diagram("from_src", "Example - Commit Graph", src="../diagrams/examples/pikchr-commit-graph.Rmd")
 ```
 
 \newpage
@@ -143,7 +143,7 @@ Engine: `pikchr`
 Engine: `plantuml`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example Block Diagram", src="diagrams/examples/plantuml-usecase.Rmd")
+  to_diagram("from_src", "Example Block Diagram", src="../diagrams/examples/plantuml-usecase.Rmd")
 ```
 
 \newpage
@@ -153,7 +153,7 @@ Engine: `plantuml`
 Engine: `plantuml`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Mind Map", src="diagrams/examples/plantuml-mindmap.Rmd")
+  to_diagram("from_src", "Example - Mind Map", src="../diagrams/examples/plantuml-mindmap.Rmd")
 ```
 
 \newpage
@@ -175,5 +175,5 @@ Engine: `mermaid`
 > *NOTE: mermaid is giving troubles in PDF/PNG (produced SVG output is only web-browser friendly)*
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Gantt", src="diagrams/examples/mermaid-gantt.Rmd")
+  to_diagram("from_src", "Example - Gantt", src="../diagrams/examples/mermaid-gantt.Rmd")
 ```

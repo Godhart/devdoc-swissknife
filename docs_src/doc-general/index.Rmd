@@ -24,11 +24,11 @@ site: bookdown::bookdown_site
 description: "<Document Description>"
 url: 'https\://<author>.github.io/<repo>/'
 github-repo: <author>/<repo>
-cover-image: images/cover.png
+cover-image: ../images/cover.png
 ---
 
 ```{r, include=FALSE}
-source("_fun.R", local = knitr::knit_global())
+source("../_fun.R", local = knitr::knit_global())
 ```
 
 # Preface {-}
