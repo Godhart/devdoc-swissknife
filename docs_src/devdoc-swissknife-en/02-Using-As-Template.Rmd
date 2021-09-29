@@ -15,7 +15,7 @@ To use this project as a start point for generating your own documentation do th
   * Copy all the files from `docs_src/docs-template` into your brand new folder
 
   * Replace following keywords
-  `<Author Name>`, `<author>`, `<repo>`, `<Document Title>`, `Document_Title`, `<Document Description>`
+  `<Author Name>`, `<author>`, `<repo>`, `<Document Title>`, `Document_Title`, `<Document Description>`, doc-<subject>
   within files in your new folder with actual values.
   Don't forget also to adjust `Document_Title` in the `.gitignore` of new folder, as it protects from build garbage.
 
@@ -44,6 +44,14 @@ To use this project as a start point for generating your own documentation do th
 
   * Add your own docs into your folder, naming files like `<number>-<chapter-name>.Rmd`.\
   Check the R Markdown and Kroki docs for understanding things. Also, you may rely on shown examples.
+
+  *If you already have docs in markdown format you may already use them like this:
+
+    * copy markdown files into your doc-folder
+    * copy necessary local images to location in `docs_src/diagrams` or wherever you like most
+    * change name extensions of markdown files to `.Rmd`
+    * change names of markdown files so they would correspond to pattern `<number>-<chapter-name>.Rmd`
+    * change references to local images in markdown files
 
   * Most probably you would like to use your own Latex class, so add `<your_latex_class>.cls` file
   into your folder and specify it in `index.Rmd` file (replace `documentclass: book` field with `<your_latex_class>` name).
