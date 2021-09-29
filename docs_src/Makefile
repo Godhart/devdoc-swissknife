@@ -6,5 +6,6 @@ all:
 	BOOKDOWN_FULL_PDF=false Rscript --quiet _render.R &&\
 	rm -rf ../out/* &&\
 	touch ../out/.keep &&\
+	sleep 10s &&\
 	mv -f _book/* ../out/ &&\
 	rm -rf _book
