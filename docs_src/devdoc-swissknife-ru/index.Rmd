@@ -1,6 +1,6 @@
 ---
-title: "<Document Title>"
-author: "<Author Name>"
+title: "Devdoc-Swissknife-Ru"
+author: "Николай Гнитеев"
 date: "`r Sys.Date()`"
 documentclass: book
 classoption:
@@ -21,9 +21,9 @@ mainfont: DejaVu Serif
 monofont: DejaVu Sans Mono
 monofontoptions: "Scale=0.8"
 site: bookdown::bookdown_site
-description: "<Document Description>"
-url: 'https\://<author>.github.io/<repo>/'
-github-repo: <author>/<repo>
+description: "Devdoc-Swissknife - Базовая документация"
+url: 'https\://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-ru/'
+github-repo: Godhart/devdoc-swissknife
 cover-image: ../images/cover.png
 ---
 
