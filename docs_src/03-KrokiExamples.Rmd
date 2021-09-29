@@ -1,18 +1,19 @@
-# Kroki usage examples
+# Kroki usage examples {#examplesKroki}
 
-I've ommited some examples from [Kroki!](https://kroki.io/examples.html) and left only those
-that are realy useful in daily life of most developrs (IMHO).
+I've omitted some examples from [Kroki](https://kroki.io/examples.html) and left only those
+that most useful in a daily life of most developers (IMHO).
+
+If you check docs for [supported diagrams renderers](https://kroki.io/#support) then you'll find for sure
+a few more interesting usecases.
 
 All diagrams data for examples of this section resides in `docs_src/diagrams` dir of this repo.
 Each diagram is included into doc by adding following code section into document file:
 
 ````R
 `r ''````{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "<Drawing name>", src="diagrams/<src_file_name>")
+  to_diagram("from_src", "<Drawing name>", src="diagrams/<src_file_path_within_diagrams_dir>")
 ```
 ````
-
-> *it's **IMPORTANT** that <Drawing name> is **UNIQUE** for **WHOLE** doc.*
 
 This usage pattern is described in the following section [TODO](#TODO)
 
@@ -23,7 +24,13 @@ This usage pattern is described in the following section [TODO](#TODO)
 Engine: `c4plantuml`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - C4 Context Diagram", src="diagrams/examples/c4plantuml-context.Rmd")
+  to_diagram("from_src", "Example - C4 Context Diagram", src="diagrams/examples/c4plantuml-context.Rmd",
+             dformat=if(knitr::is_html_output()) "" else "png", # Text is not scaled as intended when converted to PDF so use PNG
+             height=if(knitr::is_html_output()) "" else "15cm") # To fit example into single PDF page - limit height
+```
+
+```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
+cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
 ```
 
 \newpage
@@ -32,12 +39,13 @@ Engine: `c4plantuml`
 
 Engine: `c4plantuml`
 
-```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
-cat("> *NOTE: inserted as SVG image so text on image is not searchable.\\\nCan't insert inline due to large horizontal size*")
+```{r echo=FALSE, results='asis'}
+  to_diagram("from_src", "Example - C4 Container Diagram", src="diagrams/examples/c4plantuml-container.Rmd", width="100%",
+             dformat=if(knitr::is_html_output()) "" else "png") # Text is not scaled as intended when converted to PDF so use PNG
 ```
 
-```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - C4 Container Diagram", inline=FALSE, src="diagrams/examples/c4plantuml-container.Rmd")
+```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
+cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
 ```
 
 \newpage
@@ -47,7 +55,13 @@ cat("> *NOTE: inserted as SVG image so text on image is not searchable.\\\nCan't
 Engine: `c4plantuml`
 
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - C4 Component Diagram", src="diagrams/examples/c4plantuml-component.Rmd")
+  to_diagram("from_src", "Example - C4 Component Diagram", src="diagrams/examples/c4plantuml-component.Rmd",
+             dformat=if(knitr::is_html_output()) "" else "png", # Text is not scaled as intended when converted to PDF so use PNG
+             height=if(knitr::is_html_output()) "" else "15cm") # To fit example into single PDF page - limit height
+```
+
+```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
+cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
 ```
 
 \newpage
@@ -86,12 +100,8 @@ Engine: `bytefield`
 
 Engine: `packetdiag`
 
-```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
-cat("> *NOTE: inserted as SVG image so text on image is not searchable.\\\nCan't insert inline due to large horizontal size*")
-```
-
 ```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Packet Diagram", inline=FALSE, src="diagrams/examples/packetdiag.Rmd")
+  to_diagram("from_src", "Example - Packet Diagram", rawsvg=FALSE, src="diagrams/examples/packetdiag.Rmd", width="100%")
 ```
 
 \newpage
@@ -119,6 +129,8 @@ Engine: `seqdiag`
 ## Commit Graph
 
 Engine: `pikchr`
+
+> *NOTE: pikchr is giving troubles in PDF/PNG (produced SVG output is only web-browser friendly)*
 
 ```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
   to_diagram("from_src", "Example - Commit Graph", src="diagrams/examples/pikchr-commit-graph.Rmd")
@@ -160,7 +172,7 @@ Check PlantUML docs [https://plantuml.com/](https://plantuml.com/) for filling i
 
 Engine: `mermaid`
 
-> *NOTE: mermaid is giving troubles in PDF (looks like transparency issues)*
+> *NOTE: mermaid is giving troubles in PDF/PNG (produced SVG output is only web-browser friendly)*
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("from_src", "Example - Gantt", src="diagrams/examples/mermaid-gantt.Rmd")

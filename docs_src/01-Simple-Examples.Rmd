@@ -1,7 +1,7 @@
 # Simple diagrams examples
 
-Since this project is focused on embedding diagrams into Rmarkdown
-let's start with few examples just to illustrate principle.
+Since this project is focused on embedding diagrams text descriptions into R Markdown
+let's start with few examples just to illustrate a principle.
 
 ## Example with inline diagram description
 
@@ -25,29 +25,37 @@ would produce following diagram:
   )
 ```
 
+> *Take a NOTE: When diagrams are inserted like this it's **IMPORTANT** that <Drawing name>
+> ("Hello World" in this example) is **UNIQUE** for **WHOLE** doc.*\
+> More details on usage is in [...](TODO:)
+
 \newpage
 
 ## Example with diagram data from file
 
-This example shows how to embed diagrams with data from outer files
+This example shows how to embed diagrams with data from outer files.
 
 This code:
 
 `````R
 `r ''````{r echo=FALSE, results='asis'}
-  to_diagram("erd", "Entity Relation", src="diagrams/project.erd")
+  to_diagram("erd", "Entity Relation", src="diagrams/examples/project.erd")
 ```
 `````
 
 would produce following diagram:
 
 ``` {r echo=FALSE, results='asis'}
-  to_diagram("erd", "Entity Relation", src="diagrams/project.erd")
+  to_diagram("erd", "Entity Relation", src="diagrams/examples/project.erd")
 ```
 
 ---
 
-File **diagrams/project.erd** content:
+File **diagrams/examples/project.erd** content:
 ```{r echo=FALSE, comment=''}
-cat(readLines('diagrams/project.erd'), sep = '\n')
+cat(readLines('diagrams/examples/project.erd'), sep = '\n')
 ```
+
+## More examples
+
+More examples can be found in [this section](#examplesKroki).

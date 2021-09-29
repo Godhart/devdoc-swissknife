@@ -1,37 +1,45 @@
-# Using as template and making own docs {#as_template}
+# Using as a template and making own docs {#as_template}
 
-To use this project as start point for your own documentation do following:
+To use this project as a start point for generating your own documentation do the following:
 
-> You'll need to have `docker` and `docker-compose` installed
+1. Import project and prepare for making docs
 
-#. Import master branch of this repo:
-[https://github.com/Godhart/devdoc-swissknife](https://github.com/Godhart/devdoc-swissknife)\
-All the sources for docs are contained in `docs_src` folder.
+> You'll need to have already `docker` and `docker-compose` installed
 
-#. Remove existing files named like `<number>-<words>.Rmd` from `docs_src` folder, but **keep** `index.Rmd`.
+  * Import master branch of this repo:
+  [https://github.com/Godhart/devdoc-swissknife](https://github.com/Godhart/devdoc-swissknife)\
+  All the sources for docs are contained in `docs_src` folder.
 
-#. Empty `docs_src/diagrams` folder.
+  * Remove existing files named like `<number>-<words>.Rmd` from `docs_src` folder, but **keep** `index.Rmd`.
 
-#. Replace following keywords
-`<Author Name>`, `<author>`, `<repo>`, `<Document Title>`, `Document_Title`, `<Document Description>`
-within files in `docs_src` with actual values.
+  * Empty `docs_src/diagrams` folder.
 
-#. Make docker image `devdoc-swissknife`.
-Simply run `make_docker.sh` from `docker` dir.
+  * Replace following keywords
+  `<Author Name>`, `<author>`, `<repo>`, `<Document Title>`, `Document_Title`, `<Document Description>`
+  within files in `docs_src` with actual values.
 
-#. Try to make docs with `make_docs.sh`.
-Output docs should apear in `docs_out` folder.\
-*Take a NOTE: this folder is ignored by git.*
+  * Make docker image `devdoc-swissknife`.
+  Simply run `make_docker.sh` from `docker` dir.
 
-#. Update `index.Rmd` to your needs (contains *Preface* section).
-
-#. Add your own docs into `docs_src` dir, naming files like `<number>-<words>.Rmd`.\
-Check the RMarkdown and Kroki! docs for understanding things, rely on shown examples.
-
-#. Most probably you would like to use your own Latex book class, so add `<your_latex_book_class>.cls` file
- into `docs_src` and specify it in `index.Rmd` file (replace `documentclass: book` field).
+  * Try to make docs with `make_docs.sh`.
+  Output docs should appear in `docs_out` folder.\
+  *Take a NOTE: this folder is ignored by git.*
 
 > NOTE: in many cases of errors doc's sources folder is polluted with temporary files,
-> named as specified in `_bookdown.yml` (field `book_filename`).\
-> I can't fix this yet so avoid committing them.\
-> After fixing the errors and making doc again those files would go away.\
+> named as specified in `_bookdown.yml` (field `book_filename`) and may break following docs generation runs.\
+> These files are removed with make routine, but in some cases, you'll have to remove them by yourself.\
+> Changing `book_filename` field in `_bookdown.yml` after an error has happened may be the case.
+
+2. Create content
+
+  * Update `docs_src/index.Rmd` to your needs (contains *Preface* section).
+
+  * Add your own docs into `docs_src` dir, naming files like `<number>-<chapter-name>.Rmd`.\
+  Check the R Markdown and Kroki docs for understanding things. Also, you may rely on shown examples.
+
+  * Most probably you would like to use your own Latex class, so add `<your_latex_class>.cls` file
+  into `docs_src` and specify it in `index.Rmd` file (replace `documentclass: book` field with class name).
+
+> Adding custom latex class may require you to add some latex packages to Docker image. Same is true if you
+> do use some special R packages in your docs etc.\
+> If this is the case you'll have to modify `docker/Dockerfile` and build docker image again with `make_docker.sh`.
