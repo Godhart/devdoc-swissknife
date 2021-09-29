@@ -31,65 +31,69 @@ cover-image: ../images/cover.png
 source("../_fun.R", local = knitr::knit_global())
 ```
 
-# Preface {-}
+# Вступление {-}
 
-> NOTE: Russian translation is under construction
+Это проект демонстарции подхода к созданию документации на разработку с помощью R Markdown и
+Kroki.
 
-This is a demo project for development documentation generation with R Markdown and Kroki
+Данный подход позволяет создавать документацию в виде файлов PDF, презентаций, сайта документтации
+по шаблону gitbook и в некоторых других форматах, используя для этого текстовые файлы с синтаксисом markdown
+(Pandoc flavor) и дополнительными вставками кода на языке R, а так же текстовое описание разного рода диаграмм.
 
-This approach allows you to create reproducible documentation in form of PDF, presentations, gitbook
-and some other HTML formats from simple markdown-like files (Pandoc flavor) with extra R chunks and textual diagrams description.
+Целью этого проекта является создание документации, максимально используя для этого текстовый формат,
+в т.ч. для описания графических диаграмм, но при этом без излишних переусложнений.
 
-The goal of this project is to describe documentation via text files as much as possible, even graphic diagrams,
-and make it easy to use without overcomplication.
+За счёт текстового описания диаграмм, с ними проще работать в системах контроля версий, получать разницу между версиями,
+добавлять к ним коментарии, делать обзор изменений и т.п.
 
-A textual description provides an easy way to version and merge diagrams, get differences between versions, leave comments that
-stays out from generated documentation, review changes, etc.
+Часто может оказаться и так, что создание диаграмм, а тем более их развитие быстрее делать в текстовом виде,
+а так же делать такие вещи как применение и/или рефакторинг цветовых схем. Поскольку зачастую тектовое описание диаграмм
+это больше опиисание некой модели, чем описание графических элентов,то при редактирвоании таких описаний не требуется
+тратить усилия на то чтобы в графическом виде взаимосвязи сохранялись, т.к. это будет происходить автоматически,
+покуда не изменились названия объектов модели.
 
-Also most often it's faster to create and **edit** diagrams as text, do things like theming and refactoring themes.
-Since the diagram's textual description often is more a model than just graphics, you don't have to track existing objects
-relations when just placement is changed or objects added (until you rename objects) which makes your workflow less error-prone.
+Уже один только R Markdown сам по себе является мощным и настраиваемым инструментом, который можно подстроить на формирование
+документов в том виде, в котором это вам требуется. Конечно для этого в начале придётся приложить определённые усилия,
+но в конечном итоге они окупятся.
 
-R Markdown itself is a powerful and customizable tool, so you can fit docs to your needs. It would take efforts on start,
-to make things neat but it would repay you in the end.
-
-> To produce awesome PDFs you'll have to provide awesome Latex book class.
-> Since I don't have one I'm using Latex default so current PDF version looks a bit ugly to me.
-> I hope I can fix this soon or later. Help is appreciated!
-
----
-
-This project is also can be used as a template for your own documentation, see [this section](#as_template)
-
-The project uses docker and docker-compose to build docs so it's ready to be integrated into your CI/CD flow.
-
-The project's structure, docs generation and some files are based on [R Markdown book](https://github.com/rstudio/rmarkdown-book)
+> Чтобы на выходе были великлепные файлы PDF нужен и соответствующий класс для Latex.
+> Пока что у меня такого нет, поэтому в данном проекте PDF файлы выглядят довольнно-таки просто.
+> Но надеюсь, что рано или поздно, появится что показать и с этой стороны.
 
 ---
 
-There are few demonstrations in the project for general development use-cases (which probably cover 95% of your daily needs).
-For more complicated use-cases - checkout docs on links below.
+Помимо демонстрационных целей этот проект так же может быть использован как шаблон для формирования вашей собственной документации.
+В [этом разделе](#as_template) данный вопрос рассмотрен подробнее.
 
-> Diagrams code for most examples is borrowed straight from [Kroki](https://kroki.io/examples.html)
+Все инструменты для создания документации запускаются из контейнеров docker, что упростит встраивание этого подхода в ваш конвейер CI/CD.
+
+Структура оргнизации документации, а так же некоторые файлы взаимствованы из [R Markdown book](https://github.com/rstudio/rmarkdown-book)
+
+---
+
+В проекте приводится несколько примеров диаграмм для наиболее частых случаев, требуемых в разработке.
+По ссылкам на проекты Вы сможете найти что-то и для менее типовых задач.
+
+> Для большинства примеров использован код с сайта [Kroki](https://kroki.io/examples.html)
 
 \
 \
 
-**Following links would be helpful to you:**
+**Полезные ссылки:**
 
-[List of supported diagrams renderers - https://kroki.io/#support](https://kroki.io/#support)
+[Список поддерживаемых визуализаторов диаграмм - https://kroki.io/#support](https://kroki.io/#support)
 
-[A few more diagrams examples - https://kroki.io/examples.html](https://kroki.io/examples.html)
+[Немного больше примеров диаграмм - https://kroki.io/examples.html](https://kroki.io/examples.html)
 
 [R Markdown: The Definitive Guide - https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)\
-created by one of R Markdown authors and generated with R Markdown
+от авторов R Markdown и созданное с помощю R Markdown
 
 [R Markdown: Cookbook - https://bookdown.org/yihui/rmarkdown-cookbook/](https://bookdown.org/yihui/rmarkdown-cookbook/)
 
-[A nice R Markdown tutorial - https://rmd4sci.njtierney.com/](https://rmd4sci.njtierney.com/)
+[Неплохая методичка по R Markdown - https://rmd4sci.njtierney.com/](https://rmd4sci.njtierney.com/)
 
 [R Markdown cheatsheet - https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf)
 
 [R Markdown reference - https://rmarkdown.rstudio.com/docs/reference/index.html](https://rmarkdown.rstudio.com/docs/reference/index.html)
 
-[Keenwrite - edit and preview R Markdown Live!](https://github.com/DaveJarvis/keenwrite)
+[Keenwrite - редактор с поддержкой предварительного просмотра всех диаграмм!](https://github.com/DaveJarvis/keenwrite)
