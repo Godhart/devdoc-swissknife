@@ -6,7 +6,7 @@ that most useful in a daily life of most developers (IMHO).
 If you check docs for [supported diagrams renderers](https://kroki.io/#support) then you'll find for sure
 a few more interesting usecases.
 
-All diagrams data for examples of this section resides in `docs_src/diagrams` dir of this repo.
+All diagrams data for examples of this section resides in [`docs_src/diagrams`](https://github.com/Godhart/devdoc-swissknife/tree/main/docs_src/diagrams/examples) dir of this repo.
 Each diagram is included into doc by adding following code section into document file:
 
 ````R
@@ -14,6 +14,8 @@ Each diagram is included into doc by adding following code section into document
   to_diagram("from_src", "<Drawing name>", src="../diagrams/<src_file_path_within_diagrams_dir>")
 ```
 ````
+
+Full code for this whole section is [here](https://github.com/Godhart/devdoc-swissknife/blob/main/docs_src/devdoc-swissknife-en/03-KrokiExamples.Rmd)
 
 This usage pattern is described in the following section [TODO](#TODO)
 
