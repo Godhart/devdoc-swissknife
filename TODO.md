@@ -1,13 +1,8 @@
-krantz.cls
 ru
 pub
-width/hight/ref
-examples - fit height
 fname prohibited symbols replace
-structure description
+project structure description
 usage patterns description
-rendered diagrams (svg to pdf)
 other formats support
-cyrillic issues
+Cyrillic issues
 search issues
-size for inline svg
