@@ -1,0 +1,179 @@
+# Kroki usage examples {#examplesKroki}
+
+I've omitted some examples from [Kroki](https://kroki.io/examples.html) and left only those
+that most useful in a daily life of most developers (IMHO).
+
+If you check docs for [supported diagrams renderers](https://kroki.io/#support) then you'll find for sure
+a few more interesting usecases.
+
+All diagrams data for examples of this section resides in `docs_src/diagrams` dir of this repo.
+Each diagram is included into doc by adding following code section into document file:
+
+````R
+`r ''````{r echo=FALSE, results='asis'}
+  to_diagram("from_src", "<Drawing name>", src="../diagrams/<src_file_path_within_diagrams_dir>")
+```
+````
+
+This usage pattern is described in the following section [TODO](#TODO)
+
+\newpage
+
+## C4 Context Diagram (PlantUML+C4)
+
+Engine: `c4plantuml`
+
+```{r echo=FALSE, results='asis'}
+  to_diagram("from_src", "Example - C4 Context Diagram", src="../diagrams/examples/c4plantuml-context.Rmd",
+             dformat=if(knitr::is_html_output()) "" else "png", # Text is not scaled as intended when converted to PDF so use PNG
+             height=if(knitr::is_html_output()) "" else "15cm") # To fit example into single PDF page - limit height
+```
+
+```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
+cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
+```
+
+\newpage
+
+## C4 Container Diagram (PlantUML+C4)
+
+Engine: `c4plantuml`
+
+```{r echo=FALSE, results='asis'}
+  to_diagram("from_src", "Example - C4 Container Diagram", src="../diagrams/examples/c4plantuml-container.Rmd", width="100%",
+             dformat=if(knitr::is_html_output()) "" else "png") # Text is not scaled as intended when converted to PDF so use PNG
+```
+
+```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
+cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
+```
+
+\newpage
+
+## C4 Component Diagram (PlantUML+C4)
+
+Engine: `c4plantuml`
+
+```{r echo=FALSE, results='asis'}
+  to_diagram("from_src", "Example - C4 Component Diagram", src="../diagrams/examples/c4plantuml-component.Rmd",
+             dformat=if(knitr::is_html_output()) "" else "png", # Text is not scaled as intended when converted to PDF so use PNG
+             height=if(knitr::is_html_output()) "" else "15cm") # To fit example into single PDF page - limit height
+```
+
+```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
+cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
+```
+
+\newpage
+
+## Block Diagram
+
+Engine: `blockdiag`
+
+```{r echo=FALSE, results='asis'}
+  to_diagram("from_src", "Example - Block Diagram", src="../diagrams/examples/blockdiag.Rmd")
+```
+
+\newpage
+
+## Digital Timing Diagram
+
+Engine: `wavedrom`
+
+```{r echo=FALSE, results='asis'}
+  to_diagram("from_src", "Example - Digital Timing Diagram", src="../diagrams/examples/wavedrom.Rmd")
+```
+
+\newpage
+
+## Bytefield
+
+Engine: `bytefield`
+
+```{r echo=FALSE, results='asis'}
+  to_diagram("from_src", "Example - Bytefield", src="../diagrams/examples/bytefield.Rmd")
+```
+
+\newpage
+
+## Packet Diagram
+
+Engine: `packetdiag`
+
+```{r echo=FALSE, results='asis'}
+  to_diagram("from_src", "Example - Packet Diagram", rawsvg=FALSE, src="../diagrams/examples/packetdiag.Rmd", width="100%")
+```
+
+\newpage
+
+## Sequence Diagram #1 (PlantUML)
+
+Engine: `plantuml`
+
+```{r echo=FALSE, results='asis'}
+  to_diagram("from_src", "Example - Sequence Diagram - PlantUML", src="../diagrams/examples/plantuml-seqdiag.Rmd")
+```
+
+\newpage
+
+## Sequence Diagram #2 (SeqDiag)
+
+Engine: `seqdiag`
+
+```{r echo=FALSE, results='asis'}
+  to_diagram("from_src", "Example - Sequence Diagram - SeqDiag", src="../diagrams/examples/seqdiag.Rmd")
+```
+
+\newpage
+
+## Commit Graph
+
+Engine: `pikchr`
+
+> *NOTE: pikchr is giving troubles in PDF/PNG (produced SVG output is only web-browser friendly)*
+
+```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
+  to_diagram("from_src", "Example - Commit Graph", src="../diagrams/examples/pikchr-commit-graph.Rmd")
+```
+
+\newpage
+
+## Use Case Diagram
+
+Engine: `plantuml`
+
+```{r echo=FALSE, results='asis'}
+  to_diagram("from_src", "Example Block Diagram", src="../diagrams/examples/plantuml-usecase.Rmd")
+```
+
+\newpage
+
+## Mind Map
+
+Engine: `plantuml`
+
+```{r echo=FALSE, results='asis'}
+  to_diagram("from_src", "Example - Mind Map", src="../diagrams/examples/plantuml-mindmap.Rmd")
+```
+
+\newpage
+
+## PlantUML (More examples)
+
+PlantUML supports more diagram types like timing diagram, gantt and many more.
+
+You can use any of them just like in previous examples.
+
+Check PlantUML docs [https://plantuml.com/](https://plantuml.com/) for filling in diagram data.
+
+\newpage
+
+## Gantt
+
+Engine: `mermaid`
+
+> *NOTE: mermaid is giving troubles in PDF/PNG (produced SVG output is only web-browser friendly)*
+
+```{r echo=FALSE, results='asis'}
+  to_diagram("from_src", "Example - Gantt", src="../diagrams/examples/mermaid-gantt.Rmd")
+```

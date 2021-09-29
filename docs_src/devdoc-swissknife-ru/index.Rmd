@@ -1,0 +1,93 @@
+---
+title: "<Document Title>"
+author: "<Author Name>"
+date: "`r Sys.Date()`"
+documentclass: book
+classoption:
+ - a4paper
+ - 12pt
+ - oneside
+ - openany
+#  - final
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+graphics: yes
+lot: no
+lof: no
+fontsize: 12pt
+mainfont: DejaVu Serif
+monofont: DejaVu Sans Mono
+monofontoptions: "Scale=0.8"
+site: bookdown::bookdown_site
+description: "<Document Description>"
+url: 'https\://<author>.github.io/<repo>/'
+github-repo: <author>/<repo>
+cover-image: ../images/cover.png
+---
+
+```{r, include=FALSE}
+source("../_fun.R", local = knitr::knit_global())
+```
+
+# Preface {-}
+
+This is a demo project for development documentation generation with R Markdown and Kroki
+
+This approach allows you to create reproducible documentation in form of PDF, presentations, gitbook
+and some other HTML formats from simple markdown-like files (Pandoc flavor) with extra R chunks and textual diagrams description.
+
+The goal of this project is to describe documentation via text files as much as possible, even graphic diagrams,
+and make it easy to use without overcomplication.
+
+A textual description provides an easy way to version and merge diagrams, get differences between versions, leave comments that
+stays out from generated documentation, review changes, etc.
+
+Also most often it's faster to create and **edit** diagrams as text, do things like theming and refactoring themes.
+Since the diagram's textual description often is more a model than just graphics, you don't have to track existing objects
+relations when just placement is changed or objects added (until you rename objects) which makes your workflow less error-prone.
+
+R Markdown itself is a powerful and customizable tool, so you can fit docs to your needs. It would take efforts on start,
+to make things neat but it would repay you in the end.
+
+> To produce awesome PDFs you'll have to provide awesome Latex book class.
+> Since I don't have one I'm using Latex default so current PDF version looks a bit ugly to me.
+> I hope I can fix this soon or later. Help is appreciated!
+
+---
+
+This project is also can be used as a template for your own documentation, see [this section](#as_template)
+
+The project uses docker and docker-compose to build docs so it's ready to be integrated into your CI/CD flow.
+
+The project's structure, docs generation and some files are based on [R Markdown book](https://github.com/rstudio/rmarkdown-book)
+
+---
+
+There are few demonstrations in the project for general development use-cases (which probably cover 95% of your daily needs).
+For more complicated use-cases - checkout docs on links below.
+
+> Diagrams code for most examples is borrowed straight from [Kroki](https://kroki.io/examples.html)
+
+\
+\
+
+**Following links would be helpful to you:**
+
+[List of supported diagrams renderers - https://kroki.io/#support](https://kroki.io/#support)
+
+[A few more diagrams examples - https://kroki.io/examples.html](https://kroki.io/examples.html)
+
+[R Markdown: The Definitive Guide - https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)\
+created by one of R Markdown authors and generated with R Markdown
+
+[R Markdown: Cookbook - https://bookdown.org/yihui/rmarkdown-cookbook/](https://bookdown.org/yihui/rmarkdown-cookbook/)
+
+[A nice R Markdown tutorial - https://rmd4sci.njtierney.com/](https://rmd4sci.njtierney.com/)
+
+[R Markdown cheatsheet - https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf)
+
+[R Markdown reference - https://rmarkdown.rstudio.com/docs/reference/index.html](https://rmarkdown.rstudio.com/docs/reference/index.html)
+
+[Keenwrite - edit and preview R Markdown Live!](https://github.com/DaveJarvis/keenwrite)
