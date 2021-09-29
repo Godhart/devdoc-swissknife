@@ -1,0 +1,30 @@
+bookdown::gitbook:
+  css: ../css/style.css
+  split_by: section+number
+  config:
+    toc:
+      collapse: none
+      before: |
+        <li><a href="./index.html">Document Title</a></li>
+    download: [pdf]
+    edit: https://github.com/<author>/<repo>/edit/master/%s
+    sharing:
+      github: yes
+      facebook: no
+bookdown::pdf_book:
+  includes:
+    # in_header: ../latex/preamble.tex
+    # in_header: ../latex/layout_preamble.tex
+    # before_body: ../latex/before_body.tex
+    # before_body: ../latex/layout.tex
+    # after_body: ../latex/after_body.tex
+  keep_tex: yes
+  latex_engine: xelatex
+  citation_package: natbib
+  template: null
+  pandoc_args: [--top-level-division=chapter, --wrap=none]
+  toc_depth: 3
+  toc_unnumbered: no
+  toc_appendix: yes
+  highlight_bw: yes
+  quote_footer: ["\\VA{", "}{}"]
