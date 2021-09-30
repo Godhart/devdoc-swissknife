@@ -25,7 +25,7 @@
 <meta name="author" content="Nikolay Gniteev">
 
 
-<meta name="date" content="2021-09-29">
+<meta name="date" content="2021-09-30">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -154,7 +154,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>You’ll need to have already <code>docker</code> and <code>docker-compose</code> installed</p>
 </blockquote>
 <ul>
-<li><p>Import or fork master branch of this repo: <a href="https://github.com/Godhart/devdoc-swissknife" class="uri">https://github.com/Godhart/devdoc-swissknife</a><br />
+<li><p>Import or fork main branch of this repo: <a href="https://github.com/Godhart/devdoc-swissknife" class="uri">https://github.com/Godhart/devdoc-swissknife</a><br />
 All the sources for docs are contained in <code>docs_src</code> folder.</p></li>
 <li><p>Make a new folder in <code>docs_src</code>. I suggest you name it using the following pattern: <code>doc-&lt;subject&gt;</code></p></li>
 <li><p>Copy all the files from <code>docs_src/docs-template</code> into your brand new folder</p></li>
@@ -181,15 +181,20 @@ Changing <code>book_filename</code> field in <code>_bookdown.yml</code> after an
 <li><p>Update <code>index.Rmd</code> in your folder to your needs (contains <em>Preface</em> section).</p></li>
 <li><p>Add your own docs into your folder, naming files like <code>&lt;number&gt;-&lt;chapter-name&gt;.Rmd</code>.<br />
 Check the R Markdown and Kroki docs for understanding things. Also, you may rely on shown examples.</p></li>
-</ul>
-<p>*If you already have docs in markdown format you may already use them like this:</p>
-<pre><code>* copy markdown files into your doc-folder
-* copy necessary local images to location in `docs_src/diagrams` or wherever you like most
-* change name extensions of markdown files to `.Rmd`
-* change names of markdown files so they would correspond to pattern `&lt;number&gt;-&lt;chapter-name&gt;.Rmd`
-* change references to local images in markdown files</code></pre>
+<li><p>If you already have docs in markdown format you may already use them like this:</p>
 <ul>
-<li>Most probably you would like to use your own Latex class, so add <code>&lt;your_latex_class&gt;.cls</code> file into your folder and specify it in <code>index.Rmd</code> file (replace <code>documentclass: book</code> field with <code>&lt;your_latex_class&gt;</code> name).</li>
+<li>copy markdown files into your doc-folder</li>
+<li>copy necessary local images to location in <code>docs_src/diagrams</code> or wherever you like most</li>
+<li>change name extensions of markdown files to <code>.Rmd</code></li>
+<li>change names of markdown files so they would correspond to pattern <code>&lt;number&gt;-&lt;chapter-name&gt;.Rmd</code></li>
+<li>change references to local images in markdown files</li>
+</ul></li>
+<li><p>If you already have text description of diagrams for supported rendering engines you may already use them like this:</p>
+<ul>
+<li>copy necessary files to location in <code>docs_src/diagrams</code> or wherever you like most</li>
+<li>in Rmd files replace image embedding with diagram embedding as described <a href="TODO" class="uri">TODO</a></li>
+</ul></li>
+<li><p>Most probably you would like to use your own Latex class, so add <code>&lt;your_latex_class&gt;.cls</code> file into your folder and specify it in <code>index.Rmd</code> file (replace <code>documentclass: book</code> field with <code>&lt;your_latex_class&gt;</code> name).</p></li>
 </ul>
 <blockquote>
 <p>Adding custom latex class may require you to add some latex packages to Docker image. Same is true if you do use some special R packages in your docs etc.<br />

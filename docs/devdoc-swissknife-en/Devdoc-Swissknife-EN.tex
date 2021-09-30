@@ -117,7 +117,7 @@
 
 \title{Devdoc-Swissknife EN}
 \author{Nikolay Gniteev}
-\date{2021-09-29}
+\date{2021-09-30}
 
 \begin{document}
 \maketitle
@@ -279,7 +279,7 @@ You'll need to have already \texttt{docker} and \texttt{docker-compose} installe
 
 \begin{itemize}
 \item
-  Import or fork master branch of this repo: \url{https://github.com/Godhart/devdoc-swissknife}\\
+  Import or fork main branch of this repo: \url{https://github.com/Godhart/devdoc-swissknife}\\
   All the sources for docs are contained in \texttt{docs\_src} folder.
 \item
   Make a new folder in \texttt{docs\_src}. I suggest you name it using the following pattern: \texttt{doc-\textless{}subject\textgreater{}}
@@ -326,20 +326,32 @@ Changing \texttt{book\_filename} field in \texttt{\_bookdown.yml} after an error
 \item
   Add your own docs into your folder, naming files like \texttt{\textless{}number\textgreater{}-\textless{}chapter-name\textgreater{}.Rmd}.\\
   Check the R Markdown and Kroki docs for understanding things. Also, you may rely on shown examples.
-\end{itemize}
+\item
+  If you already have docs in markdown format you may already use them like this:
 
-*If you already have docs in markdown format you may already use them like this:
+  \begin{itemize}
+  \tightlist
+  \item
+    copy markdown files into your doc-folder
+  \item
+    copy necessary local images to location in \texttt{docs\_src/diagrams} or wherever you like most
+  \item
+    change name extensions of markdown files to \texttt{.Rmd}
+  \item
+    change names of markdown files so they would correspond to pattern \texttt{\textless{}number\textgreater{}-\textless{}chapter-name\textgreater{}.Rmd}
+  \item
+    change references to local images in markdown files
+  \end{itemize}
+\item
+  If you already have text description of diagrams for supported rendering engines you may already use them like this:
 
-\begin{verbatim}
-* copy markdown files into your doc-folder
-* copy necessary local images to location in `docs_src/diagrams` or wherever you like most
-* change name extensions of markdown files to `.Rmd`
-* change names of markdown files so they would correspond to pattern `<number>-<chapter-name>.Rmd`
-* change references to local images in markdown files
-\end{verbatim}
-
-\begin{itemize}
-\tightlist
+  \begin{itemize}
+  \tightlist
+  \item
+    copy necessary files to location in \texttt{docs\_src/diagrams} or wherever you like most
+  \item
+    in Rmd files replace image embedding with diagram embedding as described \url{TODO}
+  \end{itemize}
 \item
   Most probably you would like to use your own Latex class, so add \texttt{\textless{}your\_latex\_class\textgreater{}.cls} file into your folder and specify it in \texttt{index.Rmd} file (replace \texttt{documentclass:\ book} field with \texttt{\textless{}your\_latex\_class\textgreater{}} name).
 \end{itemize}
@@ -355,7 +367,7 @@ I've omitted some examples from \href{https://kroki.io/examples.html}{Kroki} and
 
 If you check docs for \href{https://kroki.io/\#support}{supported diagrams renderers} then you'll find for sure a few more interesting usecases.
 
-All diagrams data for examples of this section resides in \href{https://github.com/Godhart/devdoc-swissknife/tree/main/docs_src/diagrams/examples}{\texttt{docs\_src/diagrams}} dir of this repo. Each diagram is included into doc by adding following code section into document file:
+All diagrams data for examples of this section resides in \href{https://github.com/Godhart/devdoc-swissknife/tree/main/docs_src/diagrams/examples}{docs\_src/diagrams/examples} dir of this repo. Each diagram is included into doc by adding following code section into document file:
 
 \begin{Shaded}
 \begin{Highlighting}[]
