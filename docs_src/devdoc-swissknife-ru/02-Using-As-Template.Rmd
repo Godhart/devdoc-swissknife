@@ -1,53 +1,68 @@
-# Using as a template and making own docs {#as_template}
+# Использование проекта в качестве шаблона и создание собственной документации {#as_template}
 
-To use this project as a start point for generating your own documentation do the following:
+Чтобы воспользоваться данным проектом как шаблоном для создания собственных документов, сделайте следующее:
 
-1. Import project and prepare for making docs
+1. Импорт проекта и подготовка
 
-> You'll need to have already `docker` and `docker-compose` installed
+> У Вас уже должны быть установлены `docker` и `docker-compose`
 
-  * Import or fork master branch of this repo:
+  * Импорт ветки main из этого репозитория или создание форка:
   [https://github.com/Godhart/devdoc-swissknife](https://github.com/Godhart/devdoc-swissknife)\
-  All the sources for docs are contained in `docs_src` folder.
+  Исходные файлы для создания документации располагаются в папке `docs_src`.
 
-  * Make a new folder in `docs_src`. I suggest you name it using the following pattern: `doc-<subject>`
+  * Создайте новуй папку внутри `docs_src`. Рекомендуемый шаблон для имени папки: `doc-<subject>`
 
-  * Copy all the files from `docs_src/docs-template` into your brand new folder
+  * Скопируйте все файлы из `docs_src/docs-template` в только что созданную папку
 
-  * Replace following keywords
+  * В скопированных файлах замените следующий текст актуальными значениями:
   `<Author Name>`, `<author>`, `<repo>`, `<Document Title>`, `Document_Title`, `<Document Description>`
-  within files in your new folder with actual values.
-  Don't forget also to adjust `Document_Title` in the `.gitignore` of new folder, as it protects from build garbage.
 
-  * If you don't want to see devdoc-swissknife documentation in your repo:
+  Не пропустите замену текста `Document_Title` и в файле `.gitignore`, который так же будет среди них.
 
-    * Remove `docs_src/devdoc-swissknife-*` folders
-    * Empty `docs_src/diagrams` folder.
+  * Если вам захочется избавиться от документации devdoc-swissknife, которая тоже будет в этом репозитории:
 
-  * Adjust `docs_src/Makefile` to fit your needs (for the first time - use an existing pattern to add your folder).
+    * Удалите папки с именем по следующему шаблону `docs_src/devdoc-swissknife-*`
+    * Очистите папку `docs_src/diagrams`.
 
-  * Make docker image `devdoc-swissknife` if you don't have one already.
-  Simply run `make_docker.sh` from `docker` dir.
+  * Поправьте `docs_src/Makefile` как Вам требуется (для начала - просто воспользуйтесь шаблоном, который описан в этом файле).
 
-  * Try to make docs with `make_docs.sh`.
-  Output docs should appear in `docs_out/doc-<subject>` folder if you followed a pattern in the Makefile.\
-  *Take a NOTE: `docs_out` folder and all it's content is ignored by git.*
+  * Если вы до этого не создавали образ docker `devdoc-swissknife` - сделайте это сейчас.
+  Просто выполните файл `make_docker.sh` из папки `docker`.
 
-> NOTE: in many cases of errors doc's sources folder is polluted with temporary files,
-> named as specified in `_bookdown.yml` (field `book_filename`) and may break following docs generation runs.\
-> These files are removed with make routine, but in some cases, you'll have to remove them by yourself.\
-> Changing `book_filename` field in `_bookdown.yml` after an error has happened may be the case.
+  * Можно попробовать создать документацию - выполните файл `make_docs.sh`.
+  Результаты сборки появятся в папке `docs_out/doc-<subject>` если вы следовали шаблону из Makefile.\
+  *Обратите внимание, что папка `docs_out` и всё её содержимое игноирурются в git.*
 
-2. Create content
+> ВНИМАНИЕ: зачастую в случае ошибок сборки документа папка с исходными файлами документов м.б. засорена временными файлами,
+> их имя будет соответствовать значению поля `book_filename` из файла `_bookdown.yml` и их наличие может сломать последующие сборки.\
+> Обычно эти файлы удаляются при сборке и не составляют проблем, но иногда может потребоваться удалить их самостоятельно.\
+> К примиеру таким случаем м.б. изменение поля `book_filename` в файле `_bookdown.yml` после возникновения ошибки.
 
-  * Update `index.Rmd` in your folder to your needs (contains *Preface* section).
+2. Создавайте свою документацию
 
-  * Add your own docs into your folder, naming files like `<number>-<chapter-name>.Rmd`.\
-  Check the R Markdown and Kroki docs for understanding things. Also, you may rely on shown examples.
+  * Отредактируйте файл `index.Rmd` (содержит *Вступление*).
 
-  * Most probably you would like to use your own Latex class, so add `<your_latex_class>.cls` file
-  into your folder and specify it in `index.Rmd` file (replace `documentclass: book` field with `<your_latex_class>` name).
+  * Добавляйте собственные файлы, давая им именам по шаблону `<number>-<chapter-name>.Rmd`.\
+  Настоятельно рекомендуется ознакомиться с документацией на R Markdown и Kroki чтобы понимать правила,
+  а так же можно опираться на примеры из проекта.
 
-> Adding custom latex class may require you to add some latex packages to Docker image. Same is true if you
-> do use some special R packages in your docs etc.\
-> If this is the case you'll have to modify `docker/Dockerfile` and build again docker image with `make_docker.sh`.
+  * Если у Вас уже имеется документация, описанная в формате markdown её можно добавить образом:
+
+    * скопируйте файлы markdown в своб папку с документацией (назовём её условно `doc-folder`)
+    * скопируйте изображения из документации в папку `docs_src/diagrams` или туда, где это покажется более логичным
+    * измените markdown files to `.Rmd`
+    * change names of markdown files so they would correspond to pattern `<number>-<chapter-name>.Rmd`
+    * change references to local images in markdown files
+
+  * Если у Вас уже имеются текстовые описания диаграмм для графики в вашей документации и такой визуализатор поддерживается,
+    то Вы можете включить их в документацию следующим образом:
+
+    * скопируйте все необходимые файлы в папку `docs_src/diagrams` или туда, где это покажется более логичным
+    * в файлах Rmd замените вставку изображений на вставку диаграмм так, как это описано здесь [TODO](TODO)
+
+  * Скорее всего Вам захочется использовать собственный класс Latex для создания PDF, поэтому добавьте файл `<your_latex_class>.cls`
+  в вашу папку и укажите его в файле `index.Rmd` (замените поле `documentclass: book` названием вашего класса - `<your_latex_class>`).
+
+> В случае если Вы будете использовать собственный класс Latex или свои пакеты для R, Python и т.д. - скорее всего потребуется
+> включить дополнительные пакеты в docker образ `devdoc-swissknife`.
+> В таком случае измените файл `docker/Dockerfile` как Вам требуется и соберите образ снова с помощью `make_docker.sh`.

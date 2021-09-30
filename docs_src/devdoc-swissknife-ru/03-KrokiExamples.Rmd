@@ -1,27 +1,28 @@
-# Kroki usage examples {#examplesKroki}
+# Примеры визуализации диаграмм с помощью Kroki {#examplesKroki}
 
-I've omitted some examples from [Kroki](https://kroki.io/examples.html) and left only those
-that most useful in a daily life of most developers (IMHO).
+Примеры взяты с сайта [Kroki](https://kroki.io/examples.html), но я решил пропустить некоторые и
+оставить лишь те, которые на мой взгляд требуются чаще всего, а так же просты для текстового ввода.
 
-If you check docs for [supported diagrams renderers](https://kroki.io/#support) then you'll find for sure
-a few more interesting usecases.
+Для полного перечня диаграмм, которые можно отобразить, стоит посмотреть документацию на
+[поддерживаемые визуализаторы](https://kroki.io/#support).
 
-All diagrams data for examples of this section resides in `docs_src/diagrams` dir of this repo.
-Each diagram is included into doc by adding following code section into document file:
+Данные для всех диаграмм в этой секции располагаются в файлах в папке [docs_src/diagrams/examples](https://github.com/Godhart/devdoc-swissknife/tree/main/docs_src/diagrams/examples) данного репозитория.
 
+Каждая диаграмма включена в документ с помощью следующей конструкции:
 ````R
 `r ''````{r echo=FALSE, results='asis'}
   to_diagram("from_src", "<Drawing name>", src="../diagrams/<src_file_path_within_diagrams_dir>")
 ```
 ````
+Такой шаблон применения описан в секции [TODO](#TODO)
 
-This usage pattern is described in the following section [TODO](#TODO)
+Код для всей секции с примерами можно увидеть [здесь](https://github.com/Godhart/devdoc-swissknife/blob/main/docs_src/devdoc-swissknife-en/03-KrokiExamples.Rmd)
 
 \newpage
 
-## C4 Context Diagram (PlantUML+C4)
+## C4 Диаграмма контекста (PlantUML+C4)
 
-Engine: `c4plantuml`
+Визуализатор: `c4plantuml`
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("from_src", "Example - C4 Context Diagram", src="../diagrams/examples/c4plantuml-context.Rmd",
@@ -30,14 +31,14 @@ Engine: `c4plantuml`
 ```
 
 ```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
-cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
+cat("> *NOTE: Диаграммы c4plantuml приходится скачивать в виде PNG для документов PDF, т.к. при переводе этих SVG в PDF не всё проходит корректно")
 ```
 
 \newpage
 
-## C4 Container Diagram (PlantUML+C4)
+## C4 Диаграмма контейнеров (PlantUML+C4)
 
-Engine: `c4plantuml`
+Визуализатор: `c4plantuml`
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("from_src", "Example - C4 Container Diagram", src="../diagrams/examples/c4plantuml-container.Rmd", width="100%",
@@ -45,14 +46,14 @@ Engine: `c4plantuml`
 ```
 
 ```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
-cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
+cat("> *NOTE: Диаграммы c4plantuml приходится скачивать в виде PNG для документов PDF, т.к. при переводе этих SVG в PDF не всё проходит корректно")
 ```
 
 \newpage
 
-## C4 Component Diagram (PlantUML+C4)
+## C4 Диаграмма компонентов (PlantUML+C4)
 
-Engine: `c4plantuml`
+Визуализатор: `c4plantuml`
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("from_src", "Example - C4 Component Diagram", src="../diagrams/examples/c4plantuml-component.Rmd",
@@ -61,14 +62,14 @@ Engine: `c4plantuml`
 ```
 
 ```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
-cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
+cat("> *NOTE: Диаграммы c4plantuml приходится скачивать в виде PNG для документов PDF, т.к. при переводе этих SVG в PDF не всё проходит корректно")
 ```
 
 \newpage
 
-## Block Diagram
+## Блоксхема
 
-Engine: `blockdiag`
+Визуализатор: `blockdiag`
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("from_src", "Example - Block Diagram", src="../diagrams/examples/blockdiag.Rmd")
@@ -76,9 +77,9 @@ Engine: `blockdiag`
 
 \newpage
 
-## Digital Timing Diagram
+## Цифровая временная диаграмма
 
-Engine: `wavedrom`
+Визуализатор: `wavedrom`
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("from_src", "Example - Digital Timing Diagram", src="../diagrams/examples/wavedrom.Rmd")
@@ -88,7 +89,7 @@ Engine: `wavedrom`
 
 ## Bytefield
 
-Engine: `bytefield`
+Визуализатор: `bytefield`
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("from_src", "Example - Bytefield", src="../diagrams/examples/bytefield.Rmd")
@@ -98,7 +99,7 @@ Engine: `bytefield`
 
 ## Packet Diagram
 
-Engine: `packetdiag`
+Визуализатор: `packetdiag`
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("from_src", "Example - Packet Diagram", rawsvg=FALSE, src="../diagrams/examples/packetdiag.Rmd", width="100%")
@@ -106,9 +107,9 @@ Engine: `packetdiag`
 
 \newpage
 
-## Sequence Diagram #1 (PlantUML)
+## Диаграмма последовательности №1 (PlantUML)
 
-Engine: `plantuml`
+Визуализатор: `plantuml`
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("from_src", "Example - Sequence Diagram - PlantUML", src="../diagrams/examples/plantuml-seqdiag.Rmd")
@@ -116,9 +117,9 @@ Engine: `plantuml`
 
 \newpage
 
-## Sequence Diagram #2 (SeqDiag)
+## Диаграмма последовательности №2 (SeqDiag)
 
-Engine: `seqdiag`
+Визуализатор: `seqdiag`
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("from_src", "Example - Sequence Diagram - SeqDiag", src="../diagrams/examples/seqdiag.Rmd")
@@ -126,11 +127,11 @@ Engine: `seqdiag`
 
 \newpage
 
-## Commit Graph
+## Граф фиксации изменений
 
-Engine: `pikchr`
+Визуализатор: `pikchr`
 
-> *NOTE: pikchr is giving troubles in PDF/PNG (produced SVG output is only web-browser friendly)*
+> *NOTE: pikchr создаёт SVG, которые нормально отображают только Web-браузеры, поэтому с ними будут проблемы в PDF/PNG*
 
 ```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
   to_diagram("from_src", "Example - Commit Graph", src="../diagrams/examples/pikchr-commit-graph.Rmd")
@@ -138,9 +139,9 @@ Engine: `pikchr`
 
 \newpage
 
-## Use Case Diagram
+## Диаграмма прецедентов
 
-Engine: `plantuml`
+Визуализатор: `plantuml`
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("from_src", "Example Block Diagram", src="../diagrams/examples/plantuml-usecase.Rmd")
@@ -148,9 +149,9 @@ Engine: `plantuml`
 
 \newpage
 
-## Mind Map
+## Ментальная карта
 
-Engine: `plantuml`
+Визуализатор: `plantuml`
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("from_src", "Example - Mind Map", src="../diagrams/examples/plantuml-mindmap.Rmd")
@@ -158,21 +159,21 @@ Engine: `plantuml`
 
 \newpage
 
-## PlantUML (More examples)
+## PlantUML (ещё примеры)
 
-PlantUML supports more diagram types like timing diagram, gantt and many more.
+В PlantUML возможно создание большого кол-ва диаграмм разного рода, таких как временные диаграммы, диаграмма Ганта и т.д..
 
-You can use any of them just like in previous examples.
+Они все могут быть использованы аналогично предыдущим примерам.
 
-Check PlantUML docs [https://plantuml.com/](https://plantuml.com/) for filling in diagram data.
+Обратитесь к документации PlantUML [https://plantuml.com/](https://plantuml.com/) для подробностей их описания.
 
 \newpage
 
-## Gantt
+## Диаграмма Ганта
 
-Engine: `mermaid`
+Визуализатор: `mermaid`
 
-> *NOTE: mermaid is giving troubles in PDF/PNG (produced SVG output is only web-browser friendly)*
+> *NOTE: mermaid создаёт SVG, которые нормально отображают только Web-браузеры, поэтому с ними будут проблемы в PDF/PNG*
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("from_src", "Example - Gantt", src="../diagrams/examples/mermaid-gantt.Rmd")

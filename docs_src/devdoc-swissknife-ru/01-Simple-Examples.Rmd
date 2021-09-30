@@ -1,13 +1,12 @@
-# Simple diagrams examples
+# Простые примеры визуализации диаграмм
 
-Since this project is focused on embedding diagrams text descriptions into R Markdown
-let's start with few examples just to illustrate a principle.
+Поскольку основной фокус этого проекта на встраивании диаграмм, описанных в текстовом виде,
+в файл R Markdown (т.к. остальное в большинстве случаев смогут обеспечить возможности самого R Markdown),
+для начала приведена пара простых примеров для иллюстрации самого принципа.
 
-## Example with inline diagram description
+## Пример с описанием диаграммы непосредственно в тексте файла документации
 
-This example shows how to embed diagrams, describing them right in Rmd file
-
-This code:
+Вставка такого кода в файл документации:
 
 ````R
 `r ''````{r echo=FALSE, results='asis'}
@@ -17,7 +16,7 @@ This code:
 ```
 ````
 
-would produce following diagram:
+добавит такую диаграмму:
 
 ```{r echo=FALSE, results='asis'}
   to_diagram("graphviz", "Hello World",
@@ -25,17 +24,11 @@ would produce following diagram:
   )
 ```
 
-> *Take a NOTE: When diagrams are inserted like this it's **IMPORTANT** that <Drawing name>
-> ("Hello World" in this example) is **UNIQUE** for **WHOLE** doc.*\
-> More details on usage is in [...](TODO:)
-
 \newpage
 
-## Example with diagram data from file
+## Пример с вставкой диаграммы, описанной в отдельном файле
 
-This example shows how to embed diagrams with data from outer files.
-
-This code:
+Вставка такого кода в файл документации:
 
 `````R
 `r ''````{r echo=FALSE, results='asis'}
@@ -43,7 +36,7 @@ This code:
 ```
 `````
 
-would produce following diagram:
+добавит такую диаграмму:
 
 ``` {r echo=FALSE, results='asis'}
   to_diagram("erd", "Entity Relation", src="../diagrams/examples/project.erd")
@@ -51,11 +44,11 @@ would produce following diagram:
 
 ---
 
-File **diagrams/examples/project.erd** content:
+Содержимое файла **diagrams/examples/project.erd** с описанием диаграммы:
 ```{r echo=FALSE, comment=''}
 cat(readLines("../diagrams/examples/project.erd"), sep = "\n")
 ```
 
-## More examples
+## Больше примеров
 
-More examples can be found in [this section](#examplesKroki).
+Если Вам всё ещё интересно, больше примеров приведено [в этой](#examplesKroki) секции.
