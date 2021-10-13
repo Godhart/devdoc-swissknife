@@ -1,0 +1,23 @@
+# Reciepes Test
+
+This section is to check that given reciepes are working as intended
+
+## PDF Page orientation
+
+Some text on a portrait page.
+
+\newpage
+\blandscape
+
+### Title, lorem ipsum
+
+```{r, results = "asis"}
+kable(iris[1:5,], caption = "Lorem again")
+```
+Lorem ipsum...
+
+\newpage
+\elandscape
+
+Some other text on a portrait page.
+```

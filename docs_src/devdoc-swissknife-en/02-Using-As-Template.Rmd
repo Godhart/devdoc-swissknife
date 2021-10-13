@@ -1,4 +1,4 @@
-# Using as a template and making own docs {#as_template}
+# Using as a template and making own docs {#template}
 
 To use this project as a start point for generating your own documentation do the following:
 
@@ -56,7 +56,7 @@ To use this project as a start point for generating your own documentation do th
   * If you already have text description of diagrams for supported rendering engines you may already use them like this:
 
     * copy necessary files to location in `docs_src/diagrams` or wherever you like most
-    * in Rmd files replace image embedding with diagram embedding as described [TODO](TODO)
+    * in `.Rmd` files replace image embedding with diagram embedding as described [TODO](TODO)
 
   * Most probably you would like to use your own Latex class, so add `<your_latex_class>.cls` file
   into your folder and specify it in `index.Rmd` file (replace `documentclass: book` field with `<your_latex_class>` name).

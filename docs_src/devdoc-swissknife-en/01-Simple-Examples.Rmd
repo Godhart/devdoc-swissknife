@@ -1,11 +1,14 @@
-# Simple diagrams examples
+# Simple diagrams examples {#examples}
 
-Since this project is focused on embedding diagrams text descriptions into R Markdown
+Since this project is focused on embedding diagrams textual descriptions into R Markdown,
 let's start with few examples just to illustrate a principle.
 
-## Example with inline diagram description
+> BTW: there is a lot of drawings types that you can get from R Markdown alone, by using R packages
+> or Python's matplot lib for example. You may want to check this out too [TODO: references](TODO).
 
-This example shows how to embed diagrams, describing them right in Rmd file
+## Example with inline diagram description {#examples-inline}
+
+This example shows how to embed diagrams, describing them right in `.Rmd` file
 
 This code:
 
@@ -25,13 +28,9 @@ would produce following diagram:
   )
 ```
 
-> *Take a NOTE: When diagrams are inserted like this it's **IMPORTANT** that <Drawing name>
-> ("Hello World" in this example) is **UNIQUE** for **WHOLE** doc.*\
-> More details on usage is in [...](TODO:)
-
 \newpage
 
-## Example with diagram data from file
+## Example with diagram data from file {#examples-fromFile}
 
 This example shows how to embed diagrams with data from outer files.
 
@@ -56,6 +55,8 @@ File **diagrams/examples/project.erd** content:
 cat(readLines("../diagrams/examples/project.erd"), sep = "\n")
 ```
 
-## More examples
+##
 
-More examples can be found in [this section](#examplesKroki).
+More examples for your inspiration can be found in [this section](#examples-kroki).
+
+Details about embedding diagrams is [here](#usage)

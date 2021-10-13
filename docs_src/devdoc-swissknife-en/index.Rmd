@@ -33,7 +33,11 @@ source("../_fun.R", local = knitr::knit_global())
 
 # Preface {-}
 
-This is a demo project for development documentation generation with R Markdown and Kroki
+This is a demo project for development documentation generation with
+[R Markdown](https://rmarkdown.rstudio.com/) and [Kroki](https://kroki.io/).
+
+All the things described here you could do without that project, but I've tried to stich
+those components together so you'll be able to concentrate on content rather than process.
 
 This approach allows you to create reproducible documentation in form of PDF, presentations, gitbook
 and some other HTML formats from simple markdown-like files (Pandoc flavor) with extra R chunks and textual diagrams description.
@@ -48,16 +52,20 @@ Also most often it's faster to create and **edit** diagrams as text, do things l
 Since the diagram's textual description often is more a model than just graphics, you don't have to track existing objects
 relations when just placement is changed or objects added (until you rename objects) which makes your workflow less error-prone.
 
-R Markdown itself is a powerful and customizable tool, so you can fit docs to your needs. It would take efforts on start,
+Embedding textually described diagrams into docuement is actual focus of this porject. The rest you would be able to do with
+R Markdown itself as it is a powerful and customizable tool, so you can fit docs to your needs. It would take efforts on start,
 to make things neat but it would repay you in the end.
 
 > To produce awesome PDFs you'll have to provide awesome Latex book class.
 > Since I don't have one I'm using Latex default so current PDF version looks a bit ugly to me.
 > I hope I can fix this soon or later. Help is appreciated!
 
+Kroki is running locally in container so you may not worry for confidential things and it works well
+in air gaped installations.
+
 ---
 
-This project is also can be used as a template for your own documentation, see [this section](#as_template)
+This project is also can be used as a template for your own documentation, see [this section](#template)
 
 The project uses docker and docker-compose to build docs so it's ready to be integrated into your CI/CD flow.
 
@@ -69,6 +77,10 @@ There are few demonstrations in the project for general development use-cases (w
 For more complicated use-cases - checkout docs on links below.
 
 > Diagrams code for most examples is borrowed straight from [Kroki](https://kroki.io/examples.html)
+
+---
+
+[Usage](#usage) section would be updated eventually with reciepes for common cases.
 
 \
 \
@@ -84,10 +96,23 @@ created by one of R Markdown authors and generated with R Markdown
 
 [R Markdown: Cookbook - https://bookdown.org/yihui/rmarkdown-cookbook/](https://bookdown.org/yihui/rmarkdown-cookbook/)
 
+[R Markdown Site https://rmarkdown.rstudio.com/lesson-1.html](https://rmarkdown.rstudio.com/lesson-1.html)
+(focused on R Studio)
+
 [A nice R Markdown tutorial - https://rmd4sci.njtierney.com/](https://rmd4sci.njtierney.com/)
 
-[R Markdown cheatsheet - https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf)
+[R Markdown short reference - https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+to get familiar with most necessary things
 
 [R Markdown reference - https://rmarkdown.rstudio.com/docs/reference/index.html](https://rmarkdown.rstudio.com/docs/reference/index.html)
 
+[R Markdown cheatsheet - https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf)
+
 [Keenwrite - edit and preview R Markdown Live!](https://github.com/DaveJarvis/keenwrite)
+
+
+
+# Output Formats - https://bookdown.org/yihui/rmarkdown/output-formats.html#output-formats
+
+# https://bookdown.org/yihui/rmarkdown/r-code.html
+# https://bookdown.org/yihui/rmarkdown/language-engines.html

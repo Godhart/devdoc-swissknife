@@ -1,4 +1,4 @@
-# Kroki usage examples {#examplesKroki}
+# Kroki usage examples {#examples-kroki}
 
 I've omitted some examples from [Kroki](https://kroki.io/examples.html) and left only those
 that most useful in a daily life of most developers (IMHO).
@@ -21,7 +21,7 @@ This usage pattern is described in the following section [TODO](#TODO)
 
 \newpage
 
-## C4 Context Diagram (PlantUML+C4)
+## C4 Context Diagram (PlantUML+C4) {#kroki-c4context}
 
 Engine: `c4plantuml`
 
@@ -37,7 +37,7 @@ cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
 
 \newpage
 
-## C4 Container Diagram (PlantUML+C4)
+## C4 Container Diagram (PlantUML+C4) {#kroki-c4container}
 
 Engine: `c4plantuml`
 
@@ -52,7 +52,7 @@ cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
 
 \newpage
 
-## C4 Component Diagram (PlantUML+C4)
+## C4 Component Diagram (PlantUML+C4) {#kroki-c4component}
 
 Engine: `c4plantuml`
 
@@ -68,7 +68,7 @@ cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
 
 \newpage
 
-## Block Diagram
+## Block Diagram {#kroki-blockdiag}
 
 Engine: `blockdiag`
 
@@ -78,7 +78,7 @@ Engine: `blockdiag`
 
 \newpage
 
-## Digital Timing Diagram
+## Digital Timing Diagram {#kroki-timing}
 
 Engine: `wavedrom`
 
@@ -88,7 +88,7 @@ Engine: `wavedrom`
 
 \newpage
 
-## Bytefield
+## Bytefield {#kroki-bytefield}
 
 Engine: `bytefield`
 
@@ -98,7 +98,7 @@ Engine: `bytefield`
 
 \newpage
 
-## Packet Diagram
+## Packet Diagram {#kroki-packet}
 
 Engine: `packetdiag`
 
@@ -108,7 +108,7 @@ Engine: `packetdiag`
 
 \newpage
 
-## Sequence Diagram #1 (PlantUML)
+## Sequence Diagram #1 (PlantUML) {#kroki-pumlSequence}
 
 Engine: `plantuml`
 
@@ -118,7 +118,7 @@ Engine: `plantuml`
 
 \newpage
 
-## Sequence Diagram #2 (SeqDiag)
+## Sequence Diagram #2 (SeqDiag) {#kroki-sequence}
 
 Engine: `seqdiag`
 
@@ -128,7 +128,7 @@ Engine: `seqdiag`
 
 \newpage
 
-## Commit Graph
+## Commit Graph {#kroki-commitgraph}
 
 Engine: `pikchr`
 
@@ -140,7 +140,7 @@ Engine: `pikchr`
 
 \newpage
 
-## Use Case Diagram
+## Use Case Diagram {#kroki-pumlUsecase}
 
 Engine: `plantuml`
 
@@ -150,7 +150,7 @@ Engine: `plantuml`
 
 \newpage
 
-## Mind Map
+## Mind Map {#kroki-pumlMindmap}
 
 Engine: `plantuml`
 
@@ -160,7 +160,7 @@ Engine: `plantuml`
 
 \newpage
 
-## PlantUML (More examples)
+## PlantUML (More examples) {#kroki-pumlMore}
 
 PlantUML supports more diagram types like timing diagram, gantt and many more.
 
@@ -170,7 +170,7 @@ Check PlantUML docs [https://plantuml.com/](https://plantuml.com/) for filling i
 
 \newpage
 
-## Gantt
+## Gantt {#kroki-gantt}
 
 Engine: `mermaid`
 
