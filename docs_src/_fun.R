@@ -2,63 +2,89 @@ auto_name <- 0
 
 to_diagram <- function(
     engine, name = "", data = "", src = "",
-    dformat = "", format = "",
-    rawsvg = TRUE, downloadOnly=FALSE,
-    ref="", width = "", height = "", moreOpts="",
+    dformat = "",  format = "",
+    rawsvg = TRUE, downloadOnly = FALSE,
+    ref="", width = "", height = "", mdOpts = "",
     service="Kroki"
     ) {
 
-  ################################################################################################################################
-  # Renders diagram from text description and inserts into document
-  # Image is inserted with knitr::include_graphics or by inserting markdown image specification string, depending on arguments.
-  # If knitr::include_graphics is used then refrence label, width, height etc. should be specified via R chunk options.
-  #   see https://bookdown.org/yihui/rmarkdown/r-code.html for details
-  ####
-  # engine        - Diagram rendering engine. Specify one of supported engines (see Kroki)
-  #                 Special value `from_src` for outer files SHOULD be used to get engine from source file itself
-  #                 in case if recomendations from `docs_src/diagrams/README.md` are satisfied.
-  # name          - Name for diagram. Also would be used as name for downloaded file.
-  #                 If omitted then filename would be generated automatically or source file path would be used for name.
-  #                 Should be ommited in case if it's intened to insert image with knitr::include_graphics
-  # data          - Diagram description in text form (should be compatible with rendering engine).
+  ##############################################################################
+  # Renders diagram from textual description and inserts it into document.
+  # Diagram is inserted with knitr::include_graphics or by inserting markdown
+  # image specification string, depending on arguments.
+  #
+  # If knitr::include_graphics is used then caption, refrence label, width,
+  # height etc. should be specified via R chunk options,
+  # see https://bookdown.org/yihui/rmarkdown/r-code.html for details
+  ####                                                                         #
+  # engine        - Diagram rendering engine. Specify one of supported engines
+  #                 (see Kroki for engines list)
+  #                 Special value `from_src` for outer files SHOULD be used
+  #                 to get engine from source file itself in case
+  #                 if recomendations from `docs_src/diagrams/README.md`
+  #                 are satisfied.
+  # name          - Caption for diagram. Also would be used as name for
+  #                 downloaded file if `src` argument is empty string.
+  #                 If omitted then filename would be generated automatically or
+  #                 source file path would be used for name.
+  #                 Should be ommited in case if it's intened to insert image
+  #                 with knitr::include_graphics
+  # data          - Diagram description in text form (should be compatible with
+  #                 rendering engine).
   #                 Ignored if value for `src` is sepcified.
-  # src           - Path to outer file with diagram description in text form. See `docs_src/diagrams/README.md` for details.
+  # src           - Path to outer file with diagram description in text form.
+  #                 See `docs_src/diagrams/README.md` for details.
   #                 Should be omitted if `data` argument is to be used.
-  # dformat       - Specify data format for downloaded diagram. See https://kroki.io/#support for details.
+  # dformat       - Specify data format for downloaded diagram.
+  #                 See https://kroki.io/#support for details.
   #                 `svg` would be used by default if value is empty string.
-  #                 Sometimes SVG conversion to PDF/PNG not works good on client side. In that case it's suggested to use PNG.
-  #                 Take a NOTE: not all Kroki services provide diagrams in PNG format.
-  # format        - Explicitly set client side conversion for data downloaded in **SVG** format.
+  #                 Sometimes SVG conversion to PDF/PNG not works good on client
+  #                 side. In that case it's suggested to use PNG.
+  #                 Take a NOTE: not all Kroki services provide diagrams
+  #                 in PNG format.
+  # format        - Explicitly set client side conversion for data downloaded in
+  #                 SVG format.
   #                 By default (if value is empty string):
   #                 * SVG is used for HTML output (i.e. no conversion),
   #                 * PDF for PDF output,
   #                 * PNG for anything else (MS Word, MS PPT).
-  #                 Use this option in cases if default conversion produces corrupted result.
-  # rawsvg        - Option to insert SVG graphics as code right into HTML. This way text on diagrams is searchable.
+  #                 Use this option in cases if default conversion produces
+  #                 corrupted result.
+  # rawsvg        - Option to insert SVG graphics as code right into HTML.
+  #                 This way text on diagrams is searchable.
   #                 Enabled by default.
-  #                 Only aplicable for HTML output and only if `dformat` and `format` args are "SVG".
-  #                 If rawsvg is used (default) then additional options like ref/width/height should be specified via arguments,
+  #                 Only aplicable for HTML output and only if `dformat`
+  #                 and `format` args are "SVG".
+  #                 If rawsvg is used (default) then additional options like
+  #                 ref/width/height should be specified via arguments,
   #                 not via R chunk options.
   # downloadOnly  - Only generate and download diagram, don't insert into doc.
   #                 Use for custom diagram embedding later in the doc.
   #                 All the necessary conversions
-  #                 Result would be in `docs_src/generated` dir with name and extension as defined by args `name` and `format`.
+  #                 Result would be in `docs_src/generated` dir with name and
+  #                 extension as defined by args `name` and `format`.
   # service       - Renderning service (now it's sonly "Kroki")
 
-  ################################################################################################################################
+  ##############################################################################
   # Additional Options for markdown specification string
-  # If any of this arguments is specified then markdown string is used (like this - ![Alt Text](image_path){...options...})
+  # If any of this arguments is specified then markdown string is used
+  # (like this - ![Alt Text](image_path){...options...})
   ####
   # ref           - Reference label  (alphanumeric)
   # width         - Width for image  (as per markdown spec)
   # height        - Height for image (as per markdown spec)
-  # moreOpts      - More options to markdown image tag (see https://pandoc.org/MANUAL.html#images)
+  # mdOpts        - More options to markdown image tag
+  #                 (see https://pandoc.org/MANUAL.html#images)
 
-  ################################################################################################################################
+  ##############################################################################
   # Implementation
   ####
 
-  if (rawsvg || name != "" || ref != "" || width != "" || height != "" || moreOpts != "") {
+  # TODO: use knitr:opts_current$get() to remove redundant args
+  # TODO: use knitr:opts_chunk$set()   to set necessary chunk options from function (i.e. implicitly)
+  # TODO: keep rawsvg to embed SVGs inline
+
+  if (rawsvg || name != "" || ref != "" || width != "" || height != "" || mdOpts != "") {
     RWay <- FALSE
     # When RWay is FALSE ref, width and hegiht are taken from function arguments and markdown image specification string is used
   } else {
@@ -173,13 +199,13 @@ to_diagram <- function(
       # As picture
       if (RWay == FALSE) {
         # in a markdown way
-        if (ref!="" || width!="" || height!="" || moreOpts!="") {
+        if (ref!="" || width!="" || height!="" || mdOpts !="") {
           opts <- paste(
             "{",
             if (ref=="")       "" else paste("#",ref,sep=""),
             if (width=="")     "" else paste("width=",width,sep=""),
             if (height=="")    "" else paste("height=",height,sep=""),
-            moreOpts,
+            mdOpts,
             "}")
         } else {
           opts <- ""
