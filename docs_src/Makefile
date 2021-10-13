@@ -1,6 +1,6 @@
 # NOTE: it's could be ugly but does the job
 
-all: doc-template devdoc-swissknife-lobby devdoc-swissknife-en devdoc-swissknife-ru
+all: doc-template devdoc-swissknife-en devdoc-swissknife-ru
 
 ####################################################
 # Template for including new doc into Makefile
