@@ -247,6 +247,17 @@ knitr::opts_chunk$set(
 ```
 ````
 
+also may be set in front-matter part:
+
+```
+---
+title: "My Document"
+output: html_document:
+fig_width: 6
+fig_height: 4
+---
+```
+
 ### Reuse options from template
 
 https://bookdown.org/yihui/rmarkdown-cookbook/opts-template.html

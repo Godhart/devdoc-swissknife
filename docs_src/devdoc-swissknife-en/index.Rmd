@@ -116,3 +116,8 @@ to get familiar with most necessary things
 
 # https://bookdown.org/yihui/rmarkdown/r-code.html
 # https://bookdown.org/yihui/rmarkdown/language-engines.html
+
+
+# Alternatives:
+
+[https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html](https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html) / [https://rich-iannone.github.io/DiagrammeR/](https://rich-iannone.github.io/DiagrammeR/)
