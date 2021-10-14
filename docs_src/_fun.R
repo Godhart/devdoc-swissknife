@@ -84,6 +84,14 @@ to_diagram <- function(
   # TODO: use knitr:opts_chunk$set()   to set necessary chunk options from function (i.e. implicitly)
   # TODO: keep rawsvg to embed SVGs inline
 
+  # dformat => dev ?
+  # format => fig.ext
+  # name => fig.cap
+  # widtdh => fig.height
+  # height => fig.width
+  # ref => label
+  # mdOpts -x-
+
   if (rawsvg || name != "" || ref != "" || width != "" || height != "" || mdOpts != "") {
     RWay <- FALSE
     # When RWay is FALSE ref, width and hegiht are taken from function arguments and markdown image specification string is used
