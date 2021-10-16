@@ -1,34 +1,39 @@
-auto_name <- 0
+knitr::opts_hooks$set(dia = function(options){
+  if (!identical(options$dia, NULL)) {
+    if (identical(options$dia_hook_off, NULL) || !identical(options$dia_debug, NULL)) {
+      options$results    <- "asis"
+      options$echo       <- FALSE
+    }
+
+    if (identical(options$dia_hook_off, NULL)) {
+      if (identical(options$fig.align, NULL) || (options$fig.align=="default")) {
+        options$fig.align <- "center"
+      }
+    }
+
+    if (!identical(options$out.width, NULL)) {
+      if (knitr::is_html_output() && options$out.width == params$html_default_out_width) {
+        options$out.width  <- NULL
+      }
+    }
+  }
+  options
+})
 
 to_diagram <- function(
-    engine, name = "", data = "", src = "",
-    dformat = "",  format = "",
-    rawsvg = TRUE, downloadOnly = FALSE,
-    ref="", width = "", height = "", mdOpts = "",
-    service="Kroki"
+    data = "", src = "",
+    dformat = "", rawsvg = TRUE,
+    downloadOnly = FALSE, downloadName = "",
+    service="Kroki", serviceUrl="http://kroki:8000",
+    engine=NULL
     ) {
 
   ##############################################################################
   # Renders diagram from textual description and inserts it into document.
-  # Diagram is inserted with knitr::include_graphics or by inserting markdown
-  # image specification string, depending on arguments.
+  # Diagram is inserted with knitr::include_graphics
+  # or as raw svg for HTML output (raw svg can be turned off via arguments).
   #
-  # If knitr::include_graphics is used then caption, refrence label, width,
-  # height etc. should be specified via R chunk options,
-  # see https://bookdown.org/yihui/rmarkdown/r-code.html for details
   ####                                                                         #
-  # engine        - Diagram rendering engine. Specify one of supported engines
-  #                 (see Kroki for engines list)
-  #                 Special value `from_src` for outer files SHOULD be used
-  #                 to get engine from source file itself in case
-  #                 if recomendations from `docs_src/diagrams/README.md`
-  #                 are satisfied.
-  # name          - Caption for diagram. Also would be used as name for
-  #                 downloaded file if `src` argument is empty string.
-  #                 If omitted then filename would be generated automatically or
-  #                 source file path would be used for name.
-  #                 Should be ommited in case if it's intened to insert image
-  #                 with knitr::include_graphics
   # data          - Diagram description in text form (should be compatible with
   #                 rendering engine).
   #                 Ignored if value for `src` is sepcified.
@@ -39,93 +44,76 @@ to_diagram <- function(
   #                 See https://kroki.io/#support for details.
   #                 `svg` would be used by default if value is empty string.
   #                 Sometimes SVG conversion to PDF/PNG not works good on client
-  #                 side. In that case it's suggested to use PNG.
+  #                 side (default). In that case it's suggested to use PNG.
   #                 Take a NOTE: not all Kroki services provide diagrams
   #                 in PNG format.
-  # format        - Explicitly set client side conversion for data downloaded in
-  #                 SVG format.
-  #                 By default (if value is empty string):
-  #                 * SVG is used for HTML output (i.e. no conversion),
-  #                 * PDF for PDF output,
-  #                 * PNG for anything else (MS Word, MS PPT).
-  #                 Use this option in cases if default conversion produces
-  #                 corrupted result.
   # rawsvg        - Option to insert SVG graphics as code right into HTML.
   #                 This way text on diagrams is searchable.
   #                 Enabled by default.
-  #                 Only aplicable for HTML output and only if `dformat`
-  #                 and `format` args are "SVG".
-  #                 If rawsvg is used (default) then additional options like
-  #                 ref/width/height should be specified via arguments,
-  #                 not via R chunk options.
+  #                 Aplicable only for HTML output and only if `dformat`
+  #                 is "SVG" or empty string.
+  # downloadName  - File name (part before extension) for local diagram's files.
   # downloadOnly  - Only generate and download diagram, don't insert into doc.
   #                 Use for custom diagram embedding later in the doc.
-  #                 All the necessary conversions
-  #                 Result would be in `docs_src/generated` dir with name and
-  #                 extension as defined by args `name` and `format`.
-  # service       - Renderning service (now it's sonly "Kroki")
-
-  ##############################################################################
-  # Additional Options for markdown specification string
-  # If any of this arguments is specified then markdown string is used
-  # (like this - ![Alt Text](image_path){...options...})
-  ####
-  # ref           - Reference label  (alphanumeric)
-  # width         - Width for image  (as per markdown spec)
-  # height        - Height for image (as per markdown spec)
-  # mdOpts        - More options to markdown image tag
-  #                 (see https://pandoc.org/MANUAL.html#images)
+  #                 All the necessary format conversions will be completed.
+  #                 Result would be in `docs_src/generated` dir.
+  #                 If `downloadName` is specified then it would be used for
+  #                 file name, otherwise label would be used if diagram is
+  #                 specified via data, otherwise file name would be generated
+  #                 from `src` path.
+  #                 File extension would depend on `dformat` argument and on
+  #                 `fix.ext` options for R chunk
+  # service       - Rendering service (now it's sonly "Kroki")
+  # serviceUrl    - Rendering service base url
+  # engine        - Diagram rendering engine. Specify one of supported engines
+  #                 (see Kroki for engines list)
+  #                 Special value `from_src` for outer files SHOULD be used
+  #                 to get engine from source file itself in case
+  #                 if recomendations from `docs_src/diagrams/README.md`
+  #                 are satisfied.
+  #                 If ommitted then `dia` chunk option is treated as `engine`
 
   ##############################################################################
   # Implementation
   ####
 
-  # TODO: use knitr:opts_current$get() to remove redundant args
-  # TODO: use knitr:opts_chunk$set()   to set necessary chunk options from function (i.e. implicitly)
-  # TODO: keep rawsvg to embed SVGs inline
-
-  # dformat => dev ?
-  # format => fig.ext
-  # name => fig.cap
-  # widtdh => fig.height
-  # height => fig.width
-  # ref => label
-  # mdOpts -x-
-
-  if (rawsvg || name != "" || ref != "" || width != "" || height != "" || mdOpts != "") {
-    RWay <- FALSE
-    # When RWay is FALSE ref, width and hegiht are taken from function arguments and markdown image specification string is used
+  if (!identical(knitr::opts_current$get("dia_debug"), NULL)) {
+    DEBUG <- TRUE
   } else {
-    RWay <- TRUE
-    # When RWay is TRUE  it means that ref, width and height are specified via R chunk options and knitr::include_graphics is used
-    # to insert graphics. This provides more options image placement tuning via additional R chunk options
-    # (see https://bookdown.org/yihui/rmarkdown/r-code.html#figures)
-    # but this way SVG graphics can't be placed as raw SVG code into HTML
+    DEBUG <- FALSE
+  }
+
+  if (DEBUG) {
+    str(knitr::opts_current$get())
+  }
+
+  # Common options
+  ref     <- knitr::opts_current$get("label")
+
+  format  <- knitr::opts_current$get("fig.ext")
+
+  if (identical(engine, NULL)) {
+    engine  <- knitr::opts_current$get("dia")
   }
 
   # File name for downloaded daigaram
-  if (src != "") {
+  if (downloadName != "") {
+    fname <- downloadName
+  } else if (src != "") {
     # If source file is specified then it's path would be used for downloaded file name
-    fname <-  gsub("[./]", "-", gsub("[.]+/", "", src, perl = TRUE))
+    fname <-  gsub("[./: ]", "-", gsub("[.]+/", "", src, perl = TRUE))
   } else {
-    # If diagram is generated from string
-    if (name == "") {
-      # Generate file name automatically if name is omitted
-      auto_name <- auto_name + 1
-      fname <- paste("_fig_",auto_name,sep="")
-    } else {
-      # Otherwise use diagram name for file name
-      fname <- name # TODO: substitute prohibited chars like this: `gsub(" ", "-", name, fixed = TRUE)`
-    }
+    # Otherwise use ref for file name
+    fname <-  gsub("[./: ]", "-", ref, perl = TRUE)
   }
 
   # Select download and output formats
   if (dformat == "") {
-    dformat <- "svg"      # If Kroki format is not specified - svg would be used
+    dformat <- "svg"      # If format is not specified - svg would be used
   }
 
   if (dformat == "svg") { # If download format is SVG then conversion for output format may be required
-    if (format == "") {   # If output format is not specified - use defaults
+    if (identical(format, NULL)) { # If output format is not specified - use defaults
       if (knitr::is_latex_output()) {
         format <- "pdf"   # PDF for PDF
       } else if (knitr::is_html_output()) {
@@ -147,6 +135,44 @@ to_diagram <- function(
     rawsvg <- FALSE
   }
 
+  # Raw SVG only options
+  if (rawsvg) {
+    caption <- knitr::opts_current$get("fig.cap")
+    width   <- knitr::opts_current$get("out.width")
+    height  <- knitr::opts_current$get("out.height")
+    align   <- knitr::opts_current$get("fig.align")
+    auto_fit_width  <- knitr::opts_current$get("auto_fit_width")
+    auto_fit_height <- knitr::opts_current$get("auto_fit_height")
+
+    if (identical(caption, NULL)) {
+      caption <- ""
+    }
+
+    if (identical(width, NULL)) {
+      width <- ""
+    }
+
+    if (identical(height, NULL)) {
+      height <- ""
+    }
+
+    if (identical(align, NULL)) {
+      align <- "center"
+    }
+
+    if (align == "default") {
+      align <- "center"
+    }
+
+    if (identical(auto_fit_width, NULL)) {
+      auto_fit_width  <- params$dia_auto_fit_width
+    }
+
+    if (identical(auto_fit_height, NULL)) {
+      auto_fit_height <- params$dia_auto_fit_height
+    }
+  }
+
   # Render diagram
   if (service == "Kroki") {
     # by Kroki
@@ -155,40 +181,36 @@ to_diagram <- function(
       # Options for kroki request
       if (src == "") {
         # Send string
-        data_mode  <- "--data-raw"
-        data_value <- paste("\'",data,"\'", sep="")
+        data_mode  <- " --data-raw"
+        data_value <- paste(" \'",data,"\'", sep="")
       } else if (engine != "from_src") {
         # Send whole source file
-        data_mode  <- "--data-binary"
-        data_value <- paste("\'@",src,"\'", sep="")
+        data_mode  <- "  --data-binary"
+        data_value <- paste(" \'@",src,"\'", sep="")
       } else {
         # Extracted diagram description from source file (for engine='from_src')
-        data_mode  <- "--data-binary"
-        data_value <- "@-"
+        data_mode  <- " --data-binary"
+        data_value <- " @-"
       }
 
       if (engine != "from_src" || src == "") {
-        # system2 is used if data is string or whole file. This way (system2) it's safe to pass raw string data
-        system2("curl", c(
-        paste("http://kroki:8000/",engine,"/",dformat, sep=""),             # Request to server
-        "-o", paste("'generated/",fname,".",dformat,"'", sep=""),           # Output path, downloaded data format
-        data_mode,                                                          # Data mode (raw/binary)
-        data_value                                                          # Data for POST request (raw string data / whole file path)
-        ),
-        stdout=NULL, stderr=NULL)
+        pipe    <- ""
+        sengine <- engine
       } else {
-        # system is used if data is extracted from source file since pipe required here
-        system(
-                paste("sed -n '/```\\sdiagram-/,/```/{/```\\sdiagram-/b;/```/b;p}' '",src,"'"  # Get diagram data from source file
-                , " | curl http://kroki:8000/"                              # Request to server
-                , "`cat '",src,"' | grep -oP '\\`\\`\\` diagram-\\K.*'`"    # Get diagram type (aka engine) from source file
-                , "/",dformat                                               # Downloaded data format
-                , " -o 'generated/",fname,".",dformat,"'"                   # Output path
-                , " --data-binary @-"                                       # Use piped data in POST request
-                , sep="")
-                , ignore.stdout=TRUE, ignore.stderr=TRUE
-        )
+        # Extract diagram data from source file
+        pipe    <- paste("sed -n '/```\\sdiagram-/,/```/{/```\\sdiagram-/b;/```/b;p}' '",src,"' | ", sep="")
+        # Extract diagram type (aka engine) from source file
+        sengine <- paste("`cat '",src,"' | grep -oP '\\`\\`\\` diagram-\\K.*'`", sep="")
       }
+      system(
+              paste(pipe                                        # Input data for `from_src` case
+              , "curl ", serviceUrl, "/", sengine, "/",dformat  # Request to server
+              , " -o 'generated/",fname,".",dformat,"'"         # Output path
+              , data_mode
+              , data_value
+              , sep="")
+              , ignore.stdout=TRUE, ignore.stderr=TRUE
+      )
     }
   }
 
@@ -201,50 +223,41 @@ to_diagram <- function(
       )
   }
 
+  # Insert rendered diagram
   if (!downloadOnly) {
-    # Insert rendered diagram
     if (!rawsvg) {
-      # As picture
-      if (RWay == FALSE) {
-        # in a markdown way
-        if (ref!="" || width!="" || height!="" || mdOpts !="") {
-          opts <- paste(
-            "{",
-            if (ref=="")       "" else paste("#",ref,sep=""),
-            if (width=="")     "" else paste("width=",width,sep=""),
-            if (height=="")    "" else paste("height=",height,sep=""),
-            mdOpts,
-            "}")
-        } else {
-          opts <- ""
-        }
-        cat(paste("![", name, "](generated/",fname,".",format,")",opts, sep=""))
-      } else {
-        # in a R way
-        knitr::include_graphics(paste("generated/",fname,".",format, sep=""))
-      }
+      # As Image
+      knitr::include_graphics(paste("generated/",fname,".",format, sep=""))
     } else {
       # Raw SVG for HTML
-
-      # Insert SVG data
       cat("\n\n")
+      cat(paste('<div align="',align,'">', sep=""))
       cat(system2("python3", c(
         "../_resizeSvg.py",
-        paste("'generated/",fname,".",format,"'", sep=""), # Input file
-        "-",                                          # Output to stdout
-        paste('"',width,'"', sep=""),                 # Required width
-        paste('"',height,'"', sep="")                 # Required height
+        paste("'generated/",fname,".",format,"'", sep=""),  # Input file
+        "-",                                                # Output to stdout
+        paste('"',width, '"', sep=""),           # Required width
+        paste('"',height,'"', sep=""),           # Required height
+        paste('"',auto_fit_width, '"', sep=""),  # If width is not specified - don't exceed this value
+        paste('"',auto_fit_height,'"', sep="")   # If height is not specified - don't exceed this value
         ), stdout=TRUE, stderr=NULL), sep="")
+      cat('</div>')
 
-      # Add a caption
-      if (ref!="") {
-        opts <- paste("{","#",ref," .caption}",sep="")
-      } else {
-        opts <- paste("{#fig:",gsub(" ", "-", name, fixed = TRUE)," .caption}",sep="")
+      # Add a caption and reference
+      if (caption != "") {
+        if (ref!="") {
+          opts <- paste("{","#",ref," .caption}",sep="")
+        } else {
+          opts <- paste("{#fig:",gsub(" ", "-", caption, fixed = TRUE)," .caption}",sep="")
+        }
+
+        # Caption and Link to rendered diagram so it can be saved by user
+        cat(paste('<div align="',align,'">', sep=""))
+        cat(paste("\n\n[", caption, "](","generated/",fname,".",format,")",opts, sep=""))
+        cat('</div>')
       }
 
-      # Caption and Link to rendered diagram so it can be saved by user
-      cat(paste("\n\n[", name, "](","generated/",fname,".",format,")",opts,"\n\n", sep=""))
+      cat("\n\n")
     }
   }
 }

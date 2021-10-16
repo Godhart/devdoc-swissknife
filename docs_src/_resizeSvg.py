@@ -4,7 +4,15 @@ import xml.dom.minidom as DOM
 import re
 
 
-def resizeSVG(svg, width, height):
+DBG_PRINT = False
+
+
+def dprint(*arg, **argv):
+    if DBG_PRINT:
+        print(*arg, **argv)
+
+
+def resizeSVG(svg, width, height, auto_fit_width, auto_fit_height):
     resize = width != "" or height != ""
 
     if resize:
@@ -35,6 +43,12 @@ def resizeSVG(svg, width, height):
         svg.setAttribute("height", height)
         svg_style += "height:" + str(height) + ";"
 
+    if auto_fit_width != "":
+        svg_style += "max-width:" + str(auto_fit_width) + ";"
+
+    if auto_fit_height != "":
+        svg_style += "max-height:" + str(auto_fit_height) + ";"
+
     svg.setAttribute("style", svg_style)
     svg.setAttribute("standalone", "yes")
 
@@ -57,20 +71,34 @@ def setDoctype(document, doctype):
 
 
 if __name__ == "__main__":
-    width = "100%"
+    width = ""
     height = ""
+    auto_fit_width = ""
+    auto_fit_height = ""
 
-    v = 3
+    dprint("\n\n```\n"+" ".join(["'"+v+"'" for v in sys.argv])+"\n```\n\n")
+
+    if len(sys.argv) < 3:
+        print("""```
+Usage: python3 _resizeSvg.py <input> <output> [width] [height] [auto_fit_width] [auto_fit_height]
+```""")
+        exit(0)
 
     if len(sys.argv) > 3:
         width = sys.argv[3]
     if len(sys.argv) > 4:
         height = sys.argv[4]
+    if len(sys.argv) > 5:
+        auto_fit_width = sys.argv[5]
+    if len(sys.argv) > 6:
+        auto_fit_height = sys.argv[6]
 
     svg_doc = DOM.parse(sys.argv[1])
     svg = svg_doc.getElementsByTagName("svg")[0]
 
-    resizeSVG(svg, width, height)
+    dprint("\n\n`resizeSVG '"+width+"' '"+height+"' '"+auto_fit_width+"' '"+auto_fit_height+"'`\n\n")
+
+    resizeSVG(svg, width, height, auto_fit_width, auto_fit_height)
 
     if sys.argv[2] == "-":
         print(svg_doc.toxml())
