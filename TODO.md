@@ -7,4 +7,3 @@ other formats support
 Cyrillic issues
 search issues
 string interpolation for diagrams from Rmd
-autoscale large diagrams
