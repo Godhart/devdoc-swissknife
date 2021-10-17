@@ -17,7 +17,7 @@ To use this project as a start point for generating your own documentation do th
   * Replace following keywords
   `<Author Name>`, `<author>`, `<repo>`, `<Document Title>`, `Document_Title`, `<Document Description>`, doc-<subject>
   within files in your new folder with actual values.
-  Don't forget also to adjust `Document_Title` in the `.gitignore` of new folder, as it protects from build garbage.
+  Also don't forget to adjust `Document_Title` in the `.gitignore` of new folder, as it protects from build garbage.
 
   * If you don't want to see devdoc-swissknife documentation in your repo:
 
