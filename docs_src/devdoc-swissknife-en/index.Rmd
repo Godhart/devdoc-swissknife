@@ -10,9 +10,13 @@ classoption:
  - openany
 #  - final
 params:
+  ########################################################
+  # Params for `to_diagram` function and `dia` option hook
+  ####
   html_default_out_width: 672 # this width should correspond to the one that is set with your HTML output
   dia_auto_fit_width: 84%     # 672px for width 800px
   dia_auto_fit_height: 800px
+  ####
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
