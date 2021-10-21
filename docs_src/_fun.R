@@ -31,7 +31,7 @@ to_diagram <- function(
   ##############################################################################
   # Renders diagram from textual description and inserts it into document.
   # Diagram is inserted with knitr::include_graphics
-  # or as raw svg for HTML output (raw svg can be turned off via arguments).
+  # or as raw SVG code for HTML output (raw svg can be turned off via arguments)
   #
   ####                                                                         #
   # data          - Diagram description in text form (should be compatible with
@@ -44,12 +44,13 @@ to_diagram <- function(
   #                 See https://kroki.io/#support for details.
   #                 `svg` would be used by default if value is empty string.
   #                 Sometimes SVG conversion to PDF/PNG not works good on client
-  #                 side (default). In that case it's suggested to use PNG.
+  #                 side (default). In that case it's suggested to use PNG or PDF.
   #                 Take a NOTE: not all Kroki services provide diagrams
-  #                 in PNG format.
-  # rawsvg        - Option to insert SVG graphics as code right into HTML.
+  #                 in PNG / PDF format.
+  # rawsvg        - Option to insert SVG as code right into HTML.
   #                 This way text on diagrams is searchable.
-  #                 Enabled by default.
+  #                 Enabled (TRUE) by default.
+  #                 Set to FALSE to embed SVG as image.
   #                 Aplicable only for HTML output and only if `dformat`
   #                 is "SVG" or empty string.
   # downloadName  - File name (part before extension) for local diagram's files.
@@ -71,7 +72,8 @@ to_diagram <- function(
   #                 to get engine from source file itself in case
   #                 if recomendations from `docs_src/diagrams/README.md`
   #                 are satisfied.
-  #                 If ommitted then `dia` chunk option is treated as `engine`
+  #                 If ommitted or NULL then `dia` chunk dia option value
+  #                 is treated as `engine`
 
   ##############################################################################
   # Implementation
