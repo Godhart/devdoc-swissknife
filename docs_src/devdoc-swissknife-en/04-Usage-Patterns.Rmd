@@ -389,7 +389,7 @@ just by adjusting only those values without need to jump over files.
 > By the way - there is already some params defined that are reqruired for `to_diagram` function and related hooks.
 
 Values for parameters can be calculated just in time with R by defining their values using following pattern:
-`"``r <R expressions>``"`, replacing `<R expressions>` with your R code.
+`` `r knitr::inline_expr("<R expressions>")` ``, replacing `<R expressions>` with your R code.
 
 Parameters definition example:
 
@@ -399,9 +399,9 @@ params:
   # Static value:
   background: "#FFFFFF"
   # Calculated value:
-  current_date: "`r Sys.Date()`"
+  current_date: `r "\U0060"`r Sys.Date()`r "\U0060"`
   # Output format depended value:
-  fig_ext: "`if (knitr::is_latex_output()) 'png' else NULL`"
+  fig_ext: `r "\U0060"`r if (knitr::is_latex_output()) 'png' else null`r "\U0060"`
 ```
 
 Parameters usage example:
