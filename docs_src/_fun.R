@@ -63,16 +63,19 @@ to_diagram <- function(
   #                 specified via data, otherwise file name would be generated
   #                 from `src` path.
   #                 File extension would depend on `dformat` argument and on
-  #                 `fix.ext` options for R chunk
+  #                 `fig.ext` options for R chunk
   # service       - Rendering service (now it's sonly "Kroki")
-  # serviceUrl    - Rendering service base url
+  # serviceUrl    - Rendering service base url.
+  #                 This is starting part of url for service access.
+  #                 Default is path `http://kroki:8000` to local Kroki
+  #                 instance that is started with `make_doc.sh`
   # engine        - Diagram rendering engine. Specify one of supported engines
   #                 (see Kroki for engines list)
   #                 Special value `from_src` for outer files SHOULD be used
   #                 to get engine from source file itself in case
   #                 if recomendations from `docs_src/diagrams/README.md`
   #                 are satisfied.
-  #                 If ommitted or NULL then `dia` chunk dia option value
+  #                 If ommitted or NULL then value of R chunk option named `dia`
   #                 is treated as `engine`
 
   ##############################################################################
