@@ -1,10 +1,10 @@
 # Simple diagrams examples {#examples}
 
-Since this project is focused on embedding diagrams textual descriptions into R Markdown,
+Since this project is focused on embedding diagrams textual descriptions into **R Markdown**,
 let's start with few examples just to illustrate a principle.
 
-> BTW: there is a lot of drawings types that you can get from R Markdown alone, by using R packages
-> or Python's matplot lib for example. You may want to check this out too [TODO: references](TODO).
+> BTW: there is a lot of drawings types that you can get from **R Markdown** alone, by using **R** packages
+> or Python's matplot lib for example. You may want to check this out too<!-- [TODO: references](TODO) -->.
 
 ### Example with inline diagram description {- #examples-inline}
 
@@ -25,6 +25,8 @@ This example shows how to embed diagrams, describing them right in the `.Rmd` fi
 ### Example with diagram data from file {- #examples-fromFile}
 
 This example shows how to embed diagrams with data from outer files.
+
+<!-- TODO: use tidy for code blocks -->
 
 \small
 

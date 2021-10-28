@@ -42,13 +42,13 @@ source("../_fun.R", local = knitr::knit_global())
 # Preface {-}
 
 This is a demo project for development documentation generation with
-[R Markdown](https://rmarkdown.rstudio.com/) and [Kroki](https://kroki.io/).
+[**R Markdown**](https://rmarkdown.rstudio.com/) and [**Kroki**](https://kroki.io/).
 
 All the things described here you could do without that project, but I've tried to stich
 those components together so you'll be able to concentrate on content rather than process.
 
 This approach allows you to create reproducible documentation in form of PDF, presentations, gitbook
-and some other HTML formats from simple markdown-like files (Pandoc flavor) with extra R chunks and textual diagrams description.
+and some other HTML formats from simple markdown-like files (Pandoc flavor) with extra **R chunks** and textual diagrams description.
 
 The goal of this project is to describe documentation via text files as much as possible, even graphic diagrams,
 and make it easy to use without overcomplication.
@@ -60,7 +60,7 @@ Also most often it's faster to create and **edit** diagrams as text, do things l
 Since the diagram's textual description often is more a model than just graphics, you don't have to track existing objects
 relations when just placement is changed or objects added (until you rename objects) which makes your workflow less error-prone.
 
-Embedding textually described diagrams into docuement is actual focus of this porject. The rest you would be able to do with
+Embedding textually described diagrams into docuement is the actual focus of this porject. The rest you would be able to do with
 R Markdown itself as it is a powerful and customizable tool, so you can fit docs to your needs. It would take efforts on start,
 to make things neat but it would repay you in the end.
 
@@ -93,21 +93,30 @@ For more complicated use-cases - checkout docs on links below.
 \
 \
 
-**Following links would be helpful to you:**
+
+### Helpful links {-}
+
+#### Diagrams {-}
 
 [List of supported diagrams renderers - https://kroki.io/#support](https://kroki.io/#support)
 
 [A few more diagrams examples - https://kroki.io/examples.html](https://kroki.io/examples.html)
 
+#### R Markdown documentation {-}
+
 [R Markdown: The Definitive Guide - https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)\
-created by one of R Markdown authors and generated with R Markdown
+created by one of **R Markdown** authors and generated with **R Markdown**
 
 [R Markdown: Cookbook - https://bookdown.org/yihui/rmarkdown-cookbook/](https://bookdown.org/yihui/rmarkdown-cookbook/)
 
 [R Markdown Site https://rmarkdown.rstudio.com/lesson-1.html](https://rmarkdown.rstudio.com/lesson-1.html)
-(focused on R Studio)
+(focused on **R Studio**)
 
-[A nice R Markdown tutorial - https://rmd4sci.njtierney.com/](https://rmd4sci.njtierney.com/)
+[A nice **R Markdown** tutorial - https://rmd4sci.njtierney.com/](https://rmd4sci.njtierney.com/)
+
+#### Get quick into R Markdown {-}
+
+<!-- TODO: Link to R Markdown Anatomy -->
 
 [R Markdown short reference - https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
 to get familiar with most necessary things
@@ -116,4 +125,8 @@ to get familiar with most necessary things
 
 [R Markdown cheatsheet - https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf)
 
-[Keenwrite - edit and preview R Markdown Live!](https://github.com/DaveJarvis/keenwrite)
+#### Editors with focus on diagrams {-}
+
+[**Keenwrite** - edit and preview **R Markdown** Live!](https://github.com/DaveJarvis/keenwrite)
+
+<!-- TODO: [VS Code with plugins](https://) -->

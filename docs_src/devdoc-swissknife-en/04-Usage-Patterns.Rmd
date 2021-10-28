@@ -31,7 +31,7 @@ where:
 * `<engine>` is a name for a rendering engine, see [table](#reference-engines) for allowed values and corresponding engines
 * `<drawing name>` is a caption for drawing, may be omitted.
 * `<diagram data>` is a textual diagram description in a format that is compatible with a rendering engine\
-*NOTE: if there are single quotes in the <diagram data> then you should escape them with `\\` symbol*
+*NOTE: if there are single quotes in the `<diagram data>` then you should escape them with `\` symbol*
 *or surround `<diagram data>` with double-quotes (`"`) instead.*
 
 
@@ -68,11 +68,10 @@ where:
 ### Diagrams from Rmd outer file {#usage-embed-rmd}
 
 This is a proposed way to describe diagrams in outer files. Diagram data should be in `.Rmd` file
-like described in `docs_src/diagrams/README.md` [TODO](TODO).
+and described as specified in `docs_src/diagrams/README.md` [TODO](TODO).
 
 This way you'll be able to use [Keenwrite](https://github.com/DaveJarvis/keenwrite) to preview diagrams live
-while editing, which is very handy. Also, this editor provides a way to use variables in the diagrams and
-I'm intended to support this feature too.
+while editing, which is very handy.
 
 Besides that, you can supply a diagram with additional info, capture decisions that were taken, add TODOs, versions info, etc.
 along with diagram's data in the same file.
@@ -148,7 +147,7 @@ By default it's:
 
 > Take a NOTE: For postprocessing you can use R, Python, whatever can be called from BASH and many more
 > (depends on your docker image).\
-> [More on R chunks: https://bookdown.org/yihui/rmarkdown/r-code.html](https://bookdown.org/yihui/rmarkdown/r-code.html),
+> [More on **R chunks**: https://bookdown.org/yihui/rmarkdown/r-code.html](https://bookdown.org/yihui/rmarkdown/r-code.html),
 > [this](https://yihui.org/knitr/options/) and [this](https://yihui.org/knitr/hooks/)\
 > [More on other formats: https://bookdown.org/yihui/rmarkdown/language-engines.html](https://bookdown.org/yihui/rmarkdown/language-engines.html)
 
@@ -159,27 +158,27 @@ By default it's:
 By default diagrams are rendered as SVG for HTML output. This format is supported by all rendering engines in Kroki,
 and produces great results for HTML.
 
-But there is two ways how it's embedded into HTML. It's defined with additinoal `rawsvg` argument for `to_diagram` function.
+But there is two ways how it's embedded into HTML. It's defined with additional `rawsvg` argument for [to_diagram](#usage-spec) function.
 
 
 ### Raw SVG {#usage-svg-raw}
 
-By default SVG content is inserted into right into output HTML file and this is what `Raw` is.
+By default SVG content is inserted as a code right into output HTML file and this is what `Raw` is.
 
-Specify optional `rawsvg` argument as `TRUE` for `to_diagram` function or just ommit it.
+Specify optional `rawsvg` argument as `TRUE` for [to_diagram](#usage-spec) function or just ommit it.
 
 PROs:
 
-  * text in SVG becomes searchable and selectable.
+  * Text in SVG becomes searchable and selectable.
 
 CONs:
 
-  * diagrams aren't treated as images anymore and you can't use 'save as' by clicking on them.\
-  But caption for diagram is reference to a SVG file in this case, so you are still able to save diagrams as files
-  * you'll have to find your way to post process it if necessary\
-  *(It's still possible, but I can't offer 'ready to use' recipe yet, and as always there few ways to do it)*
-  * lack of [customizations](#usage-rChunks) (only *width*, *height* and *alignment* available)\
-  *(probably it could be workaronded but no recipe yet)*
+  * Diagrams aren't treated as images anymore and you can't use 'save as' by clicking on them.\
+  *But in this case caption for the diagram will be a reference to an SVG file, so you are still able to save diagrams as files*
+  * You'll have to find your way to post process it if necessary\
+  *(It's still possible, but I can't offer 'ready to use' recipe yet, and as always there are few ways to do it)*
+  * Lack of [customizations](#usage-rChunks) (only *width*, *height* and *alignment* available)\
+  *(Probably it could be workarounded but no recipe yet)*
 
 Since (IMO) strong customizations and postprocessing is hardly a case for common development docs,
 RAW svg is used by default.
@@ -190,7 +189,7 @@ RAW svg is used by default.
 Rendered SVG also can be inserted into HTML as a normal image.
 It still looks neat when scaled, but now it's just a picture.
 
-Specify optional `rawsvg` argument as `FALSE` for `to_diagram` function.
+Specify optional `rawsvg` argument as `FALSE` for [to_diagram](#usage-spec) function.
 
 This way you'll be able to apply more customizations and do postprocessing if necessary.
 
@@ -198,20 +197,19 @@ This way you'll be able to apply more customizations and do postprocessing if ne
 
 ## Customizations {#usage-customize}
 
-Some times you'll want to or need to specify a customizations like *width* or *hight* of diagrams
-when default's don't work fine or just because of your taste or requirements.
-Also some times you'll have to use non-default *image format* for the same reasons.
+Sometimes you'll want to or need to specify a customizations like *width* or *hight* of diagrams
+when defaults don't work fine or just because of your taste or requirements.
+Also sometimes you'll have to use non-default *image format* for the same reasons.
 Or you may want to go deeper with customizations and define *alignment*
-and other things like *post processing*, *multiple images* in a row.
+and other things like *post processing*, *multiple images* in a row, etc.
 
-> Probably you won't want to use customizations at all when you in the beginning
-> or in hurry to capture your ideas,
-> but if you need some - start from here.
+> Probably you wouldn't want to use customizations at all when you in the beginning
+> or in hurry to capture your ideas, but if you need some - start from here.
 
-Most of customizations are specified via [R chunk](#usage-customize-rChunks) options.
+Most of customizations are specified via [**R chunk**](#usage-customize-rChunks) options.
 
-If it's required to download rendered diagram in format other than SVG, use [`dformat`](#usage-format-renderer)
-argument for `to_diagram` function.
+In case if it's required to download rendered diagram in format other than SVG [use](#usage-format-renderer) `dformat`
+argument for [to_diagram](#usage-spec) function.
 
 Also for PDF production you'll want for sure things like page break, page orientation specification etc.
 In this case you will need to add some [latex commands](#usage-latex) into document.
@@ -219,14 +217,14 @@ In this case you will need to add some [latex commands](#usage-latex) into docum
 
 ### R Chunks {#usage-customize-rChunks}
 
-[R Chunks](https://bookdown.org/yihui/rmarkdown/r-code.html) is a way to embed graphics data in R Markdown's.
+[**R Chunks**](https://bookdown.org/yihui/rmarkdown/r-code.html) is a way to embed graphics data in **R Markdown**.
 
-> Other way is to use markdown syntax like `![<alt text>](<path to image>){<options>}`,
+> Another way is to use markdown syntax like `![<alt text>](<path to image>){<options>}`,
 > but it's not the case since it works for ready to use images only.
 
-Customizations to the way an image is embded are speicifed via R chunk [options](https://bookdown.org/yihui/rmarkdown/r-code.html#figures).
+Customizations to the way an image is embded are speicifed via **R chunk** [options](https://bookdown.org/yihui/rmarkdown/r-code.html#figures).
 
-More info about otions could be found [here](https://yihui.org/knitr/options/)
+More info about options could be found [here](https://yihui.org/knitr/options/)
 and here is a nice [cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
 
 Following options have effect for diagrams:
@@ -238,14 +236,14 @@ Following options have effect for diagrams:
 Following options have no effect for diagrams:
 
 * *fig.width*
-* *fig.heiht*
+* *fig.height*
 * TODO
 
 The other way to customize is to use [hooks](https://yihui.org/knitr/hooks/).
 It's very creative way and all depends on your needs.
 
 Besides spcifying options explicitly for every chunk, you can define default values globally or via named templates,
-use option hooks to automatically set derive one options from another. See more about this in followin sections.
+use option hooks to automatically derive one options from another. See more about this in the following sections.
 
 
 ### Global options {#usage-customize-globalOpts}
@@ -311,9 +309,9 @@ More info could be found [here](https://bookdown.org/yihui/rmarkdown-cookbook/op
 
 ### Options hooks {#usage-customize-optionsHooks}
 
-With options hooks you can define dependencies for chunk options with code in `R`.
+With options hooks you can define dependencies for chunk options with code in **R**.
 
-You can even define hooks for you own options and specify this options for chunks.
+You can even define hooks for your own options and specify this options for chunks.
 For example hook for `dia` option is defined in `_fun.R` and some chunk's options depends on it.
 
 This is done by putting chunk of code with `knitr::opts_hooks$set` function call
@@ -364,8 +362,8 @@ to_diagram(src='...')
 If you are intended to produce documentation in multiple output formats, most probably you'll have to apply different
 customizations for different formats.
 
-This could be easily achived by using R `if ... else ...` pattern (works like ternary operator) when applying values to options,
-or with a few lines R code in complicated cases.
+This could be easily achived by using **R** `if ... else ...` pattern (works like ternary operator) when applying values to options,
+or with a few lines **R** code in complicated cases.
 
 For example:
 
@@ -381,15 +379,15 @@ will set drawing's height to 15 centimeters for output formats other than HTML.
 ### Define parameters {#usage-customize-params}
 
 There is a way to separate actual values for options from code via parameters, that are defined
-in a front-matter part of `index.Rmd`.
+in a front&#8209;matter part of `index.Rmd`.
 
 This way you could tune your output or other aspects of your documentation
-just by adjusting only those values without need to jump over files.
+just by adjusting those values and keep them all in a single place.
 
-> By the way - there is already some params defined that are reqruired for `to_diagram` function and related hooks.
+> By the way - there is already some params defined that are reqruired for [to_diagram](#usage-spec) function and related hooks.
 
-Values for parameters can be calculated just in time with R by defining their values using following pattern:
-`` `r knitr::inline_expr("<R expressions>")` ``, replacing `<R expressions>` with your R code.
+Values for parameters can be calculated just in time with **R** by defining their values using following pattern:
+`` `r knitr::inline_expr("<R expressions>")` ``, replacing `<R expressions>` with your **R** code.
 
 Parameters definition example:
 
@@ -420,16 +418,16 @@ More info can be found [here](https://bookdown.org/yihui/rmarkdown/parameterized
 ### Putting all together {#usage-customize-summary}
 
 To avoid redundant work, and to ease refactoring and tuning following methodology is suggested to use from the start
-to benefit from R Markdown features:
+to benefit from **R Markdown** features:
 
 #. Declare subject specific parameters for your documentation
 
-#. Define global options if necessary, use parameters if need to adjust options
+#. Define global options if necessary, use parameters to adjust options
 
 #. Define all the necessary options templates for your diagrams embedding.
    You could use differnet templates for different output formats and specify their names via params,
-   our you could define universal tempaltes's values dependng on output formats using
-  `if (knitr::is_<html/latex>_otput()) <value1> else <value2>` pattern.
+   or you could define universal templates and tune them via params or
+  use `if (knitr::is_<html/latex>_otput()) <value1> else <value2>` pattern.
 
 #. Use options templates for diagrams code chunks, providing extra options if required
 
@@ -437,19 +435,19 @@ to benefit from R Markdown features:
 
 ## Data format {#usage-format}
 
-By default following flow is used when diagram drawing is embedded into documentation:
+By default following operations are made when diagram drawing is embedded into documentation:
 
-#. diagram drawing is downoaded in `svg` format
-#. if doc is other than HTML then data is converted locally with `rsvg` tool into one of the following:
-  * `pdf` for PDF output
-  * `png` for the rest
+#. Diagram drawing is downoaded in **svg** format
+#. If output format is other than HTML then data is converted locally with **rsvg** tool into one of the following:
+  * **pdf** for PDF output
+  * **png** for the rest
 
-In some circumstances conversion with `rsvg` may have artifacts, and in this case data format can fix the problem.
+In some circumstances conversion with **rsvg** may have artifacts, and in this case data format can fix the problem.
 
 Usualy it's better to set format for downoaded drawing, but not all renderers may support it, so
 you may try to change local side conversion output format.
 
-> NOTE: some rendering engines like `mermaid` or `pikchr` produce only `svg` and only web-browsers shows it right
+> NOTE: some rendering engines like **mermaid** or **pikchr** produce only **svg** and **rsvg** can't handle it right
 
 
 ### Renderer format {#usage-format-renderer}
@@ -463,15 +461,15 @@ to_diagram(... , dformat='<format>')
 
 Possible values for `<format>`:
 
-* `png` - loseless image, can be used in for most output documentation formats
-* `jpeg` - lossy image, can be used in for most output documentation formats
-* `svg` - for HTML output only, but can converted locally to `png`, `jpeg` or `pdf` after downloading
+* `png` - loseless image, can be used for most output documentation formats
+* `jpeg` - lossy image, can be used for most output documentation formats
+* `svg` - for HTML output only, but can be locally converted to **png**, **jpeg** or **pdf** after downloading
 * `pdf` - for PDF output only
 
 
 ### Local conversion {#usage-format-conversion}
 
-This kind of conversion is possible only in case if diagram drawings are rendered and downloaded in `svg` format.
+This kind of conversion is possible only in case if diagram drawings are rendered and downloaded in **svg** format.
 
 ````R
 `r ''````{r <label>, dia='from_src', fig.ext='<format>'}
@@ -481,8 +479,8 @@ This kind of conversion is possible only in case if diagram drawings are rendere
 
 Possible values for `<format>`:
 
-* `png` - loseless image, can be used in for most output documentation formats
-* `jpeg` - lossy image, can be used in for most output documentation formats
+* `png` - loseless image, can be used for most output documentation formats
+* `jpeg` - lossy image, can be used for most output documentation formats
 * `pdf` - for PDF output only
 
 
@@ -493,7 +491,7 @@ PDF document production most probably will require more attention.
 
 Make sure you are satisfied with your latex class for PDF output, to avoid redundant work.
 
-Then you'll want for sure to limit hight for large drawings, see [this](#usage-customize-rChunks-height),
+Then you'll want for sure to [limit hight](#usage-customize-rChunks-height) for large drawings,
 but don't hurry to do this.
 
 It's better to start with splitting the pages and setting necessary layout first.
@@ -501,7 +499,9 @@ It's better to start with splitting the pages and setting necessary layout first
 
 ### Page breaks {#usage-pdf-pageBreak}
 
-To add page break just add the following line into document:
+Every chapter is started from new page.
+
+For additional page breaks just add the following line into document:
 
 ```
 \newpage
@@ -537,14 +537,14 @@ Some other text on a portrait page.
 
 
 
-## Full `to_diagram` function specification {#usage-spec}
+## Full **to_diagram** function specification {#usage-spec}
 
-Function `to_diagram` is defined in `docs_src/_fun.R` file which should be included
-into doc in `index.Rmd` file. More about this is [TODO: devdoc-swissknife anatomy](#anatomy).
+Function **to_diagram** is defined in `docs_src/_fun.R` file which should be included
+into `index.Rmd` file. More about this is [TODO: devdoc-swissknife anatomy](#anatomy).
 
-Function renders diagram from textual description and inserts it into document.
+This function renders diagram from textual description and inserts it into document.
 Diagram is inserted with `knitr::include_graphics` function
-or as raw SVG code for HTML output (raw svg can be turned off via arguments).
+or as [raw SVG](#usage-svg) code for HTML output (raw svg can be [turned off]((#usage-svg-file) via arguments).
 
 Here is it's definition:
 
@@ -605,7 +605,7 @@ downloadOnly  - Only generate and download diagram, don't insert into doc.
                 specified via data, otherwise file name would be generated
                 from `src` path.
                 File extension would depend on `dformat` argument and on
-                `fix.ext` options for R chunk
+                `fig.ext` options for R chunk
 ```
 
 ```
@@ -613,7 +613,10 @@ service       - Rendering service (now it's sonly "Kroki")
 ```
 
 ```
-serviceUrl    - Rendering service base url
+serviceUrl    - Rendering service base url.
+                This is starting part of url for service access.
+                Default is path `http://kroki:8000` to local Kroki
+                instance that is started with `make_doc.sh`
 ```
 
 ```
@@ -623,6 +626,6 @@ engine        - Diagram rendering engine. Specify one of supported engines
                 to get engine from source file itself in case
                 if recomendations from `docs_src/diagrams/README.md`
                 are satisfied.
-                If ommitted or NULL then `dia` chunk dia option value
+                If ommitted or NULL then value of R chunk option named `dia`
                 is treated as `engine`
 ```

@@ -1,7 +1,7 @@
 # Kroki usage examples {#examples-kroki}
 
 I've omitted some examples from [Kroki](https://kroki.io/examples.html) and left only those
-that most useful in a daily life of most developers (IMHO).
+that are most useful in a daily life of most developers (IMO).
 
 If you check docs for [supported diagrams renderers](https://kroki.io/#support) then you'll find for sure
 a few more interesting usecases.

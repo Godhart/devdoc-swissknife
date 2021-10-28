@@ -1,4 +1,4 @@
-# Other formats
+# Other drawings
 
 ## Already rendered diagrams {#usage-rendered}
 
