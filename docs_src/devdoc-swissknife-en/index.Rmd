@@ -98,35 +98,38 @@ For more complicated use-cases - checkout docs on links below.
 
 #### Diagrams {-}
 
-[List of supported diagrams renderers - https://kroki.io/#support](https://kroki.io/#support)
+[List of supported diagrams renderers](https://kroki.io/#support)
 
-[A few more diagrams examples - https://kroki.io/examples.html](https://kroki.io/examples.html)
+[A few more diagrams examples](https://kroki.io/examples.html)
 
-#### R Markdown documentation {-}
+#### R Markdown {-}
 
-[R Markdown: The Definitive Guide - https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)\
-created by one of **R Markdown** authors and generated with **R Markdown**
+[R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
 
-[R Markdown: Cookbook - https://bookdown.org/yihui/rmarkdown-cookbook/](https://bookdown.org/yihui/rmarkdown-cookbook/)
+[R Markdown: Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
 
-[R Markdown Site https://rmarkdown.rstudio.com/lesson-1.html](https://rmarkdown.rstudio.com/lesson-1.html)
-(focused on **R Studio**)
+[R Markdown Site](https://rmarkdown.rstudio.com/lesson-1.html)
+(focused on usage with **R Studio**)
 
-[A nice **R Markdown** tutorial - https://rmd4sci.njtierney.com/](https://rmd4sci.njtierney.com/)
+[A nice R Markdown tutorial](https://rmd4sci.njtierney.com/)
+
+[R Markdown reference](https://rmarkdown.rstudio.com/docs/reference/index.html)
 
 #### Get quick into R Markdown {-}
 
-<!-- TODO: Link to R Markdown Anatomy -->
+[R Makedown anatomy](https://intro2r.com/r-markdown-anatomy.html)
 
-[R Markdown short reference - https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
+[R Markdown short reference](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf)
 to get familiar with most necessary things
 
-[R Markdown reference - https://rmarkdown.rstudio.com/docs/reference/index.html](https://rmarkdown.rstudio.com/docs/reference/index.html)
-
-[R Markdown cheatsheet - https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf)
+[R Markdown cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf)
 
 #### Editors with focus on diagrams {-}
 
-[**Keenwrite** - edit and preview **R Markdown** Live!](https://github.com/DaveJarvis/keenwrite)
+[**Keenwrite** - edit and preview R Markdown Live!](https://github.com/DaveJarvis/keenwrite)
 
-<!-- TODO: [VS Code with plugins](https://) -->
+[**R Studio**](https://www.rstudio.com/)
+
+<!-- TODO: VS Code with plugins
+https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode
+ -->
