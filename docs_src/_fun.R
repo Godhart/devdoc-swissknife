@@ -24,7 +24,7 @@ to_diagram <- function(
     data = "", src = "",
     dformat = "", rawsvg = TRUE,
     downloadOnly = FALSE, downloadName = "",
-    service="Kroki", serviceUrl="http://kroki:8000",
+    service="Kroki", serviceUrl=NULL,
     engine=NULL
     ) {
 
@@ -36,7 +36,7 @@ to_diagram <- function(
   ####                                                                         #
   # data          - Diagram description in text form (should be compatible with
   #                 rendering engine).
-  #                 Ignored if value for `src` is sepcified.
+  #                 Ignored if value for `src` is specified.
   # src           - Path to outer file with diagram description in text form.
   #                 See `docs_src/diagrams/README.md` for details.
   #                 Should be omitted if `data` argument is to be used.
@@ -51,7 +51,7 @@ to_diagram <- function(
   #                 This way text on diagrams is searchable.
   #                 Enabled (TRUE) by default.
   #                 Set to FALSE to embed SVG as image.
-  #                 Aplicable only for HTML output and only if `dformat`
+  #                 Applicable only for HTML output and only if `dformat`
   #                 is "SVG" or empty string.
   # downloadName  - File name (part before extension) for local diagram's files.
   # downloadOnly  - Only generate and download diagram, don't insert into doc.
@@ -73,9 +73,9 @@ to_diagram <- function(
   #                 (see Kroki for engines list)
   #                 Special value `from_src` for outer files SHOULD be used
   #                 to get engine from source file itself in case
-  #                 if recomendations from `docs_src/diagrams/README.md`
+  #                 if recommendations from `docs_src/diagrams/README.md`
   #                 are satisfied.
-  #                 If ommitted or NULL then value of R chunk option named `dia`
+  #                 If omitted or NULL then value of R chunk option named `dia`
   #                 is treated as `engine`
 
   ##############################################################################
@@ -101,7 +101,11 @@ to_diagram <- function(
     engine  <- knitr::opts_current$get("dia")
   }
 
-  # File name for downloaded daigaram
+  if (identical(serviceUrl, NULL)) {
+    serviceUrl <- "http://127.0.0.1:8081"  # params$services$get(service)
+  }
+
+  # File name for downloaded diagram
   if (downloadName != "") {
     fname <- downloadName
   } else if (src != "") {
@@ -128,10 +132,10 @@ to_diagram <- function(
       }
     }
   } else {                # If download format is other than SVG
-    format <- dformat     # then outuput foumat should be same as download format
+    format <- dformat     # then output format should be same as download format
   }
 
-  # If output format is not svg then rawsvg is imposible
+  # If output format is not svg then rawsvg is impossible
   if ( format != "svg") {
     rawsvg <- FALSE
   }
@@ -219,8 +223,12 @@ to_diagram <- function(
     }
   }
 
+  # TODO: arbitrary renderer
+
+
   # Convert SVG to necessary format
   if (dformat == "svg" && format != "svg" && !file.exists(paste("generated/",fname,".",format, sep=""))) {
+    # TODO: use https://pypi.org/project/html2image/
       system(
           paste("rsvg-convert -f ",format," -o 'generated/",fname,".",format,"' 'generated/",fname,".svg'"
           , sep="")
