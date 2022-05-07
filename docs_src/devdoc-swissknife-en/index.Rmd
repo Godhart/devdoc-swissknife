@@ -108,6 +108,8 @@ For more complicated use-cases - checkout docs on links below.
 
 [R Markdown: Cookbook](https://bookdown.org/yihui/rmarkdown-cookbook/)
 
+[Bookdown: Authoring Books and Technical Docuements with R Markdown](https://bookdown.org/yihui/bookdown/)
+
 [R Markdown Site](https://rmarkdown.rstudio.com/lesson-1.html)
 (focused on usage with **R Studio**)
 
