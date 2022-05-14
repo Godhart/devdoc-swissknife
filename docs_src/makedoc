@@ -76,3 +76,7 @@ all: clean-mess clean-published html pdf
 pure: clean-all all
 
 refresh: pure clean-all
+
+.PHONY: show-locale
+show-locale:
+	locale
