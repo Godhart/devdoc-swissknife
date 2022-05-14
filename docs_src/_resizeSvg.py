@@ -1,5 +1,5 @@
 import sys
-import xml.etree.ElementTree as ET
+import os
 import xml.dom.minidom as DOM
 import re
 
@@ -18,7 +18,7 @@ def resizeSVG(svg, width, height, auto_fit_width, auto_fit_height):
     if resize:
         svg.removeAttribute("width")
         svg.removeAttribute("height")
-        svg.setAttribute("prserveAspectRatio", "none")
+        svg.setAttribute("preserveAspectRatio", "none")
 
     if svg.hasAttribute("style"):
         svg_style = svg.getAttribute("style")
@@ -93,17 +93,47 @@ Usage: python3 _resizeSvg.py <input> <output> [width] [height] [auto_fit_width] 
     if len(sys.argv) > 6:
         auto_fit_height = sys.argv[6]
 
-    svg_doc = DOM.parse(sys.argv[1])
-    svg = svg_doc.getElementsByTagName("svg")[0]
+    input_path = sys.argv[1]
+    output_path = sys.argv[2]
+    err_path = input_path+".err"
+    err_msg = None
+    result = "<svg><p>Something went wrong</p></svg>"
 
-    dprint("\n\n`resizeSVG '"+width+"' '"+height+"' '"+auto_fit_width+"' '"+auto_fit_height+"'`\n\n")
+    if os.path.exists(err_path):
+        os.unlink(err_path)
+    try:
+        svg_doc = DOM.parse(input_path)
+    except Exception as e:
+        svg_doc = None
+        err_msg = f"Failed to open input file due to exception: {e}"
+        try:
+            # Copy input data into error message as it may contain info about error
+            with open(input_path, "r") as f:
+                err_msg += "\n\n" + f.read()
+        except:
+            pass
 
-    resizeSVG(svg, width, height, auto_fit_width, auto_fit_height)
+    if svg_doc is not None:
+        try:
+            svg = svg_doc.getElementsByTagName("svg")[0]
+            dprint(
+                "\n\n`resizeSVG '" + width + "' '" + height + "' '" + auto_fit_width + "' '" + auto_fit_height + "'`\n\n")
+            resizeSVG(svg, width, height, auto_fit_width, auto_fit_height)
+            result = svg.toxml()
+        except Exception as e:
+            err_msg = f"SVG resize failed due to exception: {e}"
 
-    if sys.argv[2] == "-":
-        print(svg_doc.toxml())
-    else:
-        with open(sys.argv[2], "w") as f:
-            f.write(svg_doc.toxml())
+    if err_msg is not None:
+        with open(err_path, "w") as f:
+            f.write(err_msg)
+        err_msg_html = err_msg.replace("\n", "<br>")
+        result = f"<svg><p>{err_msg_html}</p><svg>"
+
+    if result is not None:
+        if output_path == "-":
+            print(result)
+        else:
+            with open(output_path, "w") as f:
+                f.write(result)
 
     exit(0)
