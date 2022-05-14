@@ -3,7 +3,7 @@ source("../../_fun.R", local = knitr::knit_global())
 ```
 
 # Single page diagram {#office-draw-singlepage-diagram}
-```{r, libre-draw-singlepage, dia=""}
+```{r, libre-draw-singlepage, dia="draw"}
   to_diagram(src = "libre-draw-singlepage.odg", service = "Office")
 ```
 
