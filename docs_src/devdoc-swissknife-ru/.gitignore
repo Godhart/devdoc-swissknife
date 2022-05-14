@@ -1,4 +1,5 @@
-_book
+.*
+generated/*
 css/style.css
 images/cover.png
 Document_Title.*

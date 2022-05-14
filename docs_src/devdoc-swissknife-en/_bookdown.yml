@@ -3,6 +3,6 @@ book_filename: "Devdoc-Swissknife-EN"
 # NOTE: ALWAYS put book_filename value within double quotes as it's vital for Makefile
 
 repo: https://github.com/Godhart/devdoc-swissknife
-output_dir: _book
+output_dir: .book  # TODO: get it from env
 clean: [packages.bib]
 delete_merged_file: true
