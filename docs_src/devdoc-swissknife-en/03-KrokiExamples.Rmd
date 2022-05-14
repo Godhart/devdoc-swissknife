@@ -4,6 +4,8 @@ source("../_fun.R", local = knitr::knit_global())
 
 # Kroki usage examples {#examples-kroki}
 
+<!-- TODO: tabbed view for HTML output -->
+
 I've omitted some examples from [Kroki](https://kroki.io/examples.html) and left only those
 that are most useful in a daily life of most developers (IMO).
 
@@ -37,6 +39,12 @@ Engine: `c4plantuml`
 ```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
 cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
 ```
+
+<!-- TODO: into tab for HTML output
+```{r echo=FALSE, comment=''}
+  dia_src("../diagrams/examples/c4plantuml-context.Rmd")
+```
+-->
 
 \newpage
 
