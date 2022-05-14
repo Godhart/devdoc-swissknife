@@ -1,4 +1,9 @@
-``` diagram-wavedrom
+```{r, include=FALSE}
+source("../../_fun.R", local = knitr::knit_global())
+```
+
+```{r, wavedrom, grab=TRUE, dia="wavedrom"}
+  to_diagram(paste(grab_start(), '
 { signal: [
   { name: "clk",         wave: "p.....|..." },
   { name: "Data",        wave: "x.345x|=.x", data: ["head", "body", "tail", "data"] },
@@ -6,4 +11,5 @@
   {},
   { name: "Acknowledge", wave: "1.....|01." }
 ]}
+', grab_stop()), force = TRUE)
 ```

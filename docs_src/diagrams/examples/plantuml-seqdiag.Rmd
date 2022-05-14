@@ -1,4 +1,9 @@
-``` diagram-plantuml
+```{r, include=FALSE}
+source("../../_fun.R", local = knitr::knit_global())
+```
+
+```{r, plantuml-seqdiag, grab=TRUE, dia="plantuml"}
+  to_diagram(paste(grab_start(), '
 @startuml
 Alice -> Bob: Authentication Request
 
@@ -23,4 +28,5 @@ else Another type of failure
 
 end
 @enduml
+', grab_stop()), force = TRUE)
 ```

@@ -1,4 +1,10 @@
-``` diagram-plantuml
+```{r, include=FALSE}
+source("../../_fun.R", local = knitr::knit_global())
+```
+
+```{r, plantuml-usecase, grab=TRUE, dia="plantuml"}
+  to_diagram(paste(grab_start(), '
+
 @startuml
 left to right direction
 skinparam packageStyle rectangle
@@ -12,4 +18,5 @@ rectangle checkout {
   (checkout) -- clerk
 }
 @enduml
+', grab_stop()), force = TRUE)
 ```

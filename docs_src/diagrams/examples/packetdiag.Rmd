@@ -1,4 +1,9 @@
-``` diagram-packetdiag
+```{r, include=FALSE}
+source("../../_fun.R", local = knitr::knit_global())
+```
+
+```{r, packetdiag, grab=TRUE, dia="packetdiag"}
+  to_diagram(paste(grab_start(), '
 packetdiag {
   colwidth = 32;
   node_height = 72;
@@ -21,4 +26,5 @@ packetdiag {
   160-191: (Options and Padding);
   192-223: data [colheight = 3];
 }
+', grab_stop()), force = TRUE)
 ```
