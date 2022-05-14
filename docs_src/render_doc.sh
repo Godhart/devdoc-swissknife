@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# TODO: get output dir from env
+# TODO: don't polute sources dir
+# TODO: into make via include
+# TODO: split into stages - clean, make, publish
+
 rm -f \"`cat _bookdown.yml | grep -Po 'book_filename: "\K[^"#]*' | xargs`.Rmd\" &&\
 rm -rf generated &&\
 mkdir generated &&\
