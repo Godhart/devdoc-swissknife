@@ -1,1 +1,3 @@
-# Diagrams reference
+# Diagrams reference {#diagrams-reference}
+
+<!-- TODO: info about diagrams description -->

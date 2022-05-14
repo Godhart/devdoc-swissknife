@@ -38,7 +38,7 @@ cover-image: ../images/cover.png
 source("../_fun.R", local = knitr::knit_global())
 ```
 
-# Preface {-}
+# Preface {- #intro}
 
 This is a demo project for development documentation generation with
 [**R Markdown**](https://rmarkdown.rstudio.com/) and [**Kroki**](https://kroki.io/).
@@ -93,15 +93,15 @@ For more complicated use-cases - checkout docs on links below.
 \
 
 
-### Helpful links {-}
+### Helpful links {- #links}
 
-#### Diagrams {-}
+#### Diagrams {- #links-diagrams}
 
 [List of supported diagrams renderers](https://kroki.io/#support)
 
 [A few more diagrams examples](https://kroki.io/examples.html)
 
-#### R Markdown {-}
+#### R Markdown {- #links-rmarkdown}
 
 [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
 
@@ -116,7 +116,7 @@ For more complicated use-cases - checkout docs on links below.
 
 [R Markdown reference](https://rmarkdown.rstudio.com/docs/reference/index.html)
 
-#### Get quick into R Markdown {-}
+#### Get quick into R Markdown {- #links-rmarkdown-quick}
 
 [R Makedown anatomy](https://intro2r.com/r-markdown-anatomy.html)
 
@@ -125,7 +125,7 @@ to get familiar with most necessary things
 
 [R Markdown cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf)
 
-#### Editors with focus on diagrams {-}
+#### Editors with focus on diagrams {- #links-editors}
 
 [**Keenwrite** - edit and preview R Markdown Live!](https://github.com/DaveJarvis/keenwrite)
 

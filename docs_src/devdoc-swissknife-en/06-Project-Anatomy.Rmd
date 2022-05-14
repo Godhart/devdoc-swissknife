@@ -1,1 +1,3 @@
-# Project anatomy
+# Project anatomy {#anatomy}
+
+<!-- TODO: how it works and relationships between different services -->
