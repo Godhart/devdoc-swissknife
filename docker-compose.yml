@@ -1,12 +1,12 @@
 version: "3"
 services:
-  rstudio:
-    image: devdoc-swissknife
+  devdoc-swissknife:
+    image: devdoc-swissknife:22.04
     depends_on:
       - kroki
     volumes:
-      - ./docs_src:/docs/src
-      - ./docs_out:/docs/out
+      - ./docs_src:/data/docs_src
+      - ./docs_out:/data/docs_out
     # stdin_open: true # docker run -i
     # tty: true        # docker run -t
   kroki:
