@@ -333,10 +333,11 @@ to_diagram  <- function(
 
       # Command line for converting image with Libre Office
       if (page == "") {
-        cformat <- dformat
+        cformat <- paste(dformat,":",knitr::opts_current$get("dia"),
+                         "_", dformat, "_Export", sep = "")
       } else {
-        cformat <- paste(
-          "'", dformat, ":", knitr::opts_current$get("dia"), "_", dformat,
+        cformat <- paste("'", dformat, ":", knitr::opts_current$get("dia"),
+                         "_", dformat,
           '_Export:{"PageRange":{"type":"string", "value":"', page, '"}}\'',
           sep = "")
       }
