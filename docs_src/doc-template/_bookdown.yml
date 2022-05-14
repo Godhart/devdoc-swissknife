@@ -3,6 +3,6 @@ book_filename: "Document_Title"
 # NOTE: ALWAYS put book_filename value within double quotes as it's vital for Makefile
 
 repo: https://github.com/<author>/<repo>
-output_dir: _book
+output_dir: .book
 clean: [packages.bib]
 delete_merged_file: true
