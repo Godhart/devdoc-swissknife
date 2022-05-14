@@ -11,12 +11,12 @@ source("../_fun.R", local = knitr::knit_global())
 Office files could be used as source for diagrams
 
 ````R
-`r ''````{r, libre-draw-singlepage, dia=""}
+`r ''````{r, examples-libre-draw-singlepage, dia="draw"}
   to_diagram(src = "../diagrams/examples/libre-draw-singlepage.odg", service = "Office")
 ```
 ````
 
-```{r, libre-draw-singlepage, dia=""}
+```{r, examples-libre-draw-singlepage, dia="draw"}
   to_diagram(src = "../diagrams/examples/libre-draw-singlepage.odg", service = "Office")
 ```
 
