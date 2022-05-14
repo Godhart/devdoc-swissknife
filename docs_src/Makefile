@@ -8,28 +8,25 @@ all: doc-template en ru
 ####
 # .PHONY: doc-<subject>
 # devdoc-swissknife-ru:
-# 	cd doc-<subject> &&\
-# 	bash ../render_doc.sh doc-<subject> &&\
-# 	cd ..
+# 	cd doc-<subject> && $(MAKE) all
 
 .PHONY: devdoc-swissknife-en
 devdoc-swissknife-en:
-	cd devdoc-swissknife-en &&\
-	bash ../render_doc.sh devdoc-swissknife-en &&\
-	cd ..
+	cd devdoc-swissknife-en && $(MAKE) all
 
 .PHONY: devdoc-swissknife-ru
 devdoc-swissknife-ru:
-	cd devdoc-swissknife-ru &&\
-	bash ../render_doc.sh devdoc-swissknife-ru &&\
-	cd ..
+	cd devdoc-swissknife-ru && $(MAKE) all
 
 .PHONY: doc-template
 doc-template:
-	cd doc-template &&\
-	bash ../render_doc.sh doc-template &&\
-	cd ..
+	cd doc-template && $(MAKE) all
 
 en: devdoc-swissknife-en
 
 ru: devdoc-swissknife-ru
+
+clean-all:
+	cd devdoc-swissknife-en && $(MAKE) clean-all
+	cd devdoc-swissknife-ru && $(MAKE) clean-all
+	cd doc-template && $(MAKE) clean-all

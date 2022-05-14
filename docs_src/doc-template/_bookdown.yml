@@ -1,8 +1,11 @@
 book_filename: "Document_Title"
+# NOTE: spaces are prohibited!!!
 # NOTE: Use ONLY latin alphas, numbers and underscore for book_filename value
 # NOTE: ALWAYS put book_filename value within double quotes as it's vital for Makefile
 
-repo: https://github.com/<author>/<repo>
 output_dir: .book
+# NOTE: spaces are prohibited!!!
+
+repo: https://github.com/<author>/<repo>
 clean: [packages.bib]
 delete_merged_file: true

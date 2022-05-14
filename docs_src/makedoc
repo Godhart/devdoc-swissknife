@@ -1,0 +1,78 @@
+#Include this into Makefile for your docs
+
+_E ?= ../default.env
+
+include $(_E)
+
+# TODO: don't polute sources dir
+
+BOOK_FILE_NAME	= $(shell cat _bookdown.yml | grep -Po 'book_filename:\s+"?\K[^"# ]+').Rmd
+BOOK_OUT_DIR	= $(shell cat _bookdown.yml | grep -Po 'output_dir:\s+"?\K[^"# ]+')
+
+default: all
+
+.PHONY: show-env
+show-env:
+	@env
+	@echo ---------------------------------------------------------------------------
+	@echo -- Makefile vars:
+	@echo -----------------
+	@echo BOOK_FILE_NAME=$(BOOK_FILE_NAME)
+	@echo BOOK_OUT_DIR=$(BOOK_OUT_DIR)
+	@echo BOOK_NAME=$(BOOK_NAME)
+	@echo DOCS_ROOT=$(DOCS_ROOT)
+	@echo DOCS_OUTPUT_PATH=$(DOCS_OUTPUT_PATH)
+	@echo DIA_AUTO_FIT_WIDTH=$(DIA_AUTO_FIT_WIDTH)
+	@echo DIA_AUTO_FIT_HEIGHT=$(DIA_AUTO_FIT_HEIGHT)
+	@echo HTML_DEFAULT_OUT_WIDTH=$(HTML_DEFAULT_OUT_WIDTH)
+	@echo DIA_GENERATED_PATH=$(DIA_GENERATED_PATH)
+	@echo DIA_CACHE=$(DIA_CACHE)
+	@echo DIA_CACHE_PATH=$(DIA_CACHE_PATH)
+	@echo DIA_BREAK_ON_ERR=$(DIA_BREAK_ON_ERR)
+	@echo DIA_FORCE=$(DIA_FORCE)
+	@echo SERVICE_KROKI=$(SERVICE_KROKI)
+
+clean-all: clean-cache clean-generated clean-mess
+
+.PHONY: clean-preview
+clean-preview:
+	rm -rf .dia-cache
+	rm -rf .dia-generated
+
+.PHONY: clean-cache
+clean-cache:
+	rm -rf "$(DIA_CACHE_PATH)"
+
+.PHONY: clean-generated
+clean-generated:
+	rm -rf "$(DIA_GENERATED_PATH)"
+
+.PHONY: clean-mess
+clean-mess:
+	rm -f  "$(BOOK_FILE_NAME)"
+	rm -rf "$(BOOK_OUT_DIR)"
+
+.PHONY: clean-published
+clean-published:
+	rm -rf "${DOCS_OUTPUT_PATH}/${BOOK_NAME}"
+
+${DOCS_OUTPUT_PATH}/${BOOK_NAME}:
+	mkdir "${DOCS_OUTPUT_PATH}/${BOOK_NAME}"
+
+.PHONY: html
+html: ${DOCS_OUTPUT_PATH}/${BOOK_NAME}
+	BOOKDOWN_FULL_PDF=false Rscript --quiet $(DOCS_ROOT)/_render.R bookdown::gitbook
+	mv -f  "$(BOOK_OUT_DIR)"/* "${DOCS_OUTPUT_PATH}/${BOOK_NAME}"
+	rm -rf "$(BOOK_OUT_DIR)"
+
+.PHONY: pdf
+pdf: ${DOCS_OUTPUT_PATH}/${BOOK_NAME}
+	BOOKDOWN_FULL_PDF=false Rscript --quiet $(DOCS_ROOT)/_render.R bookdown::pdf_book
+	mv -f  "$(BOOK_OUT_DIR)"/* "${DOCS_OUTPUT_PATH}/${BOOK_NAME}"
+	rm -rf "$(BOOK_OUT_DIR)"
+
+all: clean-mess clean-published html pdf
+
+pure: clean-all all
+
+refresh: pure clean-all
