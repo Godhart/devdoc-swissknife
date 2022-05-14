@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Devdoc-Swissknife EN</title>
+  <title>2 Using as a template and making own docs | Devdoc-Swissknife EN</title>
   <meta name="description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Devdoc-Swissknife EN" />
+  <meta property="og:title" content="2 Using as a template and making own docs | Devdoc-Swissknife EN" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
   <meta property="og:description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="github-repo" content="Godhart/devdoc-swissknife" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Devdoc-Swissknife EN" />
+  <meta name="twitter:title" content="2 Using as a template and making own docs | Devdoc-Swissknife EN" />
   
   <meta name="twitter:description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="twitter:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="1-examples.html"/>
+<link rel="prev" href="1-examples.html"/>
+<link rel="next" href="3-examples-kroki.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -230,97 +230,89 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Devdoc-Swissknife EN</h1>
-<p class="author"><em>Nikolay Gniteev</em></p>
-<p class="date"><em>2022-05-14</em></p>
-</div>
-<div id="intro" class="section level1 unnumbered hasAnchor" number="">
-<h1>Preface<a href="index.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is a demo project for development documentation generation with
-<a href="https://rmarkdown.rstudio.com/"><strong>R Markdown</strong></a> and <a href="https://kroki.io/"><strong>Kroki</strong></a>.</p>
-<p>All the things described here you could do without that project, but I’ve tried to stich
-those components together so you’ll be able to concentrate on content rather than process.</p>
-<p>This approach allows you to create reproducible documentation in form of PDF, presentations, gitbook
-and some other HTML formats from simple markdown-like files (Pandoc flavor) with extra <strong>R chunks</strong> and textual diagrams description.</p>
-<p>The goal of this project is to describe documentation via text files as much as possible, even graphic diagrams,
-and make it easy to use without overcomplication.</p>
-<p>A textual description provides an easy way to version and merge diagrams, get differences between versions, leave comments that
-stays out from generated documentation, review changes, etc.</p>
-<p>Also most often it’s faster to create and <strong>edit</strong> diagrams as text, do things like theming and refactoring themes.
-Since the diagram’s textual description often is more a model than just graphics, you don’t have to track existing objects
-relations when just placement is changed or objects added (until you rename objects) which makes your workflow less error-prone.</p>
-<p>Embedding textually described diagrams into docuement is the actual focus of this porject. The rest you would be able to do with
-R Markdown itself as it is a powerful and customizable tool, so you can fit docs to your needs. It would take efforts on start,
-to make things neat but it would repay you in the end.</p>
+<div id="template" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Using as a template and making own docs<a href="2-template.html#template" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>To use this project as a start point for generating your own documentation do the following:</p>
+<ol style="list-style-type: decimal">
+<li>Import project and prepare for making docs</li>
+</ol>
 <blockquote>
-<p>To produce awesome PDFs you’ll have to provide awesome Latex book class.
-Since I don’t have one I’m using Latex default so current PDF version looks a bit ugly to me.
-I hope I can fix this soon or later. Help is appreciated!</p>
+<p>You’ll need to have already <code>docker</code> and <code>docker-compose</code> installed</p>
 </blockquote>
-<p>Kroki is running locally in container so you may not worry for confidential things and it works well
-in air gapped installations.</p>
-<hr />
-<p>This project is also can be used as a template for your own documentation, see <a href="2-template.html#template">this section</a></p>
-<p>The project uses docker and docker-compose to build docs so it’s ready to be integrated into your CI/CD flow.</p>
-<p>The project’s structure, docs generation and some files are based on <a href="https://github.com/rstudio/rmarkdown-book">R Markdown book</a></p>
-<hr />
-<p>There are few demonstrations in the project for general development use-cases (which probably cover 95% of your daily needs).
-For more complicated use-cases - checkout docs on links below.</p>
+<ul>
+<li><p>Import or fork main branch of this repo:
+<a href="https://github.com/Godhart/devdoc-swissknife">https://github.com/Godhart/devdoc-swissknife</a>.<br />
+All the sources for docs are contained in <code>docs_src</code> folder.</p></li>
+<li><p>Make docker image <code>devdoc-swissknife</code> if you don’t have one already.<br />
+Simply run <code>make_docker.sh</code> from <code>docker</code> dir.</p></li>
+<li><p>Ensure that everything works fine - try to make docs with <code>make_docs.sh</code>.<br />
+Output docs should appear in <code>docs_out/devdoc-swissknife-*</code> folders. Check that docs exist and contain graphics.<br />
+<em>Take a NOTE: <code>docs_out</code> folder and all it’s content is ignored by git.</em></p></li>
+<li><p>If you don’t want to see devdoc-swissknife documentation in your repo:</p>
+<ul>
+<li>Remove <code>docs_src/devdoc-swissknife-*</code> folders</li>
+<li>Remove <code>docs_out/devdoc-swissknife-*</code> folders</li>
+<li>Empty <code>docs_src/diagrams</code> folder.</li>
+</ul></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Prepare for making your own docs</li>
+</ol>
+<ul>
+<li><p>Make a new folder in <code>docs_src</code>. I suggest you name it using the following pattern: <code>doc-&lt;subject&gt;</code></p></li>
+<li><p>Copy all the files from <code>docs_src/docs-template</code> into your brand new folder</p></li>
+<li><p>Replace following keywords
+<code>&lt;Author Name&gt;</code>, <code>&lt;author&gt;</code>, <code>&lt;repo&gt;</code>, <code>&lt;Document Title&gt;</code>, <code>Document_Title</code>, <code>&lt;Document Description&gt;</code>, doc-<subject>
+within files in your new folder with actual values.
+Also don’t forget to adjust <code>Document_Title</code> in the <code>.gitignore</code> of new folder, as it protects from build garbage.</p></li>
+<li><p>Adjust <code>docs_src/Makefile</code> to fit your needs (for the first time - use an existing pattern to add your folder).</p></li>
+<li><p>Ensure that everything is still fine - try to make docs with <code>make_docs.sh</code>.<br />
+Output docs should appear in <code>docs_out/doc-&lt;subject&gt;</code> folder if you followed a pattern in the Makefile.</p></li>
+</ul>
 <blockquote>
-<p>Diagrams code for most examples is borrowed straight from <a href="https://kroki.io/examples.html">Kroki</a></p>
+<p>NOTE: in many cases of errors doc’s sources folder (<code>docs_src/doc-&lt;subject&gt;</code> if you follow suggested pattern)
+is polluted with temporary files,
+named as specified in <code>_bookdown.yml</code> (field <code>book_filename</code>) and may break following docs generation runs.<br />
+These files are removed with make routine, but in some cases, you’ll have to remove them by yourself.<br />
+Changing <code>book_filename</code> field in <code>_bookdown.yml</code> after an error has happened may be the case.</p>
 </blockquote>
-<hr />
-<p><a href="4-usage.html#usage">Usage</a> section would be updated eventually with reciepes for common cases.</p>
-<p><br />
-<br />
-</p>
-<div id="links" class="section level3 unnumbered hasAnchor" number="">
-<h3>Helpful links<a href="index.html#links" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="links-diagrams" class="section level4 unnumbered hasAnchor" number="">
-<h4>Diagrams<a href="index.html#links-diagrams" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://kroki.io/#support">List of supported diagrams renderers</a></p>
-<p><a href="https://kroki.io/examples.html">A few more diagrams examples</a></p>
-</div>
-<div id="links-rmarkdown" class="section level4 unnumbered hasAnchor" number="">
-<h4>R Markdown<a href="index.html#links-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></p>
-<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown: Cookbook</a></p>
-<p><a href="https://bookdown.org/yihui/bookdown/">Bookdown: Authoring Books and Technical Docuements with R Markdown</a></p>
-<p><a href="https://rmarkdown.rstudio.com/lesson-1.html">R Markdown Site</a>
-(focused on usage with <strong>R Studio</strong>)</p>
-<p><a href="https://rmd4sci.njtierney.com/">A nice R Markdown tutorial</a></p>
-<p><a href="https://rmarkdown.rstudio.com/docs/reference/index.html">R Markdown reference</a></p>
-</div>
-<div id="links-rmarkdown-quick" class="section level4 unnumbered hasAnchor" number="">
-<h4>Get quick into R Markdown<a href="index.html#links-rmarkdown-quick" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://intro2r.com/r-markdown-anatomy.html">R Makedown anatomy</a></p>
-<p><a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">R Markdown short reference</a>
-to get familiar with most necessary things</p>
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf">R Markdown cheatsheet</a></p>
-</div>
-<div id="links-editors" class="section level4 unnumbered hasAnchor" number="">
-<h4>Editors with focus on diagrams<a href="index.html#links-editors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://github.com/DaveJarvis/keenwrite"><strong>Keenwrite</strong> - edit and preview R Markdown Live!</a></p>
-<p><a href="https://www.rstudio.com/"><strong>R Studio</strong></a></p>
-<!-- TODO: VS Code with plugins
-https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode
- -->
-</div>
-</div>
-<div id="links-alternatives" class="section level3 unnumbered hasAnchor" number="">
-<h3>Alternatives<a href="index.html#links-alternatives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html">https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html</a> / <a href="https://rich-iannone.github.io/DiagrammeR/">https://rich-iannone.github.io/DiagrammeR/</a></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Create content</li>
+</ol>
+<ul>
+<li><p>Update <code>index.Rmd</code> in your folder to your needs (contains <em>Preface</em> section).</p></li>
+<li><p>Add your own docs into your folder, naming files like <code>&lt;number&gt;-&lt;chapter-name&gt;.Rmd</code>.<br />
+Check the <strong>R Markdown</strong> and <strong>Kroki</strong> docs for understanding things. Also, you may rely on shown examples.</p></li>
+<li><p>If you already have docs in markdown format you may already use them like this:</p>
+<ul>
+<li>copy markdown files into your doc-folder</li>
+<li>copy necessary local images to location in <code>docs_src/diagrams</code> or wherever you like most</li>
+<li>change name extensions of markdown files to <code>.Rmd</code></li>
+<li>change names of markdown files so they would correspond to pattern <code>&lt;number&gt;-&lt;chapter-name&gt;.Rmd</code></li>
+<li>change references to local images in markdown files</li>
+</ul></li>
+<li><p>If you already have text description of diagrams for supported rendering engines you may already use them like this:</p>
+<ul>
+<li>copy necessary files to location in <code>docs_src/diagrams</code> or wherever you like most</li>
+<li>in <code>.Rmd</code> files replace image embedding with diagram embedding as described <a href="TODO">TODO</a></li>
+</ul></li>
+<li><p>Most probably you would like to use your own Latex class, so add <code>&lt;your_latex_class&gt;.cls</code> file
+into your folder and specify it in <code>index.Rmd</code> file (replace <code>documentclass: book</code> field with <code>&lt;your_latex_class&gt;</code> name).</p></li>
+</ul>
+<blockquote>
+<p>Adding custom latex class may require you to add some latex packages to Docker image. Same is true if you
+do use some special <strong>R</strong> packages in your docs etc.<br />
+If this is the case you’ll have to modify <code>docker/Dockerfile</code> and build again docker image with <code>make_docker.sh</code>.</p>
+</blockquote>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="1-examples.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="1-examples.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3-examples-kroki.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -351,7 +343,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/Godhart/devdoc-swissknife/edit/main/docs_src/devdoc-swissknife-en/index.Rmd",
+"link": "https://github.com/Godhart/devdoc-swissknife/edit/main/docs_src/devdoc-swissknife-en/02-Using-As-Template.Rmd",
 "text": "Edit"
 },
 "history": {

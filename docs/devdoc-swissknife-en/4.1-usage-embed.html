@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Devdoc-Swissknife EN</title>
+  <title>4.1 Embedding diagrams into a document | Devdoc-Swissknife EN</title>
   <meta name="description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Devdoc-Swissknife EN" />
+  <meta property="og:title" content="4.1 Embedding diagrams into a document | Devdoc-Swissknife EN" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
   <meta property="og:description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="github-repo" content="Godhart/devdoc-swissknife" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Devdoc-Swissknife EN" />
+  <meta name="twitter:title" content="4.1 Embedding diagrams into a document | Devdoc-Swissknife EN" />
   
   <meta name="twitter:description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="twitter:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="1-examples.html"/>
+<link rel="prev" href="4-usage.html"/>
+<link rel="next" href="4.2-usage-svg.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -230,88 +230,129 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Devdoc-Swissknife EN</h1>
-<p class="author"><em>Nikolay Gniteev</em></p>
-<p class="date"><em>2022-05-14</em></p>
+<div id="usage-embed" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Embedding diagrams into a document<a href="4.1-usage-embed.html#usage-embed" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s cover basics on embedding diagrams into documentation first.</p>
+<div id="usage-embed-inline" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Describing diagrams inline in the documentation<a href="4.1-usage-embed.html#usage-embed-inline" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Useful for short and/or strongly context-related drawings, i.e. when drawing by itself have no meaning
+or there is no reason for storing it in a separate file.</p>
+<p>Following pattern should be used:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="4.1-usage-embed.html#cb5-1" aria-hidden="true"></a><span class="st">```</span><span class="dt">{r &lt;label&gt;, dia=&#39;&lt;engine&gt;&#39;, fig.cap=&#39;&lt;drawing name&gt;&#39;}</span></span>
+<span id="cb5-2"><a href="4.1-usage-embed.html#cb5-2" aria-hidden="true"></a><span class="dt">  to_diagram(&#39;&lt;diagram data&gt;&#39;)</span></span>
+<span id="cb5-3"><a href="4.1-usage-embed.html#cb5-3" aria-hidden="true"></a><span class="st">```</span></span></code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;label&gt;</code> is a name for a drawing reference, may be omitted</li>
+<li><code>&lt;engine&gt;</code> is a name for a rendering engine, see <a href="#reference-engines">table</a> for allowed values and corresponding engines</li>
+<li><code>&lt;drawing name&gt;</code> is a caption for drawing, may be omitted.</li>
+<li><code>&lt;diagram data&gt;</code> is a textual diagram description in a format that is compatible with a rendering engine<br />
+<em>NOTE: if there are single quotes in the <code>&lt;diagram data&gt;</code> then you should escape them with <code>\</code> symbol</em>
+<em>or surround <code>&lt;diagram data&gt;</code> with double-quotes (<code>"</code>) instead.</em></li>
+</ul>
 </div>
-<div id="intro" class="section level1 unnumbered hasAnchor" number="">
-<h1>Preface<a href="index.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is a demo project for development documentation generation with
-<a href="https://rmarkdown.rstudio.com/"><strong>R Markdown</strong></a> and <a href="https://kroki.io/"><strong>Kroki</strong></a>.</p>
-<p>All the things described here you could do without that project, but I’ve tried to stich
-those components together so you’ll be able to concentrate on content rather than process.</p>
-<p>This approach allows you to create reproducible documentation in form of PDF, presentations, gitbook
-and some other HTML formats from simple markdown-like files (Pandoc flavor) with extra <strong>R chunks</strong> and textual diagrams description.</p>
-<p>The goal of this project is to describe documentation via text files as much as possible, even graphic diagrams,
-and make it easy to use without overcomplication.</p>
-<p>A textual description provides an easy way to version and merge diagrams, get differences between versions, leave comments that
-stays out from generated documentation, review changes, etc.</p>
-<p>Also most often it’s faster to create and <strong>edit</strong> diagrams as text, do things like theming and refactoring themes.
-Since the diagram’s textual description often is more a model than just graphics, you don’t have to track existing objects
-relations when just placement is changed or objects added (until you rename objects) which makes your workflow less error-prone.</p>
-<p>Embedding textually described diagrams into docuement is the actual focus of this porject. The rest you would be able to do with
-R Markdown itself as it is a powerful and customizable tool, so you can fit docs to your needs. It would take efforts on start,
-to make things neat but it would repay you in the end.</p>
+<div id="usage-embed-raw" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Diagrams from raw outer files<a href="4.1-usage-embed.html#usage-embed-raw" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is the case if you already have a diagram description in a separate file and you want to keep it like that for some reason.</p>
 <blockquote>
-<p>To produce awesome PDFs you’ll have to provide awesome Latex book class.
-Since I don’t have one I’m using Latex default so current PDF version looks a bit ugly to me.
-I hope I can fix this soon or later. Help is appreciated!</p>
+<p>For new diagrams it’s proposed to use method, described in the next section.
+It also uses outer files, but requires some extra formating.</p>
 </blockquote>
-<p>Kroki is running locally in container so you may not worry for confidential things and it works well
-in air gapped installations.</p>
-<hr />
-<p>This project is also can be used as a template for your own documentation, see <a href="2-template.html#template">this section</a></p>
-<p>The project uses docker and docker-compose to build docs so it’s ready to be integrated into your CI/CD flow.</p>
-<p>The project’s structure, docs generation and some files are based on <a href="https://github.com/rstudio/rmarkdown-book">R Markdown book</a></p>
-<hr />
-<p>There are few demonstrations in the project for general development use-cases (which probably cover 95% of your daily needs).
-For more complicated use-cases - checkout docs on links below.</p>
+<p>Raw file is a text file that contains diagram description data in a format that is
+compatible with a rendering engine and nothing more.</p>
+<p>Following pattern should be used:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="4.1-usage-embed.html#cb6-1" aria-hidden="true"></a><span class="st">```</span><span class="dt">{r &lt;label&gt;, dia=&#39;&lt;engine&gt;&#39;, fig.cap=&#39;&lt;drawing name&gt;&#39;}</span></span>
+<span id="cb6-2"><a href="4.1-usage-embed.html#cb6-2" aria-hidden="true"></a><span class="dt">  to_diagram(src=&#39;&lt;src_file_path&gt;&#39;)</span></span>
+<span id="cb6-3"><a href="4.1-usage-embed.html#cb6-3" aria-hidden="true"></a><span class="st">```</span></span></code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;label&gt;</code> is a name for a drawing reference, may be omitted</li>
+<li><code>&lt;engine&gt;</code> is a name for a rendering engine, see <a href="#reference-engines">table</a> for allowed values and corresponding engines</li>
+<li><code>&lt;drawing name&gt;</code> is a caption for drawing, mey be omitted</li>
+<li><code>&lt;src_file_path&gt;</code> is a path to file with diagram data, relative to file into which it’s embedded.<br />
+<em>If you are using suggested locations to place docs and diagrams (<code>docs_src/doc-&lt;subject&gt;</code> and <code>docs_src/diagrams</code>)</em>
+<em>then value for <code>&lt;src_file_path&gt;</code> should be starting like this: <code>../diagrams/</code></em></li>
+</ul>
+</div>
+<div id="usage-embed-rmd" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Diagrams from Rmd outer file<a href="4.1-usage-embed.html#usage-embed-rmd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is a proposed way to describe diagrams in outer files. Diagram data should be in <code>.Rmd</code> file
+and described as specified in <code>docs_src/diagrams/README.md</code> <a href="TODO">TODO</a>.</p>
+<p>This way you’ll be able to use <a href="https://github.com/DaveJarvis/keenwrite">Keenwrite</a> to preview diagrams live
+while editing, which is very handy.</p>
+<p>Besides that, you can supply a diagram with additional info, capture decisions that were taken, add TODOs, versions info, etc.
+along with diagram’s data in the same file.</p>
+<p>Following pattern should be used:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="4.1-usage-embed.html#cb7-1" aria-hidden="true"></a><span class="st">```</span><span class="dt">{r &lt;label&gt;, dia=&#39;from_src&#39;, fig.cap=&#39;&lt;drawing name&gt;&#39;}</span></span>
+<span id="cb7-2"><a href="4.1-usage-embed.html#cb7-2" aria-hidden="true"></a><span class="dt">  to_diagram(src=&#39;&lt;src_file_path&gt;&#39;)</span></span>
+<span id="cb7-3"><a href="4.1-usage-embed.html#cb7-3" aria-hidden="true"></a><span class="st">```</span></span></code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;label&gt;</code> is a name for a drawing reference, may be omitted</li>
+<li><code>&lt;drawing name&gt;</code> is a caption for drawing, mey be omitted</li>
+<li><code>&lt;src_file_path&gt;</code> is a path to file with diagram data, relative file into which it’s embedded.<br />
+<em>If you are using suggested locations to place docs and diagrams (<code>docs_src/doc-&lt;subject&gt;</code> and <code>docs_src/diagrams</code>)</em>
+<em>then value for <code>&lt;src_file_path&gt;</code> should be starting like this: <code>../diagrams/</code></em></li>
+</ul>
 <blockquote>
-<p>Diagrams code for most examples is borrowed straight from <a href="https://kroki.io/examples.html">Kroki</a></p>
+<p>Take a NOTE: A <code>from_src</code> is specified as engine in this case since an actual engine name is already specified in <code>.Rmd</code> file with diagram data.</p>
 </blockquote>
-<hr />
-<p><a href="4-usage.html#usage">Usage</a> section would be updated eventually with reciepes for common cases.</p>
-<p><br />
-<br />
-</p>
-<div id="links" class="section level3 unnumbered hasAnchor" number="">
-<h3>Helpful links<a href="index.html#links" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="links-diagrams" class="section level4 unnumbered hasAnchor" number="">
-<h4>Diagrams<a href="index.html#links-diagrams" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://kroki.io/#support">List of supported diagrams renderers</a></p>
-<p><a href="https://kroki.io/examples.html">A few more diagrams examples</a></p>
 </div>
-<div id="links-rmarkdown" class="section level4 unnumbered hasAnchor" number="">
-<h4>R Markdown<a href="index.html#links-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></p>
-<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown: Cookbook</a></p>
-<p><a href="https://bookdown.org/yihui/bookdown/">Bookdown: Authoring Books and Technical Docuements with R Markdown</a></p>
-<p><a href="https://rmarkdown.rstudio.com/lesson-1.html">R Markdown Site</a>
-(focused on usage with <strong>R Studio</strong>)</p>
-<p><a href="https://rmd4sci.njtierney.com/">A nice R Markdown tutorial</a></p>
-<p><a href="https://rmarkdown.rstudio.com/docs/reference/index.html">R Markdown reference</a></p>
-</div>
-<div id="links-rmarkdown-quick" class="section level4 unnumbered hasAnchor" number="">
-<h4>Get quick into R Markdown<a href="index.html#links-rmarkdown-quick" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://intro2r.com/r-markdown-anatomy.html">R Makedown anatomy</a></p>
-<p><a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">R Markdown short reference</a>
-to get familiar with most necessary things</p>
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf">R Markdown cheatsheet</a></p>
-</div>
-<div id="links-editors" class="section level4 unnumbered hasAnchor" number="">
-<h4>Editors with focus on diagrams<a href="index.html#links-editors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://github.com/DaveJarvis/keenwrite"><strong>Keenwrite</strong> - edit and preview R Markdown Live!</a></p>
-<p><a href="https://www.rstudio.com/"><strong>R Studio</strong></a></p>
-<!-- TODO: VS Code with plugins
-https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode
- -->
-</div>
-</div>
-<div id="links-alternatives" class="section level3 unnumbered hasAnchor" number="">
-<h3>Alternatives<a href="index.html#links-alternatives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html">https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html</a> / <a href="https://rich-iannone.github.io/DiagrammeR/">https://rich-iannone.github.io/DiagrammeR/</a></p>
-
+<div id="usage-embed-getThenEmbed" class="section level3 hasAnchor" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Get then embed<a href="4.1-usage-embed.html#usage-embed-getThenEmbed" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is the case if you want to customize diagrams embedding, like aligning, multiple diagrams in a single row,
+preprocess diagrams before embedding them, etc.</p>
+<p>The process is divided into few phases:</p>
+<ol>
+<li>Download one or multiple rendered images for your diagrams</li>
+<li>Preprocess diagrams if required</li>
+<li>Embed them into document</li>
+</ol>
+<blockquote>
+<p>NOTE: diagrams are still described in a text form</p>
+</blockquote>
+<p>Following pattern should be used:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="4.1-usage-embed.html#cb8-1" aria-hidden="true"></a><span class="co"># Download diagram</span></span>
+<span id="cb8-2"><a href="4.1-usage-embed.html#cb8-2" aria-hidden="true"></a><span class="st">```</span><span class="dt">{r dia=&#39;from_src&#39;}</span></span>
+<span id="cb8-3"><a href="4.1-usage-embed.html#cb8-3" aria-hidden="true"></a><span class="dt">  to_diagram(src=&#39;&lt;src_file_path&gt;&#39;, downloadOnly=TRUE, downloadName=&#39;&lt;file_name&gt;&#39;)</span></span>
+<span id="cb8-4"><a href="4.1-usage-embed.html#cb8-4" aria-hidden="true"></a><span class="st">```</span></span>
+<span id="cb8-5"><a href="4.1-usage-embed.html#cb8-5" aria-hidden="true"></a></span>
+<span id="cb8-6"><a href="4.1-usage-embed.html#cb8-6" aria-hidden="true"></a><span class="co"># Download more diagrams if required (like the one above)</span></span>
+<span id="cb8-7"><a href="4.1-usage-embed.html#cb8-7" aria-hidden="true"></a>...</span>
+<span id="cb8-8"><a href="4.1-usage-embed.html#cb8-8" aria-hidden="true"></a></span>
+<span id="cb8-9"><a href="4.1-usage-embed.html#cb8-9" aria-hidden="true"></a><span class="co"># Process diagram(s) if required</span></span>
+<span id="cb8-10"><a href="4.1-usage-embed.html#cb8-10" aria-hidden="true"></a><span class="co"># Use code chunks for this (R, bash, python and many more with necessary commands)</span></span>
+<span id="cb8-11"><a href="4.1-usage-embed.html#cb8-11" aria-hidden="true"></a>...</span>
+<span id="cb8-12"><a href="4.1-usage-embed.html#cb8-12" aria-hidden="true"></a></span>
+<span id="cb8-13"><a href="4.1-usage-embed.html#cb8-13" aria-hidden="true"></a><span class="co"># Embed diagram(s)</span></span>
+<span id="cb8-14"><a href="4.1-usage-embed.html#cb8-14" aria-hidden="true"></a><span class="st">```</span><span class="dt">{r &lt;label&gt;, echo=FALSE, fig.cap=&#39;&lt;drawing name&gt;&#39;}</span></span>
+<span id="cb8-15"><a href="4.1-usage-embed.html#cb8-15" aria-hidden="true"></a><span class="dt">  knitr::include_graphics(&#39;generated/&lt;file_name&gt;.&lt;file_ext&gt;&#39;)</span></span>
+<span id="cb8-16"><a href="4.1-usage-embed.html#cb8-16" aria-hidden="true"></a><span class="st">```</span></span></code></pre></div>
+<blockquote>
+<p>NOTE: Example code is shown for outer Rmd file but there is additional
+<code>downloadOnly</code> and <code>downloadName</code> arguments are specified in the first code chunk.<br />
+Inline diagram description and raw outer file may be used aswell.</p>
+</blockquote>
+<p>where:</p>
+<ul>
+<li><code>&lt;label&gt;</code> is a name for a drawing reference, may be omitted</li>
+<li><code>&lt;drawing name&gt;</code> is a caption for drawing, mey be omitted</li>
+<li><code>&lt;file_name&gt;</code> is a name that is given to downloaded diagram</li>
+<li><code>&lt;file_ext&gt;</code> is an extension is given depending on output format and <a href="#usage-args-format">optional arguments</a>.<br />
+By default it’s:
+<ul>
+<li><code>.svg</code> for HTML output</li>
+<li><code>.pdf</code> for PDF output</li>
+<li><code>.png</code> for other kinds</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>Take a NOTE: For postprocessing you can use R, Python, whatever can be called from BASH and many more
+(depends on your docker image).<br />
+<a href="https://bookdown.org/yihui/rmarkdown/r-code.html">More on <strong>R chunks</strong>: https://bookdown.org/yihui/rmarkdown/r-code.html</a>,
+<a href="https://yihui.org/knitr/options/">this</a> and <a href="https://yihui.org/knitr/hooks/">this</a><br />
+<a href="https://bookdown.org/yihui/rmarkdown/language-engines.html">More on other formats: https://bookdown.org/yihui/rmarkdown/language-engines.html</a></p>
+</blockquote>
 </div>
 </div>
             </section>
@@ -319,8 +360,8 @@ https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vsco
           </div>
         </div>
       </div>
-
-<a href="1-examples.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="4-usage.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4.2-usage-svg.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -351,7 +392,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/Godhart/devdoc-swissknife/edit/main/docs_src/devdoc-swissknife-en/index.Rmd",
+"link": "https://github.com/Godhart/devdoc-swissknife/edit/main/docs_src/devdoc-swissknife-en/04-Usage-Patterns.Rmd",
 "text": "Edit"
 },
 "history": {

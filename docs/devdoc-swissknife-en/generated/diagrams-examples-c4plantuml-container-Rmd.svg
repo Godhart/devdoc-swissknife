@@ -17,10 +17,10 @@ link mobile_app to backend_api--><path d="M673.24,432.7199 C672.01,463.0099 670.
 reverse link database to backend_api--><path d="M403.15,587.5999 C457.11,587.5999 521.89,587.5999 573.77,587.5999 " fill="none" id="database-backto-backend_api" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="394.93,587.5999,402.93,590.5999,402.93,584.5999,394.93,587.5999" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="143" x="412.75" y="567.5999">Reads from and writes to</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="67" x="450.75" y="582">[sync, JDBC]</text><!--MD5=[67bdad0b253fe975f176764d2733cbf2]
 reverse link customer to email_system--><path d="M619.3,135.2699 C677.32,158.0899 747.64,191.3799 802,234.5999 C831.36,257.9399 857.2,291.5799 875.26,318.5099 " fill="none" id="customer-backto-email_system" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="611.57,132.2599,617.9387,137.9554,620.1134,132.3634,611.57,132.2599" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="95" x="789" y="216.5999">Sends e-mails to</text><!--MD5=[8cec5c10976c4db6b86b100b5fe1b5ce]
 reverse link email_system to backend_api--><path d="M865.78,415.3399 C846.97,439.9999 822.78,469.2599 798,492.5999 C782,507.6699 763.5,522.3299 745.53,535.4199 " fill="none" id="email_system-backto-backend_api" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="870.69,408.8499,863.4671,413.4138,868.249,417.0378,870.69,408.8499" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="115" x="827" y="475.5999">Sends e-mails using</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="69" x="850" y="490">[sync, SMTP]</text><!--MD5=[de57110bb978599a1dd726a1d6276969]
-link backend_api to banking_system--><path d="M760.37,587.5999 C810.46,587.5999 872.54,587.5999 925.2,587.5999 " fill="none" id="backend_api-to-banking_system" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="933.23,587.5999,925.23,584.5999,925.23,590.5999,933.23,587.5999" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="30" x="831.75" y="567.5999">Uses</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="137" x="778.25" y="582">[sync/async, XML/HTTPS]</text><rect fill="#FFFFFF" height="131.5995" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.0;" width="130" x="994.5" y="681.5999"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="52" x="1000.5" y="702.5998">Legend</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="1056.5" y="702.5998"/><rect fill="#08427B" height="16.7999" style="stroke:none;stroke-width:1.0;" width="118" x="1000.5" y="705.3998"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="1004.5" y="719.3997">person</text><rect fill="#1168BD" height="16.7999" style="stroke:none;stroke-width:1.0;" width="118" x="1000.5" y="722.1997"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="43" x="1004.5" y="736.1997">system</text><rect fill="#438DD5" height="16.7999" style="stroke:none;stroke-width:1.0;" width="118" x="1000.5" y="738.9996"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="57" x="1004.5" y="752.9996">container</text><rect fill="#686868" height="16.7999" style="stroke:none;stroke-width:1.0;" width="118" x="1000.5" y="755.7996"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="1004.5" y="769.7995">external person</text><rect fill="#999999" height="16.7999" style="stroke:none;stroke-width:1.0;" width="118" x="1000.5" y="772.5995"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96" x="1004.5" y="786.5994">external system</text><rect fill="#B3B3B3" height="16.7999" style="stroke:none;stroke-width:1.0;" width="118" x="1000.5" y="789.3994"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="1004.5" y="803.3994">external container</text><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="688.5999" y2="688.5999"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="705.3998" y2="705.3998"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="722.1997" y2="722.1997"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="738.9996" y2="738.9996"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="755.7996" y2="755.7996"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="772.5995" y2="772.5995"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="789.3994" y2="789.3994"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="806.1994" y2="806.1994"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1000.5" y1="688.5999" y2="806.1994"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1118.5" x2="1118.5" y1="688.5999" y2="806.1994"/><!--MD5=[9bb60346cacf3cb76f9d02d77da65e88]
+link backend_api to banking_system--><path d="M760.37,587.5999 C810.46,587.5999 872.54,587.5999 925.2,587.5999 " fill="none" id="backend_api-to-banking_system" style="stroke:#666666;stroke-width:1.0;"/><polygon fill="#666666" points="933.23,587.5999,925.23,584.5999,925.23,590.5999,933.23,587.5999" style="stroke:#666666;stroke-width:1.0;"/><text fill="#666666" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="30" x="831.75" y="567.5999">Uses</text><text fill="#666666" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacing" textLength="137" x="778.25" y="582">[sync/async, XML/HTTPS]</text><rect fill="#FFFFFF" height="131.5995" rx="5" ry="5" style="stroke:#FFFFFF;stroke-width:1.0;" width="130" x="994.5" y="681.5999"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="52" x="1000.5" y="702.5998">Legend</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="1056.5" y="702.5998"/><rect fill="#08427B" height="16.7999" style="stroke:none;stroke-width:1.0;" width="118" x="1000.5" y="705.3998"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="42" x="1004.5" y="719.3997">person</text><rect fill="#1168BD" height="16.7999" style="stroke:none;stroke-width:1.0;" width="118" x="1000.5" y="722.1997"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="43" x="1004.5" y="736.1997">system</text><rect fill="#438DD5" height="16.7999" style="stroke:none;stroke-width:1.0;" width="118" x="1000.5" y="738.9996"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="57" x="1004.5" y="752.9996">container</text><rect fill="#686868" height="16.7999" style="stroke:none;stroke-width:1.0;" width="118" x="1000.5" y="755.7996"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="1004.5" y="769.7995">external person</text><rect fill="#999999" height="16.7999" style="stroke:none;stroke-width:1.0;" width="118" x="1000.5" y="772.5995"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96" x="1004.5" y="786.5994">external system</text><rect fill="#B3B3B3" height="16.7999" style="stroke:none;stroke-width:1.0;" width="118" x="1000.5" y="789.3994"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="1004.5" y="803.3994">external container</text><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="688.5999" y2="688.5999"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="705.3998" y2="705.3998"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="722.1997" y2="722.1997"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="738.9996" y2="738.9996"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="755.7996" y2="755.7996"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="772.5995" y2="772.5995"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="789.3994" y2="789.3994"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1118.5" y1="806.1994" y2="806.1994"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1000.5" x2="1000.5" y1="688.5999" y2="806.1994"/><line style="stroke:#FFFFFF;stroke-width:1.0;" x1="1118.5" x2="1118.5" y1="688.5999" y2="806.1994"/><!--MD5=[2e6efe26c13f051b67741ab2c47b8c26]
 @startuml
 ' C4-PlantUML
-' https://github.com/plantuml-stdlib/C4-PlantUML/tree/v2.2.0
+' https://github.com/plantuml-stdlib/C4-PlantUML/tree/v2.3.0
 
 ' Colors
 ' ##################################
@@ -30,12 +30,16 @@ link backend_api to banking_system--><path d="M760.37,587.5999 C810.46,587.5999 
 !global $ARROW_COLOR = "#666666"
 
 !global $BOUNDARY_COLOR = "#444444"
-!global $BOUNDARY_BG_COLOR = "#FFFFFF"
+!global $BOUNDARY_BG_COLOR = "transparent"
 
 !global $LEGEND_FONT_COLOR = "#FFFFFF"
 !global $LEGEND_TITLE_COLOR = "#000000"
-!global $LEGEND_UNDEFINED_BG_COLOR = "#D5CFEE"
-!global $LEGEND_UNDEFINED_FONT_COLOR = "#8B77E4"
+' %darken(darkkhaki,50), #khaki
+!global $LEGEND_DARK_COLOR = "#66622E"
+!global $LEGEND_LIGHT_COLOR = "#khaki"
+
+' Labels
+' ##################################
 
 !global $LEGEND_SHADOW_TEXT = "(shadow) "
 !global $LEGEND_NO_SHADOW_TEXT = "(no shadow) "
@@ -43,11 +47,25 @@ link backend_api to banking_system--><path d="M760.37,587.5999 C810.46,587.5999 
 !global $LEGEND_NO_FONT_TEXT = "(no text color) "
 !global $LEGEND_NO_BG_TEXT = "(no back color) "
 !global $LEGEND_NO_LINE_TEXT = "(no line color) "
+!global $LEGEND_ROUNDED_BOX = "(rounded box) "
+!global $LEGEND_EIGHT_SIDED = "(eight sided) "
+!global $LEGEND_DOTTED_LINE = "(dotted) "
+!global $LEGEND_DASHED_LINE = "(dashed) "
+!global $LEGEND_BOLD_LINE = "(bold) "
 
 ' Styling
 ' ##################################
 
 !global $TECHN_FONT_SIZE = 12
+!global $ROUNDED_BOX_SIZE = 25
+!global $EIGHT_SIDED_SIZE = 18
+
+!global $ROUNDED_BOX = "roundedBox"
+!global $EIGHT_SIDED = "eightSided"
+
+!global $DOTTED_LINE = "dotted"
+!global $DASHED_LINE = "dashed"
+!global $BOLD_LINE = "bold"
 
 skinparam defaultTextAlignment center
 
@@ -57,6 +75,13 @@ skinparam maxMessageSize 150
 skinparam LegendBorderColor transparent
 skinparam LegendBackgroundColor transparent
 skinparam LegendFontColor $LEGEND_FONT_COLOR
+
+skinparam shadowing<<legendArea>> false
+' #00000000 is transparent
+skinparam rectangle<<legendArea>> {
+    backgroundcolor #00000000
+    bordercolor #00000000
+}
 
 skinparam rectangle {
     StereotypeFontSize 12
@@ -73,13 +98,24 @@ skinparam queue {
     shadowing false
 }
 
-skinparam Arrow {
+skinparam arrow {
     Color $ARROW_COLOR
     FontColor $ARROW_COLOR
     FontSize 12
 }
 
-' Some boundary skinparam have to be set a package skinparams too (PlantUML uses internal packages)
+skinparam actor {
+    StereotypeFontSize 12
+    shadowing false
+    style awesome
+}
+
+skinparam person {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+' Some boundary skinparams have to be set as package skinparams too (PlantUML uses internal packages)
 skinparam package {
     StereotypeFontSize 6
     StereotypeFontColor $BOUNDARY_BG_COLOR
@@ -123,6 +159,7 @@ skinparam rectangle<<boundary>> {
   !return $stereos
 !endfunction
 
+' element specific (unused are hidden based on mask)
 !unquoted function $toStereos($elementType, $tags)
   !if (%strlen($tags) == 0)
     !$stereos = '<<' + $elementType + '>>'
@@ -130,25 +167,38 @@ skinparam rectangle<<boundary>> {
     !return $stereos
   !endif
   !$stereos = ''
+  !$mask = $resetMask()
   !$brPos = %strpos($tags, "+")
   !while ($brPos >= 0)
     !$tag = %substr($tags, 0, $brPos)
     !$stereos = $stereos + '<<' + $tag + '>>'
+    !$mergedMask = $combineMaskWithTag($mask, $tag)
+    !if ($mergedMask != $mask)
 %set_variable_value("$" + $tag + "Legend", %true())
+      !$mask = $mergedMask
+    !endif
     !$tags = %substr($tags, $brPos+1)
     !$brPos = %strpos($tags, "+")
   !endwhile
   !if (%strlen($tags)>0)
     !$stereos = $stereos + '<<' + $tags + '>>'
+    !$mergedMask = $combineMaskWithTag($mask, $tags)
+    !if ($mergedMask != $mask)
 %set_variable_value("$" + $tags + "Legend", %true())
+      !$mask = $mergedMask
+    !endif
   !endif
   ' has to be last, otherwise PlantUML overwrites all tag specific skinparams
   !$stereos = $stereos + '<<' + $elementType + '>>'
+  !$mergedMask = $combineMaskWithTag($mask, $elementType)
+  !if ($mergedMask != $mask)
 %set_variable_value("$" + $elementType + "Legend", %true())
+    !$mask = $mergedMask
+  !endif
   !return $stereos
 !endfunction
 
-!function $elementTagSkinparams($element, $tagStereo, $bgColor, $fontColor, $borderColor, $shadowing)
+!function $elementTagSkinparams($element, $tagStereo, $bgColor, $fontColor, $borderColor, $shadowing, $shape)
   !$elementSkin = "skinparam " + $element +"<<" + $tagStereo + ">> {" + %newline()
   !if ($fontColor!="")
     !if ($tagStereo != "boundary")
@@ -168,14 +218,28 @@ skinparam rectangle<<boundary>> {
   !if ($shadowing == "false")
     !$elementSkin = $elementSkin + "    Shadowing<<" + $tagStereo + ">> " + "false" + %newline()
   !endif
+  ' only rectangle supports shape(d corners), define both skinparam that overlays are working
+  !if ($shape!="" && $element == "rectangle")
+    !if ($shape == $ROUNDED_BOX)
+      !$elementSkin = $elementSkin + "    RoundCorner " + $ROUNDED_BOX_SIZE+ %newline()
+      !$elementSkin = $elementSkin + "    DiagonalCorner " + "0" + %newline()
+    !elseif ($shape == $EIGHT_SIDED)
+      !$elementSkin = $elementSkin + "    RoundCorner " + "0" + %newline()
+      !$elementSkin = $elementSkin + "    DiagonalCorner " + $EIGHT_SIDED_SIZE+ %newline()
+    !endif
+  !endif
   !$elementSkin = $elementSkin + "}" + %newline()
   !return $elementSkin
 !endfunction
 
-!unquoted procedure $defineSkinparams($tagStereo, $bgColor, $fontColor, $borderColor, $shadowing)
-  !$tagSkin = $elementTagSkinparams("rectangle", $tagStereo, $bgColor, $fontColor, $borderColor, $shadowing)
-  !$tagSkin = $tagSkin + $elementTagSkinparams("database", $tagStereo, $bgColor, $fontColor, $borderColor, $shadowing)
-  !$tagSkin = $tagSkin + $elementTagSkinparams("queue", $tagStereo, $bgColor, $fontColor, $borderColor, $shadowing)
+!unquoted procedure $defineSkinparams($tagStereo, $bgColor, $fontColor, $borderColor, $shadowing, $shape)
+  ' only rectangle supports shape(d corners)
+  !$tagSkin = $elementTagSkinparams("rectangle", $tagStereo, $bgColor, $fontColor, $borderColor, $shadowing, $shape)
+  !$tagSkin = $tagSkin + $elementTagSkinparams("database", $tagStereo, $bgColor, $fontColor, $borderColor, $shadowing, "")
+  !$tagSkin = $tagSkin + $elementTagSkinparams("queue", $tagStereo, $bgColor, $fontColor, $borderColor, $shadowing, "")
+  ' actor has style awesome, therefore $fontColor is ignored and text uses $bgColor too
+  !$tagSkin = $tagSkin + $elementTagSkinparams("actor", $tagStereo, $bgColor, $bgColor, $borderColor, $shadowing, "")
+  !$tagSkin = $tagSkin + $elementTagSkinparams("person", $tagStereo, $bgColor, $fontColor, $borderColor, $shadowing, "")
   !if ($tagStereo == "boundary" && $bgColor!="")
     !$tagSkin = $tagSkin + "skinparam package<<boundary>>StereotypeFontColor " + $bgColor + %newline()
     !$tagSkin = $tagSkin + "skinparam rectangle<<boundary>>StereotypeFontColor " + $bgColor + %newline()
@@ -184,50 +248,160 @@ $tagSkin
 !endprocedure
 
 ' arrow colors cannot start with # (legend background has to start with #)
-!function ColorNoHash($c)
+!function $colorWithoutHash($c)
   !if (%substr($c, 0, 1) == "#")
     !$c = %substr($c,1)
   !endif
   !return $c
 !endfunction
 
-!unquoted procedure $defineRelSkinparams($tagStereo, $textColor, $lineColor)
-  !$elementSkin = "skinparam Arrow<<" + $tagStereo + ">> {" + %newline()
+!unquoted procedure $defineRelSkinparams($tagStereo, $textColor, $lineColor, $lineStyle)
+  !$elementSkin = "skinparam arrow<<" + $tagStereo + ">> {" + %newline()
   !$elementSkin = $elementSkin + "    Color "
   !if ($lineColor!="")
-    !$elementSkin = $elementSkin + ColorNoHash($lineColor)
+    !$elementSkin = $elementSkin + $colorWithoutHash($lineColor)
   !endif
   !if ($textColor!="")
-    !$elementSkin = $elementSkin + ";text:" + ColorNoHash($textColor)
+    !$elementSkin = $elementSkin + ";text:" + $colorWithoutHash($textColor)
+  !endif
+  !if ($lineStyle!="")
+    !$elementSkin = $elementSkin + ";line." + $lineStyle
   !endif
   !$elementSkin = $elementSkin + %newline()
   !$elementSkin = $elementSkin + "}" + %newline()
 $elementSkin
 !endprocedure
 
-!function $tagLegendEntry($tagStereo, $bgColor, $fontColor, $borderColor, $shadowing)
+' %is_dark() requires PlantUML version >=1.2021.6
+!if (%function_exists("%is_dark"))
+  !$PlantUMLSupportsDynamicLegendColor = %true()
+!else
+  !$PlantUMLSupportsDynamicLegendColor = %false()
+  !log "dynamic undefined legend colors" requires PlantUML version >= 1.2021.6, therefore only static assigned colors are used
+!endif
+
+!unquoted function $contrastLegend($color)
+  !if (%is_dark($color))
+    !$value = $LEGEND_LIGHT_COLOR
+  !else
+    !$value = $LEGEND_DARK_COLOR
+  !endif
+  !return $value
+!endfunction
+
+!unquoted function $flatLegend($color)
+  !if (%is_dark($color))
+    !$value = $LEGEND_DARK_COLOR
+  !else
+    !$value = $LEGEND_LIGHT_COLOR
+  !endif
+  !return $value
+!endfunction
+
+' legend background has to start with #
+!function $colorWithHash($c)
+  !if (%substr($c, 0, 1) != "#")
+    !$c = "#" + $c
+  !endif
+  !return $c
+!endfunction
+
+!function $addMaskFlag($mask, $attr)
+  !if ($attr == "")
+    !$mask = $mask + "0"
+  !else
+    !$mask = $mask + "1"
+  !endif
+  !return $mask
+!endfunction
+
+!function $orFlags($flag1, $flag2)
+  !if ($flag1 == "0" && $flag2 == "0")
+    !return "0"
+  !endif
+  !return "1"
+!endfunction
+
+!function $tagLegendMask($bgColor, $fontColor, $borderColor, $shadowing, $shape)
+  !$mask = ""
+  !$mask = $addMaskFlag($mask, $bgColor)
+  !$mask = $addMaskFlag($mask, $fontColor)
+  !$mask = $addMaskFlag($mask, $borderColor)
+  !$mask = $addMaskFlag($mask, $shadowing)
+  !$mask = $addMaskFlag($mask, $shape)
+  !return $mask
+!endfunction
+
+!function $resetMask()
+  !return "00000"
+!endfunction
+
+!function $combineMasks($mask1, $mask2)
+  !$mask = ""
+  !$mask = $mask + $orFlags(%substr($mask1, 0, 1), %substr($mask2, 0, 1))
+  !$mask = $mask + $orFlags(%substr($mask1, 1, 1), %substr($mask2, 1, 1))
+  !$mask = $mask + $orFlags(%substr($mask1, 2, 1), %substr($mask2, 2, 1))
+  !$mask = $mask + $orFlags(%substr($mask1, 3, 1), %substr($mask2, 3, 1))
+  !$mask = $mask + $orFlags(%substr($mask1, 4, 1), %substr($mask2, 4, 1))
+  !return $mask
+!endfunction
+
+!function $combineMaskWithTag($mask1, $tag)
+  !$mask2 = %get_variable_value("$" + $tag+ "LegendMask")
+  !if ($mask2=="")
+    ' !log combineMaskWithTag $mask1, $tag, ... only $mask1
+    !return $mask1
+  !endif
+
+  ' !log combineMaskWithTag $mask1, $tag, $mask2 ... $combineMasks($mask1, $mask2)
+  !return  $combineMasks($mask1, $mask2)
+!endfunction
+
+!function $tagLegendEntry($tagStereo, $bgColor, $fontColor, $borderColor, $shadowing, $shape)
+  !$bg = $bgColor
+  !$fo = $fontColor
+  !$bo = $borderColor
+
+  !if ($fo == "")
+    !if ($bg != "")
+!if ($PlantUMLSupportsDynamicLegendColor)
+      !$fo = $contrastLegend($bg)
+!else
+      !$fo = $LEGEND_DARK_COLOR
+!endif
+    !else
+      !if ($bo == "")
+        !$fo = $LEGEND_DARK_COLOR
+        !$bg = $LEGEND_LIGHT_COLOR
+      !else
+!if ($PlantUMLSupportsDynamicLegendColor)
+        !$fo = $flatLegend($bo)
+        !$bg = $contrastLegend($bo)
+!else
+        !$fo = $LEGEND_DARK_COLOR
+        !$bg = $LEGEND_LIGHT_COLOR
+!endif
+      !endif
+    !endif
+  !else
+    !if ($bg == "")
+!if ($PlantUMLSupportsDynamicLegendColor)
+      !$bg = $contrastLegend($fo)
+!else
+      !$bg = $LEGEND_LIGHT_COLOR
+!endif
+    !endif
+  !endif
+
+  !if ($bo == "")
+    !$bo = $bg
+  !endif
+
   !$tagEntry = "|"
-  !if ($bgColor!="")
-    !$bg = $bgColor
-  !else
-    !$bg = $LEGEND_UNDEFINED_BG_COLOR
-  !endif
-  ' named colors have to start with # too
-  !if (%substr($bg, 0, 1) != "#")
-    !$bg = "#" + $bg
-  !endif
-  !$tagEntry = $tagEntry + "<" + $bg +">"
+  !$tagEntry = $tagEntry + "<" + $colorWithHash($bg) +">" 
   ' <U+25AF> ..white rectangle
-  !if ($borderColor!="")
-    !$tagEntry = $tagEntry + "<color:"+$borderColor+"> <U+25AF></color> "
-  !else
-    !$tagEntry = $tagEntry + "<color:"+$bg+"> <U+25AF></color> "
-  !endif
-  !if ($fontColor!="")
-    !$tagEntry = $tagEntry + "<color:"+$fontColor+">"
-  !else
-    !$tagEntry = $tagEntry + "<color:"+$LEGEND_UNDEFINED_FONT_COLOR+">"
-  !endif
+  !$tagEntry = $tagEntry + "<color:"+$bo+"> <U+25AF></color> "
+  !$tagEntry = $tagEntry + "<color:"+$fo+">"
   !$tagEntry = $tagEntry + " " + $tagStereo + " "
   !if ($shadowing == "true")
     !$tagEntry = $tagEntry + $LEGEND_SHADOW_TEXT
@@ -235,9 +409,15 @@ $elementSkin
   !if ($shadowing == "false")
     !$tagEntry = $tagEntry + $LEGEND_NO_SHADOW_TEXT
   !endif
+  !if ($shape == $ROUNDED_BOX)
+    !$tagEntry = $tagEntry + $LEGEND_ROUNDED_BOX
+  !endif
+  !if ($shape == $EIGHT_SIDED)
+    !$tagEntry = $tagEntry + $LEGEND_EIGHT_SIDED
+  !endif
   !if ($fontColor == "" && $bgColor == "")
       !$tagEntry = $tagEntry + $LEGEND_NO_FONT_BG_TEXT
-  !else
+  !else 
     !if ($fontColor == "")
       !$tagEntry = $tagEntry + $LEGEND_NO_FONT_TEXT
     !endif
@@ -247,22 +427,32 @@ $elementSkin
   !endif
   !$tagEntry = $tagEntry + "</color> "
   !$tagEntry = $tagEntry + "|"
-  !return $tagEntry
+  !return $tagEntry 
 !endfunction
 
-!function $tagRelLegendEntry($tagStereo, $textColor, $lineColor)
+!function $tagRelLegendEntry($tagStereo, $textColor, $lineColor, $lineStyle)
+  !$tc = $textColor
+  !$lc = $lineColor
+
+  !if ($tc=="")
+!if ($PlantUMLSupportsDynamicLegendColor)
+    !$tc = $flatLegend($ARROW_COLOR)
+!else
+    !$tc = $LEGEND_DARK_COLOR
+!endif
+  !endif
+  !if ($lc=="")
+!if ($PlantUMLSupportsDynamicLegendColor)
+    !$lc = $flatLegend($ARROW_COLOR)
+!else
+    !$lc = $LEGEND_DARK_COLOR
+!endif
+  !endif
+
   !$tagEntry = "|"
   ' <U+2500> ..white line
-  !if ($lineColor!="")
-    !$tagEntry = $tagEntry + "<color:"+$lineColor+"> <U+2500></color> "
-  !else
-    !$tagEntry = $tagEntry + " <U+2500> "
-  !endif
-  !if ($textColor!="")
-    !$tagEntry = $tagEntry + "<color:"+$textColor+">"
-  !else
-    !$tagEntry = $tagEntry + "<color:"+$LEGEND_UNDEFINED_FONT_COLOR+">"
-  !endif
+  !$tagEntry = $tagEntry + "<color:"+$lc+"> <U+2500></color> "
+  !$tagEntry = $tagEntry + "<color:"+$tc+">"
   !$tagEntry = $tagEntry + " " + $tagStereo + " "
   !if ($textColor == "")
     !$tagEntry = $tagEntry + $LEGEND_NO_FONT_TEXT
@@ -270,31 +460,48 @@ $elementSkin
   !if ($lineColor == "")
     !$tagEntry = $tagEntry + $LEGEND_NO_LINE_TEXT
   !endif
+  !if ($lineStyle != "")
+    !if ($lineStyle == $DOTTED_LINE)
+      !$tagEntry = $tagEntry + $LEGEND_DOTTED_LINE
+    !elseif ($lineStyle == $DASHED_LINE)
+      !$tagEntry = $tagEntry + $LEGEND_DASHED_LINE
+    !elseif ($lineStyle == $BOLD_LINE)
+      !$tagEntry = $tagEntry + $LEGEND_BOLD_LINE
+    !else
+      !$tagEntry = $tagEntry + "(" + $lineStyle + ") "
+    !endif
+  !endif
   !$tagEntry = $tagEntry + "</color> "
   !$tagEntry = $tagEntry + "|"
-  !return $tagEntry
+  !return $tagEntry 
 !endfunction
 
-!unquoted procedure $addTagToLegend($tagStereo, $bgColor="", $fontColor="", $borderColor="", $shadowing="")
+!global $LEGEND_DOTTED_LINE = "(dotted) "
+!global $LEGEND_DASHED_LINE = "(dashed) "
+!global $LEGEND_BOLD_LINE = "(bold) "
+
+!unquoted procedure $addTagToLegend($tagStereo, $bgColor="", $fontColor="", $borderColor="", $shadowing="", $shape="")
 '' if a combined element tag is defined (e.g. "v1.0&v1.1") then it is typically a merged color,
-'' like a new $fontColor="#fdae61" therefore it should be added to the legend
+'' like a new $fontColor="#fdae61" therefore it should be added to the legend 
 '' and the & combined tags will be not removed
 '  !if (%strpos($tagStereo, "&")<0)
-    !$tagEntry = $tagLegendEntry($tagStereo, $bgColor, $fontColor, $borderColor, $shadowing)
+   !$tagEntry = $tagLegendEntry($tagStereo, $bgColor, $fontColor, $borderColor, $shadowing, $shape)
 %set_variable_value("$" + $tagStereo + "LegendEntry", $tagEntry)
     !$tagCustomLegend = $tagCustomLegend + $tagStereo + "\n"
+  !$tagMask = $tagLegendMask( $bgColor, $fontColor, $borderColor, $shadowing, $shape)
+%set_variable_value("$" + $tagStereo + "LegendMask", $tagMask)
 '  !endif
 !endprocedure
 
-!unquoted procedure $addRelTagToLegend($tagStereo, $textColor="", $lineColor="")
+!unquoted procedure $addRelTagToLegend($tagStereo, $textColor="", $lineColor="", $lineStyle="")
 '' Arrows have a bug with stereotype/skinparams and cannot combine text colors of one stereotype
-'' and the line color of another stereotype. Therefore the text color of one tag and the line color
+'' and the line color of another stereotype. Therefore the text color of one tag and the line color 
 '' of another tag have to be combined via a "workaround" tag ("v1.0&v1.1").
-'' This workaround tag could be theoretically removed in the legend but after that there would
-'' be an inconsistency between the element tags and the rel tags and therefore
+'' This workaround tag could be theoretically removed in the legend but after that there would 
+'' be an inconsistency between the element tags and the rel tags and therefore 
 '' & combined workaround tags are not removed too (and in unlikely cases the color itself could be changed)
 '  !if (%strpos($tagStereo, "&")<0)
-    !$tagEntry = $tagRelLegendEntry($tagStereo, $textColor, $lineColor)
+    !$tagEntry = $tagRelLegendEntry($tagStereo, $textColor, $lineColor, $lineStyle)
 %set_variable_value("$" + $tagStereo + "_LineLegendEntry", $tagEntry)
     !$tagCustomLegend = $tagCustomLegend + $tagStereo + "_Line\n"
 '  !endif
@@ -318,23 +525,46 @@ $elementSkin
   !endif
 !endprocedure
 
+!function RoundedBoxShape()
+!return $ROUNDED_BOX
+!endfunction
+
+!function EightSidedShape()
+!return $EIGHT_SIDED
+!endfunction
+
+!function DottedLine()
+!return $DOTTED_LINE
+!endfunction
+
+!function DashedLine()
+!return $DASHED_LINE
+!endfunction
+
+!function BoldLine()
+!return $BOLD_LINE
+!endfunction
+
 ' used by new defined tags
-!unquoted procedure AddElementTag($tagStereo, $bgColor="", $fontColor="", $borderColor="", $shadowing="")
-$defineSkinparams($tagStereo, $bgColor, $fontColor, $borderColor, $shadowing)
-$addTagToLegend($tagStereo, $bgColor, $fontColor, $borderColor, $shadowing)
+!unquoted procedure AddElementTag($tagStereo, $bgColor="", $fontColor="", $borderColor="", $shadowing="", $shape="")
+$defineSkinparams($tagStereo, $bgColor, $fontColor, $borderColor, $shadowing, $shape)
+$addTagToLegend($tagStereo, $bgColor, $fontColor, $borderColor, $shadowing, $shape)
 !endprocedure
 
 ' used by new defined rel tags
-!unquoted procedure AddRelTag($tagStereo, $textColor="", $lineColor="")
-$defineRelSkinparams($tagStereo, $textColor, $lineColor)
-$addRelTagToLegend($tagStereo, $textColor, $lineColor)
+!unquoted procedure AddRelTag($tagStereo, $textColor="", $lineColor="", $lineStyle = "")
+$defineRelSkinparams($tagStereo, $textColor, $lineColor, $lineStyle)
+$addRelTagToLegend($tagStereo, $textColor, $lineColor, $lineStyle)
 !endprocedure
 
 ' update the style of existing elements like person, ...
-!unquoted procedure UpdateElementStyle($elementName, $bgColor="", $fontColor="", $borderColor="", $shadowing="")
-$defineSkinparams($elementName, $bgColor, $fontColor, $borderColor, $shadowing)
-  !$tagEntry = $tagLegendEntry($elementName, $bgColor, $fontColor, $borderColor, $shadowing)
+!unquoted procedure UpdateElementStyle($elementName, $bgColor="", $fontColor="", $borderColor="", $shadowing="", $shape="")
+$defineSkinparams($elementName, $bgColor, $fontColor, $borderColor, $shadowing, $shape)
+  !$tagEntry = $tagLegendEntry($elementName, $bgColor, $fontColor, $borderColor, $shadowing, $shape)
 %set_variable_value("$" + $elementName + "LegendEntry", $tagEntry)
+  ' default tags sets at least bgColor and fontColor
+  !$tagMask = $tagLegendMask("CHANGED", "CHANGED", $borderColor, $shadowing, $shape)
+%set_variable_value("$" + $elementName + "LegendMask", $tagMask)
 !endprocedure
 
 /' @deprecated in favor of UpdateElementStyle '/
@@ -344,14 +574,14 @@ UpdateElementStyle($elementName, $bgColor, $fontColor, $borderColor, $shadowing)
 
 ' update the style of default relation, it has to set both properties (combined statement not working)
 !unquoted procedure UpdateRelStyle($textColor, $lineColor)
-  !$elementSkin = "skinparam Arrow {" + %newline()
+  !$elementSkin = "skinparam arrow {" + %newline()
   !$elementSkin = $elementSkin + "    Color " + $lineColor + %newline()
   !$elementSkin = $elementSkin + "    FontColor " + $textColor + %newline()
   !$elementSkin = $elementSkin + "}" + %newline()
 $elementSkin
 !endprocedure
 
-' tags/stereotypes have to be delimited with \n
+' tags/stereotypes have to be delimited with \n 
 !unquoted procedure SetDefaultLegendEntries($tagStereoEntries)
   !$tagDefaultLegend = $tagStereoEntries
 !endprocedure
@@ -383,7 +613,7 @@ $elementSkin
 !if (%strpos($descr, "\n") >= 0)
 !else
   !while (%strlen($descr)>$width)
-    !$brPos = $width
+    !$brPos = $width 
     !while ($brPos>0 && %substr($descr, $brPos, 1)!= ' ')
       !$brPos = $brPos - 1
     !endwhile
@@ -511,6 +741,25 @@ SetPropertyHeader("Property","Value")
 ' Layout
 ' ##################################
 
+!procedure $getHideStereotype($hideStereotype) 
+!if ($hideStereotype=="true")
+hide stereotype
+!endif
+!endprocedure
+
+!procedure $getLegendTable() 
+<#00000000,#00000000>|<color:$LEGEND_TITLE_COLOR>**Legend**</color> |
+$showActiveLegendEntries($tagDefaultLegend)
+$showActiveLegendEntries($tagCustomLegend)
+!endprocedure
+
+!procedure $getLegendArea($areaAlias, $hideStereotype) 
+$getHideStereotype($hideStereotype)
+rectangle $areaAlias<<legendArea>> [
+$getLegendTable()
+]
+!endprocedure
+
 !procedure HIDE_STEREOTYPE()
 hide stereotype
 !endprocedure
@@ -526,25 +775,33 @@ center footer <font color=red>Warning:</font> Created for discussion, needs to b
 top to bottom direction
 !endprocedure
 
-!procedure LAYOUT_LEFT_RIGHT()
+!procedure LAYOUT_LEFT_RIGHT() 
 left to right direction
 !endprocedure
 
 ' has to be last call in diagram
 !unquoted procedure SHOW_LEGEND($hideStereotype="true")
-!if ($hideStereotype=="true")
-hide stereotype
-!endif
+$getHideStereotype($hideStereotype)
 legend right
-|<color:$LEGEND_TITLE_COLOR>**Legend**</color> |
-$showActiveLegendEntries($tagDefaultLegend)
-$showActiveLegendEntries($tagCustomLegend)
+$getLegendTable()
 endlegend
 !endprocedure
 
 /' @deprecated in favor of SHOW_LEGEND '/
 !unquoted procedure SHOW_DYNAMIC_LEGEND($hideStereotype="true")
 SHOW_LEGEND($hideStereotype)
+!endprocedure
+
+' legend is reserved and cannot be uses as alias of SHOW_FLOATING_LEGEND() therefore
+' LEGEND() is introduced. It returns the default name of the floating alias "floating_legend_alias"
+' and can be used in the Lay_Distance() calls
+!function LEGEND()
+!return "floating_legend_alias"
+!endfunction
+
+' enables that legend can be located in drawing area of the diagram. It has to be last call in diagram followed by Lay_Distance()
+!unquoted procedure SHOW_FLOATING_LEGEND($alias=LEGEND(), $hideStereotype="true")
+$getLegendArea($alias, $hideStereotype)
 !endprocedure
 
 ' Boundaries
@@ -570,7 +827,7 @@ rectangle "$getBoundary($label, $type)" $toStereos("boundary", $tags) as $alias 
   !$rel = $alias1 + ' ' + $direction + ' ' + $alias2
   !if ($tags != "")
     !$rel = $rel + ' ' + $toStereos($tags)
-  !endif
+  !endif  
   !$rel = $rel + ' : '
   !if ($sprite != "")
     ' if it starts with & it's a OpenIconic, details see https://useiconic.com/open/
@@ -578,8 +835,8 @@ rectangle "$getBoundary($label, $type)" $toStereos("boundary", $tags) as $alias 
       !$rel = $rel + '<$'+$sprite+'> '
     !else
       !$rel = $rel + '<'+$sprite+'> '
-    !endif
-  !endif
+    !endif    
+  !endif  
   !if ($link != "")
     !$rel = $rel + '**[[' + $link + ' ' + $label + ']]**'
   !else
@@ -682,6 +939,10 @@ $getRel("<<-RIGHT->>", $from, $to, $label, $techn, $descr, $sprite, $tags, $link
 ' Layout Helpers
 ' ##################################
 
+!function $getHiddenLine($distance)
+  !return '-[hidden]' + %substr('- - - - - - - - - - - -', 0, %intval($distance) + 1)
+!endfunction
+
 !unquoted procedure Lay_D($from, $to)
 $from -[hidden]D- $to
 !endprocedure
@@ -693,6 +954,13 @@ $from -[hidden]R- $to
 !endprocedure
 !unquoted procedure Lay_L($from, $to)
 $from -[hidden]L- $to
+!endprocedure
+
+' PlantUML bug: lines which does "not match" with the orientation/direction of the diagram
+' uses the same length therefore the method offers no direction at all.
+' If a direction is required the Lay_...() methods can be used
+!unquoted procedure Lay_Distance($from, $to, $distance="0")
+$from $getHiddenLine($distance) $to
 !endprocedure' Scope: A single software system.
 ' Primary elements: The software system in scope.
 ' Supporting elements: People and software systems directly connected to the software system in scope.
@@ -841,9 +1109,11 @@ endlegend
 !endprocedure
 
 !global $defaultPersonSprite = "person"
+!global $portraitPerson = "false"
 
 !procedure HIDE_PERSON_SPRITE()
   !$defaultPersonSprite = ""
+  !$portraitPerson = "false"
 !endprocedure
 
 !unquoted procedure SHOW_PERSON_SPRITE($sprite="")
@@ -852,6 +1122,17 @@ endlegend
   !else
     !$defaultPersonSprite = $sprite
   !endif
+  !$portraitPerson = "false"
+!endprocedure
+
+!unquoted procedure SHOW_PERSON_PORTRAIT()
+  !$defaultPersonSprite = ""
+  !$portraitPerson = "portrait"
+!endprocedure
+
+!unquoted procedure SHOW_PERSON_OUTLINE()
+  !$defaultPersonSprite = ""
+  !$portraitPerson = "outline"
 !endprocedure
 
 ' Elements
@@ -891,11 +1172,23 @@ endlegend
 !endfunction
 
 !unquoted procedure Person($alias, $label, $descr="", $sprite="", $tags="", $link="")
+!if ($portraitPerson == "portrait") && ($sprite == "")
+actor "$getPerson($label, $descr, $sprite)$getProps()" $toStereos("person", $tags) as $alias $getLink($link)
+!elseif ($portraitPerson == "outline") && ($sprite == "")
+person "$getPerson($label, $descr, $sprite)$getProps()" $toStereos("person", $tags) as $alias $getLink($link)
+!else
 rectangle "$getPerson($label, $descr, $sprite)$getProps()" $toStereos("person", $tags) as $alias $getLink($link)
+!endif
 !endprocedure
 
 !unquoted procedure Person_Ext($alias, $label, $descr="", $sprite="", $tags="", $link="")
+!if ($portraitPerson == "portrait") && ($sprite == "")
+actor "$getPerson($label, $descr, $sprite)$getProps()" $toStereos("external_person", $tags) as $alias $getLink($link)
+!elseif ($portraitPerson == "outline") && ($sprite == "")
+person "$getPerson($label, $descr, $sprite)$getProps()" $toStereos("external_person", $tags) as $alias $getLink($link)
+!else
 rectangle "$getPerson($label, $descr, $sprite)$getProps()" $toStereos("external_person", $tags) as $alias $getLink($link)
+!endif
 !endprocedure
 
 !unquoted procedure System($alias, $label, $descr="", $sprite="", $tags="", $link="")
@@ -1058,6 +1351,9 @@ Rel_Neighbor(backend_api, banking_system, "Uses", "sync/async, XML/HTTPS")
 
 
 
+
+
+
 skinparam defaultTextAlignment center
 
 skinparam wrapWidth 200
@@ -1066,6 +1362,12 @@ skinparam maxMessageSize 150
 skinparam LegendBorderColor transparent
 skinparam LegendBackgroundColor transparent
 skinparam LegendFontColor #FFFFFF
+
+skinparam shadowing<<legendArea>> false
+skinparam rectangle<<legendArea>> {
+    backgroundcolor #00000000
+    bordercolor #00000000
+}
 
 skinparam rectangle {
     StereotypeFontSize 12
@@ -1082,28 +1384,62 @@ skinparam queue {
     shadowing false
 }
 
-skinparam Arrow {
+skinparam arrow {
     Color #666666
     FontColor #666666
     FontSize 12
 }
 
+skinparam actor {
+    StereotypeFontSize 12
+    shadowing false
+    style awesome
+}
+
+skinparam person {
+    StereotypeFontSize 12
+    shadowing false
+}
+
 skinparam package {
     StereotypeFontSize 6
-    StereotypeFontColor #FFFFFF
+    StereotypeFontColor transparent
     FontStyle plain
-    BackgroundColor #FFFFFF
+    BackgroundColor transparent
 }
 
 skinparam rectangle<<boundary>> {
     Shadowing false
     StereotypeFontSize 6
-    StereotypeFontColor #FFFFFF
+    StereotypeFontColor transparent
     FontColor #444444
     BorderColor #444444
-    BackgroundColor #FFFFFF
+    BackgroundColor transparent
     BorderStyle dashed
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1188,6 +1524,19 @@ skinparam queue<<person>> {
     BackgroundColor #08427B
     BorderColor #073B6F
 }
+skinparam actor<<person>> {
+    StereotypeFontColor #08427B
+    FontColor #08427B
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+skinparam person<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
 
 skinparam rectangle<<external_person>> {
     StereotypeFontColor #FFFFFF
@@ -1207,6 +1556,19 @@ skinparam queue<<external_person>> {
     BackgroundColor #686868
     BorderColor #8A8A8A
 }
+skinparam actor<<external_person>> {
+    StereotypeFontColor #686868
+    FontColor #686868
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+skinparam person<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
 
 skinparam rectangle<<system>> {
     StereotypeFontColor #FFFFFF
@@ -1226,6 +1588,19 @@ skinparam queue<<system>> {
     BackgroundColor #1168BD
     BorderColor #3C7FC0
 }
+skinparam actor<<system>> {
+    StereotypeFontColor #1168BD
+    FontColor #1168BD
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+skinparam person<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
 
 skinparam rectangle<<external_system>> {
     StereotypeFontColor #FFFFFF
@@ -1245,6 +1620,19 @@ skinparam queue<<external_system>> {
     BackgroundColor #999999
     BorderColor #8A8A8A
 }
+skinparam actor<<external_system>> {
+    StereotypeFontColor #999999
+    FontColor #999999
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+skinparam person<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
 
 
 
@@ -1373,6 +1761,8 @@ sprite $person2 [48x48/16] {
 
 
 
+
+
 skinparam rectangle<<container>> {
     StereotypeFontColor #FFFFFF
     FontColor #FFFFFF
@@ -1391,6 +1781,19 @@ skinparam queue<<container>> {
     BackgroundColor #438DD5
     BorderColor #3C7FC0
 }
+skinparam actor<<container>> {
+    StereotypeFontColor #438DD5
+    FontColor #438DD5
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+skinparam person<<container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+
 
 skinparam rectangle<<external_container>> {
     StereotypeFontColor #FFFFFF
@@ -1410,6 +1813,19 @@ skinparam queue<<external_container>> {
     BackgroundColor #B3B3B3
     BorderColor #A6A6A6
 }
+skinparam actor<<external_container>> {
+    StereotypeFontColor #B3B3B3
+    FontColor #B3B3B3
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+skinparam person<<external_container>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #B3B3B3
+    BorderColor #A6A6A6
+}
+
 
 
 
@@ -1466,7 +1882,7 @@ email_system <<- - backend_api : **Sends e-mails using**\n//<size:12>[sync, SMTP
 backend_api ->> banking_system : **Uses**\n//<size:12>[sync/async, XML/HTTPS]</size>//
 @enduml
 
-PlantUML version 1.2021.8(Sat Jun 26 08:20:59 GMT 2021)
+PlantUML version 1.2021.10(Mon Aug 30 13:43:48 GMT 2021)
 (GPL source distribution)
 Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM

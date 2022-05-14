@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Devdoc-Swissknife EN</title>
+  <title>7.1 Refrencing embeded diagrams | Devdoc-Swissknife EN</title>
   <meta name="description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Devdoc-Swissknife EN" />
+  <meta property="og:title" content="7.1 Refrencing embeded diagrams | Devdoc-Swissknife EN" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
   <meta property="og:description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="github-repo" content="Godhart/devdoc-swissknife" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Devdoc-Swissknife EN" />
+  <meta name="twitter:title" content="7.1 Refrencing embeded diagrams | Devdoc-Swissknife EN" />
   
   <meta name="twitter:description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="twitter:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="1-examples.html"/>
+<link rel="prev" href="7-diagrams-reference.html"/>
+<link rel="next" href="7.2-native-r-markdown.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -230,97 +230,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Devdoc-Swissknife EN</h1>
-<p class="author"><em>Nikolay Gniteev</em></p>
-<p class="date"><em>2022-05-14</em></p>
-</div>
-<div id="intro" class="section level1 unnumbered hasAnchor" number="">
-<h1>Preface<a href="index.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is a demo project for development documentation generation with
-<a href="https://rmarkdown.rstudio.com/"><strong>R Markdown</strong></a> and <a href="https://kroki.io/"><strong>Kroki</strong></a>.</p>
-<p>All the things described here you could do without that project, but I’ve tried to stich
-those components together so you’ll be able to concentrate on content rather than process.</p>
-<p>This approach allows you to create reproducible documentation in form of PDF, presentations, gitbook
-and some other HTML formats from simple markdown-like files (Pandoc flavor) with extra <strong>R chunks</strong> and textual diagrams description.</p>
-<p>The goal of this project is to describe documentation via text files as much as possible, even graphic diagrams,
-and make it easy to use without overcomplication.</p>
-<p>A textual description provides an easy way to version and merge diagrams, get differences between versions, leave comments that
-stays out from generated documentation, review changes, etc.</p>
-<p>Also most often it’s faster to create and <strong>edit</strong> diagrams as text, do things like theming and refactoring themes.
-Since the diagram’s textual description often is more a model than just graphics, you don’t have to track existing objects
-relations when just placement is changed or objects added (until you rename objects) which makes your workflow less error-prone.</p>
-<p>Embedding textually described diagrams into docuement is the actual focus of this porject. The rest you would be able to do with
-R Markdown itself as it is a powerful and customizable tool, so you can fit docs to your needs. It would take efforts on start,
-to make things neat but it would repay you in the end.</p>
-<blockquote>
-<p>To produce awesome PDFs you’ll have to provide awesome Latex book class.
-Since I don’t have one I’m using Latex default so current PDF version looks a bit ugly to me.
-I hope I can fix this soon or later. Help is appreciated!</p>
-</blockquote>
-<p>Kroki is running locally in container so you may not worry for confidential things and it works well
-in air gapped installations.</p>
-<hr />
-<p>This project is also can be used as a template for your own documentation, see <a href="2-template.html#template">this section</a></p>
-<p>The project uses docker and docker-compose to build docs so it’s ready to be integrated into your CI/CD flow.</p>
-<p>The project’s structure, docs generation and some files are based on <a href="https://github.com/rstudio/rmarkdown-book">R Markdown book</a></p>
-<hr />
-<p>There are few demonstrations in the project for general development use-cases (which probably cover 95% of your daily needs).
-For more complicated use-cases - checkout docs on links below.</p>
-<blockquote>
-<p>Diagrams code for most examples is borrowed straight from <a href="https://kroki.io/examples.html">Kroki</a></p>
-</blockquote>
-<hr />
-<p><a href="4-usage.html#usage">Usage</a> section would be updated eventually with reciepes for common cases.</p>
-<p><br />
-<br />
-</p>
-<div id="links" class="section level3 unnumbered hasAnchor" number="">
-<h3>Helpful links<a href="index.html#links" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="links-diagrams" class="section level4 unnumbered hasAnchor" number="">
-<h4>Diagrams<a href="index.html#links-diagrams" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://kroki.io/#support">List of supported diagrams renderers</a></p>
-<p><a href="https://kroki.io/examples.html">A few more diagrams examples</a></p>
-</div>
-<div id="links-rmarkdown" class="section level4 unnumbered hasAnchor" number="">
-<h4>R Markdown<a href="index.html#links-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></p>
-<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown: Cookbook</a></p>
-<p><a href="https://bookdown.org/yihui/bookdown/">Bookdown: Authoring Books and Technical Docuements with R Markdown</a></p>
-<p><a href="https://rmarkdown.rstudio.com/lesson-1.html">R Markdown Site</a>
-(focused on usage with <strong>R Studio</strong>)</p>
-<p><a href="https://rmd4sci.njtierney.com/">A nice R Markdown tutorial</a></p>
-<p><a href="https://rmarkdown.rstudio.com/docs/reference/index.html">R Markdown reference</a></p>
-</div>
-<div id="links-rmarkdown-quick" class="section level4 unnumbered hasAnchor" number="">
-<h4>Get quick into R Markdown<a href="index.html#links-rmarkdown-quick" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://intro2r.com/r-markdown-anatomy.html">R Makedown anatomy</a></p>
-<p><a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">R Markdown short reference</a>
-to get familiar with most necessary things</p>
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf">R Markdown cheatsheet</a></p>
-</div>
-<div id="links-editors" class="section level4 unnumbered hasAnchor" number="">
-<h4>Editors with focus on diagrams<a href="index.html#links-editors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://github.com/DaveJarvis/keenwrite"><strong>Keenwrite</strong> - edit and preview R Markdown Live!</a></p>
-<p><a href="https://www.rstudio.com/"><strong>R Studio</strong></a></p>
-<!-- TODO: VS Code with plugins
-https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode
- -->
-</div>
-</div>
-<div id="links-alternatives" class="section level3 unnumbered hasAnchor" number="">
-<h3>Alternatives<a href="index.html#links-alternatives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html">https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html</a> / <a href="https://rich-iannone.github.io/DiagrammeR/">https://rich-iannone.github.io/DiagrammeR/</a></p>
-
-</div>
+<div id="refrencing-embeded-diagrams" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> Refrencing embeded diagrams<a href="7.1-refrencing-embeded-diagrams.html#refrencing-embeded-diagrams" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><a href="https://www.rdocumentation.org/packages/knitr/versions/1.33/topics/fig_chunk" class="uri">https://www.rdocumentation.org/packages/knitr/versions/1.33/topics/fig_chunk</a></p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="1-examples.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="7-diagrams-reference.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="7.2-native-r-markdown.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -351,7 +271,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/Godhart/devdoc-swissknife/edit/main/docs_src/devdoc-swissknife-en/index.Rmd",
+"link": "https://github.com/Godhart/devdoc-swissknife/edit/main/docs_src/devdoc-swissknife-en/07-Diagrams-Reference.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Devdoc-Swissknife EN</title>
+  <title>4.6 Full to_diagram function specification | Devdoc-Swissknife EN</title>
   <meta name="description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Devdoc-Swissknife EN" />
+  <meta property="og:title" content="4.6 Full to_diagram function specification | Devdoc-Swissknife EN" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
   <meta property="og:description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="github-repo" content="Godhart/devdoc-swissknife" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Devdoc-Swissknife EN" />
+  <meta name="twitter:title" content="4.6 Full to_diagram function specification | Devdoc-Swissknife EN" />
   
   <meta name="twitter:description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="twitter:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="1-examples.html"/>
+<link rel="prev" href="4.5-usage-pdf.html"/>
+<link rel="next" href="5-usage-other.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -230,97 +230,91 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Devdoc-Swissknife EN</h1>
-<p class="author"><em>Nikolay Gniteev</em></p>
-<p class="date"><em>2022-05-14</em></p>
-</div>
-<div id="intro" class="section level1 unnumbered hasAnchor" number="">
-<h1>Preface<a href="index.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is a demo project for development documentation generation with
-<a href="https://rmarkdown.rstudio.com/"><strong>R Markdown</strong></a> and <a href="https://kroki.io/"><strong>Kroki</strong></a>.</p>
-<p>All the things described here you could do without that project, but I’ve tried to stich
-those components together so you’ll be able to concentrate on content rather than process.</p>
-<p>This approach allows you to create reproducible documentation in form of PDF, presentations, gitbook
-and some other HTML formats from simple markdown-like files (Pandoc flavor) with extra <strong>R chunks</strong> and textual diagrams description.</p>
-<p>The goal of this project is to describe documentation via text files as much as possible, even graphic diagrams,
-and make it easy to use without overcomplication.</p>
-<p>A textual description provides an easy way to version and merge diagrams, get differences between versions, leave comments that
-stays out from generated documentation, review changes, etc.</p>
-<p>Also most often it’s faster to create and <strong>edit</strong> diagrams as text, do things like theming and refactoring themes.
-Since the diagram’s textual description often is more a model than just graphics, you don’t have to track existing objects
-relations when just placement is changed or objects added (until you rename objects) which makes your workflow less error-prone.</p>
-<p>Embedding textually described diagrams into docuement is the actual focus of this porject. The rest you would be able to do with
-R Markdown itself as it is a powerful and customizable tool, so you can fit docs to your needs. It would take efforts on start,
-to make things neat but it would repay you in the end.</p>
-<blockquote>
-<p>To produce awesome PDFs you’ll have to provide awesome Latex book class.
-Since I don’t have one I’m using Latex default so current PDF version looks a bit ugly to me.
-I hope I can fix this soon or later. Help is appreciated!</p>
-</blockquote>
-<p>Kroki is running locally in container so you may not worry for confidential things and it works well
-in air gapped installations.</p>
-<hr />
-<p>This project is also can be used as a template for your own documentation, see <a href="2-template.html#template">this section</a></p>
-<p>The project uses docker and docker-compose to build docs so it’s ready to be integrated into your CI/CD flow.</p>
-<p>The project’s structure, docs generation and some files are based on <a href="https://github.com/rstudio/rmarkdown-book">R Markdown book</a></p>
-<hr />
-<p>There are few demonstrations in the project for general development use-cases (which probably cover 95% of your daily needs).
-For more complicated use-cases - checkout docs on links below.</p>
-<blockquote>
-<p>Diagrams code for most examples is borrowed straight from <a href="https://kroki.io/examples.html">Kroki</a></p>
-</blockquote>
-<hr />
-<p><a href="4-usage.html#usage">Usage</a> section would be updated eventually with reciepes for common cases.</p>
-<p><br />
-<br />
-</p>
-<div id="links" class="section level3 unnumbered hasAnchor" number="">
-<h3>Helpful links<a href="index.html#links" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="links-diagrams" class="section level4 unnumbered hasAnchor" number="">
-<h4>Diagrams<a href="index.html#links-diagrams" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://kroki.io/#support">List of supported diagrams renderers</a></p>
-<p><a href="https://kroki.io/examples.html">A few more diagrams examples</a></p>
-</div>
-<div id="links-rmarkdown" class="section level4 unnumbered hasAnchor" number="">
-<h4>R Markdown<a href="index.html#links-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></p>
-<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown: Cookbook</a></p>
-<p><a href="https://bookdown.org/yihui/bookdown/">Bookdown: Authoring Books and Technical Docuements with R Markdown</a></p>
-<p><a href="https://rmarkdown.rstudio.com/lesson-1.html">R Markdown Site</a>
-(focused on usage with <strong>R Studio</strong>)</p>
-<p><a href="https://rmd4sci.njtierney.com/">A nice R Markdown tutorial</a></p>
-<p><a href="https://rmarkdown.rstudio.com/docs/reference/index.html">R Markdown reference</a></p>
-</div>
-<div id="links-rmarkdown-quick" class="section level4 unnumbered hasAnchor" number="">
-<h4>Get quick into R Markdown<a href="index.html#links-rmarkdown-quick" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://intro2r.com/r-markdown-anatomy.html">R Makedown anatomy</a></p>
-<p><a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">R Markdown short reference</a>
-to get familiar with most necessary things</p>
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf">R Markdown cheatsheet</a></p>
-</div>
-<div id="links-editors" class="section level4 unnumbered hasAnchor" number="">
-<h4>Editors with focus on diagrams<a href="index.html#links-editors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://github.com/DaveJarvis/keenwrite"><strong>Keenwrite</strong> - edit and preview R Markdown Live!</a></p>
-<p><a href="https://www.rstudio.com/"><strong>R Studio</strong></a></p>
-<!-- TODO: VS Code with plugins
-https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode
- -->
-</div>
-</div>
-<div id="links-alternatives" class="section level3 unnumbered hasAnchor" number="">
-<h3>Alternatives<a href="index.html#links-alternatives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html">https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html</a> / <a href="https://rich-iannone.github.io/DiagrammeR/">https://rich-iannone.github.io/DiagrammeR/</a></p>
+<div id="usage-spec" class="section level2 hasAnchor" number="4.6">
+<h2><span class="header-section-number">4.6</span> Full <strong>to_diagram</strong> function specification<a href="4.6-usage-spec.html#usage-spec" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Function <strong>to_diagram</strong> is defined in <code>docs_src/_fun.R</code> file which should be included
+into <code>index.Rmd</code> file. More about this is <a href="6-anatomy.html#anatomy">TODO: devdoc-swissknife anatomy</a>.</p>
+<p>This function renders diagram from textual description and inserts it into document.
+Diagram is inserted with <code>knitr::include_graphics</code> function
+or as <a href="4.2-usage-svg.html#usage-svg">raw SVG</a> code for HTML output (raw svg can be <a href="(#usage-svg-file)%20via%20arguments">turned off</a>.</p>
+<p>Here is it’s definition:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="4.6-usage-spec.html#cb20-1" aria-hidden="true"></a>to_diagram  &lt;-<span class="st"> </span><span class="cf">function</span>(</span>
+<span id="cb20-2"><a href="4.6-usage-spec.html#cb20-2" aria-hidden="true"></a>    <span class="dt">data =</span> <span class="st">&quot;&quot;</span>, <span class="dt">src =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb20-3"><a href="4.6-usage-spec.html#cb20-3" aria-hidden="true"></a>    <span class="dt">dformat =</span> <span class="st">&quot;&quot;</span>, <span class="dt">rawsvg =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb20-4"><a href="4.6-usage-spec.html#cb20-4" aria-hidden="true"></a>    <span class="dt">downloadOnly =</span> <span class="ot">FALSE</span>, <span class="dt">downloadName =</span> <span class="st">&quot;&quot;</span>,</span>
+<span id="cb20-5"><a href="4.6-usage-spec.html#cb20-5" aria-hidden="true"></a>    <span class="dt">service=</span><span class="st">&quot;Kroki&quot;</span>, <span class="dt">serviceUrl=</span><span class="ot">NULL</span>,</span>
+<span id="cb20-6"><a href="4.6-usage-spec.html#cb20-6" aria-hidden="true"></a>    <span class="dt">engine=</span><span class="ot">NULL</span>,</span>
+<span id="cb20-7"><a href="4.6-usage-spec.html#cb20-7" aria-hidden="true"></a>    <span class="dt">page=</span><span class="ot">NULL</span>,</span>
+<span id="cb20-8"><a href="4.6-usage-spec.html#cb20-8" aria-hidden="true"></a>    <span class="dt">force=</span><span class="ot">FALSE</span></span>
+<span id="cb20-9"><a href="4.6-usage-spec.html#cb20-9" aria-hidden="true"></a>    )</span></code></pre></div>
+<p>Arguments:</p>
+<pre><code>data          - Diagram description in text form (should be compatible with
+                rendering engine).
+                Ignored if value for `src` is specified.</code></pre>
+<!-- -->
+<pre><code>src           - Path to outer file with diagram description in text form.
+                See `docs_src/diagrams/README.md` for details.
+                Should be omitted if `data` argument is to be used.</code></pre>
+<!-- -->
+<pre><code>dformat       - Specify data format for downloaded diagram.
+                See https://kroki.io/#support for details.
+                `svg` would be used by default if value is empty string.
+                Sometimes SVG conversion to PDF/PNG not works good on client
+                side (default). In that case it&#39;s suggested to use PNG or PDF.
+                Take a NOTE: not all Kroki services provide diagrams
+                in PNG / PDF format.</code></pre>
+<!-- -->
+<pre><code>rawsvg        - Option to insert SVG as code right into HTML.
+                This way text on diagrams is searchable.
+                Enabled (TRUE) by default.
+                Set to FALSE to embed SVG as image.
+                Applicable only for HTML output and only if `dformat`
+                is &quot;SVG&quot; or empty string.</code></pre>
+<!-- -->
+<pre><code>downloadName  - File name (part before extension) for local diagram&#39;s files.</code></pre>
+<!-- -->
+<pre><code>downloadOnly  - Only generate and download diagram, don&#39;t insert into doc.
+                Use for custom diagram embedding later in the doc.
+                All the necessary format conversions will be completed.
+                Result would be in `docs_src/generated` dir.
+                If `downloadName` is specified then it would be used for
+                file name, otherwise label would be used if diagram is
+                specified via data, otherwise file name would be generated
+                from `src` path.
+                File extension would depend on `dformat` argument and on
+                `fig.ext` options for R chunk</code></pre>
+<!-- -->
+<pre><code>service       - Rendering service (now it&#39;s sonly &quot;Kroki&quot;)</code></pre>
+<!-- -->
+<pre><code>serviceUrl    - Rendering service base url.
+                This is starting part of url for service access.
+                Default is path `http://kroki:8000` to local Kroki
+                instance that is started with `make_doc.sh`</code></pre>
+<!-- -->
+<pre><code>engine        - Diagram rendering engine. Specify one of supported engines
+                (see Kroki for engines list)
+                Special value `from_src` for outer files SHOULD be used
+                to get engine from source file itself in case
+                if recommendations from `docs_src/diagrams/README.md`
+                are satisfied.
+                If omitted or NULL then value of R chunk option named `dia`
+                is treated as `engine`</code></pre>
+<!-- -->
+<pre><code>page          - Page for rendering. For use with multipage office documents</code></pre>
+<!-- -->
+<pre><code>force         - If FALSE(default) then existing downloaded diagram data
+                would be used. Set to TRUE to regenerate diagram from scratch</code></pre>
+<!-- -->
 
 </div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="1-examples.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="4.5-usage-pdf.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="5-usage-other.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -351,7 +345,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/Godhart/devdoc-swissknife/edit/main/docs_src/devdoc-swissknife-en/index.Rmd",
+"link": "https://github.com/Godhart/devdoc-swissknife/edit/main/docs_src/devdoc-swissknife-en/04-Usage-Patterns.Rmd",
 "text": "Edit"
 },
 "history": {

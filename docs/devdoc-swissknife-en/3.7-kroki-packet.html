@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Devdoc-Swissknife EN</title>
+  <title>3.7 Packet Diagram | Devdoc-Swissknife EN</title>
   <meta name="description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Devdoc-Swissknife EN" />
+  <meta property="og:title" content="3.7 Packet Diagram | Devdoc-Swissknife EN" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
   <meta property="og:description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="github-repo" content="Godhart/devdoc-swissknife" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Devdoc-Swissknife EN" />
+  <meta name="twitter:title" content="3.7 Packet Diagram | Devdoc-Swissknife EN" />
   
   <meta name="twitter:description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="twitter:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="1-examples.html"/>
+<link rel="prev" href="3.6-kroki-bytefield.html"/>
+<link rel="next" href="3.8-kroki-pumlSequence.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -230,97 +230,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Devdoc-Swissknife EN</h1>
-<p class="author"><em>Nikolay Gniteev</em></p>
-<p class="date"><em>2022-05-14</em></p>
+<div id="kroki-packet" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Packet Diagram<a href="3.7-kroki-packet.html#kroki-packet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Engine: <code>packetdiag</code></p>
+<div align="center">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkspace="http://www.inkscape.org/namespaces/inkscape" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 896 768" preserveAspectRatio="none" width="672" style="background:#FFFFFF;width:672;max-width:84%;max-height:800px;" standalone="yes">
+<defs id="defs_block"> <filter height="1.504" id="filter_blur" inkspace:collect="always" width="1.1575" x="-0.07875" y="-0.252"> <feGaussianBlur id="feGaussianBlur3780" inkspace:collect="always" stdDeviation="4.2"/> </filter> </defs>
+<title>
+blockdiag
+</title>
+<desc>packetdiag { colwidth = 32; node_height = 72; 0-15: Source Port; 16-31: Destination Port; 32-63: Sequence Number; 64-95: Acknowledgment Number; 96-99: Data Offset; 100-105: Reserved; 106: URG [rotate = 270]; 107: ACK [rotate = 270]; 108: PSH [rotate = 270]; 109: RST [rotate = 270]; 110: SYN [rotate = 270]; 111: FIN [rotate = 270]; 112-127: Window; 128-143: Checksum; 144-159: Urgent Pointer; 160-191: (Options and Padding); 192-223: data [colheight = 3];}</desc> <path d="M 64 48 L 64 80" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="7" x="64.5" y="42">0</text> <path d="M 88 64 L 88 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 112 64 L 112 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 136 64 L 136 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 160 64 L 160 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 184 64 L 184 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 208 64 L 208 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 232 64 L 232 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 256 48 L 256 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 280 64 L 280 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 304 64 L 304 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 328 64 L 328 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 352 64 L 352 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 376 64 L 376 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 400 64 L 400 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 424 64 L 424 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 48 L 448 80" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="13" x="448.5" y="42">16</text> <path d="M 472 64 L 472 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 496 64 L 496 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 520 64 L 520 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 544 64 L 544 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 568 64 L 568 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 592 64 L 592 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 616 64 L 616 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 640 48 L 640 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 664 64 L 664 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 688 64 L 688 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 712 64 L 712 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 736 64 L 736 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 760 64 L 760 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 784 64 L 784 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 808 64 L 808 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 48 L 832 80" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="13" x="832.5" y="42">32</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="384" x="64" y="80"/> <path d="M 64 80 L 448 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 80 L 448 152" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 152 L 64 152" fill="none" stroke="rgb(0,0,0)"/> <path d="M 64 152 L 64 80" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="67" x="256.5" y="122">Source Port</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="384" x="448" y="80"/> <path d="M 448 80 L 832 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 80 L 832 152" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 152 L 448 152" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 152 L 448 80" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="97" x="640.5" y="122">Destination Port</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="768" x="64" y="152"/> <path d="M 64 152 L 832 152" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 152 L 832 224" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 224 L 64 224" fill="none" stroke="rgb(0,0,0)"/> <path d="M 64 224 L 64 152" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="91" x="448.5" y="194">Sequence Number</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="768" x="64" y="224"/> <path d="M 64 224 L 832 224" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 224 L 832 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 296 L 64 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 64 296 L 64 224" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="128" x="448.0" y="266">Acknowledgment Number</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="96" x="64" y="296"/> <path d="M 64 296 L 160 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 160 296 L 160 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 160 368 L 64 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 64 368 L 64 296" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="67" x="112.5" y="338">Data Offset</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="144" x="160" y="296"/> <path d="M 160 296 L 304 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 304 296 L 304 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 304 368 L 160 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 160 368 L 160 296" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="49" x="232.5" y="338">Reserved</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="24" x="304" y="296"/> <path d="M 304 296 L 328 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 328 296 L 328 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 328 368 L 304 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 304 368 L 304 296" fill="none" stroke="rgb(0,0,0)"/> <g transform="rotate(270,304,368)"> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="19" x="340.5" y="386">URG</text> </g> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="24" x="328" y="296"/> <path d="M 328 296 L 352 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 352 296 L 352 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 352 368 L 328 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 328 368 L 328 296" fill="none" stroke="rgb(0,0,0)"/> <g transform="rotate(270,328,368)"> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="19" x="364.5" y="386">ACK</text> </g> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="24" x="352" y="296"/> <path d="M 352 296 L 376 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 376 296 L 376 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 376 368 L 352 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 352 368 L 352 296" fill="none" stroke="rgb(0,0,0)"/> <g transform="rotate(270,352,368)"> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="19" x="388.5" y="386">PSH</text> </g> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="24" x="376" y="296"/> <path d="M 376 296 L 400 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 400 296 L 400 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 400 368 L 376 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 376 368 L 376 296" fill="none" stroke="rgb(0,0,0)"/> <g transform="rotate(270,376,368)"> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="19" x="412.5" y="386">RST</text> </g> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="24" x="400" y="296"/> <path d="M 400 296 L 424 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 424 296 L 424 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 424 368 L 400 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 400 368 L 400 296" fill="none" stroke="rgb(0,0,0)"/> <g transform="rotate(270,400,368)"> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="19" x="436.5" y="386">SYN</text> </g> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="24" x="424" y="296"/> <path d="M 424 296 L 448 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 296 L 448 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 368 L 424 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 424 368 L 424 296" fill="none" stroke="rgb(0,0,0)"/> <g transform="rotate(270,424,368)"> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="19" x="460.5" y="386">FIN</text> </g> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="384" x="448" y="296"/> <path d="M 448 296 L 832 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 296 L 832 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 368 L 448 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 368 L 448 296" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="37" x="640.5" y="338">Window</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="384" x="64" y="368"/> <path d="M 64 368 L 448 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 368 L 448 440" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 440 L 64 440" fill="none" stroke="rgb(0,0,0)"/> <path d="M 64 440 L 64 368" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="49" x="256.5" y="410">Checksum</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="384" x="448" y="368"/> <path d="M 448 368 L 832 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 368 L 832 440" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 440 L 448 440" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 440 L 448 368" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="85" x="640.5" y="410">Urgent Pointer</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="768" x="64" y="440"/> <path d="M 64 440 L 832 440" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 440 L 832 512" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 512 L 64 512" fill="none" stroke="rgb(0,0,0)"/> <path d="M 64 512 L 64 440" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="128" x="448.0" y="482">(Options and Padding)</text> <rect fill="rgb(255,255,255)" height="216" stroke="rgb(255,255,255)" width="768" x="64" y="512"/> <path d="M 64 512 L 832 512" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 512 L 832 728" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 728 L 64 728" fill="none" stroke="rgb(0,0,0)"/> <path d="M 64 728 L 64 512" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="25" x="448.5" y="626">data</text>
+</svg>
 </div>
-<div id="intro" class="section level1 unnumbered hasAnchor" number="">
-<h1>Preface<a href="index.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is a demo project for development documentation generation with
-<a href="https://rmarkdown.rstudio.com/"><strong>R Markdown</strong></a> and <a href="https://kroki.io/"><strong>Kroki</strong></a>.</p>
-<p>All the things described here you could do without that project, but I’ve tried to stich
-those components together so you’ll be able to concentrate on content rather than process.</p>
-<p>This approach allows you to create reproducible documentation in form of PDF, presentations, gitbook
-and some other HTML formats from simple markdown-like files (Pandoc flavor) with extra <strong>R chunks</strong> and textual diagrams description.</p>
-<p>The goal of this project is to describe documentation via text files as much as possible, even graphic diagrams,
-and make it easy to use without overcomplication.</p>
-<p>A textual description provides an easy way to version and merge diagrams, get differences between versions, leave comments that
-stays out from generated documentation, review changes, etc.</p>
-<p>Also most often it’s faster to create and <strong>edit</strong> diagrams as text, do things like theming and refactoring themes.
-Since the diagram’s textual description often is more a model than just graphics, you don’t have to track existing objects
-relations when just placement is changed or objects added (until you rename objects) which makes your workflow less error-prone.</p>
-<p>Embedding textually described diagrams into docuement is the actual focus of this porject. The rest you would be able to do with
-R Markdown itself as it is a powerful and customizable tool, so you can fit docs to your needs. It would take efforts on start,
-to make things neat but it would repay you in the end.</p>
-<blockquote>
-<p>To produce awesome PDFs you’ll have to provide awesome Latex book class.
-Since I don’t have one I’m using Latex default so current PDF version looks a bit ugly to me.
-I hope I can fix this soon or later. Help is appreciated!</p>
-</blockquote>
-<p>Kroki is running locally in container so you may not worry for confidential things and it works well
-in air gapped installations.</p>
-<hr />
-<p>This project is also can be used as a template for your own documentation, see <a href="2-template.html#template">this section</a></p>
-<p>The project uses docker and docker-compose to build docs so it’s ready to be integrated into your CI/CD flow.</p>
-<p>The project’s structure, docs generation and some files are based on <a href="https://github.com/rstudio/rmarkdown-book">R Markdown book</a></p>
-<hr />
-<p>There are few demonstrations in the project for general development use-cases (which probably cover 95% of your daily needs).
-For more complicated use-cases - checkout docs on links below.</p>
-<blockquote>
-<p>Diagrams code for most examples is borrowed straight from <a href="https://kroki.io/examples.html">Kroki</a></p>
-</blockquote>
-<hr />
-<p><a href="4-usage.html#usage">Usage</a> section would be updated eventually with reciepes for common cases.</p>
-<p><br />
-<br />
-</p>
-<div id="links" class="section level3 unnumbered hasAnchor" number="">
-<h3>Helpful links<a href="index.html#links" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="links-diagrams" class="section level4 unnumbered hasAnchor" number="">
-<h4>Diagrams<a href="index.html#links-diagrams" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://kroki.io/#support">List of supported diagrams renderers</a></p>
-<p><a href="https://kroki.io/examples.html">A few more diagrams examples</a></p>
+<div align="center">
+<a href="generated/diagrams-examples-packetdiag-Rmd.svg" id="examples-packet" class="caption">Example - Packet Diagram</a>
 </div>
-<div id="links-rmarkdown" class="section level4 unnumbered hasAnchor" number="">
-<h4>R Markdown<a href="index.html#links-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></p>
-<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown: Cookbook</a></p>
-<p><a href="https://bookdown.org/yihui/bookdown/">Bookdown: Authoring Books and Technical Docuements with R Markdown</a></p>
-<p><a href="https://rmarkdown.rstudio.com/lesson-1.html">R Markdown Site</a>
-(focused on usage with <strong>R Studio</strong>)</p>
-<p><a href="https://rmd4sci.njtierney.com/">A nice R Markdown tutorial</a></p>
-<p><a href="https://rmarkdown.rstudio.com/docs/reference/index.html">R Markdown reference</a></p>
-</div>
-<div id="links-rmarkdown-quick" class="section level4 unnumbered hasAnchor" number="">
-<h4>Get quick into R Markdown<a href="index.html#links-rmarkdown-quick" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://intro2r.com/r-markdown-anatomy.html">R Makedown anatomy</a></p>
-<p><a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">R Markdown short reference</a>
-to get familiar with most necessary things</p>
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf">R Markdown cheatsheet</a></p>
-</div>
-<div id="links-editors" class="section level4 unnumbered hasAnchor" number="">
-<h4>Editors with focus on diagrams<a href="index.html#links-editors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://github.com/DaveJarvis/keenwrite"><strong>Keenwrite</strong> - edit and preview R Markdown Live!</a></p>
-<p><a href="https://www.rstudio.com/"><strong>R Studio</strong></a></p>
-<!-- TODO: VS Code with plugins
-https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode
- -->
-</div>
-</div>
-<div id="links-alternatives" class="section level3 unnumbered hasAnchor" number="">
-<h3>Alternatives<a href="index.html#links-alternatives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html">https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html</a> / <a href="https://rich-iannone.github.io/DiagrammeR/">https://rich-iannone.github.io/DiagrammeR/</a></p>
-
-</div>
+<div style="page-break-after: always;"></div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="1-examples.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="3.6-kroki-bytefield.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3.8-kroki-pumlSequence.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -351,7 +284,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/Godhart/devdoc-swissknife/edit/main/docs_src/devdoc-swissknife-en/index.Rmd",
+"link": "https://github.com/Godhart/devdoc-swissknife/edit/main/docs_src/devdoc-swissknife-en/03-KrokiExamples.Rmd",
 "text": "Edit"
 },
 "history": {

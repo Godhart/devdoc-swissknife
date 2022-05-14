@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Devdoc-Swissknife EN</title>
+  <title>1 Simple diagrams examples | Devdoc-Swissknife EN</title>
   <meta name="description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Devdoc-Swissknife EN" />
+  <meta property="og:title" content="1 Simple diagrams examples | Devdoc-Swissknife EN" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
   <meta property="og:description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="github-repo" content="Godhart/devdoc-swissknife" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Devdoc-Swissknife EN" />
+  <meta name="twitter:title" content="1 Simple diagrams examples | Devdoc-Swissknife EN" />
   
   <meta name="twitter:description" content="Devdoc-Swissknife - General Documentation" />
   <meta name="twitter:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="1-examples.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="2-template.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -230,87 +230,95 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Devdoc-Swissknife EN</h1>
-<p class="author"><em>Nikolay Gniteev</em></p>
-<p class="date"><em>2022-05-14</em></p>
-</div>
-<div id="intro" class="section level1 unnumbered hasAnchor" number="">
-<h1>Preface<a href="index.html#intro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is a demo project for development documentation generation with
-<a href="https://rmarkdown.rstudio.com/"><strong>R Markdown</strong></a> and <a href="https://kroki.io/"><strong>Kroki</strong></a>.</p>
-<p>All the things described here you could do without that project, but I’ve tried to stich
-those components together so you’ll be able to concentrate on content rather than process.</p>
-<p>This approach allows you to create reproducible documentation in form of PDF, presentations, gitbook
-and some other HTML formats from simple markdown-like files (Pandoc flavor) with extra <strong>R chunks</strong> and textual diagrams description.</p>
-<p>The goal of this project is to describe documentation via text files as much as possible, even graphic diagrams,
-and make it easy to use without overcomplication.</p>
-<p>A textual description provides an easy way to version and merge diagrams, get differences between versions, leave comments that
-stays out from generated documentation, review changes, etc.</p>
-<p>Also most often it’s faster to create and <strong>edit</strong> diagrams as text, do things like theming and refactoring themes.
-Since the diagram’s textual description often is more a model than just graphics, you don’t have to track existing objects
-relations when just placement is changed or objects added (until you rename objects) which makes your workflow less error-prone.</p>
-<p>Embedding textually described diagrams into docuement is the actual focus of this porject. The rest you would be able to do with
-R Markdown itself as it is a powerful and customizable tool, so you can fit docs to your needs. It would take efforts on start,
-to make things neat but it would repay you in the end.</p>
+<div id="examples" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Simple diagrams examples<a href="1-examples.html#examples" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Since this project is focused on embedding diagrams textual descriptions into <strong>R Markdown</strong>,
+let’s start with few examples just to illustrate a principle.</p>
 <blockquote>
-<p>To produce awesome PDFs you’ll have to provide awesome Latex book class.
-Since I don’t have one I’m using Latex default so current PDF version looks a bit ugly to me.
-I hope I can fix this soon or later. Help is appreciated!</p>
+<p>BTW: there is a lot of drawings types that you can get from <strong>R Markdown</strong> alone, by using <strong>R</strong> packages
+or Python’s matplot lib for example. You may want to check this out too<!-- [TODO: references](TODO) -->.</p>
 </blockquote>
-<p>Kroki is running locally in container so you may not worry for confidential things and it works well
-in air gapped installations.</p>
+<div id="examples-inline" class="section level3 unnumbered hasAnchor" number="">
+<h3>Example with inline diagram description<a href="1-examples.html#examples-inline" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This example shows how to embed diagrams, describing them right in the <code>.Rmd</code> files.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="1-examples.html#cb1-1" aria-hidden="true"></a><span class="st">```</span><span class="dt">{r, hello-world, dia=&quot;graphviz&quot;, fig.cap=&quot;Hello World&quot;}</span></span>
+<span id="cb1-2"><a href="1-examples.html#cb1-2" aria-hidden="true"></a><span class="dt">  to_diagram(&quot;digraph G {Hello-&gt;World}&quot;)</span></span>
+<span id="cb1-3"><a href="1-examples.html#cb1-3" aria-hidden="true"></a><span class="st">```</span></span></code></pre></div>
+<div align="center">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.00 0.00 74.29 116.00" preserveAspectRatio="none" width="672" style="background:#FFFFFF;width:672;max-width:84%;max-height:800px;" standalone="yes">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-112 70.29,-112 70.29,4 -4,4"/><!-- Hello --><g id="node1" class="node">
+<title>
+Hello
+</title>
+<ellipse fill="none" stroke="black" cx="33.15" cy="-90" rx="30.59" ry="18"/><text text-anchor="middle" x="33.15" y="-86.3" font-family="Times,serif" font-size="14.00">Hello</text></g><!-- World --><g id="node2" class="node">
+<title>
+World
+</title>
+<ellipse fill="none" stroke="black" cx="33.15" cy="-18" rx="33.29" ry="18"/><text text-anchor="middle" x="33.15" y="-14.3" font-family="Times,serif" font-size="14.00">World</text></g><!-- Hello&#45;&gt;World --><g id="edge1" class="edge">
+<title>
+Hello-&gt;World
+</title>
+<path fill="none" stroke="black" d="M33.15,-71.7C33.15,-63.98 33.15,-54.71 33.15,-46.11"/><polygon fill="black" stroke="black" points="36.65,-46.1 33.15,-36.1 29.65,-46.1 36.65,-46.1"/></g></g>
+</svg>
+</div>
+<div align="center">
+<a href="generated/hello-world.svg" id="hello-world" class="caption">Hello World</a>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+<div id="examples-fromFile" class="section level3 unnumbered hasAnchor" number="">
+<h3>Example with diagram data from file<a href="1-examples.html#examples-fromFile" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This example shows how to embed diagrams with data from outer files.</p>
+<!-- TODO: use tidy for code blocks -->
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="1-examples.html#cb2-1" aria-hidden="true"></a><span class="st">```</span><span class="dt">{r, examples-entity-relation, dia=&quot;erd&quot;, fig.cap=&quot;Entity Relation&quot;}</span></span>
+<span id="cb2-2"><a href="1-examples.html#cb2-2" aria-hidden="true"></a><span class="dt">  to_diagram(src=&quot;../diagrams/examples/project.erd&quot;)</span></span>
+<span id="cb2-3"><a href="1-examples.html#cb2-3" aria-hidden="true"></a><span class="st">```</span></span></code></pre></div>
+<div align="center">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300pt" height="144pt" viewBox="0.00 0.00 300.00 144.00" style="background:#FFFFFF;max-width:84%;max-height:800px;" standalone="yes">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 140)"><polygon fill="white" stroke="transparent" points="-4,4 -4,-140 296,-140 296,4 -4,4"/><!-- Person --><g id="node1" class="node">
+<title>
+Person
+</title>
+<polygon fill="none" stroke="black" points="8,-104 8,-132 118,-132 118,-104 8,-104"/><text text-anchor="start" x="35.5" y="-115.2" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">Person</text><polygon fill="none" stroke="black" points="8,-79 8,-104 118,-104 118,-79 8,-79"/><text text-anchor="start" x="13" y="-88.8" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">name</text><polygon fill="none" stroke="black" points="8,-54 8,-79 118,-79 118,-54 8,-54"/><text text-anchor="start" x="13" y="-62.8" font-family="Helvetica,sans-Serif" font-size="14.00">height</text><polygon fill="none" stroke="black" points="8,-29 8,-54 118,-54 118,-29 8,-29"/><text text-anchor="start" x="13" y="-37.8" font-family="Helvetica,sans-Serif" font-size="14.00">weight</text><polygon fill="none" stroke="black" points="8,-4 8,-29 118,-29 118,-4 8,-4"/><text text-anchor="start" x="13" y="-13.8" font-family="Helvetica,sans-Serif" font-style="italic" font-size="14.00">birth_location_id</text></g><!-- Location --><g id="node2" class="node">
+<title>
+Location
+</title>
+<polygon fill="none" stroke="black" points="207.5,-104 207.5,-132 284.5,-132 284.5,-104 207.5,-104"/><text text-anchor="start" x="212.5" y="-115.2" font-family="Helvetica,sans-Serif" font-weight="bold" font-size="16.00">Location</text><polygon fill="none" stroke="black" points="207.5,-79 207.5,-104 284.5,-104 284.5,-79 207.5,-79"/><text text-anchor="start" x="212.5" y="-88.8" font-family="Helvetica,sans-Serif" text-decoration="underline" font-size="14.00">id</text><polygon fill="none" stroke="black" points="207.5,-54 207.5,-79 284.5,-79 284.5,-54 207.5,-54"/><text text-anchor="start" x="212.5" y="-62.8" font-family="Helvetica,sans-Serif" font-size="14.00">city</text><polygon fill="none" stroke="black" points="207.5,-29 207.5,-54 284.5,-54 284.5,-29 207.5,-29"/><text text-anchor="start" x="212.5" y="-37.8" font-family="Helvetica,sans-Serif" font-size="14.00">state</text><polygon fill="none" stroke="black" points="207.5,-4 207.5,-29 284.5,-29 284.5,-4 207.5,-4"/><text text-anchor="start" x="212.5" y="-12.8" font-family="Helvetica,sans-Serif" font-size="14.00">country</text></g><!-- Person&#45;&#45;Location --><g id="edge1" class="edge">
+<title>
+Person–Location
+</title>
+<path fill="none" stroke="#7f7f7f" stroke-dasharray="5,2" d="M126.12,-68C149.98,-68 176.76,-68 198.8,-68"/><text text-anchor="start" x="191.8" y="-56.8" font-family="Times,serif" font-size="14.00">1</text><text text-anchor="start" x="126.12" y="-56.8" font-family="Times,serif" font-size="14.00">0..N</text></g></g>
+</svg>
+</div>
+<div align="center">
+<a href="generated/diagrams-examples-project-erd.svg" id="examples-entity-relation" class="caption">Entity Relation</a>
+</div>
+<!-- Since there is no pages on HTML output - put a dashline -->
 <hr />
-<p>This project is also can be used as a template for your own documentation, see <a href="2-template.html#template">this section</a></p>
-<p>The project uses docker and docker-compose to build docs so it’s ready to be integrated into your CI/CD flow.</p>
-<p>The project’s structure, docs generation and some files are based on <a href="https://github.com/rstudio/rmarkdown-book">R Markdown book</a></p>
-<hr />
-<p>There are few demonstrations in the project for general development use-cases (which probably cover 95% of your daily needs).
-For more complicated use-cases - checkout docs on links below.</p>
-<blockquote>
-<p>Diagrams code for most examples is borrowed straight from <a href="https://kroki.io/examples.html">Kroki</a></p>
-</blockquote>
-<hr />
-<p><a href="4-usage.html#usage">Usage</a> section would be updated eventually with reciepes for common cases.</p>
-<p><br />
-<br />
-</p>
-<div id="links" class="section level3 unnumbered hasAnchor" number="">
-<h3>Helpful links<a href="index.html#links" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="links-diagrams" class="section level4 unnumbered hasAnchor" number="">
-<h4>Diagrams<a href="index.html#links-diagrams" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://kroki.io/#support">List of supported diagrams renderers</a></p>
-<p><a href="https://kroki.io/examples.html">A few more diagrams examples</a></p>
+<div style="page-break-after: always;"></div>
+<p>File <strong>diagrams/examples/project.erd</strong> content:</p>
+<pre><code>[Person]
+*name
+height
+weight
++birth_location_id
+
+[Location]
+*id
+city
+state
+country
+
+Person *--1 Location</code></pre>
 </div>
-<div id="links-rmarkdown" class="section level4 unnumbered hasAnchor" number="">
-<h4>R Markdown<a href="index.html#links-rmarkdown" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://bookdown.org/yihui/rmarkdown/">R Markdown: The Definitive Guide</a></p>
-<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/">R Markdown: Cookbook</a></p>
-<p><a href="https://bookdown.org/yihui/bookdown/">Bookdown: Authoring Books and Technical Docuements with R Markdown</a></p>
-<p><a href="https://rmarkdown.rstudio.com/lesson-1.html">R Markdown Site</a>
-(focused on usage with <strong>R Studio</strong>)</p>
-<p><a href="https://rmd4sci.njtierney.com/">A nice R Markdown tutorial</a></p>
-<p><a href="https://rmarkdown.rstudio.com/docs/reference/index.html">R Markdown reference</a></p>
-</div>
-<div id="links-rmarkdown-quick" class="section level4 unnumbered hasAnchor" number="">
-<h4>Get quick into R Markdown<a href="index.html#links-rmarkdown-quick" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://intro2r.com/r-markdown-anatomy.html">R Makedown anatomy</a></p>
-<p><a href="https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf">R Markdown short reference</a>
-to get familiar with most necessary things</p>
-<p><a href="https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf">R Markdown cheatsheet</a></p>
-</div>
-<div id="links-editors" class="section level4 unnumbered hasAnchor" number="">
-<h4>Editors with focus on diagrams<a href="index.html#links-editors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p><a href="https://github.com/DaveJarvis/keenwrite"><strong>Keenwrite</strong> - edit and preview R Markdown Live!</a></p>
-<p><a href="https://www.rstudio.com/"><strong>R Studio</strong></a></p>
-<!-- TODO: VS Code with plugins
-https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode
- -->
-</div>
-</div>
-<div id="links-alternatives" class="section level3 unnumbered hasAnchor" number="">
-<h3>Alternatives<a href="index.html#links-alternatives" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><a href="https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html">https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html</a> / <a href="https://rich-iannone.github.io/DiagrammeR/">https://rich-iannone.github.io/DiagrammeR/</a></p>
+<div id="examples-more" class="section level3 unnumbered hasAnchor" number="">
+<h3>More examples<a href="1-examples.html#examples-more" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>More examples for your inspiration can be found in <a href="3-examples-kroki.html#examples-kroki">this section</a>.</p>
+<p>Details about embedding diagrams is <a href="4-usage.html#usage">here</a></p>
 
 </div>
 </div>
@@ -319,8 +327,8 @@ https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vsco
           </div>
         </div>
       </div>
-
-<a href="1-examples.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="2-template.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -351,7 +359,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/Godhart/devdoc-swissknife/edit/main/docs_src/devdoc-swissknife-en/index.Rmd",
+"link": "https://github.com/Godhart/devdoc-swissknife/edit/main/docs_src/devdoc-swissknife-en/01-Simple-Examples.Rmd",
 "text": "Edit"
 },
 "history": {
