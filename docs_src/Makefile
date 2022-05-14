@@ -1,6 +1,6 @@
 # NOTE: it's could be ugly but does the job
 
-all: doc-template devdoc-swissknife-en devdoc-swissknife-ru
+all: doc-template en ru
 
 ####################################################
 # Template for including new doc into Makefile
@@ -29,3 +29,7 @@ doc-template:
 	cd doc-template &&\
 	bash ../render_doc.sh doc-template &&\
 	cd ..
+
+en: devdoc-swissknife-en
+
+ru: devdoc-swissknife-ru
