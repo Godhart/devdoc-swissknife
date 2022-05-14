@@ -4,6 +4,8 @@ services:
     image: devdoc-swissknife:22.04
     depends_on:
       - kroki
+    environment:
+      - SERVICE_KROKI=http://kroki:8000
     volumes:
       - ./docs_src:/data/docs_src
       - ./docs_out:/data/docs_out
