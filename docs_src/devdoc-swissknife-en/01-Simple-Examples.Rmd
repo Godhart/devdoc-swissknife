@@ -1,3 +1,7 @@
+```{r, include=FALSE}
+source("../_fun.R", local = knitr::knit_global())
+```
+
 # Simple diagrams examples {#examples}
 
 Since this project is focused on embedding diagrams textual descriptions into **R Markdown**,

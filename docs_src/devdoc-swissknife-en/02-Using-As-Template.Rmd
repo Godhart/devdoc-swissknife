@@ -1,3 +1,7 @@
+```{r, include=FALSE}
+source("../_fun.R", local = knitr::knit_global())
+```
+
 # Using as a template and making own docs {#template}
 
 To use this project as a start point for generating your own documentation do the following:

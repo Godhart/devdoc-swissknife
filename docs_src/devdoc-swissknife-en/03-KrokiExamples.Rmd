@@ -1,3 +1,7 @@
+```{r, include=FALSE}
+source("../_fun.R", local = knitr::knit_global())
+```
+
 # Kroki usage examples {#examples-kroki}
 
 I've omitted some examples from [Kroki](https://kroki.io/examples.html) and left only those
