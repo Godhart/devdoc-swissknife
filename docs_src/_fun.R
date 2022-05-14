@@ -50,6 +50,7 @@ to_diagram  <- function(
     downloadOnly = FALSE, downloadName = "",
     service="Kroki", serviceUrl=NULL,
     engine=NULL,
+    page=NULL,
     force=FALSE
     ) {
 
@@ -89,7 +90,7 @@ to_diagram  <- function(
 #                 from `src` path.
 #                 File extension would depend on `dformat` argument and on
 #                 `fig.ext` options for R chunk
-# service       - Rendering service (now it's sonly "Kroki")
+# service       - Rendering service ("Kroki" or "Office")
 # serviceUrl    - Rendering service base url.
 #                 This is starting part of url for service access.
 #                 Default is path `http://kroki:8000` to local Kroki
@@ -102,6 +103,7 @@ to_diagram  <- function(
 #                 are satisfied.
 #                 If omitted or NULL then value of R chunk option named `dia`
 #                 is treated as `engine`
+# page          - Page for rendering. For use with multipage office documents
 # force         - If FALSE(default) then existing downloaded diagram data
 #                 would be used. Set to TRUE to regenerate diagram from scratch
 
@@ -132,9 +134,19 @@ to_diagram  <- function(
     engine  <- knitr::opts_current$get("dia")
   }
 
-  if (identical(serviceUrl, NULL)) {
-    serviceUrl <- get_param(paste("service_", tolower(service), sep = ""),
-                            "http://127.0.0.1:8081")
+  if (service != "Kroki"
+  &&  service != "Office") {
+    stop(paste("Service", as.character(service), "is not supported!"))
+  }
+
+  if (service == "Kroki") {
+    if (identical(serviceUrl, NULL)) {
+      serviceUrl <- get_param(paste("service_", tolower(service), sep = ""),
+                              "http://127.0.0.1:8081")
+    }
+  }
+  if (service == "Office") {
+    serviceUrl <- "local"
   }
 
   # File name for downloaded diagram
@@ -147,6 +159,13 @@ to_diagram  <- function(
   } else {
     # Otherwise use ref for file name
     fname <-  gsub("[./: ]", "-", ref, perl = TRUE)
+  }
+
+  if (identical(page, NULL)) {
+    page <- ""
+  } else {
+    page <- as.character(page)
+    paste(fname, "-", page, sep = "")
   }
 
   # Select download and output formats
@@ -163,8 +182,12 @@ to_diagram  <- function(
       } else if (knitr::is_html_output()) {
         format <- "svg"   # SVG for HTML
       } else {
-        format <- "png"   # PDF for anything else
+        format <- "png"   # PNG for anything else
       }
+    }
+    # If it's office then dformat should be same as format
+    if (service == "Office") {
+      dformat <- format
     }
   } else {                # If download format is other than SVG
     format <- dformat     # then output format should be same as download format
@@ -224,7 +247,7 @@ to_diagram  <- function(
 
   g_path <- paste(g_path, "/", sep = "")
 
-  d_path <- paste(g_path, fname, ".", dformat, sep = "")
+  d_path <- paste(g_path, fname, ".", dformat, sep = "")  # TODO: add page to d_path
   if (TRUE || !file.exists(d_path)) {
     system(paste("echo 'Failed to get diagram image from ", service,
                  "(", serviceUrl, ")' > ", "'", d_path, "'", sep = ""))
@@ -265,6 +288,7 @@ to_diagram  <- function(
       }
       s_url <- paste(serviceUrl, "/", sengine, "/", dformat, sep = "")
 
+      # URL to get image
       c_url <- paste(pipe             # Input data for `from_src` case
               , "curl ", s_url        # Request to server
               , " -o '", d_path, "'"  # Output path
@@ -272,16 +296,24 @@ to_diagram  <- function(
               , data_value
               , sep = "")
 
+      # Cache things
       cache <- as.logical(get_param("dia_cache", "TRUE"))
       cache_dir  <- get_param("dia_cache_path", ".dia-cache")
-      cache_path <- paste(cache_dir, "/",
-                          digest(c_url), sep = "")
+      if (cache) {
+        cache_path <- paste(cache_dir, "/",
+                            digest(c_url), ".", dformat, sep = "")
+      } else {
+        cache_path <- ""
+      }
 
+      # If image is not cached or forced - get image
       if (force || as.logical(get_param("dia_force", "FALSE"))
       || !cache || !file.exists(cache_path)) {
         system(paste("echo 'Failed to get diagram image from ", service,
                    "(", s_url, ")' > '", d_path, "'", sep = ""))
         system(c_url, ignore.stdout = TRUE, ignore.stderr = TRUE)
+
+        # Store result to cache
         if (cache) {
           if (!dir.exists(cache_dir)) {
             dir.create(cache_dir)
@@ -289,6 +321,109 @@ to_diagram  <- function(
           file.copy(d_path, cache_path, overwrite = TRUE)
         }
       } else {
+        # Otherwise copy cached data into destination path
+        file.copy(cache_path, d_path, overwrite = TRUE)
+      }
+    }
+    # by Libre Office
+    if (service == "Office") {
+      if (src == "") {
+        stop("Office supports data input from files only!")
+      }
+
+      # Command line for converting image with Libre Office
+      if (page == "") {
+        cformat <- dformat
+      } else {
+        cformat <- paste(
+          "'", dformat, ":", knitr::opts_current$get("dia"), "_", dformat,
+          '_Export:{"PageRange":{"type":"string", "value":"', page, '"}}\'',
+          sep = "")
+      }
+
+      c_url <- paste(
+        # "LD_LIBRARY_PATH=/usr/lib/libreoffice/program:$LD_LIBRARY_PATH",
+        "soffice", "--headless", "--convert-to", cformat,
+        "--outdir", g_path, src)
+
+      # Cache things
+      cache <- as.logical(get_param("dia_cache", "TRUE"))
+      cache_dir  <- get_param("dia_cache_path", ".dia-cache")
+      if (cache) {
+        if (page == "") {
+          c_page <- ""
+        } else {
+          c_page <- paste("-", page, sep = "")
+        }
+        cache_path <- paste(cache_dir, "/",
+                          digest(file = src), c_page, ".", dformat,
+                          sep = "")
+      } else {
+        cache_path <- ""
+      }
+
+      # There is a issue with shared libraries
+      # so it's required update LD_LIBRARY_PATH
+      # with /usr/lib/libreoffice/program going first
+      Sys.setenv(LD_LIBRARY_PATH =
+        paste("/usr/lib/libreoffice/program",
+        Sys.getenv("LD_LIBRARY_PATH"), sep = ":"))
+
+      if (page != "") {
+        office_version <- system("soffice --version", intern = TRUE)
+        office_version <- gsub("^.*?\\s(\\d+\\.\\d+).*$", "\\1", office_version[1],
+                                perl = TRUE)
+        office_version <- as.numeric(office_version)
+        if (office_version < 7.4) {
+          warn_office_version <- paste(
+            "Pages support for Office is comming with version 7.4",
+            " of Libre Office\n(expecting Aug 21, 2022 ).",
+            " Your version is ", as.character(office_version),
+            ".\nShowing only default page of diagram file.", sep = "")
+          warning(warn_office_version)
+        }
+      }
+
+      # If image is not cached or forced - get image
+      if (force || as.logical(get_param("dia_force", "FALSE"))
+      || !cache || !file.exists(cache_path)) {
+        system(paste("echo 'Failed to get diagram image from ", service,
+                   "' > '", d_path, "'", sep = ""))
+
+        # Libre Office don't allows to set output file name,
+        # so we need to do more actions than usual
+
+        ## First - lets see where output file is saved by Libre Office
+        ### get only file name
+        r_path <- gsub("^.*/", "", src, perl = TRUE)
+        ### replace source's file name extension according to dformat
+        r_path <- gsub(".[^.]*$", paste(".", dformat, sep = ""), r_path, perl = TRUE)
+        ### join generated path and filename
+        r_path <- paste(g_path, r_path, sep = "")
+
+        # Unlink existing Libre Office's output file
+        if (file.exists(r_path)) {
+          file.remove(r_path)
+        }
+
+        # Convert
+        system(c_url) #, ignore.stdout = TRUE, ignore.stderr = TRUE)
+
+        ## Rename Libre Office's output file
+        if (r_path != d_path) {
+          file.copy(r_path, d_path, overwrite = TRUE)
+          file.remove(r_path)
+        }
+
+        # Store result to cache
+        if (cache) {
+          if (!dir.exists(cache_dir)) {
+            dir.create(cache_dir)
+          }
+          file.copy(d_path, cache_path, overwrite = TRUE)
+        }
+      } else {
+        # Otherwise copy cached data into destination path
         file.copy(cache_path, d_path, overwrite = TRUE)
       }
     }
