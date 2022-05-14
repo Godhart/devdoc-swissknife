@@ -1,3 +1,9 @@
+```{r, include=FALSE}
+source("../_fun.R", local = knitr::knit_global())
+```
+
+<!-- TODO: refactor diagrams. use [docs][en] as reference -->
+
 # Примеры визуализации диаграмм с помощью Kroki {#examples-kroki}
 
 Примеры взяты с сайта [Kroki](https://kroki.io/examples.html), но я решил пропустить некоторые и
