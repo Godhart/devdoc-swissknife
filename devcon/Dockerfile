@@ -67,8 +67,7 @@ RUN apt-get update \
      DEBIAN_FRONTEND=noninteractive apt-get install \
      -y --no-install-recommends \
         texlive-xetex \
-        texlive-latex-extra \
-        git
+        texlive-latex-extra
 
 RUN apt-get update \
   && \
@@ -77,7 +76,15 @@ RUN apt-get update \
         lmodern \
         texlive-fonts-recommended
 
-# TODO: libre office for Visio files conversion
+RUN apt-get update \
+  && \
+     DEBIAN_FRONTEND=noninteractive apt-get install \
+     -y --no-install-recommends \
+        git \
+        default-jre \
+        libreoffice-base \
+        libreoffice
+
 # TODO: draw.io
 
 # ## Some useful tools that could be required for books production
