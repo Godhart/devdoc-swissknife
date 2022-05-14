@@ -2,5 +2,7 @@
 
 ## Already rendered diagrams {#usage-rendered}
 
+## Visio files {#usage-visio}
 
+## Add your custom renderer {#usage-custom-dia-render}
 
