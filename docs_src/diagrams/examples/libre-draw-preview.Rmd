@@ -1,0 +1,24 @@
+```{r, include=FALSE}
+source("../../_fun.R", local = knitr::knit_global())
+```
+
+# Single page diagram {#office-draw-singlepage-diagram}
+```{r, libre-draw-singlepage, dia=""}
+  to_diagram(src = "libre-draw-singlepage.odg", service = "Office")
+```
+
+
+# Multi page diagram, page 1 {#office-draw-multipage-diagram-1}
+```{r, libre-draw-multipage-1, dia="draw"}
+  to_diagram(src = "libre-draw-multipage.odg", service = "Office", page = 1)
+```
+
+# Multi page diagram, page 2 {#office-draw-multipage-diagram-2}
+```{r, libre-draw-multipage-2, dia="draw"}
+  to_diagram(src = "libre-draw-multipage.odg", service = "Office", page = 2)
+```
+
+# Multi page diagram, all pages {#office-draw-multipage-diagram-all}
+```{r, libre-draw-multipage-all, dia="draw"}
+  to_diagram(src = "libre-draw-multipage.odg", service = "Office", page = "1-")
+```
