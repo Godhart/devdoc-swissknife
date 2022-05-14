@@ -61,21 +61,39 @@ RUN  apt-get update \
      rm -rf /var/lib/apt/lists/* \
   && python3 -m pip install requests
 
+## Locale setup
+RUN apt-get update \
+  && \
+     DEBIAN_FRONTEND=noninteractive apt-get install \
+     -y --no-install-recommends \
+        locales \
+  && \
+    locale-gen en_US \
+  && \
+    locale-gen en_US.UTF-8 \
+  && \
+    locale-gen ru_RU \
+  && \
+    locale-gen ru_RU.UTF-8 \
+  && \
+    update-locale \
+  && \
+     rm -rf /var/lib/apt/lists/*
+
 ## All the missing things (it's here since R installation take a lot of ime)
 RUN apt-get update \
   && \
      DEBIAN_FRONTEND=noninteractive apt-get install \
      -y --no-install-recommends \
         texlive-xetex \
-        texlive-latex-extra
-
-RUN apt-get update \
-  && \
-     DEBIAN_FRONTEND=noninteractive apt-get install \
-     -y --no-install-recommends \
+        texlive-latex-extra \
         lmodern \
-        texlive-fonts-recommended
+        texlive-fonts-recommended \
+        texlive-lang-* \
+  && \
+     rm -rf /var/lib/apt/lists/*
 
+## Libre office
 RUN apt-get update \
   && \
      DEBIAN_FRONTEND=noninteractive apt-get install \
@@ -83,7 +101,9 @@ RUN apt-get update \
         git \
         default-jre \
         libreoffice-base \
-        libreoffice
+        libreoffice \
+  && \
+     rm -rf /var/lib/apt/lists/*
 
 # TODO: draw.io
 
