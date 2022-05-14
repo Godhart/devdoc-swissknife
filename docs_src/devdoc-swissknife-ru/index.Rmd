@@ -1,5 +1,6 @@
 ---
 title: "Devdoc-Swissknife-Ru"
+lang: ru
 author: "Николай Гнитеев"
 date: "`r Sys.Date()`"
 documentclass: book
