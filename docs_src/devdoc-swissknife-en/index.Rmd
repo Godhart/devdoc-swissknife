@@ -135,6 +135,6 @@ to get familiar with most necessary things
 https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode
  -->
 
-# Alternatives:
+### Alternatives {- #links-alternatives}
 
 [https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html](https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html) / [https://rich-iannone.github.io/DiagrammeR/](https://rich-iannone.github.io/DiagrammeR/)
