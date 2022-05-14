@@ -35,6 +35,13 @@ DOCKER_MAKE = docker run --rm -it \
 		--workdir="/data/docs_src" \
 		-u `id -u ${USER}`:`id -g ${USER}` \
 
+DOCKER_LIVE = docker run --rm -it \
+		--network=host \
+		--volume="$(WD)/home-live:/home/code" \
+		--volume="$(WD)/../live:/data/live" \
+		--workdir="/data/live" \
+		-u `id -u ${USER}`:`id -g ${USER}` \
+
 .PHONY: run
 run:
 		$(DOCKER_RUN) \
@@ -46,3 +53,15 @@ make:
 		$(DOCKER_MAKE) \
 		devdoc-swissknife:22.04 \
 		make ${TARGET}
+
+.PHONY: live-dev
+live-dev:
+		$(DOCKER_LIVE) \
+		devdoc-swissknife:22.04 \
+		/bin/bash
+
+.PHONY: live
+live:
+		$(DOCKER_LIVE) \
+		devdoc-swissknife:22.04 \
+		/bin/bash -c ./build_loop.sh
