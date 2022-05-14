@@ -272,6 +272,18 @@ knitr::opts_chunk$set(
 
 More info could be found [here](https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html#chunk-options)
 
+<!-- TODO: this chunk os merged from docs_WIP but it needs to be checked how it fits into current revision of doc
+Also global options may be set in front-matter part of `index.Rmd`:
+
+```yaml
+---
+title: "My Document"
+output: html_document:
+fig_width: 6
+fig_height: 4
+---
+```
+-->
 
 ### Options templates {#usage-customize-templateOpts}
 
