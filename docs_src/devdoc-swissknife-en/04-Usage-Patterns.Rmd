@@ -567,6 +567,7 @@ to_diagram  <- function(
     downloadOnly = FALSE, downloadName = "",
     service="Kroki", serviceUrl=NULL,
     engine=NULL,
+    page=NULL,
     force=FALSE
     )
 ```
@@ -624,6 +625,8 @@ Arguments:
                     are satisfied.
                     If omitted or NULL then value of R chunk option named `dia`
                     is treated as `engine`
+<!-- -->
+    page          - Page for rendering. For use with multipage office documents
 <!-- -->
     force         - If FALSE(default) then existing downloaded diagram data
                     would be used. Set to TRUE to regenerate diagram from scratch

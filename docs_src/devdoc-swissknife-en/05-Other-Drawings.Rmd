@@ -1,8 +1,26 @@
+```{r, include=FALSE}
+source("../_fun.R", local = knitr::knit_global())
+```
+
 # Other drawings {#usage-other}
 
 ## Already rendered diagrams {#usage-rendered}
 
-## Visio files {#usage-visio}
+## Office files {#usage-office}
+
+Office files could be used as source for diagrams
+
+````R
+`r ''````{r, libre-draw-singlepage, dia=""}
+  to_diagram(src = "../diagrams/examples/libre-draw-singlepage.odg", service = "Office")
+```
+````
+
+```{r, libre-draw-singlepage, dia=""}
+  to_diagram(src = "../diagrams/examples/libre-draw-singlepage.odg", service = "Office")
+```
+
+This is intended for drawings in first order, but actualy this could be any document that can be opened by Libre Office.
 
 ## Add your custom renderer {#usage-custom-dia-render}
 
