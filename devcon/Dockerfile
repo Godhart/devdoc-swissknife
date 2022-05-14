@@ -61,13 +61,14 @@ RUN  apt-get update \
      rm -rf /var/lib/apt/lists/* \
   && python3 -m pip install requests
 
-## All the missing things
+## All the missing things (it's here since R installation take a lot of ime)
 RUN apt-get update \
   && \
      DEBIAN_FRONTEND=noninteractive apt-get install \
      -y --no-install-recommends \
         texlive-xetex \
-        texlive-latex-extra
+        texlive-latex-extra \
+        git
 
 RUN apt-get update \
   && \
