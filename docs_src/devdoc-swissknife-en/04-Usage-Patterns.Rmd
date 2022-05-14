@@ -549,83 +549,70 @@ or as [raw SVG](#usage-svg) code for HTML output (raw svg can be [turned off]((#
 Here is it's definition:
 
 ```R
-to_diagram <- function(
+to_diagram  <- function(
     data = "", src = "",
     dformat = "", rawsvg = TRUE,
     downloadOnly = FALSE, downloadName = "",
-    service="Kroki", serviceUrl="http://kroki:8000",
-    engine=NULL
+    service="Kroki", serviceUrl=NULL,
+    engine=NULL,
+    force=FALSE
     )
 ```
 
 Arguments:
 
-```
-data          - Diagram description in text form (should be compatible with
-                rendering engine).
-                Ignored if value for `src` is sepcified.
-```
-
-```
-src           - Path to outer file with diagram description in text form.
-                See `docs_src/diagrams/README.md` for details.
-                Should be omitted if `data` argument is to be used.
-```
-
-```
-dformat       - Specify data format for downloaded diagram.
-                See https://kroki.io/#support for details.
-                `svg` would be used by default if value is empty string.
-                Sometimes SVG conversion to PDF/PNG not works good on client
-                side (default). In that case it's suggested to use PNG or PDF.
-                Take a NOTE: not all Kroki services provide diagrams
-                in PNG / PDF format.
-```
-
-```
-rawsvg        - Option to insert SVG as code right into HTML.
-                This way text on diagrams is searchable.
-                Enabled (TRUE) by default.
-                Set to FALSE to embed SVG as image.
-                Aplicable only for HTML output and only if `dformat`
-                is "SVG" or empty string.
-```
-
-```
-downloadName  - File name (part before extension) for local diagram's files.
-```
-
-```
-downloadOnly  - Only generate and download diagram, don't insert into doc.
-                Use for custom diagram embedding later in the doc.
-                All the necessary format conversions will be completed.
-                Result would be in `docs_src/generated` dir.
-                If `downloadName` is specified then it would be used for
-                file name, otherwise label would be used if diagram is
-                specified via data, otherwise file name would be generated
-                from `src` path.
-                File extension would depend on `dformat` argument and on
-                `fig.ext` options for R chunk
-```
-
-```
-service       - Rendering service (now it's sonly "Kroki")
-```
-
-```
-serviceUrl    - Rendering service base url.
-                This is starting part of url for service access.
-                Default is path `http://kroki:8000` to local Kroki
-                instance that is started with `make_doc.sh`
-```
-
-```
-engine        - Diagram rendering engine. Specify one of supported engines
-                (see Kroki for engines list)
-                Special value `from_src` for outer files SHOULD be used
-                to get engine from source file itself in case
-                if recomendations from `docs_src/diagrams/README.md`
-                are satisfied.
-                If ommitted or NULL then value of R chunk option named `dia`
-                is treated as `engine`
-```
+    data          - Diagram description in text form (should be compatible with
+                    rendering engine).
+                    Ignored if value for `src` is specified.
+<!-- -->
+    src           - Path to outer file with diagram description in text form.
+                    See `docs_src/diagrams/README.md` for details.
+                    Should be omitted if `data` argument is to be used.
+<!-- -->
+    dformat       - Specify data format for downloaded diagram.
+                    See https://kroki.io/#support for details.
+                    `svg` would be used by default if value is empty string.
+                    Sometimes SVG conversion to PDF/PNG not works good on client
+                    side (default). In that case it's suggested to use PNG or PDF.
+                    Take a NOTE: not all Kroki services provide diagrams
+                    in PNG / PDF format.
+<!-- -->
+    rawsvg        - Option to insert SVG as code right into HTML.
+                    This way text on diagrams is searchable.
+                    Enabled (TRUE) by default.
+                    Set to FALSE to embed SVG as image.
+                    Applicable only for HTML output and only if `dformat`
+                    is "SVG" or empty string.
+<!-- -->
+    downloadName  - File name (part before extension) for local diagram's files.
+<!-- -->
+    downloadOnly  - Only generate and download diagram, don't insert into doc.
+                    Use for custom diagram embedding later in the doc.
+                    All the necessary format conversions will be completed.
+                    Result would be in `docs_src/generated` dir.
+                    If `downloadName` is specified then it would be used for
+                    file name, otherwise label would be used if diagram is
+                    specified via data, otherwise file name would be generated
+                    from `src` path.
+                    File extension would depend on `dformat` argument and on
+                    `fig.ext` options for R chunk
+<!-- -->
+    service       - Rendering service (now it's sonly "Kroki")
+<!-- -->
+    serviceUrl    - Rendering service base url.
+                    This is starting part of url for service access.
+                    Default is path `http://kroki:8000` to local Kroki
+                    instance that is started with `make_doc.sh`
+<!-- -->
+    engine        - Diagram rendering engine. Specify one of supported engines
+                    (see Kroki for engines list)
+                    Special value `from_src` for outer files SHOULD be used
+                    to get engine from source file itself in case
+                    if recommendations from `docs_src/diagrams/README.md`
+                    are satisfied.
+                    If omitted or NULL then value of R chunk option named `dia`
+                    is treated as `engine`
+<!-- -->
+    force         - If FALSE(default) then existing downloaded diagram data
+                    would be used. Set to TRUE to regenerate diagram from scratch
+<!-- -->
