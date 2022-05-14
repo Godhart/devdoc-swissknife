@@ -105,6 +105,15 @@ RUN apt-get update \
   && \
      rm -rf /var/lib/apt/lists/*
 
+## All the missing things #2
+RUN apt-get update \
+  && \
+     DEBIAN_FRONTEND=noninteractive apt-get install \
+     -y --no-install-recommends \
+        libarchive-tools \
+  && \
+     rm -rf /var/lib/apt/lists/*
+
 # TODO: draw.io
 
 # ## Some useful tools that could be required for books production
