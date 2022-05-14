@@ -68,7 +68,7 @@ to make things neat but it would repay you in the end.
 > I hope I can fix this soon or later. Help is appreciated!
 
 Kroki is running locally in container so you may not worry for confidential things and it works well
-in air gaped installations.
+in air gapped installations.
 
 ---
 
