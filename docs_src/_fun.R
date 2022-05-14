@@ -371,12 +371,12 @@ to_diagram  <- function(
 
       if (page != "") {
         office_version <- system("soffice --version", intern = TRUE)
-        office_version <- gsub("^.*?\\s(\\d+\\.\\d+).*$", "\\1", office_version[1],
-                                perl = TRUE)
+        office_version <- gsub("^.*?\\s(\\d+\\.\\d+).*$", "\\1",
+                               office_version[1], perl = TRUE)
         office_version <- as.numeric(office_version)
         if (office_version < 7.4) {
           warn_office_version <- paste(
-            "Pages support for Office is comming with version 7.4",
+            "Pages support for Office is coming with version 7.4",
             " of Libre Office\n(expecting Aug 21, 2022 ).",
             " Your version is ", as.character(office_version),
             ".\nShowing only default page of diagram file.", sep = "")
