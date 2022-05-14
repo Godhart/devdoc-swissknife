@@ -32,7 +32,9 @@ show-env:
 	@echo DIA_FORCE=$(DIA_FORCE)
 	@echo SERVICE_KROKI=$(SERVICE_KROKI)
 
-clean-all: clean-cache clean-generated clean-mess
+clean-tmp: clean-cache clean-generated clean-mess
+
+clean-all: clean-tmp clean-output
 
 .PHONY: clean-preview
 clean-preview:
@@ -52,12 +54,12 @@ clean-mess:
 	rm -f  "$(BOOK_FILE_NAME)"
 	rm -rf "$(BOOK_OUT_DIR)"
 
-.PHONY: clean-published
+.PHONY: clean-output
 clean-published:
 	rm -rf "${DOCS_OUTPUT_PATH}/${BOOK_NAME}"
 
 ${DOCS_OUTPUT_PATH}/${BOOK_NAME}:
-	mkdir "${DOCS_OUTPUT_PATH}/${BOOK_NAME}"
+	mkdir -p "${DOCS_OUTPUT_PATH}/${BOOK_NAME}"
 
 .PHONY: html
 html: ${DOCS_OUTPUT_PATH}/${BOOK_NAME}
@@ -71,11 +73,11 @@ pdf: ${DOCS_OUTPUT_PATH}/${BOOK_NAME}
 	mv -f  "$(BOOK_OUT_DIR)"/* "${DOCS_OUTPUT_PATH}/${BOOK_NAME}"
 	rm -rf "$(BOOK_OUT_DIR)"
 
-all: clean-mess clean-published html pdf
+all: clean-mess clean-output html pdf
 
-pure: clean-all all
+pure: clean-tmp all
 
-refresh: pure clean-all
+refresh: pure clean-tmp
 
 .PHONY: show-locale
 show-locale:

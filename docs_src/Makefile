@@ -26,23 +26,23 @@ en: devdoc-swissknife-en
 
 ru: devdoc-swissknife-ru
 
+.PHONY: clean-tmp
+clean-tmp:
+	cd devdoc-swissknife-en && $(MAKE) clean-tmp
+	cd devdoc-swissknife-ru && $(MAKE) clean-tmp
+	cd doc-template && $(MAKE) clean-tmp
+
 .PHONY: clean-all
-clean-all:
+clean-tmp:
 	cd devdoc-swissknife-en && $(MAKE) clean-all
 	cd devdoc-swissknife-ru && $(MAKE) clean-all
 	cd doc-template && $(MAKE) clean-all
 
 .PHONY: pure-all
-pure-all:
-	cd devdoc-swissknife-en && $(MAKE) pure
-	cd devdoc-swissknife-ru && $(MAKE) pure
-	cd doc-template && $(MAKE) pure
+pure-all: clean-tmp doc-template en ru
 
 .PHONY: refresh-all
-refresh-all:
-	cd devdoc-swissknife-en && $(MAKE) refresh
-	cd devdoc-swissknife-ru && $(MAKE) refresh
-	cd doc-template && $(MAKE) refresh
+refresh-all: pure-all clean-tmp
 
 .PHONY: show-locale-en
 show-locale-en:

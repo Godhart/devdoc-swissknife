@@ -50,6 +50,15 @@ clean-all:
 		devdoc-swissknife \
 		make clean-all
 
+.PHONY: clean-tmp
+clean-tmp:
+	docker-compose run \
+		-u code \
+		-w /data/docs_src \
+		--entrypoint "" \
+		devdoc-swissknife \
+		make clean-tmp
+
 # Cleanup published docs
 .PHONY: clean-publish-en
 clean-publish-en:
