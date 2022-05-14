@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 
 ## R installation, required R-Markdown
@@ -17,7 +17,7 @@ RUN  apt-get update \
   && \
      apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 51716619E084DAB9 \
   && \
-     add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/' \
+     add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/' \
   && \
      apt-get update \
   && \

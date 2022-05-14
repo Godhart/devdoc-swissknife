@@ -19,7 +19,7 @@ clean-all: clean-out clean-docker
 
 .PHONY: docker
 docker:
-	docker build -t devdoc-swissknife .
+	docker build -t devdoc-swissknife:22.04 .
 
 DOCKER_RUN = docker run --rm -it \
 		--network=host \
@@ -38,11 +38,11 @@ DOCKER_MAKE = docker run --rm -it \
 .PHONY: run
 run:
 		$(DOCKER_RUN) \
-		devdoc-swissknife:latest \
+		devdoc-swissknife:22.04 \
 		${RUN}
 
 .PHONY: make
 make:
 		$(DOCKER_MAKE) \
-		devdoc-swissknife:latest \
+		devdoc-swissknife:22.04 \
 		make ${TARGET}
