@@ -9,8 +9,10 @@ include $(_E)
 BOOK_FILE_NAME	= $(shell cat _bookdown.yml | grep -Po 'book_filename:\s+"?\K[^"# ]+').Rmd
 BOOK_OUT_DIR	= $(shell cat _bookdown.yml | grep -Po 'output_dir:\s+"?\K[^"# ]+')
 
+# Build output by default
 default: all
 
+# Check env to be sure of what's going on
 .PHONY: show-env
 show-env:
 	@env
@@ -32,53 +34,67 @@ show-env:
 	@echo DIA_FORCE=$(DIA_FORCE)
 	@echo SERVICE_KROKI=$(SERVICE_KROKI)
 
+# Clean all temporary and cache files
 clean-tmp: clean-cache clean-generated clean-mess
 
+# Clean all temporary, cache files and build output
 clean-all: clean-tmp clean-output
 
+# Clean temporary files that are created when previewing
+# from VSCode
 .PHONY: clean-preview
 clean-preview:
 	rm -rf .dia-cache
 	rm -rf .dia-generated
 
+# Clean cached data (diagrams)
 .PHONY: clean-cache
 clean-cache:
 	rm -rf "$(DIA_CACHE_PATH)"
 
+# Clean generated data (diagrams)
 .PHONY: clean-generated
 clean-generated:
 	rm -rf "$(DIA_GENERATED_PATH)"
 
+# Clean the mess that can be left after R-Markdown build
 .PHONY: clean-mess
 clean-mess:
 	rm -f  "$(BOOK_FILE_NAME)"
 	rm -rf "$(BOOK_OUT_DIR)"
 
+# Clean build output
 .PHONY: clean-output
-clean-published:
+clean-output:
 	rm -rf "${DOCS_OUTPUT_PATH}/${BOOK_NAME}"
 
 ${DOCS_OUTPUT_PATH}/${BOOK_NAME}:
 	mkdir -p "${DOCS_OUTPUT_PATH}/${BOOK_NAME}"
 
+# Make HTML docs
 .PHONY: html
 html: ${DOCS_OUTPUT_PATH}/${BOOK_NAME}
 	BOOKDOWN_FULL_PDF=false Rscript --quiet $(DOCS_ROOT)/_render.R bookdown::gitbook
-	mv -f  "$(BOOK_OUT_DIR)"/* "${DOCS_OUTPUT_PATH}/${BOOK_NAME}"
+	mv -f  "$(BOOK_OUT_DIR)"/* "${DOCS_OUTPUT_PATH}/${BOOK_NAME}"/
 	rm -rf "$(BOOK_OUT_DIR)"
 
+# Make PDF docs
 .PHONY: pdf
 pdf: ${DOCS_OUTPUT_PATH}/${BOOK_NAME}
 	BOOKDOWN_FULL_PDF=false Rscript --quiet $(DOCS_ROOT)/_render.R bookdown::pdf_book
-	mv -f  "$(BOOK_OUT_DIR)"/* "${DOCS_OUTPUT_PATH}/${BOOK_NAME}"
+	mv -f  "$(BOOK_OUT_DIR)"/* "${DOCS_OUTPUT_PATH}/${BOOK_NAME}"/
 	rm -rf "$(BOOK_OUT_DIR)"
 
+# Make all the docs reusing already rendered diagrams
 all: clean-mess clean-output html pdf
 
+# Make all the docs frome the scratch
 pure: clean-tmp all
 
+# Make all the docs frome the scratch and clean intermediate files
 refresh: pure clean-tmp
 
+# Things to check if locale is set up right
 .PHONY: show-locale
 show-locale:
 	locale
