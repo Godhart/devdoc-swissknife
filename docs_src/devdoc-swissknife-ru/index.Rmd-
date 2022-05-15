@@ -1,0 +1,115 @@
+---
+title: "Devdoc-Swissknife-Ru"
+lang: ru
+author: "Николай Гнитеев"
+date: "`r Sys.Date()`"
+documentclass: book
+classoption:
+ - a4paper
+ - 12pt
+ - oneside
+ - openany
+#  - final
+params:
+  ########################################################
+  # Params for `to_diagram` function and `dia` option hook
+  ####
+  dia_generated_path: generated
+  dia_break_on_err: TRUE
+  ####
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+colorlinks: yes
+graphics: yes
+lot: no
+lof: no
+fontsize: 12pt
+mainfont: DejaVu Serif
+monofont: DejaVu Sans Mono
+monofontoptions: "Scale=0.8"
+site: bookdown::bookdown_site
+description: "Devdoc-Swissknife - Базовая документация"
+url: 'https\://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-ru/'
+github-repo: Godhart/devdoc-swissknife
+cover-image: ../images/cover.png
+---
+
+```{r, include=FALSE}
+source("../_fun.R", local = knitr::knit_global())
+```
+
+# Вступление {-}
+
+Этот проект демонстрирует подход к созданию документации на разработку с помощью
+[R Markdown](https://rmarkdown.rstudio.com/) и [Kroki](https://kroki.io/).
+
+Всё то, что описано в данном в проекте, можно было делать и прежде, но я попытался увязать вместе эти компоненты
+так, чтобы можно было сосредоточить усилия на содержательной части документации.
+
+Данный подход позволяет создавать документацию в виде файлов PDF, презентаций, сайта документтации
+по шаблону gitbook и в некоторых других форматах, используя для этого текстовые файлы с синтаксисом markdown
+(Pandoc flavor) и дополнительными вставками кода на языке R, а так же текстовые описания разного рода диаграмм.
+
+Целью этого проекта является создание документации, максимально используя для этого текстовый формат,
+в т.ч. для описания графических диаграмм, но при этом без излишних переусложнений.
+
+За счёт текстового описания диаграмм, с ними проще работать в системах контроля версий, получать разницу между версиями,
+добавлять к ним коментарии, делать обзор изменений и т.п.
+
+Часто может оказаться и так, что создание диаграмм, а тем более их развитие быстрее делать в текстовом виде,
+а так же делать такие вещи как применение и/или рефакторинг цветовых схем. Поскольку зачастую тектовое описание диаграмм
+это больше опиисание некой модели, чем описание графических элентов,то при редактирвоании таких описаний не требуется
+тратить усилия на то чтобы в графическом виде взаимосвязи сохранялись, т.к. это будет происходить автоматически,
+покуда не изменились названия объектов модели.
+
+И именно встраивание графических диаграмм на основе их текстового описания является основным фокусом этого проекта,
+т.к. прочие вещи Вы скорее всего получите за счёт использования R Markdown, к которому можно найти достаточно документации.
+R Markdown сам по себе является мощным и настраиваемым инструментом, который можно подстроить на формирование
+документов в том виде, в котором это вам требуется. Конечно для этого в начале придётся приложить определённые усилия,
+но в конечном итоге они окупятся.
+
+> Чтобы на выходе были великлепные файлы PDF нужен и соответствующий класс для Latex.
+> Пока что у меня такого нет, поэтому в данном проекте PDF файлы выглядят довольнно-таки просто.
+> Но надеюсь, что рано или поздно, появится что показать и с этой стороны.
+
+Для визуализации диаграмм используется локальный сервер Kroki, не требующий подключения к сети Internet, что позволит
+не беспокоится за сохранение конфиденциальности данных.
+
+---
+
+Помимо демонстрационных целей этот проект так же может быть использован как шаблон для формирования вашей собственной документации.
+В [этом разделе](#template) данный вопрос рассмотрен подробнее.
+
+Все инструменты для создания документации запускаются из контейнеров docker, что упростит встраивание этого подхода в ваш конвейер CI/CD.
+
+Структура оргнизации документации, а так же некоторые файлы взаимствованы из [R Markdown book](https://github.com/rstudio/rmarkdown-book)
+
+---
+
+В проекте приводится несколько примеров диаграмм для наиболее частых случаев, требуемых в разработке.
+По ссылкам на проекты Вы сможете найти что-то и для менее типовых задач.
+
+> Для большинства примеров использован код с сайта [Kroki](https://kroki.io/examples.html)
+
+\
+\
+
+**Полезные ссылки:**
+
+[Список поддерживаемых визуализаторов диаграмм - https://kroki.io/#support](https://kroki.io/#support)
+
+[Немного больше примеров диаграмм - https://kroki.io/examples.html](https://kroki.io/examples.html)
+
+[R Markdown: The Definitive Guide - https://bookdown.org/yihui/rmarkdown/](https://bookdown.org/yihui/rmarkdown/)\
+от авторов R Markdown и созданное с помощю R Markdown
+
+[R Markdown: Cookbook - https://bookdown.org/yihui/rmarkdown-cookbook/](https://bookdown.org/yihui/rmarkdown-cookbook/)
+
+[Неплохая методичка по R Markdown - https://rmd4sci.njtierney.com/](https://rmd4sci.njtierney.com/)
+
+[R Markdown cheatsheet - https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown.pdf)
+
+[R Markdown reference - https://rmarkdown.rstudio.com/docs/reference/index.html](https://rmarkdown.rstudio.com/docs/reference/index.html)
+
+[Keenwrite - редактор с поддержкой предварительного просмотра всех диаграмм!](https://github.com/DaveJarvis/keenwrite)
