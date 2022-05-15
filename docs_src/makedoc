@@ -9,6 +9,14 @@ include $(_E)
 BOOK_FILE_NAME	= $(shell cat _bookdown.yml | grep -Po 'book_filename:\s+"?\K[^"# ]+').Rmd
 BOOK_OUT_DIR	= $(shell cat _bookdown.yml | grep -Po 'output_dir:\s+"?\K[^"# ]+')
 
+ifeq ($(BOOK_OUT_DIR),)
+BOOK_OUT_DIR	= _book
+endif
+
+ifeq ($(BOOK_FILE_NAME), .Rmd)
+BOOK_FILE_NAME	= _main.Rmd
+endif
+
 # Build output by default
 default: all
 
