@@ -1,10 +1,10 @@
 #!/bin/bash
 docker-compose run \
-    -u rstudio \
-    -w /docs/src \
+    -u code \
+    -w /data/docs_src \
     --entrypoint "" \
-    rstudio \
-    make
+    devdoc-swissknife \
+    make devdoc-swissknife-en
     # make
     # bash
     # ping kroki

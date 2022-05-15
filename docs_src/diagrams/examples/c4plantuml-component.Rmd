@@ -1,4 +1,9 @@
-``` diagram-c4plantuml
+```{r, include=FALSE}
+source("../../_fun.R", local = knitr::knit_global())
+```
+
+```{r, c4plantuml-component, grab=TRUE, dia="c4plantuml"}
+  to_diagram(paste(grab_start(), '
 @startuml
 !include C4_Component.puml
 
@@ -29,4 +34,5 @@ Rel(spa, accounts, "Uses", "JSON/HTTPS")
 Rel(ma, sign, "Uses", "JSON/HTTPS")
 Rel(ma, accounts, "Uses", "JSON/HTTPS")
 @enduml
+', grab_stop()), force = TRUE)
 ```

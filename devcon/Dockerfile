@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 
 ## R installation, required R-Markdown
@@ -17,7 +17,7 @@ RUN  apt-get update \
   && \
      apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 51716619E084DAB9 \
   && \
-     add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/' \
+     add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu jammy-cran40/' \
   && \
      apt-get update \
   && \
@@ -61,22 +61,59 @@ RUN  apt-get update \
      rm -rf /var/lib/apt/lists/* \
   && python3 -m pip install requests
 
-## All the missing things
+## Locale setup
+RUN apt-get update \
+  && \
+     DEBIAN_FRONTEND=noninteractive apt-get install \
+     -y --no-install-recommends \
+        locales \
+  && \
+    locale-gen en_US \
+  && \
+    locale-gen en_US.UTF-8 \
+  && \
+    locale-gen ru_RU \
+  && \
+    locale-gen ru_RU.UTF-8 \
+  && \
+    update-locale \
+  && \
+     rm -rf /var/lib/apt/lists/*
+
+## All the missing things (it's here since R installation take a lot of ime)
 RUN apt-get update \
   && \
      DEBIAN_FRONTEND=noninteractive apt-get install \
      -y --no-install-recommends \
         texlive-xetex \
-        texlive-latex-extra
+        texlive-latex-extra \
+        lmodern \
+        texlive-fonts-recommended \
+        texlive-lang-* \
+  && \
+     rm -rf /var/lib/apt/lists/*
 
+## Libre office
 RUN apt-get update \
   && \
      DEBIAN_FRONTEND=noninteractive apt-get install \
      -y --no-install-recommends \
-        lmodern \
-        texlive-fonts-recommended
+        git \
+        default-jre \
+        libreoffice-base \
+        libreoffice \
+  && \
+     rm -rf /var/lib/apt/lists/*
 
-# TODO: libre office for Visio files conversion
+## All the missing things #2
+RUN apt-get update \
+  && \
+     DEBIAN_FRONTEND=noninteractive apt-get install \
+     -y --no-install-recommends \
+        libarchive-tools \
+  && \
+     rm -rf /var/lib/apt/lists/*
+
 # TODO: draw.io
 
 # ## Some useful tools that could be required for books production

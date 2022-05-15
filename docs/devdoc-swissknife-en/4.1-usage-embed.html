@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4.1 Embedding diagrams into a document | Devdoc-Swissknife EN</title>
+  <meta name="description" content="Devdoc-Swissknife - General Documentation" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4.1 Embedding diagrams into a document | Devdoc-Swissknife EN" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
+  <meta property="og:description" content="Devdoc-Swissknife - General Documentation" />
+  <meta name="github-repo" content="Godhart/devdoc-swissknife" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4.1 Embedding diagrams into a document | Devdoc-Swissknife EN" />
+  
+  <meta name="twitter:description" content="Devdoc-Swissknife - General Documentation" />
+  <meta name="twitter:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
+
+<meta name="author" content="Nikolay Gniteev" />
+
+
+<meta name="date" content="2022-05-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="4-usage.html"/>
+<link rel="next" href="4.2-usage-svg.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">Devdoc-Swissknife EN</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#links"><i class="fa fa-check"></i>Helpful links</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#links-alternatives"><i class="fa fa-check"></i>Alternatives</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="1-examples.html"><a href="1-examples.html"><i class="fa fa-check"></i><b>1</b> Simple diagrams examples</a>
+<ul>
+<li class="chapter" data-level="" data-path="1-examples.html"><a href="1-examples.html#examples-inline"><i class="fa fa-check"></i>Example with inline diagram description</a></li>
+<li class="chapter" data-level="" data-path="1-examples.html"><a href="1-examples.html#examples-fromFile"><i class="fa fa-check"></i>Example with diagram data from file</a></li>
+<li class="chapter" data-level="" data-path="1-examples.html"><a href="1-examples.html#examples-more"><i class="fa fa-check"></i>More examples</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-template.html"><a href="2-template.html"><i class="fa fa-check"></i><b>2</b> Using as a template and making own docs</a></li>
+<li class="chapter" data-level="3" data-path="3-examples-kroki.html"><a href="3-examples-kroki.html"><i class="fa fa-check"></i><b>3</b> Kroki usage examples</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3.1-kroki-c4context.html"><a href="3.1-kroki-c4context.html"><i class="fa fa-check"></i><b>3.1</b> C4 Context Diagram (PlantUML+C4)</a></li>
+<li class="chapter" data-level="3.2" data-path="3.2-kroki-c4container.html"><a href="3.2-kroki-c4container.html"><i class="fa fa-check"></i><b>3.2</b> C4 Container Diagram (PlantUML+C4)</a></li>
+<li class="chapter" data-level="3.3" data-path="3.3-kroki-c4component.html"><a href="3.3-kroki-c4component.html"><i class="fa fa-check"></i><b>3.3</b> C4 Component Diagram (PlantUML+C4)</a></li>
+<li class="chapter" data-level="3.4" data-path="3.4-kroki-blockdiag.html"><a href="3.4-kroki-blockdiag.html"><i class="fa fa-check"></i><b>3.4</b> Block Diagram</a></li>
+<li class="chapter" data-level="3.5" data-path="3.5-kroki-timing.html"><a href="3.5-kroki-timing.html"><i class="fa fa-check"></i><b>3.5</b> Digital Timing Diagram</a></li>
+<li class="chapter" data-level="3.6" data-path="3.6-kroki-bytefield.html"><a href="3.6-kroki-bytefield.html"><i class="fa fa-check"></i><b>3.6</b> Bytefield</a></li>
+<li class="chapter" data-level="3.7" data-path="3.7-kroki-packet.html"><a href="3.7-kroki-packet.html"><i class="fa fa-check"></i><b>3.7</b> Packet Diagram</a></li>
+<li class="chapter" data-level="3.8" data-path="3.8-kroki-pumlSequence.html"><a href="3.8-kroki-pumlSequence.html"><i class="fa fa-check"></i><b>3.8</b> Sequence Diagram #1 (PlantUML)</a></li>
+<li class="chapter" data-level="3.9" data-path="3.9-kroki-sequence.html"><a href="3.9-kroki-sequence.html"><i class="fa fa-check"></i><b>3.9</b> Sequence Diagram #2 (SeqDiag)</a></li>
+<li class="chapter" data-level="3.10" data-path="3.10-kroki-commitgraph.html"><a href="3.10-kroki-commitgraph.html"><i class="fa fa-check"></i><b>3.10</b> Commit Graph</a></li>
+<li class="chapter" data-level="3.11" data-path="3.11-kroki-pumlUsecase.html"><a href="3.11-kroki-pumlUsecase.html"><i class="fa fa-check"></i><b>3.11</b> Use Case Diagram</a></li>
+<li class="chapter" data-level="3.12" data-path="3.12-kroki-pumlMindmap.html"><a href="3.12-kroki-pumlMindmap.html"><i class="fa fa-check"></i><b>3.12</b> Mind Map</a></li>
+<li class="chapter" data-level="3.13" data-path="3.13-kroki-pumlMore.html"><a href="3.13-kroki-pumlMore.html"><i class="fa fa-check"></i><b>3.13</b> PlantUML (More examples)</a></li>
+<li class="chapter" data-level="3.14" data-path="3.14-kroki-gantt.html"><a href="3.14-kroki-gantt.html"><i class="fa fa-check"></i><b>3.14</b> Gantt</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-usage.html"><a href="4-usage.html"><i class="fa fa-check"></i><b>4</b> Usage patterns</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4.1-usage-embed.html"><a href="4.1-usage-embed.html"><i class="fa fa-check"></i><b>4.1</b> Embedding diagrams into a document</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="4.1-usage-embed.html"><a href="4.1-usage-embed.html#usage-embed-inline"><i class="fa fa-check"></i><b>4.1.1</b> Describing diagrams inline in the documentation</a></li>
+<li class="chapter" data-level="4.1.2" data-path="4.1-usage-embed.html"><a href="4.1-usage-embed.html#usage-embed-raw"><i class="fa fa-check"></i><b>4.1.2</b> Diagrams from raw outer files</a></li>
+<li class="chapter" data-level="4.1.3" data-path="4.1-usage-embed.html"><a href="4.1-usage-embed.html#usage-embed-rmd"><i class="fa fa-check"></i><b>4.1.3</b> Diagrams from Rmd outer file</a></li>
+<li class="chapter" data-level="4.1.4" data-path="4.1-usage-embed.html"><a href="4.1-usage-embed.html#usage-embed-getThenEmbed"><i class="fa fa-check"></i><b>4.1.4</b> Get then embed</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="4.2-usage-svg.html"><a href="4.2-usage-svg.html"><i class="fa fa-check"></i><b>4.2</b> HTML: SVG - Raw vs from File</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="4.2-usage-svg.html"><a href="4.2-usage-svg.html#usage-svg-raw"><i class="fa fa-check"></i><b>4.2.1</b> Raw SVG</a></li>
+<li class="chapter" data-level="4.2.2" data-path="4.2-usage-svg.html"><a href="4.2-usage-svg.html#usage-svg-file"><i class="fa fa-check"></i><b>4.2.2</b> SVG from file</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html"><i class="fa fa-check"></i><b>4.3</b> Customizations</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html#usage-customize-rChunks"><i class="fa fa-check"></i><b>4.3.1</b> R Chunks</a></li>
+<li class="chapter" data-level="4.3.2" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html#usage-customize-globalOpts"><i class="fa fa-check"></i><b>4.3.2</b> Global options</a></li>
+<li class="chapter" data-level="4.3.3" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html#usage-customize-templateOpts"><i class="fa fa-check"></i><b>4.3.3</b> Options templates</a></li>
+<li class="chapter" data-level="4.3.4" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html#usage-customize-optionsHooks"><i class="fa fa-check"></i><b>4.3.4</b> Options hooks</a></li>
+<li class="chapter" data-level="4.3.5" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html#usage-multipleFormats"><i class="fa fa-check"></i><b>4.3.5</b> Multiple output formats</a></li>
+<li class="chapter" data-level="4.3.6" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html#usage-customize-params"><i class="fa fa-check"></i><b>4.3.6</b> Define parameters</a></li>
+<li class="chapter" data-level="4.3.7" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html#usage-customize-summary"><i class="fa fa-check"></i><b>4.3.7</b> Putting all together</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="4.4-usage-format.html"><a href="4.4-usage-format.html"><i class="fa fa-check"></i><b>4.4</b> Data format</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="4.4-usage-format.html"><a href="4.4-usage-format.html#usage-format-renderer"><i class="fa fa-check"></i><b>4.4.1</b> Renderer format</a></li>
+<li class="chapter" data-level="4.4.2" data-path="4.4-usage-format.html"><a href="4.4-usage-format.html#usage-format-conversion"><i class="fa fa-check"></i><b>4.4.2</b> Local conversion</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="4.5-usage-pdf.html"><a href="4.5-usage-pdf.html"><i class="fa fa-check"></i><b>4.5</b> PDF production</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="4.5-usage-pdf.html"><a href="4.5-usage-pdf.html#usage-pdf-pageBreak"><i class="fa fa-check"></i><b>4.5.1</b> Page breaks</a></li>
+<li class="chapter" data-level="4.5.2" data-path="4.5-usage-pdf.html"><a href="4.5-usage-pdf.html#usage-pdf-pageOrientation"><i class="fa fa-check"></i><b>4.5.2</b> Page orientation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="4.6-usage-spec.html"><a href="4.6-usage-spec.html"><i class="fa fa-check"></i><b>4.6</b> Full <strong>to_diagram</strong> function specification</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-usage-other.html"><a href="5-usage-other.html"><i class="fa fa-check"></i><b>5</b> Other drawings</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="5.1-usage-rendered.html"><a href="5.1-usage-rendered.html"><i class="fa fa-check"></i><b>5.1</b> Already rendered diagrams</a></li>
+<li class="chapter" data-level="5.2" data-path="5.2-usage-office.html"><a href="5.2-usage-office.html"><i class="fa fa-check"></i><b>5.2</b> Office files</a></li>
+<li class="chapter" data-level="5.3" data-path="5.3-usage-custom-dia-render.html"><a href="5.3-usage-custom-dia-render.html"><i class="fa fa-check"></i><b>5.3</b> Add your custom renderer</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6-anatomy.html"><a href="6-anatomy.html"><i class="fa fa-check"></i><b>6</b> Project anatomy</a></li>
+<li class="chapter" data-level="7" data-path="7-diagrams-reference.html"><a href="7-diagrams-reference.html"><i class="fa fa-check"></i><b>7</b> Diagrams reference</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="7.1-refrencing-embeded-diagrams.html"><a href="7.1-refrencing-embeded-diagrams.html"><i class="fa fa-check"></i><b>7.1</b> Refrencing embeded diagrams</a></li>
+<li class="chapter" data-level="7.2" data-path="7.2-native-r-markdown.html"><a href="7.2-native-r-markdown.html"><i class="fa fa-check"></i><b>7.2</b> Native R Markdown</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Devdoc-Swissknife EN</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="usage-embed" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Embedding diagrams into a document<a href="4.1-usage-embed.html#usage-embed" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s cover basics on embedding diagrams into documentation first.</p>
+<div id="usage-embed-inline" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Describing diagrams inline in the documentation<a href="4.1-usage-embed.html#usage-embed-inline" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Useful for short and/or strongly context-related drawings, i.e. when drawing by itself have no meaning
+or there is no reason for storing it in a separate file.</p>
+<p>Following pattern should be used:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="4.1-usage-embed.html#cb5-1" aria-hidden="true"></a><span class="st">```</span><span class="dt">{r &lt;label&gt;, dia=&#39;&lt;engine&gt;&#39;, fig.cap=&#39;&lt;drawing name&gt;&#39;}</span></span>
+<span id="cb5-2"><a href="4.1-usage-embed.html#cb5-2" aria-hidden="true"></a><span class="dt">  to_diagram(&#39;&lt;diagram data&gt;&#39;)</span></span>
+<span id="cb5-3"><a href="4.1-usage-embed.html#cb5-3" aria-hidden="true"></a><span class="st">```</span></span></code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;label&gt;</code> is a name for a drawing reference, may be omitted</li>
+<li><code>&lt;engine&gt;</code> is a name for a rendering engine, see <a href="#reference-engines">table</a> for allowed values and corresponding engines</li>
+<li><code>&lt;drawing name&gt;</code> is a caption for drawing, may be omitted.</li>
+<li><code>&lt;diagram data&gt;</code> is a textual diagram description in a format that is compatible with a rendering engine<br />
+<em>NOTE: if there are single quotes in the <code>&lt;diagram data&gt;</code> then you should escape them with <code>\</code> symbol</em>
+<em>or surround <code>&lt;diagram data&gt;</code> with double-quotes (<code>"</code>) instead.</em></li>
+</ul>
+</div>
+<div id="usage-embed-raw" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Diagrams from raw outer files<a href="4.1-usage-embed.html#usage-embed-raw" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is the case if you already have a diagram description in a separate file and you want to keep it like that for some reason.</p>
+<blockquote>
+<p>For new diagrams it’s proposed to use method, described in the next section.
+It also uses outer files, but requires some extra formating.</p>
+</blockquote>
+<p>Raw file is a text file that contains diagram description data in a format that is
+compatible with a rendering engine and nothing more.</p>
+<p>Following pattern should be used:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="4.1-usage-embed.html#cb6-1" aria-hidden="true"></a><span class="st">```</span><span class="dt">{r &lt;label&gt;, dia=&#39;&lt;engine&gt;&#39;, fig.cap=&#39;&lt;drawing name&gt;&#39;}</span></span>
+<span id="cb6-2"><a href="4.1-usage-embed.html#cb6-2" aria-hidden="true"></a><span class="dt">  to_diagram(src=&#39;&lt;src_file_path&gt;&#39;)</span></span>
+<span id="cb6-3"><a href="4.1-usage-embed.html#cb6-3" aria-hidden="true"></a><span class="st">```</span></span></code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;label&gt;</code> is a name for a drawing reference, may be omitted</li>
+<li><code>&lt;engine&gt;</code> is a name for a rendering engine, see <a href="#reference-engines">table</a> for allowed values and corresponding engines</li>
+<li><code>&lt;drawing name&gt;</code> is a caption for drawing, mey be omitted</li>
+<li><code>&lt;src_file_path&gt;</code> is a path to file with diagram data, relative to file into which it’s embedded.<br />
+<em>If you are using suggested locations to place docs and diagrams (<code>docs_src/doc-&lt;subject&gt;</code> and <code>docs_src/diagrams</code>)</em>
+<em>then value for <code>&lt;src_file_path&gt;</code> should be starting like this: <code>../diagrams/</code></em></li>
+</ul>
+</div>
+<div id="usage-embed-rmd" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Diagrams from Rmd outer file<a href="4.1-usage-embed.html#usage-embed-rmd" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is a proposed way to describe diagrams in outer files. Diagram data should be in <code>.Rmd</code> file
+and described as specified in <code>docs_src/diagrams/README.md</code> <a href="TODO">TODO</a>.</p>
+<p>This way you’ll be able to use <a href="https://github.com/DaveJarvis/keenwrite">Keenwrite</a> to preview diagrams live
+while editing, which is very handy.</p>
+<p>Besides that, you can supply a diagram with additional info, capture decisions that were taken, add TODOs, versions info, etc.
+along with diagram’s data in the same file.</p>
+<p>Following pattern should be used:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="4.1-usage-embed.html#cb7-1" aria-hidden="true"></a><span class="st">```</span><span class="dt">{r &lt;label&gt;, dia=&#39;from_src&#39;, fig.cap=&#39;&lt;drawing name&gt;&#39;}</span></span>
+<span id="cb7-2"><a href="4.1-usage-embed.html#cb7-2" aria-hidden="true"></a><span class="dt">  to_diagram(src=&#39;&lt;src_file_path&gt;&#39;)</span></span>
+<span id="cb7-3"><a href="4.1-usage-embed.html#cb7-3" aria-hidden="true"></a><span class="st">```</span></span></code></pre></div>
+<p>where:</p>
+<ul>
+<li><code>&lt;label&gt;</code> is a name for a drawing reference, may be omitted</li>
+<li><code>&lt;drawing name&gt;</code> is a caption for drawing, mey be omitted</li>
+<li><code>&lt;src_file_path&gt;</code> is a path to file with diagram data, relative file into which it’s embedded.<br />
+<em>If you are using suggested locations to place docs and diagrams (<code>docs_src/doc-&lt;subject&gt;</code> and <code>docs_src/diagrams</code>)</em>
+<em>then value for <code>&lt;src_file_path&gt;</code> should be starting like this: <code>../diagrams/</code></em></li>
+</ul>
+<blockquote>
+<p>Take a NOTE: A <code>from_src</code> is specified as engine in this case since an actual engine name is already specified in <code>.Rmd</code> file with diagram data.</p>
+</blockquote>
+</div>
+<div id="usage-embed-getThenEmbed" class="section level3 hasAnchor" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Get then embed<a href="4.1-usage-embed.html#usage-embed-getThenEmbed" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>This is the case if you want to customize diagrams embedding, like aligning, multiple diagrams in a single row,
+preprocess diagrams before embedding them, etc.</p>
+<p>The process is divided into few phases:</p>
+<ol>
+<li>Download one or multiple rendered images for your diagrams</li>
+<li>Preprocess diagrams if required</li>
+<li>Embed them into document</li>
+</ol>
+<blockquote>
+<p>NOTE: diagrams are still described in a text form</p>
+</blockquote>
+<p>Following pattern should be used:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="4.1-usage-embed.html#cb8-1" aria-hidden="true"></a><span class="co"># Download diagram</span></span>
+<span id="cb8-2"><a href="4.1-usage-embed.html#cb8-2" aria-hidden="true"></a><span class="st">```</span><span class="dt">{r dia=&#39;from_src&#39;}</span></span>
+<span id="cb8-3"><a href="4.1-usage-embed.html#cb8-3" aria-hidden="true"></a><span class="dt">  to_diagram(src=&#39;&lt;src_file_path&gt;&#39;, downloadOnly=TRUE, downloadName=&#39;&lt;file_name&gt;&#39;)</span></span>
+<span id="cb8-4"><a href="4.1-usage-embed.html#cb8-4" aria-hidden="true"></a><span class="st">```</span></span>
+<span id="cb8-5"><a href="4.1-usage-embed.html#cb8-5" aria-hidden="true"></a></span>
+<span id="cb8-6"><a href="4.1-usage-embed.html#cb8-6" aria-hidden="true"></a><span class="co"># Download more diagrams if required (like the one above)</span></span>
+<span id="cb8-7"><a href="4.1-usage-embed.html#cb8-7" aria-hidden="true"></a>...</span>
+<span id="cb8-8"><a href="4.1-usage-embed.html#cb8-8" aria-hidden="true"></a></span>
+<span id="cb8-9"><a href="4.1-usage-embed.html#cb8-9" aria-hidden="true"></a><span class="co"># Process diagram(s) if required</span></span>
+<span id="cb8-10"><a href="4.1-usage-embed.html#cb8-10" aria-hidden="true"></a><span class="co"># Use code chunks for this (R, bash, python and many more with necessary commands)</span></span>
+<span id="cb8-11"><a href="4.1-usage-embed.html#cb8-11" aria-hidden="true"></a>...</span>
+<span id="cb8-12"><a href="4.1-usage-embed.html#cb8-12" aria-hidden="true"></a></span>
+<span id="cb8-13"><a href="4.1-usage-embed.html#cb8-13" aria-hidden="true"></a><span class="co"># Embed diagram(s)</span></span>
+<span id="cb8-14"><a href="4.1-usage-embed.html#cb8-14" aria-hidden="true"></a><span class="st">```</span><span class="dt">{r &lt;label&gt;, echo=FALSE, fig.cap=&#39;&lt;drawing name&gt;&#39;}</span></span>
+<span id="cb8-15"><a href="4.1-usage-embed.html#cb8-15" aria-hidden="true"></a><span class="dt">  knitr::include_graphics(&#39;generated/&lt;file_name&gt;.&lt;file_ext&gt;&#39;)</span></span>
+<span id="cb8-16"><a href="4.1-usage-embed.html#cb8-16" aria-hidden="true"></a><span class="st">```</span></span></code></pre></div>
+<blockquote>
+<p>NOTE: Example code is shown for outer Rmd file but there is additional
+<code>downloadOnly</code> and <code>downloadName</code> arguments are specified in the first code chunk.<br />
+Inline diagram description and raw outer file may be used aswell.</p>
+</blockquote>
+<p>where:</p>
+<ul>
+<li><code>&lt;label&gt;</code> is a name for a drawing reference, may be omitted</li>
+<li><code>&lt;drawing name&gt;</code> is a caption for drawing, mey be omitted</li>
+<li><code>&lt;file_name&gt;</code> is a name that is given to downloaded diagram</li>
+<li><code>&lt;file_ext&gt;</code> is an extension is given depending on output format and <a href="#usage-args-format">optional arguments</a>.<br />
+By default it’s:
+<ul>
+<li><code>.svg</code> for HTML output</li>
+<li><code>.pdf</code> for PDF output</li>
+<li><code>.png</code> for other kinds</li>
+</ul></li>
+</ul>
+<blockquote>
+<p>Take a NOTE: For postprocessing you can use R, Python, whatever can be called from BASH and many more
+(depends on your docker image).<br />
+<a href="https://bookdown.org/yihui/rmarkdown/r-code.html">More on <strong>R chunks</strong>: https://bookdown.org/yihui/rmarkdown/r-code.html</a>,
+<a href="https://yihui.org/knitr/options/">this</a> and <a href="https://yihui.org/knitr/hooks/">this</a><br />
+<a href="https://bookdown.org/yihui/rmarkdown/language-engines.html">More on other formats: https://bookdown.org/yihui/rmarkdown/language-engines.html</a></p>
+</blockquote>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="4-usage.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4.2-usage-svg.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Godhart/devdoc-swissknife/edit/main/docs_src/devdoc-swissknife-en/04-Usage-Patterns.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Devdoc-Swissknife-EN.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

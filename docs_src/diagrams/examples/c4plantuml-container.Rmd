@@ -1,4 +1,9 @@
-``` diagram-c4plantuml
+```{r, include=FALSE}
+source("../../_fun.R", local = knitr::knit_global())
+```
+
+```{r, c4plantuml-container, grab=TRUE, dia="c4plantuml"}
+  to_diagram(paste(grab_start(), '
 @startuml
 !include C4_Container.puml
 
@@ -33,4 +38,5 @@ Rel_Back(customer, email_system, "Sends e-mails to")
 Rel_Back(email_system, backend_api, "Sends e-mails using", "sync, SMTP")
 Rel_Neighbor(backend_api, banking_system, "Uses", "sync/async, XML/HTTPS")
 @enduml
+', grab_stop()), force = TRUE)
 ```

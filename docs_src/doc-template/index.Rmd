@@ -9,6 +9,13 @@ classoption:
  - oneside
  - openany
 #  - final
+params:
+  ########################################################
+  # Params for `to_diagram` function and `dia` option hook
+  ####
+  dia_generated_path: generated
+  dia_break_on_err: TRUE
+  ####
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes

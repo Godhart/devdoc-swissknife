@@ -1,4 +1,9 @@
-``` diagram-bytefield
+```{r, include=FALSE}
+source("../../_fun.R", local = knitr::knit_global())
+```
+
+```{r, bytefield, grab=TRUE, dia="bytefield"}
+  to_diagram(paste(grab_start(), '
 (defattrs :bg-green {:fill "#a0ffa0"})
 (defattrs :bg-yellow {:fill "#ffffa0"})
 (defattrs :bg-pink {:fill "#ffb0a0"})
@@ -74,4 +79,5 @@
 (draw-box (text "length" [:math] [:sub 2]) {:span 4})
 (draw-gap "Unknown bytes" {:min-label-columns 6})
 (draw-bottom)
+', grab_stop()), force = TRUE)
 ```

@@ -1,0 +1,11 @@
+# Diagrams reference {#diagrams-reference}
+
+<!-- TODO: info about diagrams description -->
+
+## Refrencing embeded diagrams
+
+https://www.rdocumentation.org/packages/knitr/versions/1.33/topics/fig_chunk
+
+## Native R Markdown
+
+https://bookdown.org/yihui/rmarkdown-cookbook/diagrams.html

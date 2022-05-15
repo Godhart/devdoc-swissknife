@@ -1,7 +1,13 @@
-# Kroki usage examples {#examplesKroki}
+```{r, include=FALSE}
+source("../_fun.R", local = knitr::knit_global())
+```
+
+# Kroki usage examples {#examples-kroki}
+
+<!-- TODO: tabbed view for HTML output -->
 
 I've omitted some examples from [Kroki](https://kroki.io/examples.html) and left only those
-that most useful in a daily life of most developers (IMHO).
+that are most useful in a daily life of most developers (IMO).
 
 If you check docs for [supported diagrams renderers](https://kroki.io/#support) then you'll find for sure
 a few more interesting usecases.
@@ -10,8 +16,8 @@ All diagrams data for examples of this section resides in [docs_src/diagrams/exa
 Each diagram is included into doc by adding following code section into document file:
 
 ````R
-`r ''````{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "<Drawing name>", src="../diagrams/<src_file_path_within_diagrams_dir>")
+`r ''````{r, <reference-label>, dia="from_src", fig.cap="<Caption for your figure>"}
+  to_diagram(src="../diagrams/<src_file_path_within_diagrams_dir>")
 ```
 ````
 
@@ -21,28 +27,33 @@ This usage pattern is described in the following section [TODO](#TODO)
 
 \newpage
 
-## C4 Context Diagram (PlantUML+C4)
+## C4 Context Diagram (PlantUML+C4) {#kroki-c4context}
 
 Engine: `c4plantuml`
 
-```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - C4 Context Diagram", src="../diagrams/examples/c4plantuml-context.Rmd",
-             dformat=if(knitr::is_html_output()) "" else "png", # Text is not scaled as intended when converted to PDF so use PNG
-             height=if(knitr::is_html_output()) "" else "15cm") # To fit example into single PDF page - limit height
+```{r, examples-c4context, dia="from_src", fig.cap="Example - C4 Context Diagram", out.height = if(knitr::is_latex_output()) "15cm" else ""}
+  to_diagram(src="../diagrams/examples/c4plantuml-context.Rmd",
+             dformat=if(knitr::is_html_output()) "" else "png") # Text is not scaled as intended when converted to PDF so use PNG
 ```
 
 ```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
 cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
 ```
 
+<!-- TODO: into tab for HTML output
+```{r echo=FALSE, comment=''}
+  dia_src("../diagrams/examples/c4plantuml-context.Rmd")
+```
+-->
+
 \newpage
 
-## C4 Container Diagram (PlantUML+C4)
+## C4 Container Diagram (PlantUML+C4) {#kroki-c4container}
 
 Engine: `c4plantuml`
 
-```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - C4 Container Diagram", src="../diagrams/examples/c4plantuml-container.Rmd", width="100%",
+```{r, examples-c4container, dia="from_src", fig.cap="Example - C4 Container Diagram"}
+  to_diagram(src="../diagrams/examples/c4plantuml-container.Rmd",
              dformat=if(knitr::is_html_output()) "" else "png") # Text is not scaled as intended when converted to PDF so use PNG
 ```
 
@@ -52,14 +63,13 @@ cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
 
 \newpage
 
-## C4 Component Diagram (PlantUML+C4)
+## C4 Component Diagram (PlantUML+C4) {#kroki-c4component}
 
 Engine: `c4plantuml`
 
-```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - C4 Component Diagram", src="../diagrams/examples/c4plantuml-component.Rmd",
-             dformat=if(knitr::is_html_output()) "" else "png", # Text is not scaled as intended when converted to PDF so use PNG
-             height=if(knitr::is_html_output()) "" else "15cm") # To fit example into single PDF page - limit height
+```{r, examples-c4component, dia="from_src", fig.cap="Example - C4 Component Diagram", out.height = if(knitr::is_latex_output()) "15cm" else ""}
+  to_diagram(src="../diagrams/examples/c4plantuml-component.Rmd",
+             dformat=if(knitr::is_html_output()) "" else "png") # Text is not scaled as intended when converted to PDF so use PNG
 ```
 
 ```{r echo=FALSE, results='asis', eval=knitr::is_latex_output()}
@@ -68,99 +78,100 @@ cat("> *NOTE: inserted as PNG image due to errors in SVG to PDF conversion")
 
 \newpage
 
-## Block Diagram
+## Block Diagram {#kroki-blockdiag}
 
 Engine: `blockdiag`
 
-```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Block Diagram", src="../diagrams/examples/blockdiag.Rmd")
+```{r, examples-blockdiag, dia="from_src", fig.cap="Example - Block Diagram"}
+  to_diagram(src="../diagrams/examples/blockdiag.Rmd")
 ```
 
 \newpage
 
-## Digital Timing Diagram
+## Digital Timing Diagram {#kroki-timing}
 
 Engine: `wavedrom`
 
-```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Digital Timing Diagram", src="../diagrams/examples/wavedrom.Rmd")
+```{r, examples-timing, dia="from_src", fig.cap="Example - Digital Timing Diagram"}
+  to_diagram(src="../diagrams/examples/wavedrom.Rmd")
 ```
 
 \newpage
 
-## Bytefield
+## Bytefield {#kroki-bytefield}
 
 Engine: `bytefield`
 
-```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Bytefield", src="../diagrams/examples/bytefield.Rmd")
+```{r, examples-bytefield, dia="from_src", fig.cap="Example - Bytefield"}
+  to_diagram(src="../diagrams/examples/bytefield.Rmd")
 ```
 
 \newpage
 
-## Packet Diagram
+## Packet Diagram {#kroki-packet}
 
 Engine: `packetdiag`
 
-```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Packet Diagram", rawsvg=FALSE, src="../diagrams/examples/packetdiag.Rmd", width="100%")
+```{r, examples-packet, dia="from_src", fig.cap="Example - Packet Diagram"}
+  to_diagram(src="../diagrams/examples/packetdiag.Rmd")
 ```
 
 \newpage
 
-## Sequence Diagram #1 (PlantUML)
+## Sequence Diagram #1 (PlantUML) {#kroki-pumlSequence}
 
 Engine: `plantuml`
 
-```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Sequence Diagram - PlantUML", src="../diagrams/examples/plantuml-seqdiag.Rmd")
+```{r, examples-pumlSequence, dia="from_src", fig.cap="Example - Sequence Diagram - PlantUML", out.height = if(knitr::is_latex_output()) "15cm" else ""}
+  to_diagram(src="../diagrams/examples/plantuml-seqdiag.Rmd")
 ```
 
 \newpage
 
-## Sequence Diagram #2 (SeqDiag)
+## Sequence Diagram #2 (SeqDiag) {#kroki-sequence}
 
 Engine: `seqdiag`
 
-```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Sequence Diagram - SeqDiag", src="../diagrams/examples/seqdiag.Rmd")
+```{r, examples-sequence, dia="from_src", fig.cap="Example - Sequence Diagram - SeqDiag"}
+  to_diagram(src="../diagrams/examples/seqdiag.Rmd")
 ```
 
 \newpage
 
-## Commit Graph
+## Commit Graph {#kroki-commitgraph}
 
 Engine: `pikchr`
 
-> *NOTE: pikchr is giving troubles in PDF/PNG (produced SVG output is only web-browser friendly)*
+> *NOTE: pikchr is giving troubles in PDF/PNG (produced SVG output is only web-browser friendly)*\
+> *That's why this diagram is absent in PDF version*
 
-```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
-  to_diagram("from_src", "Example - Commit Graph", src="../diagrams/examples/pikchr-commit-graph.Rmd")
+```{r, examples-commitgraph, dia="from_src", fig.cap="Example - Commit Graph", eval=knitr::is_html_output()}
+  to_diagram(src="../diagrams/examples/pikchr-commit-graph.Rmd")
 ```
 
 \newpage
 
-## Use Case Diagram
+## Use Case Diagram {#kroki-pumlUsecase}
 
 Engine: `plantuml`
 
-```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example Block Diagram", src="../diagrams/examples/plantuml-usecase.Rmd")
+```{r, examples-pumlUsecase, dia="from_src", fig.cap="Example Block Diagram"}
+  to_diagram(src="../diagrams/examples/plantuml-usecase.Rmd")
 ```
 
 \newpage
 
-## Mind Map
+## Mind Map {#kroki-pumlMindmap}
 
 Engine: `plantuml`
 
-```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Mind Map", src="../diagrams/examples/plantuml-mindmap.Rmd")
+```{r, examples-pumlMindmap, dia="from_src", fig.cap="Example - Mind Map"}
+  to_diagram(src="../diagrams/examples/plantuml-mindmap.Rmd")
 ```
 
 \newpage
 
-## PlantUML (More examples)
+## PlantUML (More examples) {#kroki-pumlMore}
 
 PlantUML supports more diagram types like timing diagram, gantt and many more.
 
@@ -170,12 +181,13 @@ Check PlantUML docs [https://plantuml.com/](https://plantuml.com/) for filling i
 
 \newpage
 
-## Gantt
+## Gantt {#kroki-gantt}
 
 Engine: `mermaid`
 
 > *NOTE: mermaid is giving troubles in PDF/PNG (produced SVG output is only web-browser friendly)*
+> *That's why this diagram is absent in PDF version*
 
-```{r echo=FALSE, results='asis'}
-  to_diagram("from_src", "Example - Gantt", src="../diagrams/examples/mermaid-gantt.Rmd")
+```{r, examples-gantt, dia="from_src", fig.cap="Example - Gantt", eval=knitr::is_html_output()}
+  to_diagram(src="../diagrams/examples/mermaid-gantt.Rmd")
 ```

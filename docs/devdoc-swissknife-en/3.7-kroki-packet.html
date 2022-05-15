@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.7 Packet Diagram | Devdoc-Swissknife EN</title>
+  <meta name="description" content="Devdoc-Swissknife - General Documentation" />
+  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.7 Packet Diagram | Devdoc-Swissknife EN" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
+  <meta property="og:description" content="Devdoc-Swissknife - General Documentation" />
+  <meta name="github-repo" content="Godhart/devdoc-swissknife" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.7 Packet Diagram | Devdoc-Swissknife EN" />
+  
+  <meta name="twitter:description" content="Devdoc-Swissknife - General Documentation" />
+  <meta name="twitter:image" content="https://Godhart.github.io/devdoc-swissknife/devdoc-swissknife-en//../images/cover.png" />
+
+<meta name="author" content="Nikolay Gniteev" />
+
+
+<meta name="date" content="2022-05-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="3.6-kroki-bytefield.html"/>
+<link rel="next" href="3.8-kroki-pumlSequence.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="../css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./index.html">Devdoc-Swissknife EN</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#links"><i class="fa fa-check"></i>Helpful links</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#links-alternatives"><i class="fa fa-check"></i>Alternatives</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="1-examples.html"><a href="1-examples.html"><i class="fa fa-check"></i><b>1</b> Simple diagrams examples</a>
+<ul>
+<li class="chapter" data-level="" data-path="1-examples.html"><a href="1-examples.html#examples-inline"><i class="fa fa-check"></i>Example with inline diagram description</a></li>
+<li class="chapter" data-level="" data-path="1-examples.html"><a href="1-examples.html#examples-fromFile"><i class="fa fa-check"></i>Example with diagram data from file</a></li>
+<li class="chapter" data-level="" data-path="1-examples.html"><a href="1-examples.html#examples-more"><i class="fa fa-check"></i>More examples</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-template.html"><a href="2-template.html"><i class="fa fa-check"></i><b>2</b> Using as a template and making own docs</a></li>
+<li class="chapter" data-level="3" data-path="3-examples-kroki.html"><a href="3-examples-kroki.html"><i class="fa fa-check"></i><b>3</b> Kroki usage examples</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="3.1-kroki-c4context.html"><a href="3.1-kroki-c4context.html"><i class="fa fa-check"></i><b>3.1</b> C4 Context Diagram (PlantUML+C4)</a></li>
+<li class="chapter" data-level="3.2" data-path="3.2-kroki-c4container.html"><a href="3.2-kroki-c4container.html"><i class="fa fa-check"></i><b>3.2</b> C4 Container Diagram (PlantUML+C4)</a></li>
+<li class="chapter" data-level="3.3" data-path="3.3-kroki-c4component.html"><a href="3.3-kroki-c4component.html"><i class="fa fa-check"></i><b>3.3</b> C4 Component Diagram (PlantUML+C4)</a></li>
+<li class="chapter" data-level="3.4" data-path="3.4-kroki-blockdiag.html"><a href="3.4-kroki-blockdiag.html"><i class="fa fa-check"></i><b>3.4</b> Block Diagram</a></li>
+<li class="chapter" data-level="3.5" data-path="3.5-kroki-timing.html"><a href="3.5-kroki-timing.html"><i class="fa fa-check"></i><b>3.5</b> Digital Timing Diagram</a></li>
+<li class="chapter" data-level="3.6" data-path="3.6-kroki-bytefield.html"><a href="3.6-kroki-bytefield.html"><i class="fa fa-check"></i><b>3.6</b> Bytefield</a></li>
+<li class="chapter" data-level="3.7" data-path="3.7-kroki-packet.html"><a href="3.7-kroki-packet.html"><i class="fa fa-check"></i><b>3.7</b> Packet Diagram</a></li>
+<li class="chapter" data-level="3.8" data-path="3.8-kroki-pumlSequence.html"><a href="3.8-kroki-pumlSequence.html"><i class="fa fa-check"></i><b>3.8</b> Sequence Diagram #1 (PlantUML)</a></li>
+<li class="chapter" data-level="3.9" data-path="3.9-kroki-sequence.html"><a href="3.9-kroki-sequence.html"><i class="fa fa-check"></i><b>3.9</b> Sequence Diagram #2 (SeqDiag)</a></li>
+<li class="chapter" data-level="3.10" data-path="3.10-kroki-commitgraph.html"><a href="3.10-kroki-commitgraph.html"><i class="fa fa-check"></i><b>3.10</b> Commit Graph</a></li>
+<li class="chapter" data-level="3.11" data-path="3.11-kroki-pumlUsecase.html"><a href="3.11-kroki-pumlUsecase.html"><i class="fa fa-check"></i><b>3.11</b> Use Case Diagram</a></li>
+<li class="chapter" data-level="3.12" data-path="3.12-kroki-pumlMindmap.html"><a href="3.12-kroki-pumlMindmap.html"><i class="fa fa-check"></i><b>3.12</b> Mind Map</a></li>
+<li class="chapter" data-level="3.13" data-path="3.13-kroki-pumlMore.html"><a href="3.13-kroki-pumlMore.html"><i class="fa fa-check"></i><b>3.13</b> PlantUML (More examples)</a></li>
+<li class="chapter" data-level="3.14" data-path="3.14-kroki-gantt.html"><a href="3.14-kroki-gantt.html"><i class="fa fa-check"></i><b>3.14</b> Gantt</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-usage.html"><a href="4-usage.html"><i class="fa fa-check"></i><b>4</b> Usage patterns</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="4.1-usage-embed.html"><a href="4.1-usage-embed.html"><i class="fa fa-check"></i><b>4.1</b> Embedding diagrams into a document</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="4.1-usage-embed.html"><a href="4.1-usage-embed.html#usage-embed-inline"><i class="fa fa-check"></i><b>4.1.1</b> Describing diagrams inline in the documentation</a></li>
+<li class="chapter" data-level="4.1.2" data-path="4.1-usage-embed.html"><a href="4.1-usage-embed.html#usage-embed-raw"><i class="fa fa-check"></i><b>4.1.2</b> Diagrams from raw outer files</a></li>
+<li class="chapter" data-level="4.1.3" data-path="4.1-usage-embed.html"><a href="4.1-usage-embed.html#usage-embed-rmd"><i class="fa fa-check"></i><b>4.1.3</b> Diagrams from Rmd outer file</a></li>
+<li class="chapter" data-level="4.1.4" data-path="4.1-usage-embed.html"><a href="4.1-usage-embed.html#usage-embed-getThenEmbed"><i class="fa fa-check"></i><b>4.1.4</b> Get then embed</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="4.2-usage-svg.html"><a href="4.2-usage-svg.html"><i class="fa fa-check"></i><b>4.2</b> HTML: SVG - Raw vs from File</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="4.2-usage-svg.html"><a href="4.2-usage-svg.html#usage-svg-raw"><i class="fa fa-check"></i><b>4.2.1</b> Raw SVG</a></li>
+<li class="chapter" data-level="4.2.2" data-path="4.2-usage-svg.html"><a href="4.2-usage-svg.html#usage-svg-file"><i class="fa fa-check"></i><b>4.2.2</b> SVG from file</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html"><i class="fa fa-check"></i><b>4.3</b> Customizations</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html#usage-customize-rChunks"><i class="fa fa-check"></i><b>4.3.1</b> R Chunks</a></li>
+<li class="chapter" data-level="4.3.2" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html#usage-customize-globalOpts"><i class="fa fa-check"></i><b>4.3.2</b> Global options</a></li>
+<li class="chapter" data-level="4.3.3" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html#usage-customize-templateOpts"><i class="fa fa-check"></i><b>4.3.3</b> Options templates</a></li>
+<li class="chapter" data-level="4.3.4" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html#usage-customize-optionsHooks"><i class="fa fa-check"></i><b>4.3.4</b> Options hooks</a></li>
+<li class="chapter" data-level="4.3.5" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html#usage-multipleFormats"><i class="fa fa-check"></i><b>4.3.5</b> Multiple output formats</a></li>
+<li class="chapter" data-level="4.3.6" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html#usage-customize-params"><i class="fa fa-check"></i><b>4.3.6</b> Define parameters</a></li>
+<li class="chapter" data-level="4.3.7" data-path="4.3-usage-customize.html"><a href="4.3-usage-customize.html#usage-customize-summary"><i class="fa fa-check"></i><b>4.3.7</b> Putting all together</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="4.4-usage-format.html"><a href="4.4-usage-format.html"><i class="fa fa-check"></i><b>4.4</b> Data format</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="4.4-usage-format.html"><a href="4.4-usage-format.html#usage-format-renderer"><i class="fa fa-check"></i><b>4.4.1</b> Renderer format</a></li>
+<li class="chapter" data-level="4.4.2" data-path="4.4-usage-format.html"><a href="4.4-usage-format.html#usage-format-conversion"><i class="fa fa-check"></i><b>4.4.2</b> Local conversion</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="4.5-usage-pdf.html"><a href="4.5-usage-pdf.html"><i class="fa fa-check"></i><b>4.5</b> PDF production</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="4.5-usage-pdf.html"><a href="4.5-usage-pdf.html#usage-pdf-pageBreak"><i class="fa fa-check"></i><b>4.5.1</b> Page breaks</a></li>
+<li class="chapter" data-level="4.5.2" data-path="4.5-usage-pdf.html"><a href="4.5-usage-pdf.html#usage-pdf-pageOrientation"><i class="fa fa-check"></i><b>4.5.2</b> Page orientation</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="4.6-usage-spec.html"><a href="4.6-usage-spec.html"><i class="fa fa-check"></i><b>4.6</b> Full <strong>to_diagram</strong> function specification</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-usage-other.html"><a href="5-usage-other.html"><i class="fa fa-check"></i><b>5</b> Other drawings</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="5.1-usage-rendered.html"><a href="5.1-usage-rendered.html"><i class="fa fa-check"></i><b>5.1</b> Already rendered diagrams</a></li>
+<li class="chapter" data-level="5.2" data-path="5.2-usage-office.html"><a href="5.2-usage-office.html"><i class="fa fa-check"></i><b>5.2</b> Office files</a></li>
+<li class="chapter" data-level="5.3" data-path="5.3-usage-custom-dia-render.html"><a href="5.3-usage-custom-dia-render.html"><i class="fa fa-check"></i><b>5.3</b> Add your custom renderer</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="6-anatomy.html"><a href="6-anatomy.html"><i class="fa fa-check"></i><b>6</b> Project anatomy</a></li>
+<li class="chapter" data-level="7" data-path="7-diagrams-reference.html"><a href="7-diagrams-reference.html"><i class="fa fa-check"></i><b>7</b> Diagrams reference</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="7.1-refrencing-embeded-diagrams.html"><a href="7.1-refrencing-embeded-diagrams.html"><i class="fa fa-check"></i><b>7.1</b> Refrencing embeded diagrams</a></li>
+<li class="chapter" data-level="7.2" data-path="7.2-native-r-markdown.html"><a href="7.2-native-r-markdown.html"><i class="fa fa-check"></i><b>7.2</b> Native R Markdown</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Devdoc-Swissknife EN</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="kroki-packet" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> Packet Diagram<a href="3.7-kroki-packet.html#kroki-packet" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Engine: <code>packetdiag</code></p>
+<div align="center">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkspace="http://www.inkscape.org/namespaces/inkscape" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 896 768" preserveAspectRatio="none" width="672" style="background:#FFFFFF;width:672;max-width:84%;max-height:800px;" standalone="yes">
+<defs id="defs_block"> <filter height="1.504" id="filter_blur" inkspace:collect="always" width="1.1575" x="-0.07875" y="-0.252"> <feGaussianBlur id="feGaussianBlur3780" inkspace:collect="always" stdDeviation="4.2"/> </filter> </defs>
+<title>
+blockdiag
+</title>
+<desc>packetdiag { colwidth = 32; node_height = 72; 0-15: Source Port; 16-31: Destination Port; 32-63: Sequence Number; 64-95: Acknowledgment Number; 96-99: Data Offset; 100-105: Reserved; 106: URG [rotate = 270]; 107: ACK [rotate = 270]; 108: PSH [rotate = 270]; 109: RST [rotate = 270]; 110: SYN [rotate = 270]; 111: FIN [rotate = 270]; 112-127: Window; 128-143: Checksum; 144-159: Urgent Pointer; 160-191: (Options and Padding); 192-223: data [colheight = 3];}</desc> <path d="M 64 48 L 64 80" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="7" x="64.5" y="42">0</text> <path d="M 88 64 L 88 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 112 64 L 112 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 136 64 L 136 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 160 64 L 160 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 184 64 L 184 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 208 64 L 208 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 232 64 L 232 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 256 48 L 256 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 280 64 L 280 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 304 64 L 304 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 328 64 L 328 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 352 64 L 352 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 376 64 L 376 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 400 64 L 400 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 424 64 L 424 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 48 L 448 80" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="13" x="448.5" y="42">16</text> <path d="M 472 64 L 472 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 496 64 L 496 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 520 64 L 520 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 544 64 L 544 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 568 64 L 568 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 592 64 L 592 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 616 64 L 616 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 640 48 L 640 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 664 64 L 664 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 688 64 L 688 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 712 64 L 712 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 736 64 L 736 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 760 64 L 760 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 784 64 L 784 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 808 64 L 808 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 48 L 832 80" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="13" x="832.5" y="42">32</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="384" x="64" y="80"/> <path d="M 64 80 L 448 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 80 L 448 152" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 152 L 64 152" fill="none" stroke="rgb(0,0,0)"/> <path d="M 64 152 L 64 80" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="67" x="256.5" y="122">Source Port</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="384" x="448" y="80"/> <path d="M 448 80 L 832 80" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 80 L 832 152" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 152 L 448 152" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 152 L 448 80" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="97" x="640.5" y="122">Destination Port</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="768" x="64" y="152"/> <path d="M 64 152 L 832 152" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 152 L 832 224" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 224 L 64 224" fill="none" stroke="rgb(0,0,0)"/> <path d="M 64 224 L 64 152" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="91" x="448.5" y="194">Sequence Number</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="768" x="64" y="224"/> <path d="M 64 224 L 832 224" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 224 L 832 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 296 L 64 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 64 296 L 64 224" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="128" x="448.0" y="266">Acknowledgment Number</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="96" x="64" y="296"/> <path d="M 64 296 L 160 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 160 296 L 160 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 160 368 L 64 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 64 368 L 64 296" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="67" x="112.5" y="338">Data Offset</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="144" x="160" y="296"/> <path d="M 160 296 L 304 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 304 296 L 304 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 304 368 L 160 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 160 368 L 160 296" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="49" x="232.5" y="338">Reserved</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="24" x="304" y="296"/> <path d="M 304 296 L 328 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 328 296 L 328 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 328 368 L 304 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 304 368 L 304 296" fill="none" stroke="rgb(0,0,0)"/> <g transform="rotate(270,304,368)"> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="19" x="340.5" y="386">URG</text> </g> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="24" x="328" y="296"/> <path d="M 328 296 L 352 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 352 296 L 352 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 352 368 L 328 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 328 368 L 328 296" fill="none" stroke="rgb(0,0,0)"/> <g transform="rotate(270,328,368)"> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="19" x="364.5" y="386">ACK</text> </g> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="24" x="352" y="296"/> <path d="M 352 296 L 376 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 376 296 L 376 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 376 368 L 352 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 352 368 L 352 296" fill="none" stroke="rgb(0,0,0)"/> <g transform="rotate(270,352,368)"> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="19" x="388.5" y="386">PSH</text> </g> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="24" x="376" y="296"/> <path d="M 376 296 L 400 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 400 296 L 400 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 400 368 L 376 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 376 368 L 376 296" fill="none" stroke="rgb(0,0,0)"/> <g transform="rotate(270,376,368)"> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="19" x="412.5" y="386">RST</text> </g> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="24" x="400" y="296"/> <path d="M 400 296 L 424 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 424 296 L 424 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 424 368 L 400 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 400 368 L 400 296" fill="none" stroke="rgb(0,0,0)"/> <g transform="rotate(270,400,368)"> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="19" x="436.5" y="386">SYN</text> </g> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="24" x="424" y="296"/> <path d="M 424 296 L 448 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 296 L 448 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 368 L 424 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 424 368 L 424 296" fill="none" stroke="rgb(0,0,0)"/> <g transform="rotate(270,424,368)"> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="19" x="460.5" y="386">FIN</text> </g> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="384" x="448" y="296"/> <path d="M 448 296 L 832 296" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 296 L 832 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 368 L 448 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 368 L 448 296" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="37" x="640.5" y="338">Window</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="384" x="64" y="368"/> <path d="M 64 368 L 448 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 368 L 448 440" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 440 L 64 440" fill="none" stroke="rgb(0,0,0)"/> <path d="M 64 440 L 64 368" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="49" x="256.5" y="410">Checksum</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="384" x="448" y="368"/> <path d="M 448 368 L 832 368" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 368 L 832 440" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 440 L 448 440" fill="none" stroke="rgb(0,0,0)"/> <path d="M 448 440 L 448 368" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="85" x="640.5" y="410">Urgent Pointer</text> <rect fill="rgb(255,255,255)" height="72" stroke="rgb(255,255,255)" width="768" x="64" y="440"/> <path d="M 64 440 L 832 440" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 440 L 832 512" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 512 L 64 512" fill="none" stroke="rgb(0,0,0)"/> <path d="M 64 512 L 64 440" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="128" x="448.0" y="482">(Options and Padding)</text> <rect fill="rgb(255,255,255)" height="216" stroke="rgb(255,255,255)" width="768" x="64" y="512"/> <path d="M 64 512 L 832 512" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 512 L 832 728" fill="none" stroke="rgb(0,0,0)"/> <path d="M 832 728 L 64 728" fill="none" stroke="rgb(0,0,0)"/> <path d="M 64 728 L 64 512" fill="none" stroke="rgb(0,0,0)"/> <text fill="rgb(0,0,0)" font-family="sans-serif" font-size="11" font-style="normal" font-weight="normal" text-anchor="middle" textLength="25" x="448.5" y="626">data</text>
+</svg>
+</div>
+<div align="center">
+<a href="generated/diagrams-examples-packetdiag-Rmd.svg" id="examples-packet" class="caption">Example - Packet Diagram</a>
+</div>
+<div style="page-break-after: always;"></div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="3.6-kroki-bytefield.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3.8-kroki-pumlSequence.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/Godhart/devdoc-swissknife/edit/main/docs_src/devdoc-swissknife-en/03-KrokiExamples.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["Devdoc-Swissknife-EN.pdf"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

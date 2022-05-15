@@ -1,0 +1,633 @@
+# Usage patterns {#usage}
+
+There are few proposed ways to embed diagrams into a document and to customize them.
+
+Which one to use depends on circumstances.
+
+> This section would be updated as project evolves
+
+
+
+## Embedding diagrams into a document {#usage-embed}
+
+Let's cover basics on embedding diagrams into documentation first.
+
+### Describing diagrams inline in the documentation {#usage-embed-inline}
+
+Useful for short and/or strongly context-related drawings, i.e. when drawing by itself have no meaning
+or there is no reason for storing it in a separate file.
+
+Following pattern should be used:
+
+````R
+`r ''````{r <label>, dia='<engine>', fig.cap='<drawing name>'}
+  to_diagram('<diagram data>')
+```
+````
+
+where:
+
+* `<label>` is a name for a drawing reference, may be omitted
+* `<engine>` is a name for a rendering engine, see [table](#reference-engines) for allowed values and corresponding engines
+* `<drawing name>` is a caption for drawing, may be omitted.
+* `<diagram data>` is a textual diagram description in a format that is compatible with a rendering engine\
+*NOTE: if there are single quotes in the `<diagram data>` then you should escape them with `\` symbol*
+*or surround `<diagram data>` with double-quotes (`"`) instead.*
+
+
+
+### Diagrams from raw outer files {#usage-embed-raw}
+
+This is the case if you already have a diagram description in a separate file and you want to keep it like that for some reason.
+
+> For new diagrams it's proposed to use method, described in the next section.
+> It also uses outer files, but requires some extra formating.
+
+Raw file is a text file that contains diagram description data in a format that is
+compatible with a rendering engine and nothing more.
+
+Following pattern should be used:
+
+````R
+`r ''````{r <label>, dia='<engine>', fig.cap='<drawing name>'}
+  to_diagram(src='<src_file_path>')
+```
+````
+
+where:
+
+* `<label>` is a name for a drawing reference, may be omitted
+* `<engine>` is a name for a rendering engine, see [table](#reference-engines) for allowed values and corresponding engines
+* `<drawing name>` is a caption for drawing, mey be omitted
+* `<src_file_path>` is a path to file with diagram data, relative to file into which it's embedded.\
+*If you are using suggested locations to place docs and diagrams (`docs_src/doc-<subject>` and `docs_src/diagrams`)*
+*then value for `<src_file_path>` should be starting like this: `../diagrams/`*
+
+
+
+### Diagrams from Rmd outer file {#usage-embed-rmd}
+
+This is a proposed way to describe diagrams in outer files. Diagram data should be in `.Rmd` file
+and described as specified in `docs_src/diagrams/README.md` [TODO](TODO).
+
+This way you'll be able to use [Keenwrite](https://github.com/DaveJarvis/keenwrite) to preview diagrams live
+while editing, which is very handy.
+
+Besides that, you can supply a diagram with additional info, capture decisions that were taken, add TODOs, versions info, etc.
+along with diagram's data in the same file.
+
+Following pattern should be used:
+
+````R
+`r ''````{r <label>, dia='from_src', fig.cap='<drawing name>'}
+  to_diagram(src='<src_file_path>')
+```
+````
+
+where:
+
+* `<label>` is a name for a drawing reference, may be omitted
+* `<drawing name>` is a caption for drawing, mey be omitted
+* `<src_file_path>` is a path to file with diagram data, relative file into which it's embedded.\
+*If you are using suggested locations to place docs and diagrams (`docs_src/doc-<subject>` and `docs_src/diagrams`)*
+*then value for `<src_file_path>` should be starting like this: `../diagrams/`*
+
+> Take a NOTE: A `from_src` is specified as engine in this case since an actual engine name is already specified in `.Rmd` file with diagram data.
+
+
+
+### Get then embed {#usage-embed-getThenEmbed}
+
+This is the case if you want to customize diagrams embedding, like aligning, multiple diagrams in a single row,
+preprocess diagrams before embedding them, etc.
+
+The process is divided into few phases:
+
+#. Download one or multiple rendered images for your diagrams
+#. Preprocess diagrams if required
+#. Embed them into document
+
+> NOTE: diagrams are still described in a text form
+
+Following pattern should be used:
+
+````R
+# Download diagram
+`r ''````{r dia='from_src'}
+  to_diagram(src='<src_file_path>', downloadOnly=TRUE, downloadName='<file_name>')
+```
+
+# Download more diagrams if required (like the one above)
+...
+
+# Process diagram(s) if required
+# Use code chunks for this (R, bash, python and many more with necessary commands)
+...
+
+# Embed diagram(s)
+`r ''````{r <label>, echo=FALSE, fig.cap='<drawing name>'}
+  knitr::include_graphics('generated/<file_name>.<file_ext>')
+```
+````
+
+> NOTE: Example code is shown for outer Rmd file but there is additional
+> `downloadOnly` and `downloadName` arguments are specified in the first code chunk.\
+> Inline diagram description and raw outer file may be used aswell.
+
+where:
+
+* `<label>` is a name for a drawing reference, may be omitted
+* `<drawing name>` is a caption for drawing, mey be omitted
+* `<file_name>` is a name that is given to downloaded diagram
+* `<file_ext>` is an extension is given depending on output format and [optional arguments](#usage-args-format).\
+By default it's:
+  * `.svg` for HTML output
+  * `.pdf` for PDF output
+  * `.png` for other kinds
+
+> Take a NOTE: For postprocessing you can use R, Python, whatever can be called from BASH and many more
+> (depends on your docker image).\
+> [More on **R chunks**: https://bookdown.org/yihui/rmarkdown/r-code.html](https://bookdown.org/yihui/rmarkdown/r-code.html),
+> [this](https://yihui.org/knitr/options/) and [this](https://yihui.org/knitr/hooks/)\
+> [More on other formats: https://bookdown.org/yihui/rmarkdown/language-engines.html](https://bookdown.org/yihui/rmarkdown/language-engines.html)
+
+
+
+## HTML: SVG - Raw vs from File {#usage-svg}
+
+By default diagrams are rendered as SVG for HTML output. This format is supported by all rendering engines in Kroki,
+and produces great results for HTML.
+
+But there is two ways how it's embedded into HTML. It's defined with additional `rawsvg` argument for [to_diagram](#usage-spec) function.
+
+
+### Raw SVG {#usage-svg-raw}
+
+By default SVG content is inserted as a code right into output HTML file and this is what `Raw` is.
+
+Specify optional `rawsvg` argument as `TRUE` for [to_diagram](#usage-spec) function or just ommit it.
+
+PROs:
+
+  * Text in SVG becomes searchable and selectable.
+
+CONs:
+
+  * Diagrams aren't treated as images anymore and you can't use 'save as' by clicking on them.\
+  *But in this case caption for the diagram will be a reference to an SVG file, so you are still able to save diagrams as files*
+  * You'll have to find your way to post process it if necessary\
+  *(It's still possible, but I can't offer 'ready to use' recipe yet, and as always there are few ways to do it)*
+  * Lack of [customizations](#usage-rChunks) (only *width*, *height* and *alignment* available)\
+  *(Probably it could be workarounded but no recipe yet)*
+
+Since (IMO) strong customizations and postprocessing is hardly a case for common development docs,
+RAW svg is used by default.
+
+
+### SVG from file {#usage-svg-file}
+
+Rendered SVG also can be inserted into HTML as a normal image.
+It still looks neat when scaled, but now it's just a picture.
+
+Specify optional `rawsvg` argument as `FALSE` for [to_diagram](#usage-spec) function.
+
+This way you'll be able to apply more customizations and do postprocessing if necessary.
+
+
+
+## Customizations {#usage-customize}
+
+Sometimes you'll want to or need to specify a customizations like *width* or *hight* of diagrams
+when defaults don't work fine or just because of your taste or requirements.
+Also sometimes you'll have to use non-default *image format* for the same reasons.
+Or you may want to go deeper with customizations and define *alignment*
+and other things like *post processing*, *multiple images* in a row, etc.
+
+> Probably you wouldn't want to use customizations at all when you in the beginning
+> or in hurry to capture your ideas, but if you need some - start from here.
+
+Most of customizations are specified via [**R chunk**](#usage-customize-rChunks) options.
+
+In case if it's required to download rendered diagram in format other than SVG [use](#usage-format-renderer) `dformat`
+argument for [to_diagram](#usage-spec) function.
+
+Also for PDF production you'll want for sure things like page break, page orientation specification etc.
+In this case you will need to add some [latex commands](#usage-latex) into document.
+
+
+### R Chunks {#usage-customize-rChunks}
+
+[**R Chunks**](https://bookdown.org/yihui/rmarkdown/r-code.html) is a way to embed graphics data in **R Markdown**.
+
+> Another way is to use markdown syntax like `![<alt text>](<path to image>){<options>}`,
+> but it's not the case since it works for ready to use images only.
+
+Customizations to the way an image is embded are speicifed via **R chunk** [options](https://bookdown.org/yihui/rmarkdown/r-code.html#figures).
+
+More info about options could be found [here](https://yihui.org/knitr/options/)
+and here is a nice [cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf).
+
+Following options have effect for diagrams:
+
+* *out.width*
+* *out.height*
+* TODO
+
+Following options have no effect for diagrams:
+
+* *fig.width*
+* *fig.height*
+* TODO
+
+The other way to customize is to use [hooks](https://yihui.org/knitr/hooks/).
+It's very creative way and all depends on your needs.
+
+Besides spcifying options explicitly for every chunk, you can define default values globally or via named templates,
+use option hooks to automatically derive one options from another. See more about this in the following sections.
+
+
+### Global options {#usage-customize-globalOpts}
+
+This is done by putting chunk of code with `knitr::opts_chunk$set` function call
+in the beginning of your documentation (i.e. `index.Rmd`).
+
+Also global options could be redefined later in documentation for the following chunks.
+For example this could be done in the beginning of every chapter.
+
+> ATTENTION: But make sure in that case that you follow this pattern throughout whole document,
+> otherwise you may find yourself fighting with customizations.\
+
+Global options could be good for output format related customizations,
+in other cases it's better to use templates, described in next section.
+
+Example code to define chunk options globally:
+
+````R
+`r ''````{r, include=FALSE}
+knitr::opts_chunk$set(
+  out.width = '5cm'
+)
+```
+````
+
+More info could be found [here](https://bookdown.org/yihui/rmarkdown-cookbook/chunk-options.html#chunk-options)
+
+<!-- TODO: this chunk os merged from docs_WIP but it needs to be checked how it fits into current revision of doc
+Also global options may be set in front-matter part of `index.Rmd`:
+
+```yaml
+---
+title: "My Document"
+output: html_document:
+fig_width: 6
+fig_height: 4
+---
+```
+-->
+
+### Options templates {#usage-customize-templateOpts}
+
+This is done by putting chunk of code with `knitr::opts_template$set` function call
+in the beginning of your documentation (i.e. `index.Rmd`).
+
+Also new templates could be defined later in documentation for the following chunks.
+For example this could be done in the beginning of every chapter.
+
+Example code to define options template:
+
+````R
+# Define template
+`r ''````{r, include=FALSE}
+knitr::opts_template$set(fullwidth = list(
+  out.width = '100%'
+))
+```
+
+# Embed diagram, using template for options
+`r ''````{r, dia='from_src', opts.label='fullwidth'}
+to_diagram(src='...')
+```
+
+# More options for diagram and/or template's defaults override
+`r ''````{r, dia='from_src', opts.label='fullwidth', fig.ext='png', out.width='10cm'}
+to_diagram(src='...')
+```
+````
+
+<!-- TODO: templates inheritance ? -->
+
+More info could be found [here](https://bookdown.org/yihui/rmarkdown-cookbook/opts-template.html)
+
+
+### Options hooks {#usage-customize-optionsHooks}
+
+With options hooks you can define dependencies for chunk options with code in **R**.
+
+You can even define hooks for your own options and specify this options for chunks.
+For example hook for `dia` option is defined in `_fun.R` and some chunk's options depends on it.
+
+This is done by putting chunk of code with `knitr::opts_hooks$set` function call
+in the beginning of your documentation (i.e. `index.Rmd`).
+
+Also new hooks cold be added or hooks could be redefined later in documentation for the following chunks.
+For example this could be done in the beginning of every chapter.
+
+Example code to add options hooks:
+
+````R
+`r ''````{r, include=FALSE}
+# Define hook for existing option out.width
+knitr::opts_hooks$set(out.width = function(options){
+  # Some sanity checks
+  if (!identical(options$out.width, NULL)) {
+    # Our function: if out.width is set to 100% then clear out.height option
+    if (options$out.width == "100%") {
+      options$out.height <- NULL
+    }
+  }
+  # Return new set of options
+  options
+})
+
+# Define hook for new option fullwidth
+knitr::opts_hooks$set(fullwidth = function(options){
+  # Some sanity checks
+  if (!identical(options$fullwidth, NULL)) {
+    # Our function: if fullwidth is defined and evaluated as TRUE then set out.width to 100%
+    if (fullwidth) {
+      options$out.width <- "100%"
+    }
+  }
+  # Return new set of options
+  options
+})
+```
+
+# Embed diagram, using new option to define width
+`r ''````{r, dia='from_src', fullwidth=TRUE}
+to_diagram(src='...')
+```
+````
+
+### Multiple output formats {#usage-multipleFormats}
+
+If you are intended to produce documentation in multiple output formats, most probably you'll have to apply different
+customizations for different formats.
+
+This could be easily achived by using **R** `if ... else ...` pattern (works like ternary operator) when applying values to options,
+or with a few lines **R** code in complicated cases.
+
+For example:
+
+````R
+`r ''````{r, dia='from_src', out.height=if (!knitr::is_html_output()) '15cm' else NULL}
+to_diagram(src='...')
+```
+````
+
+will set drawing's height to 15 centimeters for output formats other than HTML.
+
+
+### Define parameters {#usage-customize-params}
+
+There is a way to separate actual values for options from code via parameters, that are defined
+in a front&#8209;matter part of `index.Rmd`.
+
+This way you could tune your output or other aspects of your documentation
+just by adjusting those values and keep them all in a single place.
+
+> By the way - there is already some params defined that are reqruired for [to_diagram](#usage-spec) function and related hooks.
+
+Values for parameters can be calculated just in time with **R** by defining their values using following pattern:
+`` `r knitr::inline_expr("<R expressions>")` ``, replacing `<R expressions>` with your **R** code.
+
+Parameters definition example:
+
+```yaml
+# This is front-matter's section to define params
+params:
+  # Static value:
+  background: "#FFFFFF"
+  # Calculated value:
+  current_date: `r "\U0060"`r Sys.Date()`r "\U0060"`
+  # Output format depended value:
+  fig_ext: `r "\U0060"`r if (knitr::is_latex_output()) 'png' else null`r "\U0060"`
+```
+
+Parameters usage example:
+
+````R
+`r ''````{r, dia='from_src', fig.ext=params$fig_ext}
+to_diagram(src='...')
+```
+````
+
+More info can be found [here](https://bookdown.org/yihui/rmarkdown/parameterized-reports.html).
+
+<!-- TODO: check https://stackoverflow.com/questions/49475303/rmarkdown-child-documents-do-not-detect-their-params -->
+
+
+### Putting all together {#usage-customize-summary}
+
+To avoid redundant work, and to ease refactoring and tuning following methodology is suggested to use from the start
+to benefit from **R Markdown** features:
+
+#. Declare subject specific parameters for your documentation
+
+#. Define global options if necessary, use parameters to adjust options
+
+#. Define all the necessary options templates for your diagrams embedding.
+   You could use differnet templates for different output formats and specify their names via params,
+   or you could define universal templates and tune them via params or
+  use `if (knitr::is_<html/latex>_otput()) <value1> else <value2>` pattern.
+
+#. Use options templates for diagrams code chunks, providing extra options if required
+
+
+
+## Data format {#usage-format}
+
+By default following operations are made when diagram drawing is embedded into documentation:
+
+#. Diagram drawing is downoaded in **svg** format
+#. If output format is other than HTML then data is converted locally with **rsvg** tool into one of the following:
+  * **pdf** for PDF output
+  * **png** for the rest
+
+In some circumstances conversion with **rsvg** may have artifacts, and in this case data format can fix the problem.
+
+Usualy it's better to set format for downoaded drawing, but not all renderers may support it, so
+you may try to change local side conversion output format.
+
+> NOTE: some rendering engines like **mermaid** or **pikchr** produce only **svg** and **rsvg** can't handle it right
+
+
+### Renderer format {#usage-format-renderer}
+
+Speicfy format for downloaded drawing. Even though it should produce better result than the case below,
+not all rendering engines may support required format. See [diagram types](https://kroki.io/#support)
+
+```
+to_diagram(... , dformat='<format>')
+```
+
+Possible values for `<format>`:
+
+* `png` - loseless image, can be used for most output documentation formats
+* `jpeg` - lossy image, can be used for most output documentation formats
+* `svg` - for HTML output only, but can be locally converted to **png**, **jpeg** or **pdf** after downloading
+* `pdf` - for PDF output only
+
+
+### Local conversion {#usage-format-conversion}
+
+This kind of conversion is possible only in case if diagram drawings are rendered and downloaded in **svg** format.
+
+````R
+`r ''````{r <label>, dia='from_src', fig.ext='<format>'}
+  to_diagram(...)
+```
+````
+
+Possible values for `<format>`:
+
+* `png` - loseless image, can be used for most output documentation formats
+* `jpeg` - lossy image, can be used for most output documentation formats
+* `pdf` - for PDF output only
+
+
+
+## PDF production {#usage-pdf}
+
+PDF document production most probably will require more attention.
+
+Make sure you are satisfied with your latex class for PDF output, to avoid redundant work.
+
+Then you'll want for sure to [limit hight](#usage-customize-rChunks-height) for large drawings,
+but don't hurry to do this.
+
+It's better to start with splitting the pages and setting necessary layout first.
+
+
+### Page breaks {#usage-pdf-pageBreak}
+
+Every chapter is started from new page.
+
+For additional page breaks just add the following line into document:
+
+```
+\newpage
+```
+
+
+### Page orientation {#usage-pdf-pageOrientation}
+
+Make sure following lines are included into your latex preamble part:
+
+```
+\usepackage{lscape}
+\usepackage{pdfpages}
+```
+
+Then in documentation use following pattern:
+
+````
+`r ''````
+Some text on a portrait page.
+
+\newpage
+\blandscape
+
+Some text on a landscape page.
+
+\newpage
+\elandscape
+
+Some other text on a portrait page.
+```
+````
+
+
+
+## Full **to_diagram** function specification {#usage-spec}
+
+Function **to_diagram** is defined in `docs_src/_fun.R` file which should be included
+into `index.Rmd` file. More about this is [TODO: devdoc-swissknife anatomy](#anatomy).
+
+This function renders diagram from textual description and inserts it into document.
+Diagram is inserted with `knitr::include_graphics` function
+or as [raw SVG](#usage-svg) code for HTML output (raw svg can be [turned off]((#usage-svg-file) via arguments).
+
+Here is it's definition:
+
+```R
+to_diagram  <- function(
+    data = "", src = "",
+    dformat = "", rawsvg = TRUE,
+    downloadOnly = FALSE, downloadName = "",
+    service="Kroki", serviceUrl=NULL,
+    engine=NULL,
+    page=NULL,
+    force=FALSE
+    )
+```
+
+Arguments:
+
+    data          - Diagram description in text form (should be compatible with
+                    rendering engine).
+                    Ignored if value for `src` is specified.
+<!-- -->
+    src           - Path to outer file with diagram description in text form.
+                    See `docs_src/diagrams/README.md` for details.
+                    Should be omitted if `data` argument is to be used.
+<!-- -->
+    dformat       - Specify data format for downloaded diagram.
+                    See https://kroki.io/#support for details.
+                    `svg` would be used by default if value is empty string.
+                    Sometimes SVG conversion to PDF/PNG not works good on client
+                    side (default). In that case it's suggested to use PNG or PDF.
+                    Take a NOTE: not all Kroki services provide diagrams
+                    in PNG / PDF format.
+<!-- -->
+    rawsvg        - Option to insert SVG as code right into HTML.
+                    This way text on diagrams is searchable.
+                    Enabled (TRUE) by default.
+                    Set to FALSE to embed SVG as image.
+                    Applicable only for HTML output and only if `dformat`
+                    is "SVG" or empty string.
+<!-- -->
+    downloadName  - File name (part before extension) for local diagram's files.
+<!-- -->
+    downloadOnly  - Only generate and download diagram, don't insert into doc.
+                    Use for custom diagram embedding later in the doc.
+                    All the necessary format conversions will be completed.
+                    Result would be in `docs_src/generated` dir.
+                    If `downloadName` is specified then it would be used for
+                    file name, otherwise label would be used if diagram is
+                    specified via data, otherwise file name would be generated
+                    from `src` path.
+                    File extension would depend on `dformat` argument and on
+                    `fig.ext` options for R chunk
+<!-- -->
+    service       - Rendering service (now it's sonly "Kroki")
+<!-- -->
+    serviceUrl    - Rendering service base url.
+                    This is starting part of url for service access.
+                    Default is path `http://kroki:8000` to local Kroki
+                    instance that is started with `make_doc.sh`
+<!-- -->
+    engine        - Diagram rendering engine. Specify one of supported engines
+                    (see Kroki for engines list)
+                    Special value `from_src` for outer files SHOULD be used
+                    to get engine from source file itself in case
+                    if recommendations from `docs_src/diagrams/README.md`
+                    are satisfied.
+                    If omitted or NULL then value of R chunk option named `dia`
+                    is treated as `engine`
+<!-- -->
+    page          - Page for rendering. For use with multipage office documents
+<!-- -->
+    force         - If FALSE(default) then existing downloaded diagram data
+                    would be used. Set to TRUE to regenerate diagram from scratch
+<!-- -->

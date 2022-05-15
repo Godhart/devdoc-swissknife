@@ -1,61 +1,67 @@
-# Simple diagrams examples
+```{r, include=FALSE}
+source("../_fun.R", local = knitr::knit_global())
+```
 
-Since this project is focused on embedding diagrams text descriptions into R Markdown
+# Simple diagrams examples {#examples}
+
+Since this project is focused on embedding diagrams textual descriptions into **R Markdown**,
 let's start with few examples just to illustrate a principle.
 
-## Example with inline diagram description
+> BTW: there is a lot of drawings types that you can get from **R Markdown** alone, by using **R** packages
+> or Python's matplot lib for example. You may want to check this out too<!-- [TODO: references](TODO) -->.
 
-This example shows how to embed diagrams, describing them right in Rmd file
+### Example with inline diagram description {- #examples-inline}
 
-This code:
+This example shows how to embed diagrams, describing them right in the `.Rmd` files.
 
 ````R
-`r ''````{r echo=FALSE, results='asis'}
-  to_diagram("graphviz", "Hello World",
-  "digraph G {Hello->World}"
-  )
+`r ''````{r, hello-world, dia="graphviz", fig.cap="Hello World"}
+  to_diagram("digraph G {Hello->World}")
 ```
 ````
 
-would produce following diagram:
-
-```{r echo=FALSE, results='asis'}
-  to_diagram("graphviz", "Hello World",
-  "digraph G {Hello->World}"
-  )
+```{r, hello-world, dia="graphviz", fig.cap="Hello World", out.height=if (knitr::is_latex_output()) "4cm" else ""}
+  to_diagram("digraph G {Hello->World}")
 ```
-
-> *Take a NOTE: When diagrams are inserted like this it's **IMPORTANT** that <Drawing name>
-> ("Hello World" in this example) is **UNIQUE** for **WHOLE** doc.*\
-> More details on usage is in [...](TODO:)
 
 \newpage
 
-## Example with diagram data from file
+### Example with diagram data from file {- #examples-fromFile}
 
 This example shows how to embed diagrams with data from outer files.
 
-This code:
+<!-- TODO: use tidy for code blocks -->
+
+\small
 
 `````R
-`r ''````{r echo=FALSE, results='asis'}
-  to_diagram("erd", "Entity Relation", src="../diagrams/examples/project.erd")
+`r ''````{r, examples-entity-relation, dia="erd", fig.cap="Entity Relation"}
+  to_diagram(src="../diagrams/examples/project.erd")
 ```
 `````
 
-would produce following diagram:
+\normalsize
 
-``` {r echo=FALSE, results='asis'}
-  to_diagram("erd", "Entity Relation", src="../diagrams/examples/project.erd")
+```{r, examples-entity-relation, dia="erd", fig.cap="Entity Relation", out.width=if (knitr::is_latex_output()) "8cm" else ""}
+  to_diagram(src="../diagrams/examples/project.erd")
 ```
 
----
+<!-- Since there is no pages on HTML output - put a dashline -->
+
+```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
+cat("---")
+```
+
+\newpage
+
 
 File **diagrams/examples/project.erd** content:
 ```{r echo=FALSE, comment=''}
 cat(readLines("../diagrams/examples/project.erd"), sep = "\n")
 ```
 
-## More examples
+### More examples {- #examples-more}
 
-More examples can be found in [this section](#examplesKroki).
+More examples for your inspiration can be found in [this section](#examples-kroki).
+
+Details about embedding diagrams is [here](#usage)

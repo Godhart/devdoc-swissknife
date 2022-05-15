@@ -1,4 +1,8 @@
-# Using as a template and making own docs {#as_template}
+```{r, include=FALSE}
+source("../_fun.R", local = knitr::knit_global())
+```
+
+# Using as a template and making own docs {#template}
 
 To use this project as a start point for generating your own documentation do the following:
 
@@ -7,8 +11,23 @@ To use this project as a start point for generating your own documentation do th
 > You'll need to have already `docker` and `docker-compose` installed
 
   * Import or fork main branch of this repo:
-  [https://github.com/Godhart/devdoc-swissknife](https://github.com/Godhart/devdoc-swissknife)\
+  [https://github.com/Godhart/devdoc-swissknife](https://github.com/Godhart/devdoc-swissknife).\
   All the sources for docs are contained in `docs_src` folder.
+
+  * Make docker image `devdoc-swissknife` if you don't have one already.\
+  Simply run `make_docker.sh` from `docker` dir.
+
+  * Ensure that everything works fine - try to make docs with `make_docs.sh`.\
+  Output docs should appear in `docs_out/devdoc-swissknife-*` folders. Check that docs exist and contain graphics.\
+  *Take a NOTE: `docs_out` folder and all it's content is ignored by git.*
+
+  * If you don't want to see devdoc-swissknife documentation in your repo:
+
+    * Remove `docs_src/devdoc-swissknife-*` folders
+    * Remove `docs_out/devdoc-swissknife-*` folders
+    * Empty `docs_src/diagrams` folder.
+
+2. Prepare for making your own docs
 
   * Make a new folder in `docs_src`. I suggest you name it using the following pattern: `doc-<subject>`
 
@@ -17,33 +36,25 @@ To use this project as a start point for generating your own documentation do th
   * Replace following keywords
   `<Author Name>`, `<author>`, `<repo>`, `<Document Title>`, `Document_Title`, `<Document Description>`, doc-<subject>
   within files in your new folder with actual values.
-  Don't forget also to adjust `Document_Title` in the `.gitignore` of new folder, as it protects from build garbage.
-
-  * If you don't want to see devdoc-swissknife documentation in your repo:
-
-    * Remove `docs_src/devdoc-swissknife-*` folders
-    * Empty `docs_src/diagrams` folder.
+  Also don't forget to adjust `Document_Title` in the `.gitignore` of new folder, as it protects from build garbage.
 
   * Adjust `docs_src/Makefile` to fit your needs (for the first time - use an existing pattern to add your folder).
 
-  * Make docker image `devdoc-swissknife` if you don't have one already.
-  Simply run `make_docker.sh` from `docker` dir.
+  * Ensure that everything is still fine - try to make docs with `make_docs.sh`.\
+  Output docs should appear in `docs_out/doc-<subject>` folder if you followed a pattern in the Makefile.
 
-  * Try to make docs with `make_docs.sh`.
-  Output docs should appear in `docs_out/doc-<subject>` folder if you followed a pattern in the Makefile.\
-  *Take a NOTE: `docs_out` folder and all it's content is ignored by git.*
-
-> NOTE: in many cases of errors doc's sources folder is polluted with temporary files,
+> NOTE: in many cases of errors doc's sources folder (`docs_src/doc-<subject>` if you follow suggested pattern)
+> is polluted with temporary files,
 > named as specified in `_bookdown.yml` (field `book_filename`) and may break following docs generation runs.\
 > These files are removed with make routine, but in some cases, you'll have to remove them by yourself.\
 > Changing `book_filename` field in `_bookdown.yml` after an error has happened may be the case.
 
-2. Create content
+3. Create content
 
   * Update `index.Rmd` in your folder to your needs (contains *Preface* section).
 
   * Add your own docs into your folder, naming files like `<number>-<chapter-name>.Rmd`.\
-  Check the R Markdown and Kroki docs for understanding things. Also, you may rely on shown examples.
+  Check the **R Markdown** and **Kroki** docs for understanding things. Also, you may rely on shown examples.
 
   * If you already have docs in markdown format you may already use them like this:
 
@@ -56,11 +67,11 @@ To use this project as a start point for generating your own documentation do th
   * If you already have text description of diagrams for supported rendering engines you may already use them like this:
 
     * copy necessary files to location in `docs_src/diagrams` or wherever you like most
-    * in Rmd files replace image embedding with diagram embedding as described [TODO](TODO)
+    * in `.Rmd` files replace image embedding with diagram embedding as described [TODO](TODO)
 
   * Most probably you would like to use your own Latex class, so add `<your_latex_class>.cls` file
   into your folder and specify it in `index.Rmd` file (replace `documentclass: book` field with `<your_latex_class>` name).
 
 > Adding custom latex class may require you to add some latex packages to Docker image. Same is true if you
-> do use some special R packages in your docs etc.\
+> do use some special **R** packages in your docs etc.\
 > If this is the case you'll have to modify `docker/Dockerfile` and build again docker image with `make_docker.sh`.

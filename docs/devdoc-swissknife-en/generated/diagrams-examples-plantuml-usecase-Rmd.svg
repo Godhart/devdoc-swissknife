@@ -5,7 +5,7 @@ entity clerk--><ellipse cx="303.5" cy="107.5" fill="#F8F8F8" filter="url(#f1hg58
 link customer to checkout--><path d="M62.23,139 C79.99,139 103.7,139 124.75,139 " fill="none" id="customer-checkout" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[3ad5c6d5c608bfd6b87dc9c07c40a15f]
 link checkout to payment--><path d="M175.5,123.96 C175.5,110.87 175.5,91.77 175.5,77.32 " fill="none" id="checkout-to-payment" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="175.5,72.22,171.5,81.22,175.5,77.22,179.5,81.22,175.5,72.22" style="stroke:#383838;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="41" x="143.5" y="103.5">include</text><!--MD5=[739e7928149c8fe27c2b5850560351c7]
 link help to checkout--><path d="M175.5,205.96 C175.5,192.87 175.5,173.77 175.5,159.32 " fill="none" id="help-to-checkout" style="stroke:#383838;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#383838" points="175.5,154.22,171.5,163.22,175.5,159.22,179.5,163.22,175.5,154.22" style="stroke:#383838;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="44" x="142" y="185.5">extends</text><!--MD5=[b4c4ee8f2d94c159d2b9e04bd372cbe0]
-link checkout to clerk--><path d="M226.3,139 C248.86,139 273.79,139 288.79,139 " fill="none" id="checkout-clerk" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[e63330a76f21baa58c866ccf4b836014]
+link checkout to clerk--><path d="M226.3,139 C248.86,139 273.79,139 288.79,139 " fill="none" id="checkout-clerk" style="stroke:#383838;stroke-width:1.0;"/><!--MD5=[ceed849d5949526e73ee812ffa45f117]
 @startuml
 left to right direction
 skinparam packageStyle rectangle
@@ -20,7 +20,7 @@ rectangle checkout {
 }
 @enduml
 
-PlantUML version 1.2021.8(Sat Jun 26 08:20:59 GMT 2021)
+PlantUML version 1.2021.10(Mon Aug 30 13:43:48 GMT 2021)
 (GPL source distribution)
 Java Runtime: OpenJDK Runtime Environment
 JVM: OpenJDK 64-Bit Server VM

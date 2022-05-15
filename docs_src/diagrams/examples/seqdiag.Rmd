@@ -1,4 +1,9 @@
-``` diagram-seqdiag
+```{r, include=FALSE}
+source("../../_fun.R", local = knitr::knit_global())
+```
+
+```{r, seqdiag, grab=TRUE, dia="seqdiag"}
+  to_diagram(paste(grab_start(), '
 seqdiag {
   browser  -> webserver [label = "GET /index.html"];
   browser <-- webserver;
@@ -7,4 +12,5 @@ seqdiag {
   webserver <-- database;
   browser <-- webserver;
 }
+', grab_stop()), force = TRUE)
 ```

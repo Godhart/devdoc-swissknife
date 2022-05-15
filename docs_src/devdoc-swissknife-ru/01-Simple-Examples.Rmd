@@ -1,3 +1,7 @@
+```{r, include=FALSE}
+source("../_fun.R", local = knitr::knit_global())
+```
+
 # Простые примеры визуализации диаграмм
 
 Поскольку основной фокус этого проекта на встраивании диаграмм, описанных в текстовом виде,
@@ -9,19 +13,15 @@
 Вставка такого кода в файл документации:
 
 ````R
-`r ''````{r echo=FALSE, results='asis'}
-  to_diagram("graphviz", "Hello World",
-  "digraph G {Hello->World}"
-  )
+`r ''````{r, hello-world, dia="graphviz", fig.cap="Hello World"}
+  to_diagram("digraph G {Hello->World}")
 ```
 ````
 
 добавит такую диаграмму:
 
-```{r echo=FALSE, results='asis'}
-  to_diagram("graphviz", "Hello World",
-  "digraph G {Hello->World}"
-  )
+```{r, hello-world, dia="graphviz", fig.cap="Hello World", out.height=if (knitr::is_latex_output()) "4cm" else ""}
+  to_diagram("digraph G {Hello->World}")
 ```
 
 \newpage
@@ -30,19 +30,31 @@
 
 Вставка такого кода в файл документации:
 
+<!-- TODO: use tidy for code blocks -->
+
+\small
+
 `````R
-`r ''````{r echo=FALSE, results='asis'}
-  to_diagram("erd", "Entity Relation", src="../diagrams/examples/project.erd")
+`r ''````{r, examples-entity-relation, dia="erd", fig.cap="Entity Relation"}
+  to_diagram(src="../diagrams/examples/project.erd")
 ```
 `````
 
+\normalsize
+
 добавит такую диаграмму:
 
-``` {r echo=FALSE, results='asis'}
-  to_diagram("erd", "Entity Relation", src="../diagrams/examples/project.erd")
+```{r, examples-entity-relation, dia="erd", fig.cap="Entity Relation", out.width=if (knitr::is_latex_output()) "8cm" else ""}
+  to_diagram(src="../diagrams/examples/project.erd")
 ```
 
----
+<!-- Since there is no pages on HTML output - put a dashline -->
+
+```{r echo=FALSE, results='asis', eval=knitr::is_html_output()}
+cat("---")
+```
+
+\newpage
 
 Содержимое файла **diagrams/examples/project.erd** с описанием диаграммы:
 ```{r echo=FALSE, comment=''}

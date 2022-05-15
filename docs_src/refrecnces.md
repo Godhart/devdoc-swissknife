@@ -26,6 +26,10 @@ Some other text on a portrait page.
 ```
 *
 
+# Output Formats - https://bookdown.org/yihui/rmarkdown/output-formats.html#output-formats
+
+# https://bookdown.org/yihui/rmarkdown/r-code.html
+# https://bookdown.org/yihui/rmarkdown/language-engines.html
 
 
 
