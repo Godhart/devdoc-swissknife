@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Every .env file in this folder defines one web section
+# - which repo and branch to monitor
+# - make setttings
+# - where to place result
+
 while [ 1 ]
 do
     date
