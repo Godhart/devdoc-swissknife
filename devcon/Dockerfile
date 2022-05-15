@@ -114,6 +114,10 @@ RUN apt-get update \
   && \
      rm -rf /var/lib/apt/lists/*
 
+## VSCode Server
+# https://github.com/coder/code-server
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+
 # TODO: draw.io
 
 # ## Some useful tools that could be required for books production

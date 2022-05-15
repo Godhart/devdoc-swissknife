@@ -56,6 +56,14 @@ DOCKER_LIVE = docker run --rm -it \
 		--workdir="/data/live" \
 		-u `id -u ${USER}`:`id -g ${USER}` \
 
+# Command for running VSCode server
+DOCKER_VSCS = docker run --rm -it \
+		--network=host \
+		--volume="${VSCS_HOME}:/home/code" \
+		--volume="${CODE_PROJECT}:/data/docs_src" \
+		--volume="${OUT_LOCATION}${OUT_NAME}:/data/docs_out" \
+		-u `id -u ${USER}`:`id -g ${USER}` \
+
 # Run interactively
 .PHONY: run
 run:
@@ -89,3 +97,10 @@ live-dev:
 		$(DOCKER_LIVE) \
 		devdoc-swissknife:22.04 \
 		/bin/bash
+
+# Run VSCode server
+.PHONY: vscs
+vscs:
+		$(DOCKER_VSCS) \
+		devdoc-swissknife:22.04 \
+		code-server
