@@ -1,0 +1,18 @@
+version: "3"
+services:
+  schematics:
+    build:
+      context: /home/k/Works/Yaml4HDElk
+      dockerfile: /home/k/Works/Yaml4HDElk/Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - splash
+    volumes:
+      - "../../docs_src/diagrams:/data/diagrams"
+    environment:
+      - SERVER_PORT=8088
+      - YAML4SCHM_FILES_DOMAIN_DIAGRAMS=/data/diagrams
+    network_mode: host
+  splash:
+    image: scrapinghub/splash
+    network_mode: host
