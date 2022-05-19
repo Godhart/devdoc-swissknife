@@ -4,6 +4,8 @@ services:
     image: devdoc-swissknife:22.04
     depends_on:
       - kroki
+      - schematics
+      - splash
     environment:
       - SERVICE_KROKI=http://kroki:8000
     volumes:
@@ -41,3 +43,19 @@ services:
     image: yuzutech/kroki-excalidraw
     expose:
       - "8004"
+  schematics:
+    build:
+      context: /home/k/Works/Yaml4HDElk
+      dockerfile: /home/k/Works/Yaml4HDElk/Dockerfile
+    restart: unless-stopped
+    volumes:
+      - "../../docs_src/diagrams:/data/diagrams"
+    environment:
+      - SERVER_PORT=8008
+      - YAML4SCHM_FILE_DOMAINS_DIAGRAMS=/data/diagrams
+    expose:
+      - "8008"
+  splash:
+    image: scrapinghub/splash
+    expose:
+      - "8050"
