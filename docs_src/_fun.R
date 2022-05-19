@@ -393,9 +393,9 @@ to_diagram  <- function(
       s_url <- paste(serviceUrl, "/", sengine, "/", dformat, sep = "")
 
       # URL to get image
-      c_url <- paste(pipe             # Input data for `from_src` case
-              , "curl ", s_url        # Request to server
-              , " -o '", d_path, "'"  # Output path
+      c_url <- paste(pipe               # Input data for `from_src` case
+              , "curl '", s_url         # Request to server
+              , "' -o '", d_path, "'"   # Output path
               , data_mode
               , data_value
               , sep = "")
