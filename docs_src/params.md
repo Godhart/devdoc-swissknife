@@ -10,3 +10,5 @@
 | [x] | dia_break_on_err       | DIA_BREAK_ON_ERR       | FALSE                 | TRUE to break build if diagram is generated with errors<br />FALSE to insert error message instead of diagram but not break build  |
 | [x] | dia_force              | DIA_FORCE              | FALSE                 | TRUE to regenerate diagrams even if there is cached data                                                                           |
 | [x] | service_kroki          | SERVICE_KROKI          | http://127.0.0.1:8081 | URL for Kroki service                                                                                                              |
+| [x] | service_splash         | SERVICE_SPLASH          | http://127.0.0.1:8050 | URL for Splash service
+| [x] | service_yaml4schm      | SERVICE_YAML4SCHM       | http://127.0.0.1:8088 | URL for Yaml4Schm service
