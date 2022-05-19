@@ -6,15 +6,15 @@ include $(_E)
 
 # TODO: don't polute sources dir
 
-BOOK_FILE_NAME	= $(shell cat _bookdown.yml | grep -Po 'book_filename:\s+"?\K[^"# ]+').Rmd
+BOOK_FILE_NAME	= $(shell cat _bookdown.yml | grep -Po 'book_filename:\s+"?\K[^"# ]+')
 BOOK_OUT_DIR	= $(shell cat _bookdown.yml | grep -Po 'output_dir:\s+"?\K[^"# ]+')
 
 ifeq ($(BOOK_OUT_DIR),)
 BOOK_OUT_DIR	= _book
 endif
 
-ifeq ($(BOOK_FILE_NAME), .Rmd)
-BOOK_FILE_NAME	= _main.Rmd
+ifeq ($(BOOK_FILE_NAME),)
+BOOK_FILE_NAME	= _main
 endif
 
 # Build output by default
@@ -68,7 +68,7 @@ clean-generated:
 # Clean the mess that can be left after R-Markdown build
 .PHONY: clean-mess
 clean-mess:
-	rm -f  "$(BOOK_FILE_NAME)"
+	rm -f  "$(BOOK_FILE_NAME)".*
 	rm -rf "$(BOOK_OUT_DIR)"
 
 # Clean build output
