@@ -36,6 +36,25 @@ knitr::opts_hooks$set(dia = function(options) {
   options
 })
 
+service_alias <- c(
+  "krk" = "Kroki",
+  "off" = "Office",
+  "y4s" = "Yaml4Schm",
+  "spl" = "Splash"
+)
+
+service_defaults <- c(
+  "Kroki" = "http://127.0.0.1:8081",
+  "Office" = "local",
+  "Yaml4Schm" = "http://127.0.0.1:8088",
+  "Splash" = "http://127.0.0.1:8050"
+)
+
+get_service_url <- function(service) {
+  service_url <- get_param(paste("service_", tolower(service), sep = ""),
+                          service_defaults[service])
+}
+
 grab_start  <- function() {
   ""
 }
@@ -90,7 +109,7 @@ to_diagram  <- function(
 #                 from `src` path.
 #                 File extension would depend on `dformat` argument and on
 #                 `fig.ext` options for R chunk
-# service       - Rendering service ("Kroki" or "Office")
+# service       - Rendering service ("Kroki", "Office", "Splash", "Yaml4Schm")
 # serviceUrl    - Rendering service base url.
 #                 This is starting part of url for service access.
 #                 Default is path `http://kroki:8000` to local Kroki
@@ -135,15 +154,22 @@ to_diagram  <- function(
   }
 
   if (service != "Kroki"
-  &&  service != "Office") {
+  &&  service != "Office"
+  &&  service != "Yaml4Schm"
+  &&  service != "Splash") {
+    service_tmp <- service_alias[service]
+  }
+  if (service_tmp != "Kroki"
+  &&  service_tmp != "Office"
+  &&  service_tmp != "Yaml4Schm"
+  &&  service_tmp != "Splash") {
     stop(paste("Service", as.character(service), "is not supported!"))
+  } else {
+    service <- service_tmp
   }
 
-  if (service == "Kroki") {
-    if (identical(serviceUrl, NULL)) {
-      serviceUrl <- get_param(paste("service_", tolower(service), sep = ""),
-                              "http://127.0.0.1:8081")
-    }
+  if (identical(serviceUrl, NULL)) {
+    serviceUrl <- get_service_url(service)
   }
   if (service == "Office") {
     serviceUrl <- "local"
@@ -171,6 +197,25 @@ to_diagram  <- function(
   # Select download and output formats
   if (dformat == "") {
     dformat <- "svg"      # If format is not specified - svg would be used
+
+    if (service == "Yaml4Schm"
+    ||  service == "Splash") {
+      dformat <- "png"
+      format  <- "png"
+    }
+  }
+
+  # Yaml4Schm is rendered with Splash
+  if (service == "Yaml4Schm") {
+    is_y4s      <- TRUE
+    y4s_src     <- src
+    src         <- paste(serviceUrl, engine, "show", src, sep = "/")
+    service     <- "Splash"
+    serviceUrl  <- get_service_url(service)
+    engine      <- dformat
+  } else {
+    is_y4s      <- FALSE
+    y4s_src     <- NULL
   }
 
   # If download format is SVG then conversion for output format may be required
@@ -255,6 +300,65 @@ to_diagram  <- function(
 
   # Render diagram
   if (TRUE || !file.exists(d_path)) {
+    # by Splash
+    if (service == "Splash") {
+      if (src == "") {
+        stop("Splash/Yaml4Schm supports data input from files only!")
+      }
+      d_url <- paste("?url=", src,
+        "&render_all=1&wait=1", sep = "")
+
+      vp_width   <- knitr::opts_current$get("out.width")
+      vp_height  <- knitr::opts_current$get("out.height")
+      if (!identical(vp_width, NULL) && !identical(vp_height, NULL)) {
+        d_url <- paste(d_url, "&viewport=", width, "x", height, sep = "")
+      }
+
+      s_url <- paste(serviceUrl, "/", "render.", dformat, d_url, sep = "")
+
+      # URL to get image
+      c_url <- paste("curl '", s_url   # Request to server
+              , "' -o '", d_path, "'"  # Output path
+              , sep = "")
+
+      # Cache things
+      cache <- as.logical(get_param("dia_cache", "TRUE"))
+      cache_dir  <- get_param("dia_cache_path", ".dia-cache")
+      if (cache) {
+        if (is_y4s) {
+          # TODO: replace ".." with root path for diagrams
+          source_digest <- paste(digest(file = paste("..", y4s_src, sep = "/")),
+                                "-", sep = "")
+        } else {
+          source_digest <- ""
+        }
+        cache_path <- paste(cache_dir, "/",
+                            source_digest, digest(c_url), ".", dformat,
+                            sep = "")
+      } else {
+        cache_path <- ""
+      }
+
+      # If image is not cached or forced - get image
+      if (force || as.logical(get_param("dia_force", "FALSE"))
+      || !cache || !file.exists(cache_path)) {
+        system(paste("echo 'Failed to get diagram image from ", service,
+                   "(", s_url, ")' > '", d_path, "'", sep = ""))
+        system(c_url, ignore.stdout = TRUE, ignore.stderr = TRUE)
+
+        # Store result to cache
+        if (cache) {
+          if (!dir.exists(cache_dir)) {
+            dir.create(cache_dir)
+          }
+          file.copy(d_path, cache_path, overwrite = TRUE)
+        }
+      } else {
+        # Otherwise copy cached data into destination path
+        file.copy(cache_path, d_path, overwrite = TRUE)
+      }
+
+    }
     # by Kroki
     if (service == "Kroki") {
 
