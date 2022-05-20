@@ -308,8 +308,8 @@ to_diagram  <- function(
       d_url <- paste("?url=", src,
         "&render_all=1&wait=1", sep = "")
 
-      vp_width   <- knitr::opts_current$get("out.width")
-      vp_height  <- knitr::opts_current$get("out.height")
+      vp_width   <- knitr::opts_current$get("vp_width")
+      vp_height  <- knitr::opts_current$get("vp_height")
       if (!identical(vp_width, NULL) && !identical(vp_height, NULL)) {
         d_url <- paste(d_url, "&viewport=", width, "x", height, sep = "")
       }
