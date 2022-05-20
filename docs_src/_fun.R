@@ -197,12 +197,6 @@ to_diagram  <- function(
   # Select download and output formats
   if (dformat == "") {
     dformat <- "svg"      # If format is not specified - svg would be used
-
-    if (service == "Yaml4Schm"
-    ||  service == "Splash") {
-      dformat <- "png"
-      format  <- "png"
-    }
   }
 
   # Yaml4Schm is rendered with Splash
@@ -216,6 +210,14 @@ to_diagram  <- function(
   } else {
     is_y4s      <- FALSE
     y4s_src     <- NULL
+  }
+
+  # for Splash SVGs are grabbed out of HTML
+  if (service == "Splash") {
+    if (engine == "svg") {
+      engine <- "html"
+      dformat <- "svg"
+    }
   }
 
   # If download format is SVG then conversion for output format may be required
@@ -314,7 +316,7 @@ to_diagram  <- function(
         d_url <- paste(d_url, "&viewport=", width, "x", height, sep = "")
       }
 
-      s_url <- paste(serviceUrl, "/", "render.", dformat, d_url, sep = "")
+      s_url <- paste(serviceUrl, "/", "render.", engine, d_url, sep = "")
 
       # URL to get image
       c_url <- paste("curl '", s_url   # Request to server
@@ -534,8 +536,28 @@ to_diagram  <- function(
     }
   }
 
-  # TODO: arbitrary renderer
-
+  # Get SVG out of HTML
+  if (dformat == "svg" && service == "Splash") {
+    rip_svg <- "_resizeSvg.py"
+    # NOTE: resizeSvg works well with ripping SVGs too
+    for (i in 1:10) {
+      # NOTE: path depends on location of rendered file.
+      #       so look for necessary file few levels up
+      if (file.exists(rip_svg)) {
+        break
+      }
+      rip_svg <- paste("../", rip_svg, sep = "")
+    }
+    system(
+      paste(
+        "python3",
+        rip_svg,
+        paste("'", d_path, "'", sep = ""),  # Input file
+        paste("'", d_path, "'", sep = ""),  # Output file (same as input)
+        "-", "-"        # width and height are set to '-' to avoid resize
+      )
+    )
+  }
 
   # Convert SVG to necessary format
   if (dformat == "svg" && format != "svg"
