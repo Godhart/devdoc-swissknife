@@ -93,6 +93,10 @@ Usage: python3 _resizeSvg.py <input> <output> [width] [height] [auto_fit_width] 
     if len(sys.argv) > 6:
         auto_fit_height = sys.argv[6]
 
+    resize = True
+    if width == "-" and height == "-":
+        resize = False
+
     input_path = sys.argv[1]
     output_path = sys.argv[2]
     err_path = input_path+".err"
@@ -116,9 +120,10 @@ Usage: python3 _resizeSvg.py <input> <output> [width] [height] [auto_fit_width] 
     if svg_doc is not None:
         try:
             svg = svg_doc.getElementsByTagName("svg")[0]
-            dprint(
-                "\n\n`resizeSVG '" + width + "' '" + height + "' '" + auto_fit_width + "' '" + auto_fit_height + "'`\n\n")
-            resizeSVG(svg, width, height, auto_fit_width, auto_fit_height)
+            if resize:
+                dprint(
+                    "\n\n`resizeSVG '" + width + "' '" + height + "' '" + auto_fit_width + "' '" + auto_fit_height + "'`\n\n")
+                resizeSVG(svg, width, height, auto_fit_width, auto_fit_height)
             result = svg.toxml()
         except Exception as e:
             err_msg = f"SVG resize failed due to exception: {e}"
