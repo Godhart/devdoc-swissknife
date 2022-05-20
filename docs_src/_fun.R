@@ -123,6 +123,8 @@ to_diagram  <- function(
 #                 If omitted or NULL then value of R chunk option named `dia`
 #                 is treated as `engine`
 # page          - Page for rendering. For use with multipage office documents
+#                 (multipage office documents support should become available
+#                 after august of 2022)
 # force         - If FALSE(default) then existing downloaded diagram data
 #                 would be used. Set to TRUE to regenerate diagram from scratch
 
